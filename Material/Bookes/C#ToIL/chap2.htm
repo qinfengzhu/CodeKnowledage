@@ -1,0 +1,2391 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap2_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap2_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>IL Basics - C# to IL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>8</o:TotalTime>
+  <o:Created>2001-01-24T05:41:00Z</o:Created>
+  <o:LastSaved>2001-01-24T05:42:00Z</o:LastSaved>
+  <o:Pages>18</o:Pages>
+  <o:Words>4859</o:Words>
+  <o:Characters>25269</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>3158</o:Lines>
+  <o:Paragraphs>1579</o:Paragraphs>
+  <o:CharactersWithSpaces>34015</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Cbullets, li.Cbullets, div.Cbullets
+	{mso-style-name:"C\#bullets";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cbase, li.Cbase, div.Cbase
+	{mso-style-name:"C\#base";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.Coutput, li.Coutput, div.Coutput
+	{mso-style-name:"C\#output";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cprg, li.Cprg, div.Cprg
+	{mso-style-name:"C\#prg";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"c\# base text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=Cbase><b><span style='font-size:9.0pt;mso-bidi-font-size:10.0pt'><img
+width=64 height=48 id="_x0000_i1025" src=bpb.jpg><o:p></o:p></span></b></p>
+
+<p class=Cbase><b><span style='font-size:24.0pt;mso-bidi-font-size:10.0pt'>-2-</span></b><span
+style='font-size:24.0pt;mso-bidi-font-size:10.0pt;color:windowtext'><o:p></o:p></span></p>
+
+<p class=Cbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><b><span
+style='font-size:24.0pt'>IL Basics</span></b><span style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This chapter and the next couple of them will focus on and
+elicit a simple belief of ours, that if you really want to understand C# code
+in earnest, then the best way of doing so is by understanding the IL code
+generated by the C# compiler. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>So, we shall raise the curtains with a small C# program and
+then explain the IL code generated by the compiler. In doing so, we will be
+able to kill two birds with one stone: Firstly, we will be able to unravel the
+mysteries of IL and secondly, we will obtain a more intuitive understanding of
+the C# programming language. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We will first show you a .cs file and then a program written in
+IL by the C# compiler, whose output will be the same as that of the .cs file.
+The output will be displayed of the IL code. This will enhance our
+understanding of not only C# but also IL. So, without much ado, lets take the
+plunge.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;hi&quot;);<o:p></o:p></p>
+
+<p class=ILprg>zzz.abc();<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>public static void abc()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;bye&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput>c:\il&gt;csc a.cs<o:p></o:p></p>
+
+<p class=ILoutput>c:\il&gt;ildasm /output=a.il a.exe<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>//<span style="mso-spacerun: yes"> 
+</span>Microsoft (R) .NET Framework IL Disassembler.<span style="mso-spacerun:
+yes">  </span>Version 1.0.2204.21<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>//<span style="mso-spacerun: yes"> 
+</span>Copyright (C) Microsoft Corp. 1998-2000<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>// VTableFixup Directory:<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>// No data.<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>.subsystem 0x00000003<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>.corflags 0x00000001<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>.assembly extern mscorlib<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>{<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>.originator = (03 68 91 16 D3 A4 AE 33 )<span style="mso-spacerun:
+yes">                   </span>// .h.....3<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>.hash = (52 44 F8 C9 55 1F 54 3F 97 D7 AB AD E2 DF 1D E0 <o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun:
+yes">           </span>F2 9D 4F BC )<span style="mso-spacerun:
+yes">                            </span>// RD..U.T?..........O.<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>.ver 1:0:2204:21<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>}<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>.assembly a as &quot;a&quot;<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>{<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun:
+yes"> </span><span style='font-size:7.5pt'><span style="mso-spacerun:
+yes"> </span>// --- The following custom attribute is added automatically, do
+not uncomment -------</span><o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style='font-size:7.0pt'><span
+style="mso-spacerun: yes">  </span>//<span style="mso-spacerun: yes"> 
+</span>.custom instance void [mscorlib]System.Diagnostics.DebuggableAttribute::<o:p></o:p></span></p>
+
+<p class=ILprg style='margin-left:.3in'><span style='font-size:7.0pt'>//
+.ctor(bool, bool) = ( 01 00 00 01 00 00 ) <o:p></o:p></span></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>.hash algorithm 0x00008004<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>.ver 0:0:0:0<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>}<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>.module a.exe<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>// MVID:
+{3C938660-2A02-11D5-9089-9752D1D64E03}<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>.class private auto ansi zzz<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">      
+</span>extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>{<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>.method public hidebysig static void Main() il managed<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>{<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>// Code size<span style="mso-spacerun: yes">       </span>16 (0x10)<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>.maxstack<span style="mso-spacerun: yes">  </span>8<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>IL_0000:<span style="mso-spacerun: yes">  </span>ldstr<span
+style="mso-spacerun: yes">      </span>&quot;hi&quot;<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>IL_0005:<span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>IL_000a:<span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">       </span>void zzz::abc()<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">  
+</span><span style="mso-spacerun: yes"> </span>IL_000f:<span
+style="mso-spacerun: yes">  </span>ret<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>} // end of method zzz::Main<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>.method public hidebysig static void abc() il managed<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>{<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>// Code size<span style="mso-spacerun: yes">       </span>11 (0xb)<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>.maxstack<span style="mso-spacerun: yes">  </span>8<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>IL_0000:<span style="mso-spacerun: yes">  </span>ldstr<span
+style="mso-spacerun: yes">      </span>&quot;bye&quot;<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>IL_0005:<span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>IL_000a:<span style="mso-spacerun: yes">  </span>ret<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>} // end of method zzz::abc<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>.method public hidebysig specialname rtspecialname <o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun:
+yes">          </span>instance void .ctor() il managed<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>{<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>// Code size<span style="mso-spacerun: yes">   </span><span
+style="mso-spacerun: yes">    </span>7 (0x7)<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>.maxstack<span style="mso-spacerun: yes">  </span>8<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>IL_0000:<span style="mso-spacerun: yes">  </span>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>IL_0001:<span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">       </span>instance void
+[mscorlib]System.Object::.ctor()<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes">   
+</span>IL_0006:<span style="mso-spacerun: yes">  </span>ret<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><span style="mso-spacerun: yes"> 
+</span>} // end of method zzz::.ctor<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>} // end of class zzz<o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg style='margin-left:.3in'>//*********** DISASSEMBLY COMPLETE
+***********************<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The above code is generated by the il disassembler <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>After executing ildasm on the exe file, we studied the IL code
+generated by the program. Subsequently, we eliminated parts of the code that
+did not ameliorate our understanding of IL. This consisted of some comments,
+directives, functions etc. The remaining IL code presented is as close to the
+original as possible. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>Edited a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;hi&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>call void zzz::abc()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void abc() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;bye&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput>c:\il&gt;ilasm a.il<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>hi<o:p></o:p></p>
+
+<p class=ILoutput>bye<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The advantage of this technique of mastering IL by studying the
+IL code itself is that, we are learning from the master, i.e. the C# compiler,
+on how to write decent IL code. We cannot find a better authority than the C#
+compiler to enlighten us about IL.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The rules for creating a static function abc remain the same as
+any other function such as Main or vijay. As abc is a static function, we have
+to use the static modifier in the .method directive. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>When we want to call a function, the following information has
+to be provided in the order given below:<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>the return data type.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>the class name.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>the function name to be called.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>the data types of the parameters. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The same rules also apply when we call the .ctor function from
+the base class. It is mandatory to write the name of the class before the name
+of the function. In IL, no assumptions are made about the name of the class.
+The name defaults to the class we are in while calling the function. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, the above program first displays &quot;hi&quot; using the
+WriteLine function and then calls the static function abc. This function too
+uses the WriteLine function to display &quot;bye&quot;.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;hi&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>static zzz()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;bye&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;hi&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig specialname rtspecialname static void
+.cctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;bye&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>bye<o:p></o:p></p>
+
+<p class=ILoutput>hi<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Static constructors are always called before any other code is
+executed. In C#, a static constructor is merely a function with the same name
+as a class. In IL, the name of the function changes to .cctor. Thus, you may
+have observed that in the earlier example, we got a free function called ctor. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Whenever we have a class with no constructors, a free
+constructor with no parameters is created. This free constructor is given the
+name .ctor. This knowledge should enhance our ability as C# programmers, as we
+are now in a better position to comprehend as to what goes on below the hood. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The static function gets called first and the function with the
+entrypoint directive gets called thereafter.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;hi&quot;);<o:p></o:p></p>
+
+<p class=ILprg>new zzz();<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>zzz()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;bye&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;hi&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>pop<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig specialname rtspecialname instance
+void .ctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void [mscorlib]System.Object::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;bye&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>hi<o:p></o:p></p>
+
+<p class=ILoutput>bye<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The keyword new in C# gets converted to the assembler
+instruction newobj. This provides evidence that IL is not a low level
+assembler, and that it can also create objects in memory. The instruction
+newobj creates a new object in memory. Even in IL, we are shielded from what
+new or newobj really does. This demonstrates that IL is not just another high
+level language, but is designed in such a way that other modern languages can
+be compiled to it. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The rules for using newobj are the same as that for calling a
+function. The full prototype of the function name is required. In this case, we
+are calling the constructor without any parameters, hence the function .ctor is
+called. In the constructor, the WriteLine function is called.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>As we had promised earlier, we are going to explain the
+instruction ldarg.0 here. Whenever we create an object that is an instance of a
+class, it contains two basic entities:<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>functions <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>fields or variables i.e. data. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>When a function gets called, it does not know or care as to where
+it is being called from or who is calling it. It receives all its parameters
+off the stack. There is no point in having two copies of a function in memory.
+This is because, if a class contains a megabyte of code, each time we say 'new'
+on it, an additional megabyte of memory will be occupied. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>When new is called for the first time, memory gets allocated
+for the code and the variables. But thereafter, with every call on new, fresh
+memory is allocated only for the variables. Thus, if we have five instances of
+a class, there will be only one copy of the code, but five separate copies of
+the variables. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Every non-static or instance function is passed a handle which
+indicates the location of the variables of the object that has called this
+function. This handle is called the this pointer. 'this' is represented by
+ldarg.0. This handle is always passed as the first parameter to every instance
+function. Since it is always passed by default, it is not mentioned in the
+parameter list of a function.<span style="mso-spacerun: yes">    </span><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>All the action takes place on the stack. The instruction pop
+removes whatever is on the top of the stack. In this example, we use it to
+remove the instance of zzz that has been placed on top of the stack by the
+newobj instruction. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;hi&quot;);<o:p></o:p></p>
+
+<p class=ILprg>new zzz();<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>zzz()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;bye&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>static zzz()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;byes&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;hi&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>pop<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig specialname rtspecialname instance
+void .ctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void [mscorlib]System.Object::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;bye&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig specialname rtspecialname static void
+.cctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;byes&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>byes<o:p></o:p></p>
+
+<p class=ILoutput>hi<o:p></o:p></p>
+
+<p class=ILoutput>bye<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The static constructor always gets called first whereas the
+instance constructor gets called only after new. IL enforces this sequence of
+execution. The calling of the base class constructor is not mandatory. Hence,
+to save space in our book, we have not shown its code in all the programs. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In some cases, if we do not include the code of a constructor,
+the programs do not work. Only in these cases, the code of the constructor has
+been included. The static constructor does not call the base class constructor,
+also ‘this’ is not passed to static functions. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int i = 6;<o:p></o:p></p>
+
+<p class=ILprg>long j = 7;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object {<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed {<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 V_0,int64 V_1)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.6<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.7<o:p></o:p></p>
+
+<p class=ILprg>conv.i8<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ret <o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We have created two variables called i and j in our function
+Main in the C# program. They are local variables and are created on the stack.
+On conversion to IL, if you notice, the names of the variables are lost. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The variables get created in IL through the locals directive,
+which assigns its own names to the variables, beginning with V_0 and V_1 and so
+on. The data types are also altered from int to int32 and from long to int64.
+The basic types in C# are aliases. They all get converted to data types that IL
+understands. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The task on hand is to initialize the variable i to a value of
+6. This value has to be loaded on the stack or evaluation stack. The
+instruction to do so is ldc.i4.value. An i4 takes up four bytes of memory. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The value mentioned in the syntax above is the constant that
+has to be put on the stack. After the value 6 has been loaded on to the stack,
+we now need to initialize the variable i to this value. The variable i has been
+renamed as V_0 and is the first variable in the locals directive. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The instruction stloc.0 takes the value present at the top of
+the stack i.e. 6 and initializes the variable V_0 to it. The process of
+initializing a variable is definitely complicated. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The second ldc instruction copies the value of 7 onto the
+stack. On a 32 bit machine, memory can only be allocated in chunks of 32 bytes.
+In the same vein, on a 64 bit machine, the memory is allocated in chunks of 64
+bytes. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The number 7 is stored as a constant and requires only 4 bytes,
+but a long requires 8 bytes. Thus, we need to convert the 4 bytes to 8 bytes.
+The instruction conv.i8 is used for this purpose. It places a 8 byte number on
+the stack. Only after doing so, we use stloc.1 to initialize the second
+variable V_1 to the value of 7. Hence stloc.1<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, the ldc series is used to place a constant number on the
+stack and stloc is utilized to pick up what is on the stack and initialize a
+local to that value.<o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>static int i= 6 ;<o:p></o:p></p>
+
+<p class=ILprg>public long j = 7;<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field private static int32 i<o:p></o:p></p>
+
+<p class=ILprg>.field public int64 j<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname rtspecialname static void
+.cctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.6<o:p></o:p></p>
+
+<p class=ILprg>stsfld int32 zzz::i<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname rtspecialname instance void
+.ctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.7<o:p></o:p></p>
+
+<p class=ILprg>conv.i8<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">      </span>int64 zzz::j<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance void
+[mscorlib]System.Object::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now you will finally be able to see the light at the end of the
+tunnel and understand as to why we wanted you to read this book in the first
+place.<o:p></o:p></p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span><o:p></o:p></p>
+
+<p class=ILbase>Let us understand the above code, one field at a time. We have
+created a variable i that is static and initialized it to the value of 6. Since
+the variable i has not been given an access modifier, the default value is
+private. The static modifier of C# is applicable to variables in IL also. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The real action begins now. The variable needs to be assigned
+an initial value. This value must be assigned in the static constructor only,
+because the variable is static. We employ ldc to place the value 6 on the
+stack. Note that the locals directive is not used here. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>To initialize i, we use the instruction stsfld that looks for a
+value<span style="mso-spacerun: yes">  </span>on top of the stack. The next
+parameter to the instruction stsfld is the number of bytes it has to pick up
+from the stack to initialize the static variable. In this case, the number of
+bytes specified is 4. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The variable name is preceded by the name of the class. This is
+in contrast to the syntax of local variables. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>For the instance variable j, since its access modifier was
+public in C#, on conversion to IL, its access modifier is retained as public.
+Since it is an instance variable, its value gets initialized in the instance
+constructor. The instruction used here is stfld and not stsfld. Here we need 8
+bytes of the stack. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The rest of the code remains the same as before. Thus, we can
+see that the instruction stloc is used to initialize locals and the instruction
+stfld is used to initialise fields. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>static int i= 6 ;<o:p></o:p></p>
+
+<p class=ILprg>public long j = 7;<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>new zzz();<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>static zzz()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;zzzs&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>zzz()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;zzzi&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field private static int32 i<o:p></o:p></p>
+
+<p class=ILprg>.field public int64 j<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>pop<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname rtspecialname static void
+.cctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.6<o:p></o:p></p>
+
+<p class=ILprg>stsfld int32 zzz::i<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;zzzs&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname rtspecialname instance void
+.ctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.7<o:p></o:p></p>
+
+<p class=ILprg>conv.i8<o:p></o:p></p>
+
+<p class=ILprg>stfld int64 zzz::j<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">  </span>instance void
+[mscorlib]System.Object::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;zzzi&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<span style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>zzzs<o:p></o:p></p>
+
+<p class=ILoutput>zzzi<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The main purpose of the above example is to verify whether the
+variable is initialized first or the code contained in a constructor gets called
+first. The IL output demonstrates very lucidly that, first all the variables
+get initialized and thereafter, the code in a constructor gets executed. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>You may have also noticed that the base class constructor gets
+executed first and then, and only then, does the code that is written in a
+constructor, get called. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This nugget of knowledge is sure to enhance your understanding
+of C# and IL. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(10);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s 10<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We can print a number instead of a string by overloading the
+WriteLine function. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>First, we push the value 10 onto the stack using the ldc
+family. Observe carefully, the instruction now is ldc.i4.s and then the value
+of 10. Any instruction takes 4 bytes in memory, but when followed by .s takes
+only one byte.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Then the C# compiler calls the correct overloaded version of
+the WriteLine function, which accepts an int32 value from the stack. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This is similar to printing strings. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;{0}&quot;,20);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;{0}&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s 20<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloca.s V_0<o:p></o:p></p>
+
+<p class=ILprg>box [mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String,class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>20<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We shall now delve on how to print a number on the screen. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The WriteLine function accepts a string followed by a variable
+number of objects. The {0} prints the first object after the comma. Even though
+there is no variable in the C# code, on conversion to IL code, a variable of
+type int32 is created. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The string {0} is loaded on the stack using our trustworthy
+ldstr. Then, we place the number that is to be passed as a parameter to the
+WriteLine function, on the stack. To do so, we use ldc.i4.s which loads the
+constant value on the stack. After this, we initialize the variable V_0 to 20
+with the stloc.0 instruction. and then ldloca.s loads the address of the local
+varable on the stack.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The major roadblock that we experience here is that the
+WriteLine function accepts a string followed by an object as the next
+parameter. In this case, the variable is of value type and not reference type. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>An int32 is a value type variable whereas the WriteLine
+function wants a full-fledged object of a reference type. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>How do we solve the dilemma of converting a value type into a
+reference type? <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>As informed earlier, we use the instruction ldloca.s to load
+the address of the local variable V_0 onto the stack. Thus, our stack contains
+a string followed by the address of a value type variable, V_0. <o:p></o:p></p>
+
+<p class=ILbase>Next, we call an instruction called box. There are only two
+types of variables in the .NET world i.e. value types and reference types.
+Boxing is the method that .NET uses to convert a value type variable into a
+reference type variable. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The box instruction takes an unboxed or value type variable and
+converts it into a boxed or reference type variable. The box instruction needs
+the address of a value type on the stack and allocates space on the heap for
+its equivalent reference type. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The heap is an area of memory used to store reference types.
+The values on the stack disappear at the end of a function, but the heap is
+available for a much longer duration. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Once this space is allocated, the box instruction initializes
+the instance fields of the reference object. Then, it assigns the memory
+location in the heap, of this newly constructed object to the stack, The box
+instruction requires a memory location of a locals variable on the stack. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The constant stored on the stack has no physical address. Thus,
+the variable V_0 is created to provide the memory location. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This boxed version on the heap is similar to the reference type
+variable that we are familiar with. It really does not have any type and thus
+looks like System.Object. To access its specific values, we need to unbox it
+first. The WriteLine function does this internally. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The data type of the parameter that is to be boxed must be the
+same as that of the variable whose address has been placed on the stack. We
+will subsequently explain these details. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz {<o:p></o:p></p>
+
+<p class=ILprg>static int i = 10;<o:p></o:p></p>
+
+<p class=ILprg>public static void Main() {<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;{0}&quot;,i); <o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field private static int32 i<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;{0}&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldsflda int32 zzz::i<o:p></o:p></p>
+
+<p class=ILprg>box<span style="mso-spacerun: yes"> 
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String, class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname rtspecialname static void
+.cctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s 10<o:p></o:p></p>
+
+<p class=ILprg>stsfld int32 zzz::i<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The above code is used to display the value of a static
+variable. The .cctor function initializes the static variable to a value of 10.
+Then, the string {0} is stored on the stack. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The function ldsldfa loads the address of a static variable of
+a certain data type on the stack. Then, as usual, box takes over. The
+explanation regarding the functionality of 'box' given above is relevant here
+also. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Static variables in IL work in the same way as instance
+variables. The only difference is in the fact that they have their own set of
+instructions. Instructions like box need a memory location on the stack without
+discriminating between static and instance variables. <o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field private static int32 i<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;{0}&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldsflda int32 zzz::i<o:p></o:p></p>
+
+<p class=ILprg>box<span style="mso-spacerun: yes"> 
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String, class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname rtspecialname instance void
+.ctor() il managed {<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void [mscorlib]System.Object::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>0<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The only variation that we indulged in from the earlier program
+is that we have removed the static constructor. All static variables and
+instance variables get initialized internally to ZERO. Thus, IL does not
+generate any error. Internally, even before the static constructor gets called,
+the field i is assigned an initial value of ZERO.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int i = 10;<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(i);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We have initialised the local i to a value of 10. This cannot
+be done in the constructor since the variable i has been created on the stack.
+Then, stloc.0 has been used to assign the value of 10 to V_0. Thereafter,
+ldloc.0 has been ustilised to place the variable V_0 on the stack, so that it
+is available to the WriteLine function. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Writeline function thereafter displays the value on the
+screen. A field and a local behave in a similar manner, except that they use
+separate sets of instructions. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>51380288<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>All local variables have to be initialised, or else, the
+compiler will generate an unintelligible error message. Here, even though we
+have eliminated the ldc and stloc instructions, no error is generated at
+runtime. Instead, a very large number is displayed. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The variable V_0 has not been initialised to any value. It was
+created on the stack and contained whatever value was available at the memory
+location assigned to it. On your machine, the output will be very different
+than ours. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In a similar situation, the C# compiler will give you an error
+and not allow you to proceed further, because the variable has not been
+initialized. IL, on the other hand, is a strange kettle of fish. It is much
+more lenient in its outlook. It does very few error or sanity checks on the
+source code. This has its drawback, maening, the programmer has to be much more
+responsible and careful while using IL.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz {<o:p></o:p></p>
+
+<p class=ILprg>static int i;<o:p></o:p></p>
+
+<p class=ILprg>public static void Main() {<o:p></o:p></p>
+
+<p class=ILprg>i = 10;<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;{0}&quot;,i);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field private static int32 i<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>stsfld<span style="mso-spacerun: yes">     </span>int32 zzz::i<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">     
+</span>&quot;{0}&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldsflda<span style="mso-spacerun: yes">    </span>int32 zzz::i<o:p></o:p></p>
+
+<p class=ILprg>box<span style="mso-spacerun: yes"> 
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String,class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the above example, a static variable has been initialised
+inside a function and not at the time of its creation, as seen earlier. The
+function vijay calls the code present in the static constructor. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The process given above is the only way to initialize a static
+or an instance variable.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>zzz a = new zzz();<o:p></o:p></p>
+
+<p class=ILprg>a.abc(10);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>void abc(int i) {<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;{0}&quot;,i);<o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class zzz V_0)<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s 10<o:p></o:p></p>
+
+<p class=ILprg>call instance void zzz::abc(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig instance void abc(int32 i) il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;{0}&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldarga.s<span style="mso-spacerun: yes">   </span>i<o:p></o:p></p>
+
+<p class=ILprg>box [mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String,class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The above program demonstrates as to how we can call a function
+with a single parameter. The rules for placing parameters on the stack are
+similar to those for the WriteLine function. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now let us comprehend as to how a function receives parameters
+from the stack. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We begin by stating the data type and parameter name in the
+function declaration. This is similar to the workings in C#.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Next, we use the instruction ldarga.s to load the address of
+the parameter i, onto the stack. box will then convert the value type of this
+objct into object type and finally WriteLine function uses these values to
+display the output on the screen. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>zzz a = new zzz();<o:p></o:p></p>
+
+<p class=ILprg>a.abc(10);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>void abc(object i)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;{0}&quot;,i);<o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class zzz V_0,int32 V_1)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldloca.s<span style="mso-spacerun: yes">   </span>V_1<o:p></o:p></p>
+
+<p class=ILprg>box [mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call instance void zzz::abc(class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig instance void abc(class System.Object
+i) il managed {<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">     
+</span>&quot;{0}&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldarg.1<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String,class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the above example, we have converted an int into an object
+because, the WriteLine function requires the parameter to be of this data type.
+<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The only method of achieving this conversion is by using the
+box instruction. The box instruction converts an int into an object. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the function abc, we accept a System.Object and we use the
+instruction ldarg and not ldarga. The reason being, we require the value of the
+parameter and not its address. The dot after the name signifies the parameter
+number. In order to place the values of parameters on the stack, a new
+instruction is required. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, IL handles locals, fields and parameters with their own
+set of instructions. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int i;<o:p></o:p></p>
+
+<p class=ILprg>zzz a = new zzz();<o:p></o:p></p>
+
+<p class=ILprg>i = zzz.abc();<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(i);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>static int abc()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>return 20;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 V_0,class zzz V_1)<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>call int32 zzz::abc()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig static int32 abc() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>20<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>20<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Functions return values. Here, a static function abc has been
+called. We know from the function's signature that it returns an int. Return
+values are stored on the stack. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, the stloc.1 instruction picks up the value on the stack
+and<span style="mso-spacerun: yes">  </span>places it in the local V_1. In this
+specific case, it is the return value of the function. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Newobj is also like a function. It returns an object which, in
+our case, is an instance of the class zzz, and puts it on the stack. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The stloc instruction has been used repeatedly to initialize
+all our local variables. Just to refresh your memory, ldloc does the reverse of
+this process. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A function has to just place a value on the stack using the
+trustworthy ldc and then cease execution using the ret instruction. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, the stack has a dual role to play:<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>It is used to place values on the
+stack.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>It receives the return values of the
+functions.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int i;<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>zzz a = new zzz();<o:p></o:p></p>
+
+<p class=ILprg>a.i = zzz.abc();<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a.i);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>static int abc()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>return 20;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=programs><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>.class private auto ansi zzz
+extends System.Object<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>.field private int32 i<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>.method public hidebysig static
+void vijay() il managed<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>.locals (class zzz V_0)<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>newobj<span
+style="mso-spacerun: yes">     </span>instance void zzz::.ctor()<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>stloc.0<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>ldloc.0<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>call int32 zzz::abc()<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>stfld int32 zzz::i<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>ldloc.0<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>ldfld int32 zzz::i<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>call<span style="mso-spacerun:
+yes">  </span>void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>.method private hidebysig
+static int32 abc() il managed<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>.locals (int32 V_0)<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>ldc.i4.s<span
+style="mso-spacerun: yes">   </span>20<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=programs><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>20<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The only innovation and novelty that has been introduced in the
+above example is that the return value of the function abc has been stored in
+an instance variable. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbullets><i><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span></i>Stloc assigns the value on the
+stack to a local variable.<o:p></o:p></p>
+
+<p class=ILbullets><i><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span></i>Ldloc, on the other hand, places
+the value of a local variable on the stack.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>It is not understood as to why the object that looks like zzz
+has to be put on the stack again, especially since abc is a static function and
+not an instance function. Mind you, static functions are not passed the this
+pointer on the stack.<o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thereafter, the function abc is called, which places the value
+20 on the stack. The instruction stfld picks up the value 20 from the stack,
+and initializes the instance variable i with this value. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Local and instance variables are handled in a similar manner
+except that, the instructions for their initialization are different. <o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The instruction ldfld does the reverse of what stfld does. It
+places the value of an instance variable on the stack to make it available for
+the WriteLine function.<span style='font-size:10.0pt;color:windowtext'><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,1057 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap18_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap18_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Glossary - C# to IL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>14</o:Revision>
+  <o:TotalTime>62</o:TotalTime>
+  <o:Created>2001-01-24T06:33:00Z</o:Created>
+  <o:LastSaved>2001-01-24T09:01:00Z</o:LastSaved>
+  <o:Pages>4</o:Pages>
+  <o:Words>1533</o:Words>
+  <o:Characters>8742</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>72</o:Lines>
+  <o:Paragraphs>17</o:Paragraphs>
+  <o:CharactersWithSpaces>10735</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+@font-face
+	{font-family:"Monotype Corsiva";
+	panose-1:3 1 1 1 1 2 1 1 1 1;
+	mso-font-charset:0;
+	mso-generic-font-family:script;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Cbullets, li.Cbullets, div.Cbullets
+	{mso-style-name:"C\#bullets";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cbase, li.Cbase, div.Cbase
+	{mso-style-name:"C\#base";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.Coutput, li.Coutput, div.Coutput
+	{mso-style-name:"C\#output";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cprg, li.Cprg, div.Cprg
+	{mso-style-name:"C\#prg";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"c\# base text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=Cbase><b><span style='font-size:9.0pt;mso-bidi-font-size:10.0pt'><img
+width=64 height=48 id="_x0000_i1025" src=bpb.jpg><o:p></o:p></span></b></p>
+
+<p class=Cbase><b><span style='font-size:24.0pt;mso-bidi-font-size:10.0pt'>-18-</span></b><span
+style='font-size:24.0pt;mso-bidi-font-size:10.0pt;color:windowtext'><o:p></o:p></span></p>
+
+<p class=Cbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><span style='font-size:
+30.0pt;font-family:"Monotype Corsiva"'>Glossary </span><span style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The Windows Operating System
+runs on the Intel family of microprocessor chips. The file containing Intel op
+codes or assembler will only be able to execute on Intel machines. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>If we could compile our code into
+an assembler that runs on a hypothetical microprocessor, then the code will not
+execute on any machine in the world. However, if, at the time of execution, we
+could convert the compiled code from this hypothetical microprocessor assembler
+into a form that is suitable for the microprocessor chip of the machine that
+the code is running on, we could, theoretically at least, run the code on any
+machine, provided such a converter program was available. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This program would convert the
+code from our hypothetical chip's assembler into a form suitable to the actual
+chip of the machine that the code is to be run on. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This is the concept that Java is
+based on and the program that does this conversion is called the Java Virtual
+Machine or JVM. The assembler so generated is called byte code. The only flaw
+in Java is that the byte codes represent the Java programming language very
+closely. This is so because, it was difficult to get other programming
+languages to compile to Java byte codes. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Microsoft learnt from this
+drawback of the Sun based Java, and firstly created an assembler that was
+powerful and<span style="mso-spacerun: yes">  </span>generic. This assembler
+was named IL or Intermediate Language. Any code, whether written in C#, VB or
+COBOL, is initially converted to IL. The Perl compiler also converts code
+written in the Perl programming language into IL. This IL code is then
+converted to assembler of the chip at run time. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Therefore, if we study IL in
+depth, we can safely conclude that we will be able to master the .NET
+technologies, as everything eventually gets converted to it. If IL does not
+support a feature, then the programming language also cannot support it. Hence,
+undoubtedly, the most important language to learn is IL.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>For example, the code of the
+commonly used WriteLine function may have been written in COBOL, but it can be
+used in C# since, finally it will get converted to IL. Thus, you will now be
+able to appreciate the significance and concept of compiling source code into
+an Intermediate Language.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><b><i><span style='mso-bidi-font-size:12.0pt;color:windowtext'>IL
+directives</span></i></b><span style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+ mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr>
+  <td width=107 valign=top style='width:80.6pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=ILbase style='margin-bottom:.1in'><b><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+  <p class=ILbase style='margin-bottom:.1in'><b><i><span style='mso-bidi-font-size:
+  12.0pt;color:windowtext'>IL directives</span></i></b><span style='color:windowtext'><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.method<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.entrypoint<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.assembly<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.class<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.module<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.subsystem<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.corflags<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.originator<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.hash<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.ver<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.maxstack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.ctor<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.custom<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.locals<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.cctor<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.field<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.namespace<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.override<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.emitbyte<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.zeroinit<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.property<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.get<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.set<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.backing<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.other<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.event<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.addon<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.removeon<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.file<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>.vtfixup<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>.data<o:p></o:p></span></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>creates a function<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>entrypoint<span style="mso-spacerun:
+  yes">  </span>for program execution<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>gives a name to the program, a deployment <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>unit. <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>optional directive, collection of functions and<span
+  style="mso-spacerun: yes">   </span><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>variables<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>a logical entity, it can be a dll or an exe
+  file<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>the operating system on which the executable <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>runs<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>flags unique to a 64 bit computer, 1 - il generated <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>executable, 4 - library<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>identity of the creator, a hash value representing <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>the public key of the owner<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>algorithm used for hashing<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>4 numbers separated by colons: major, minor, <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">   </span>build and revision<o:p></o:p></span></p>
+  <p class=ILbase><span style='font-size:4.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>maximim no. of elements that can be placed on <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">   </span>the evaluation stack<span style="mso-spacerun: yes"> 
+  </span>when a method is being <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>executed<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>constructor of a class<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>deals with meta data<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>creates local variables for a particular function <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>on the stack <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>static constructor<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>class variables <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>collection or grouping of code<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>functions overrides the base class
+  functions<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>emits an unsigned 8 bit number directly into <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>the code section<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>initialize the members to default values<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>a property directive<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>gets the value of the property<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>sets the value for the property<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>used to state the name of the field<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>other functions associated with the
+  property<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>event directive<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>add method for event.<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>remove method for event.<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>manifest resource is in file &lt;filename&gt; at byte <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>offset &lt;int32&gt;.<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>declares that at a certain memory location there <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">   </span>is a table that contains MethodDefs which needs <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">   </span>to converted into method pointers. The CLR will <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">  </span>do this conversion automatically.<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>creates and initializes a data variable<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<table border=0 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+ mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr>
+  <td width=155 valign=top style='width:116.6pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=ILbase style='margin-bottom:.1in'><b><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+  <p class=ILbase style='margin-bottom:.1in'><b><i><span style='mso-bidi-font-size:
+  12.0pt;color:windowtext'>IL instructions</span></i></b><span
+  style='color:windowtext'><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ilasm<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ret<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>call<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldstr<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>public<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>hidebysig<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>static<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>il
+  managed<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>private<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>auto<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ansi<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>extends<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldarg.0<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>specialname<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>rtspecialname<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>instance<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>mscorlib<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>extern<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ildasm<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>init<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>newobj<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>pop<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldc.i4.value<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>stloc.position<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>conv<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>stsfld<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>stfld<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldc.i4.s<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldloca.s
+  <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>box<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldsflda<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldloc.0<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>starg<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldarg<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldarga.s<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldarg.1<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldfld<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>br.s<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldsfld<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>brfalse.s<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>brtrue.s<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>add<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>cgt<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ceq<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ble.s<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>bne.un.s<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>stind.i4<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>virtual<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>newslot<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>callvirt<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>castclass<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>abstract<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>initonly<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>bge.s<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>clt<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>xor<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>dup<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>sizeof<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>localloc<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>serializable<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldtoken<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>isinst<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>mul<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>mul.ovf<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldlen<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>switch<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>not<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>rem<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>or<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>and<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldind<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>unbox<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldnull<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>interface<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>abstract<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>final<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>finalize<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>implements<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>explicit<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:6.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>sequential<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>initobj<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>value<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldobj<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>stobj<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldflda<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldsflda<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldftn<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>calli<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>jmp<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>jmpi<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>vararg<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>arglist<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>cpobj<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>bgt<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>sub<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>tail.<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>extends<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>leave.s<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>throw<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>try
+  - catch<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>finally-endfinally<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>sealed<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>nested<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>rethrow<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>endfilter<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>runtime
+  managed<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>synchronized<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>newarr<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldlen<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldelem.i4<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>stelem.i4<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>Stelem.ref<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldelem.ref<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>fixed<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldvirtftn<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>ldnull<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>arglist<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>optil<o:p></o:p></span></p>
+  <p class=ILbase><span style='font-size:4.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>pinvokeimpl<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='font-size:4.0pt;
+  color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>CLR<o:p></o:p></span></p>
+  </td>
+  <td width=372 valign=top style='width:279.0pt;padding:0in 5.4pt 0in 5.4pt'>
+  <p class=ILbase style='margin-bottom:.1in'><b><i><span style='mso-bidi-font-size:
+  12.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></i></b></p>
+  <p class=ILbase style='margin-bottom:.1in'><b><i><span style='mso-bidi-font-size:
+  12.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></i></b></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>il assembler<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>return from funcion<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>calls / executes a function<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load a string on the stack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>accessible to all parts of the code<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>functions with similar signatures in parent class <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>are not available to the derived class<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>belongs to a class, only one copy is created, <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>must be referenced using typename<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>code is managed by il assembler<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>access is restricted to the current class<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>layout in memory to be decided at runtime<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>refers to ansi character set for smooth transition <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>from managed to unmanaged code<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>a class deriving from base class<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>loads the this pointer or the value in the 0th <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>parameter on the execution stack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>attribute signifies that the function is
+  special<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>attribute signifies that the function is special <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">  </span>and is to be treated in a special manner at <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>runtime<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>a normal function which is always associated <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>with the class<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>library name that contains code for .Net
+  function<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>references code from other assemblies<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>il disassembler<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>initializes variables to default
+  initialization value<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>creates a new object in memory<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>removes values off the stack<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>load constant numeric value on the stack (i4 - <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>four bytes of memory)<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>stores the value from the stack at the location <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>identified by position<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>convert value to fit the data type
+  specified<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>store value in static field<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>store value in field<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>load the constant value following it on the stack <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>(in short form)<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>load the address of the local variable on the <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">   </span>stack (in short form)<o:p></o:p></span></p>
+  <p class=ILbase><span style='font-size:4.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>converts value type variables to reference type<span
+  style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>variables<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>loads the static field address on the
+  stack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load the local variable value on the stach<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>stores/ changes argument value on the
+  stack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load argument on the stack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load an argument address<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load argument onto the stack (the second
+  one)<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load field of an object<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>branch to target (1 byte)<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load the value of the static field on the
+  stack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>branch to label when false<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>branch to label when true<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>adds loaded value2 to loaded<span style="mso-spacerun: yes"> 
+  </span>value1 and pushes <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>the result on the stack<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>compares the value 1 pushed first on the stack<span
+  style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">   </span>to be greater than value2 <o:p></o:p></span></p>
+  <p class=ILbase><span style='font-size:4.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>compares the two values for equality<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>branch on less than or equal to <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>branch on not equal or unordered<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>store value indirect from stack (top value on <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">    </span>the stack is placed in the second block holding <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">   </span>the address)<o:p></o:p></span></p>
+  <p class=ILbase><span style='font-size:4.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>base class functions can be overridden by the <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>derived class<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>the virtual function is treated as a new function <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">  </span>and detaches itself from a similar function in<span
+  style="mso-spacerun: yes">                        </span><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">  </span>the base class<span style="mso-spacerun:
+  yes">                        </span><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>call a virtual function<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>cast the value to the class following it<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>class that cannot be derived from<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>can be initialized only once and read from, no <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>modifications allowed<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>branch on greater than or equal to<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>compare less than<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>bitwise XOR<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>duplicate the top value of the stack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>returns the size in terms of bytes in
+  memory<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>allocate space in the local dynamic memory <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>pool<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>data can be written to disk or sent over
+  network<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>load the runtime representation of a metadata <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>token<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>test if an object is an instance of a class or <o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">    </span>interface, returning NULL or an instance of that <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>class or interface<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>multiply values<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>overflow check while multiplying two
+  numbers<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load the length of an array<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>checks for values and branches accordingly<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>bitwise complement<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>compute remainder<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>bitwise OR<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>bitwise AND<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load value indirect onto the stack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>convert boxed value type to its raw
+  form<span style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load a null pointer<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>class with function prototypes <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>class with no code<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">   </span>the method cannot be overridden<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>destroys the instance members and the
+  object<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>class implementing functions of the
+  interfaces<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>the layout of the fields depends on programmer's<span
+  style="mso-spacerun: yes">   </span><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+  yes">   </span>instruction <o:p></o:p></span></p>
+  <p class=ILbase><span style='font-size:4.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>layout is in a sequential order<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>initializes a value type<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>value class - a structure<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>copy value type to the stack<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>store a value type from the stack into
+  memory<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load field address<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load static field address<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load a method pointer on the stack<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>call method indicated on the stack with <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>arguments<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>jump to method<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>jump using method pointer on the stack<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>vararg is a calling convention that lets us pass <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>multiple number of parameters to a
+  function<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>get argument list<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>copy a value type<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>branch on greater than<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>subtract numeric values<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>subsequent call terminates current method<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>a class derives from the base class<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>unconditionally transfers control to
+  target<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>throw an exception<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>block of statements where exceptions can be <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>thrown and caught<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>code that gets called inspite of exceptions <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>being thrown<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>class cannot be derived from<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>class within class<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>rethrows the current exception<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>end filter clause of SEH<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>the runtime generates code for the
+  function<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>code gets executed on completion of the earlier <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>code<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>create a zero-based, one-dimensional array<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load the length of an array<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load an element of an array<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>store an element of an array<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>implicitly casts value to the element type of <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">  </span>array<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>load the element at index, an object, onto the <o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'><span
+  style="mso-spacerun: yes">   </span>top of the stack as an O<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>fixes the array reference in memory<o:p></o:p></span></p>
+  <p class=ILbase style='margin-bottom:.1in'><span style='color:windowtext'>:<span
+  style="mso-spacerun: yes">  </span>load a virtual functon<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>load null value<o:p></o:p></span></p>
+  <p class=ILbase><span style='font-size:4.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>: multiple arguments to a
+  function<o:p></o:p></span></p>
+  <p class=ILbase><span style='font-size:6.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>: optimised IL code<o:p></o:p></span></p>
+  <p class=ILbase><span style='font-size:4.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>: invokes a function from the
+  dll<o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+  <p class=ILbase><span style='color:windowtext'>:<span style="mso-spacerun:
+  yes">  </span>Common Language Runtime<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

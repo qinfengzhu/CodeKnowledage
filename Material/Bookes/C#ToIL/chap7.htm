@@ -1,0 +1,1785 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap7_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap7_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Pointers - C# to IL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>17</o:TotalTime>
+  <o:Created>2001-01-24T06:02:00Z</o:Created>
+  <o:LastSaved>2001-01-24T06:03:00Z</o:LastSaved>
+  <o:Pages>13</o:Pages>
+  <o:Words>3450</o:Words>
+  <o:Characters>17944</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>2243</o:Lines>
+  <o:Paragraphs>1121</o:Paragraphs>
+  <o:CharactersWithSpaces>24155</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Cbullets, li.Cbullets, div.Cbullets
+	{mso-style-name:"C\#bullets";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cbase, li.Cbase, div.Cbase
+	{mso-style-name:"C\#base";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.Coutput, li.Coutput, div.Coutput
+	{mso-style-name:"C\#output";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cprg, li.Cprg, div.Cprg
+	{mso-style-name:"C\#prg";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"c\# base text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=Cbase><b><span style='font-size:9.0pt;mso-bidi-font-size:10.0pt'><img
+width=64 height=48 id="_x0000_i1025" src=bpb.jpg><o:p></o:p></span></b></p>
+
+<p class=Cbase><b><span style='font-size:24.0pt;mso-bidi-font-size:10.0pt'>-7-</span></b><span
+style='font-size:24.0pt;mso-bidi-font-size:10.0pt;color:windowtext'><o:p></o:p></span></p>
+
+<p class=Cbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><b><span
+style='font-size:24.0pt'>Pointers</span></b><span style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Pointers are the heart and soul
+of a programming language. The only reason why the C programming language is so
+popular amongst programmers is because of its concept of pointers. Even C#,
+grudgingly, supports the concept of pointers. A pointer value is an address
+that represents a memory location. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In IL, numbers can be of two
+types:<o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>normal numbers, that we are so familiar
+with. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>numbers that represent a location in
+memory. <o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A pointer represents the second
+type where the number represents a memory location. Memory locations contain
+data of specific types. A pointer also needs to be typed, so that it can point
+to memory locations that contain data of the same type. This is required to
+guarantee type safety. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>IL defines a location signature
+for pointers that contain the data type and, a special syntax to identify it as
+a pointer. A pointer type value is not an object. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The &amp; symbol signifies a
+managed pointer whereas, the * symbol signifies an unmanaged pointer. The
+managed world does not like pointers. Then there are transient pointers which
+we will introduce later. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 * v)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>1<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Like C, the programming language
+C# also understands a pointer to mean a variable that contains a special
+number, one representing a computer memory location. Thus, pointers are no
+different from other variables. Any number can be stored in them. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the above example, we have
+placed the value 1 on the stack and used ldloc.0 to store this value in a
+pointer variable. A pointer variable is no different from a non-pointer
+variable.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 * v)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>1<o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>IL does not understand pointers.
+Therefore, IL does the following:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>places the value of the pointer v on
+the stack<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>places 1 on the stack <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>calls the add instruction.<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The add instruction does not
+sense the pointer on the stack and simply increases its value by 1.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 * v)<o:p></o:p></p>
+
+<p class=ILprg>ldloca v<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloca v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>6552340<o:p></o:p></p>
+
+<p class=ILoutput>6552341<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>As explained earlier, C#
+increases the value of a pointer variable by 4 if it is a pointer to an int. An
+int requires 4 bytes of memory. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Let us now understand some
+basics of<span style="mso-spacerun: yes">  </span>pointers. The value of a
+pointer variable is a memory location and it is, in turn, stored in memory too.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 * v , int32 j)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>6552340<o:p></o:p></p>
+
+<p class=ILoutput>6552340<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have loaded the address of
+the variable j on the stack and stored it in the variable v. Thus, the variable
+v now contains the address of the variable j in memory. From the output, we can
+infer that, variable j in memory, begins at the memory location 6552340.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 * v , int32 j)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>stobj int32<o:p></o:p></p>
+
+<p class=ILprg>ldloc j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the above program, we have
+stored the address of the int32 j in the pointer variable v. We have then,
+loaded the value of v or the address of variable j, on the stack and
+thereafter, called the instruction stobj. This instruction takes a data type as
+a parameter and initializes the memory location placed earlier on the stack,
+with the value that is on top of the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thus, even though the
+instruction stloc v is not used anywhere, we have been able to place a value in
+the memory location occupied by j. The instruction, ldloc and stloc read from
+and write to a memory location respectively. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We can thus see that, the value
+of any variable, whether it is a local or a parameter or a field, is simply the
+value that is stored in the specific memory location.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 * v , int32 j)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>stobj int8<o:p></o:p></p>
+
+<p class=ILprg>ldloc j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>51380226<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This program is almost identical
+to the earlier one, and yet, the output is vastly different. The reason is
+that, we have changed the parameter that was passed to the instruction stobj
+from int32 to int8. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Let us explain the repercussions
+of this change.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 j)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 66051<o:p></o:p></p>
+
+<p class=ILprg>stloc j<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldobj int32<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldobj int8<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>66051<o:p></o:p></p>
+
+<p class=ILoutput>3<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The variable j is initialised
+with a value 66051. Following it, the address of this variable is placed on the
+stack and the instruction ldobj is called with a parameter int32. This
+instruction picks up an address from the stack and returns the value that is
+contained in the first 4 memory locations starting at the retrieved address. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>It takes up 4 bytes as we have
+specified the parameter as int32. When we modify the same parameter to int8 or
+1 byte, we get a different answer. We are using the instruction ldobj to
+identify as to what is stored in a specific memory location. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object {<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed {<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int16 j)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 515<o:p></o:p></p>
+
+<p class=ILprg>stloc j<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldobj int16<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldobj int8<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>ldobj int8<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILoutput><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>515<o:p></o:p></p>
+
+<p class=ILoutput>3<o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'>Here, we have used a short i.e.
+int16 that requires 2 bytes, to store the value of the variable j. We have
+placed its address on the stack and called ldobj with an int16 to get its
+actual value, i.e. 515. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thereafter, we have again placed
+its address on the stack and called ldobj with int8. This generates an answer
+of 3. This means that the number 3 is stored in the first memory location
+occupied by the variable j. We will explain the reason for this shortly.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We again place the address of
+the variable j on the stack and add 1 to it. the address gets incremented by 1
+and ldobj<span style="mso-spacerun: yes">  </span>is called once again with
+int8. This time, the answer generated is the number 2. Thus, the second memory
+location occupied by the variable j contains 2. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Though we are aware that the
+value of the variable j is 515, how is it that the memory it occupies contains
+the numbers 3 and 2 ?. Why is the number 515 stored as the numbers 3 and 2?<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+yes"> </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The answer is very simple.
+Computer memory can only store values ranging from 0 to 255 i.e. a range of 256
+different values. Thus, a value that lies in the range of 0 to 255 can be
+stored in one memory location. But the number 515 is larger than 255. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In this case, the assembler
+first divides the number 515 by 256, because the result of this division cannot
+be larger than 255. It stores the remainder of the division, i.e. the number 3,
+in the first memory location. Further, the result of the division, i.e. the
+number 2 is stored in the second memory location. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thus, the number 515 gets stored
+as the numbers 3 and 2 in memory. When we want to access the value of j, the
+assembler multiplies the number in the first location by 1 and the number in
+the second location by 256. Thus 1*3 + 256*2 gives us back the original number
+515. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Doesn’t the above
+explanation<span style="mso-spacerun: yes">  </span>give you a warm feeling in
+the heart and make you feel more comfortable while dealing with computers. At
+least, it had that effect on us !<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 j)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 66051<o:p></o:p></p>
+
+<p class=ILprg>stloc j<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldobj int32<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldobj int8<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>ldobj int8<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>ldobj int8<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>ldobj int8<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>66051<o:p></o:p></p>
+
+<p class=ILoutput>3<o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILoutput>1<o:p></o:p></p>
+
+<p class=ILoutput>0<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The above program is similar to
+its predecessor, albeit with some minor modifications. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We want to unravel as to how an
+int32 is stored in memory. We initialize the variable j to 66051. Then, we
+display the values at the 4 memory locations occupied by j. The only small
+change we make here is that, we increase the memory location for ldobj by 1 the
+first time, and then by 2 and then by 3, because we want to read different
+memory locations each time. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have to change the values in
+the add as we cannot change the address at which the variable starts. Whenever
+a variable is stored over four memory locations, the mathematics becomes
+tedious. Over four memory locations, we can store numbers in a range of 4
+billion or 2 raised to the power of 32. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The numbers to be stored in the
+4 memory locations are arrived as follows:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>First, the assembler divides the number
+66051 by 2 raised to the power 24. The answer is 0 and the remainder is 66051. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>This remainder of 66051 is then divided
+by 2 raised to the power 16 or 65536. The answer is 1 and the remainder is 515.
+<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>This remainder of 515 is then divided
+by 2 raised to the power 8 or 256, as explained in the example above. The
+answer is 2 and the remainder is 3<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The 4 answers i.e. 0, 1, 2 and 3
+are finally stored in the 4 memory locations occupied by j.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 * v , int32 j)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>stloc j<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>stobj int8<o:p></o:p></p>
+
+<p class=ILprg>ldloc j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>stobj int8<o:p></o:p></p>
+
+<p class=ILprg>ldloc j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>stobj int8<o:p></o:p></p>
+
+<p class=ILprg>ldloc j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>3<o:p></o:p></p>
+
+<p class=ILoutput>515<o:p></o:p></p>
+
+<p class=ILoutput>66051<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This example simply builds upon
+the preceding example. A variable on the stack has a random value and j is
+initialised to 0. Then, we store the address of j in the variable v. Next, we
+place this address and the number 3 on the stack.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thereafter, we use stobj with
+int8 to place this number 3 at the first memory location occupied by j. When we
+display the value of j, the assembler does the following:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>It multiplies the number at the first
+memory location by 1 (2 raised to the power 0)<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>It multiplies the number at the second
+memory location by 256 (2 raised to the power 8)<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>It multiplies the number at the third
+memory location by 65536 (2 raised to the power 16)<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>It multiplies the number at the fourth
+memory location by 2 raised to the power 24. <o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The output of the above program
+is generated as follows:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>Since the first memory location of j
+has a value 3, the value of j becomes 3. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>Then, we encounter the value 2 in the
+second memory location of j. Thus, its value now becomes 515. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>Then we find the value 1 in the third
+memory location occupied by j, changing its value to 66051 because of the
+following calculation:<o:p></o:p></p>
+
+<p class=ILbullets><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>1*3 + 256*2 + 65536*1
+= 66051.<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This is the reverse of the
+earlier program. Instead of placing 66051 on the stack, we are individually
+places values on the stack to build the number.<o:p></o:p></span></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 **** v , int32 j)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>stobj int32<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>ldobj int32<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>It is unfortunate that IL does
+not understand pointers the way C# or any other programming language does. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Here, v is a pointer to a
+pointer to a pointer to an int32. Ultimately it is treated as a pointer to an
+int32, and everything works as shown. We have stored the address of j in it and
+used ldobj and stobj to access the memory. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have gone a step further and
+removed all the asterix symbols from the locals directive and made v a simple
+int32. We see no errors because a pointer and an int32 take up the same amount
+of memory. Thus, the parameters to ldobj and stobj are most crucial.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 *v , int32 *u, int32 i, int32 j)<o:p></o:p></p>
+
+<p class=ILprg>ldloca i<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>stloc u<o:p></o:p></p>
+
+<p class=ILprg>ldloc u<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>sub<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>4<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Pointer are not interpreted as
+memory locations to a particular data type, but as numbers. Thus, subtracting
+them will give us the amount of memory separating the pointers. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the program above, as the two
+ints are separated by 4 bytes, the result of the subtraction is 4. The pointers
+we have used are called unmanaged pointers. They never reference any memory
+which is being monitored by the garbage collector. The garbage collector is
+oblivious to the existence of these pointers. Garbage collectors like to move
+things around in memory, at their beck and call. This has led to the concept of
+pinning. Pointers cannot use verifiable code. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>There are 5 different load
+instructions in IL. They are for the following: <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>a field<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>a static field<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>a local<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>a parameter<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>an array. <o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>If we add the letter 'a' at the
+end of these load instructions, we will get the address of the variable instead
+of its value.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed {<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 v)<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;vijay&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;vijay&quot;<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>11688968<o:p></o:p></p>
+
+<p class=ILoutput>vijay<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The ldstr instruction stores the
+string in memory and places its memory location on the stack. Here, we are
+merely displaying this value. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This value that we are
+displaying is very different from earlier values<span style="mso-spacerun:
+yes">  </span>as the values earlier were on the stack, whereas the string is
+stored on the heap. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have called ldstr but now
+stored the value in the variable v. Then, we have placed the value of v on the
+stack and called the WriteLine function with a string as a parameter. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We can't place strings or
+objects on the stack. We can only place numbers on the stack. Also, we can
+place the reference of an object on the stack. This reference is a number that
+indicates the starting location of the object in memory. Using ldobj, we can
+access the value that is stored in memory allocated for the object.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed {<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class zzz v)<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>call instance void zzz::abc(int32,int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>call instance void zzz::pqr(int32,int32,int32 )<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method instance void abc(int32 i, int32 j, int32 k)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarga i<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarga j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarga k<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method instance void pqr(int32 i, int32 j, int32 k)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarga i<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarga j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarga k<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>6552320<o:p></o:p></p>
+
+<p class=ILoutput>6552336<o:p></o:p></p>
+
+<p class=ILoutput>6552332<o:p></o:p></p>
+
+<p class=ILoutput>6552320<o:p></o:p></p>
+
+<p class=ILoutput>6552336<o:p></o:p></p>
+
+<p class=ILoutput>6552332<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>All locals are created on the
+stack. The rest are on the heap. The stack only contains numbers. On a 32 bit
+machine, as in this case, they are in multiples of 4. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The stack is also used to
+transfer parameters to a function. In this case, parameters are pushed onto the
+stack and the functions are called. When the function encounters a ret, the
+stack is restored to the state prior to<span style="mso-spacerun: yes"> 
+</span>the function call. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thereafter, when another
+function is called, the same stack, i.e. the same memory that was used earlier
+to transfer parameters for the previous function, is used again for the new
+function also. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This is how memory is conserved.
+Once a function finishes execution, the memory allocated to the locals is used
+by another function. Thus, locals lose their values once a function quits out. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>You may have noticed that there
+is a 16 byte gap between the two parameters. There is no information available
+as to what is stored in these 16 bytes.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class zzz v , int32 v)<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloca v<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>call instance void zzz::abc(int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method instance void abc(int32 i, int32 j)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarga j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarga j<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 4<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 23<o:p></o:p></p>
+
+<p class=ILprg>stobj int32<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>6552340<o:p></o:p></p>
+
+<p class=ILoutput>6552336<o:p></o:p></p>
+
+<p class=ILoutput>23<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Nothing stops you from shooting
+yourself in the foot. The reason why the powers to be do not like you using
+pointers is that, they are very powerful but, at the same time, they are
+extremely dangerous. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Here, we are displaying the
+address of the local v and also the parameter j. We realized that they differ
+by 4 memory locations only. Thus, we added 4 to the address of j and wrote 23
+to the memory locations that signify the address of the local v in the function
+vijay. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thus, when we displayed the
+value of v in the function vijay, the number 23 was displayed. Thus, from one
+function, we have been able to change the value of a variable present in an
+another function. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This feature can create havoc if
+the pointers are not used carefully. Let us assume that there is some bug in
+the WriteLine function and it writes some random value somewhere in memory. If
+that random memory location contained any crucial data or variables, the
+program can crash and there is no way that you can find out as to where the
+error has occurred.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class zzz v )<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>call instance void zzz::abc(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method instance void abc(int32 i)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarga i<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 23<o:p></o:p></p>
+
+<p class=ILprg>stobj int32<o:p></o:p></p>
+
+<p class=ILprg>ldarg.1<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>23<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We can overwrite any piece of
+memory we like. In the function abc, we have accessed the address of the
+parameter i, and stored the value 23 in that address. When we subsequently
+tried to display its value, ldarg.1, for a moment also, did not consider the old
+value to be 1. All that it did was read the memory location and display the
+value stored there. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field int32 i<o:p></o:p></p>
+
+<p class=ILprg>.field static int32 j<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class zzz v )<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldflda int32 zzz::i<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldsflda int32 zzz::j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>11688972<o:p></o:p></p>
+
+<p class=ILoutput>49230048<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The above example simply prints
+out the addresses of a static field and an instance field. They are both stored
+on the heap but at different locations in the heap memory. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Here is a summary of all that we
+have learnt about unmanaged pointers: <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The concept of pointers has been
+borrowed from languages like C and C++. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>There are no restrictions on their use,
+and thus, code that uses them cannot be verified at all. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>They are internally recognized as
+unsigned integers by the Execution Engine (EE). <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The * symbol and a data type should be
+used with pointers. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The run time does not report the
+existence of unmanaged pointers to the garbage collector. Hence no garbage
+collector can handle these unmanaged pointers.<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 <span style='font-family:"Bookman Old Style"'>&amp;</span>
+v , int32 j)<o:p></o:p></p>
+
+<p class=ILprg>ldloca j<o:p></o:p></p>
+
+<p class=ILprg>stloc v<o:p></o:p></p>
+
+<p class=ILprg>ldloc v<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>stobj int32<o:p></o:p></p>
+
+<p class=ILprg>ldloc j<o:p></o:p></p>
+
+<p class=ILprg>call void System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now let us understand the
+managed pointer. This is the second type of pointer and begins with a &amp;
+symbol. This type of pointer may point to a field of an object type or to a
+value type or any other type. It cannot however, be NULL. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The most important thing about
+this type of pointer is that, it must be reported to the garbage collector, in
+spite of the fact that, it points to managed memory. This type of pointer works
+in the good managed world. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The last type of pointer is the
+transient pointer. It lies in between managed and unmanaged pointer. We cannot
+create pointers of this type. They are created by the EE, with the help of some
+IL instructions and depending upon the destination, the EE makes them either
+managed or unmanaged pointers. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

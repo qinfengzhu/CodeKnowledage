@@ -1,0 +1,2923 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap13_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap13_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>The other odds and ends  - C# to IL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>29</o:TotalTime>
+  <o:Created>2001-01-24T06:16:00Z</o:Created>
+  <o:LastSaved>2001-01-24T06:16:00Z</o:LastSaved>
+  <o:Pages>23</o:Pages>
+  <o:Words>6152</o:Words>
+  <o:Characters>31992</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>3999</o:Lines>
+  <o:Paragraphs>1999</o:Paragraphs>
+  <o:CharactersWithSpaces>43066</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+@font-face
+	{font-family:"Monotype Corsiva";
+	panose-1:3 1 1 1 1 2 1 1 1 1;
+	mso-font-charset:0;
+	mso-generic-font-family:script;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Cbullets, li.Cbullets, div.Cbullets
+	{mso-style-name:"C\#bullets";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cbase, li.Cbase, div.Cbase
+	{mso-style-name:"C\#base";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.Coutput, li.Coutput, div.Coutput
+	{mso-style-name:"C\#output";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cprg, li.Cprg, div.Cprg
+	{mso-style-name:"C\#prg";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"c\# base text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=Cbase><b><span style='font-size:9.0pt;mso-bidi-font-size:10.0pt'><img
+width=64 height=48 id="_x0000_i1025" src=bpb.jpg><o:p></o:p></span></b></p>
+
+<p class=Cbase><b><span style='font-size:24.0pt;mso-bidi-font-size:10.0pt'>-13-</span></b><span
+style='font-size:24.0pt;mso-bidi-font-size:10.0pt;color:windowtext'><o:p></o:p></span></p>
+
+<p class=Cbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><span style='font-size:
+24.0pt;font-family:"Monotype Corsiva"'>The other odds and ends</span><span
+style='font-size:30.0pt;font-family:"Monotype Corsiva"'> </span><span
+style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>An array is a contiguous block
+of memory that stores values of the same type. These values are an indexed
+collection. The runtime has built in support to handle arrays. Vector is
+another name for an array that has only one dimension and the index count
+starts at zero. An array type can be any type derived from System.Object. This
+includes everything under the sun, excluding pointers, which are not allowed in
+this version of the CLR. Nobody knows about the next version. An array is a
+subtype of System.Array and we are given plenty of leeway in working with
+arrays. The newarr instruction is used only for single dimensional arrays. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int[] a;<o:p></o:p></p>
+
+<p class=ILprg>a= new int[3];<o:p></o:p></p>
+
+<p class=ILprg>a[1]= 10; <o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a[1]);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[] V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldelem.i4<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>IL recognises the array data
+type. Thus, in the locals directive, we see an array of int32 called V_0. This
+is similar to the process of creating an array in C# where we first specify
+that we want an array variable. Then, to create the actual array, the size of
+the array is mentioned. In IL, the size is placed on the stack. IL uses newarr,
+similar to<span style="mso-spacerun: yes">  </span>newobj to create the array
+in memory. However, in C#,<span style="mso-spacerun: yes">  </span>new is used
+for an array as well as for a reference type. The data type of the array to be
+created is also passed to the newarr instruction. Like newobj, newarr also
+places the reference of the array on the stack. Thereafter, V_0 is initialized
+with this reference, which is pushed on the stack using ldloc.0. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We will now explain the IL code
+generated for the statement a[1] = 10. To do so, the array index, in this case,
+the value 1 followed by the value of the array is to be initialized i.e. 10 is
+pushed on the stack. So, there are 3 items on our stack: At the bottom, the
+array reference, then the array index and finally the new value of the array
+variables. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>These parameters are required by
+the instruction stelem.i4 to initialize an array member. To read the value of
+an array variable,<span style="mso-spacerun: yes">  </span>the address of the
+array reference is loaded on the stack, followed by the index of the array. The
+instruction ldelem.i4 does the reverse. It retrieves the value of an array
+variable. As mentioned earlier, i4 stands for 4 bytes on the stack. Most
+instructions have such a data type at the end of their instruction. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main(string[] a)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a.Length);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void<span style="mso-spacerun:
+yes">  </span>vijay(class System.String[] a) il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldlen<o:p></o:p></p>
+
+<p class=ILprg>conv.i4<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput>&gt; a one two<o:p></o:p></p>
+
+<p class=ILoutput><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The array class has a member
+called Length.This Length member in C# gets converted to an IL instruction
+ldlen, that requires an array object on the stack and returns the length. Array
+handling is very powerful in .NET because IL has an intrinsic ability to
+understand arrays. In IL, the array has been made a first class member. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int[] a;<o:p></o:p></p>
+
+<p class=ILprg>a= new int[2];<o:p></o:p></p>
+
+<p class=ILprg>a[0]= 12; a[1]= 10; <o:p></o:p></p>
+
+<p class=ILprg>foreach (int i in a)<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(i);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[] V_0,int32 V_1,int32[] V_2,int32 V_3,int32 V_4)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>newarr [mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>12<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>stloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldlen<o:p></o:p></p>
+
+<p class=ILprg>conv.i4<o:p></o:p></p>
+
+<p class=ILprg>stloc.3<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>stloc.s <span style="mso-spacerun: yes">   </span>V_4<o:p></o:p></p>
+
+<p class=ILprg>br.s<span style="mso-spacerun: yes">       </span>IL_002d<o:p></o:p></p>
+
+<p class=ILprg>IL_001c:<span style="mso-spacerun: yes">  </span>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldloc.s<span style="mso-spacerun: yes">    </span>V_4<o:p></o:p></p>
+
+<p class=ILprg>ldelem.i4<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.s<span style="mso-spacerun: yes">    </span>V_4<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>stloc.s<span style="mso-spacerun: yes">    </span>V_4<o:p></o:p></p>
+
+<p class=ILprg>IL_002d:<span style="mso-spacerun: yes">  </span>ldloc.s<span
+style="mso-spacerun: yes">    </span>V_4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.3<o:p></o:p></p>
+
+<p class=ILprg>blt.s<span style="mso-spacerun: yes">      </span>IL_001c<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>12<o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Here we have a small C# program
+that has been transformed to a large IL program. To begin, we have created 5
+locals instead on 1. Two of them, V_0 and V_2, are arrays and the rest are mere
+ints. The two stelem.i4 instructions initialize the 2 array members as seen in
+the above programs. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now let us understand how IL
+deals with a foreach statement. Ldloc.0 stores the reference of the array on
+the stack. The instruction stloc.2 makes local V_2 as the same array reference
+as V_0. Then the array reference V_2, which is similar to V_0, is loaded on the
+stack.<span style="mso-spacerun: yes">  </span>Finally using instruction ldlen,
+the length of the array is determined. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The number 2 is present on the
+stack. This represents the length of the array. It is changed to occupy 4 bytes
+on the stack and is stored<span style="mso-spacerun: yes">  </span>in local
+V_3, using the instruction stloc.3. The number 0 is then placed on the stack
+using the ldc instruction. stloc pops this value 0 into local V_4<span
+style="mso-spacerun: yes">    </span>and br branches to label IL_002d where the
+value of variable V_4, 0, is loaded. Also the value of local V_3, that stores
+the length of the array, i.e. 2 is loaded on the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Since 1 is less than 2, the code
+at label IL_001c is executed. This loads the array reference on the stack, then
+loads local V_4, which<span style="mso-spacerun: yes">  </span>is the index.
+Finally, ldelem fetches the value of member a[0]. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Adding 1 to the member V_4
+serves a dual purpose: One to index the array for ldelema.i4 and the other to
+stop the loop whenever we cross the length of the array stored in local V_3.
+This is how a for each statement is converted, step by step, into IL code.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>public class zzz<span style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>zzz z = new zzz();<o:p></o:p></p>
+
+<p class=ILprg>z.abc(&quot;hi&quot;,&quot;bye&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>void abc(params string [] b)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(b[0]);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class zzz V_0,class System.String[] V_1)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.String<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">      </span>&quot;hi&quot;<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">     
+</span>&quot;bye&quot;<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>call instance void zzz::abc(class System.String[])<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig instance void abc(class
+System.String[] b) il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.param [1]<o:p></o:p></p>
+
+<p class=ILprg>.custom instance void [mscorlib]System.ParamArrayAttribute::.ctor()
+= ( 01 00 00 00 ) <o:p></o:p></p>
+
+<p class=ILprg>ldarg.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldelem.ref<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>hi<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A function with params parameter
+accepts a variable number of parameters.<span style="mso-spacerun: yes"> 
+</span>How does the compiler handle it?<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>As usual, we see object V_0,
+that is an instance of class zzz. Alongwith it is<span style="mso-spacerun:
+yes">  </span>an array of strings V_1, which we have not created. The number 2
+is then placed on the stack and following it is<span style="mso-spacerun:
+yes">  </span>an array<span style="mso-spacerun: yes">  </span>of size<span
+style="mso-spacerun: yes">  </span>2. As the two parameters i.e. the strings
+&quot;hi&quot; and &quot;bye&quot;, are to be placed on the stack, IL first
+creates an array<span style="mso-spacerun: yes">  </span>of size of 2. This
+array address is pushed onto the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Using ldc.i4.0, index 0 is
+pushed on the stack, followed by a string &quot;hi&quot;.<span
+style="mso-spacerun: yes">  </span>Thereafter instruction stelem is suffixed
+with the type. Here, ref stands for the object itself. Thus, the temp array
+V_1's<span style="mso-spacerun: yes">  </span>first or the zeroth member gets a
+value &quot;hi&quot; and the same process is repeated for the second array
+member. Thus, for a params parameter, all the parameters are converted into one
+huge array and the function abc is called with this array on the stack. The
+final effect is similar to placing all the individual parameters in one big
+array. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the function abc, the first
+change is that the function accepts an array with the same name as in C#. This
+param directive uses the metadata to store an initial value for the array. The
+array has two members &quot;hi&quot; and &quot;bye&quot;. It is this data that
+the array b's members must be initialized to.<span style="mso-spacerun: yes"> 
+</span>The .params with number 1 stands for the first parameter<span
+style="mso-spacerun: yes">  </span>in the function prototype. Here 0 stands for
+the return value and 1 stands for the first parameter, that is our array. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We will explore the custom
+directive in detail<span style="mso-spacerun: yes">  </span>later. The rest of
+the IL code loads the second member of the array on the stack using ldelem.ref.
+This is similar in concept to stelem.ref. Thus, the compiler does a lot of hard
+work for implementing the params modifier. To sum up, it converts all the
+individual parameters into one array, and this array is placed on the stack. IL
+does not fully understand the params modifier. Thus the params modifier has to
+be the last entry in the parameter list. The ref prefix is used to denote a
+reference element.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main() <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>zzz a = new zzz();<o:p></o:p></p>
+
+<p class=ILprg>a.abc();<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>unsafe public void pqr( int *b)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(b[1]);<o:p></o:p></p>
+
+<p class=ILprg>b[1] = 16;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>unsafe public void abc()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int [] a = new int[2];<o:p></o:p></p>
+
+<p class=ILprg>a[0] = 10; a[1] = 2; <o:p></o:p></p>
+
+<p class=ILprg>fixed ( int *i = a) pqr(i);<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a[1]);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class zzz V_0)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void zzz::abc()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig instance void abc() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[] V_0,int32<span style='font-family:"Bookman Old Style"'>&amp;</span>
+pinned V_1)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldelema<span style="mso-spacerun: yes">   
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>conv.i<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance void
+zzz::pqr(int32*)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>conv.u<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldelem.i4<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig instance void pqr(int32* b) il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.4<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>mul<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>ldind.i4<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.4<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>mul<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>16<o:p></o:p></p>
+
+<p class=ILprg>stind.i4<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILoutput>16<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Here, we will explain certain
+features of pointer handling in C# and IL. In the C# program we have created an
+array of size 2 in the function abc and the array members are initialised. The
+keyword fixed fixes the array reference in memory. For the purpose of
+efficiency, the garbage collector can move things around in memory. By fixing
+the reference in memory, we can prevent the Garbage Collector from moving this
+reference in memory. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This array reference is stored
+in a pointer to an int and the function pqr is called. This function displays
+the value of the first member of the array and then changes it. The change is
+reflected in the original array also. In the locals, we define our int array as
+usual, but we have another variable V_1, that is also a pointer, but with a
+&amp; and not a *.<span style="mso-spacerun: yes">  </span>This pointer is also
+pinned, which means that IL will not move it around. If it is moved in memory,
+then we cannot keep track of its memory location. Thus, a fixed becomes a
+pinned location. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Using ldelema, the array and its
+index are pushed on the stack.<span style="mso-spacerun: yes">   </span>V_1 is
+initialized to this value and function<span style="mso-spacerun: yes"> 
+</span>pqr is called. In the function pqr,<span style="mso-spacerun: yes"> 
+</span>a [] is converted into a memory location. Thus,<span
+style="mso-spacerun: yes">  </span>the address of the array is loaded on the
+stack. Then, the numbers 4 and 1 are placed on the stack because an int size is
+4 and the array index is 1. After multiplying them, 4 is added to the product
+to get the offset. The array members are then displayed. The same logic on
+arrays can be applied to change its value. Whether<span style="mso-spacerun:
+yes">  </span>a[1] or *(a+1) is used, the above program remains the same.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>public class zzz <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>string [] s = new string[3];<o:p></o:p></p>
+
+<p class=ILprg>object [] t = s;<o:p></o:p></p>
+
+<p class=ILprg>t[0] = null;<o:p></o:p></p>
+
+<p class=ILprg>t[1] = &quot;hi&quot;;<o:p></o:p></p>
+
+<p class=ILprg>t[2] = new yyy();<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>class yyy<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class System.String[] V_0,class System.Object[] V_1)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">     </span>[mscorlib]System.String<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldnull<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">      </span>&quot;hi&quot;<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+yyy::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi yyy extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>Exception occurred: System.ArrayTypeMismatchException: An
+exception of type System.ArrayTypeMismatchException was thrown.<o:p></o:p></p>
+
+<p class=ILoutput><span style="mso-spacerun: yes">   </span>at zzz.vijay()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The array s is an array of three
+strings. We have declared an array of objects but initialised it to an array of
+strings, which is perfectly legal in C#. We then initialised the members of t
+to a null, a string and a yyy object respectively. The runtime knows that even
+though t is an array of objects, it was initialized to an array of strings. Its
+members can only be strings or a NULL. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The IL code is very
+straightforward. It uses newarr to create an array of strings. Then it uses
+stloc.1 to initialize V_1 or array t. Thereafter, stelem.ref is used to
+initialize the individual array members. However, the last stelem.ref checks
+the data type of the runtime error and flags it as an exception. The code used
+for throwing the exception is not present in the array class at all. It is in
+stelem.ref and we are not privy to this code.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>public class zzz <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>string [] s = new string[3];<o:p></o:p></p>
+
+<p class=ILprg>object [] t = s;<o:p></o:p></p>
+
+<p class=ILprg>t[0] = (string)new yyy();<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(t[0]);<o:p></o:p></p>
+
+<p class=ILprg>t[1] = new yyy();<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(t[1]);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>class yyy<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static implicit operator string ( yyy a)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>return &quot;hi&quot;;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class System.String[] V_0,class System.Object[] V_1)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.String<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+yyy::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>class
+System.String yyy::op_Implicit(class yyy)<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldelem.ref<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+yyy::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldelem.ref<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi yyy extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname static class
+System.String<span style="mso-spacerun: yes">  </span>op_Implicit(class yyy a)
+il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals (class System.String V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">      </span>&quot;hi&quot;<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>hi<o:p></o:p></p>
+
+<p class=ILoutput>Exception occurred: System.ArrayTypeMismatchException: An
+exception of type System.ArrayTypeMismatchException was thrown.<o:p></o:p></p>
+
+<p class=ILoutput><span style="mso-spacerun: yes">   </span>at zzz.vijay()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Had the compiler been a little
+more concerned about exceptions, it would have prevented the above program from
+throwing one at runtime, by spotting the error at compile time itself. We have
+the same situation as before. The array t is an array of objects, but
+initialized to an array of strings. The member t[0] is initialized to a yyy
+object, but now with a cast. This cast calls the string operator or op_Implicit
+functions, that returns a string. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>As the cast is not stated
+explicitly in the second case, the function op_Implicit does not convert the
+yyy object into a String. The compiler should have noticed it at run time and
+thrown<span style="mso-spacerun: yes">  </span>an exception. But it ignores
+this completely. Sometimes compilers do not behave as intelligently as
+expected.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>static void F(params object[] b) <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>object o = b[0];<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(o.GetType().FullName );<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(b.Length);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>static void Main() <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>object[] a = {1, &quot;Hello&quot;, 123};<o:p></o:p></p>
+
+<p class=ILprg>object o = a;<o:p></o:p></p>
+
+<p class=ILprg>F(a);<o:p></o:p></p>
+
+<p class=ILprg>F((object)a);<o:p></o:p></p>
+
+<p class=ILprg>F(o);<o:p></o:p></p>
+
+<p class=ILprg>F((object[])o);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig static void F(class System.Object[] b)
+il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.param [1]<o:p></o:p></p>
+
+<p class=ILprg>.custom instance void
+[mscorlib]System.ParamArrayAttribute::.ctor() = ( 01 00 00 00 ) <o:p></o:p></p>
+
+<p class=ILprg>.locals (class System.Object V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldelem.ref<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance class
+[mscorlib]System.Type [mscorlib]System.Object::GetType()<o:p></o:p></p>
+
+<p class=ILprg>callvirt<span style="mso-spacerun: yes">   </span>instance class
+System.String [mscorlib]System.Type::get_FullName()<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldlen<o:p></o:p></p>
+
+<p class=ILprg>conv.i4<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class System.Object[] V_0,class System.Object V_1,class
+System.Object[] V_2,int32 V_3)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>stloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>stloc.3<o:p></o:p></p>
+
+<p class=ILprg>ldloca.s<span style="mso-spacerun: yes">   </span>V_3<o:p></o:p></p>
+
+<p class=ILprg>box<span style="mso-spacerun: yes">       
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">     
+</span>&quot;Hello&quot;<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>123<o:p></o:p></p>
+
+<p class=ILprg>stloc.3<o:p></o:p></p>
+
+<p class=ILprg>ldloca.s<span style="mso-spacerun: yes">   </span>V_3<o:p></o:p></p>
+
+<p class=ILprg>box<span style="mso-spacerun: yes">       
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void zzz::F(class
+System.Object[])<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>stloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+zzz::F(class System.Object[])<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>stloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+zzz::F(class System.Object[])<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>castclass<span style="mso-spacerun: yes">  </span>class
+System.Object[]<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+zzz::F(class System.Object[])<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>System.Int32<o:p></o:p></p>
+
+<p class=ILoutput>3<o:p></o:p></p>
+
+<p class=ILoutput>System.Object[]<o:p></o:p></p>
+
+<p class=ILoutput>1<o:p></o:p></p>
+
+<p class=ILoutput>System.Object[]<o:p></o:p></p>
+
+<p class=ILoutput>1<o:p></o:p></p>
+
+<p class=ILoutput>System.Int32<o:p></o:p></p>
+
+<p class=ILoutput>3<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This is quite a huge program.
+The explanation is slightly complicated but, without understanding IL code, it
+is next to impossible to understand the nitty-gritty of C#. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Lets us tread one step at a
+time. This example demonstrates some basic concepts of C# programming. We first
+create an array of objects called a, of size 3 and initialize them to two
+numbers and one string. Remember that everything in the .NET world is an
+object. Then we have another object o that is initialized to a. We do not get
+an error, but you need to bear in mind that a is an array and o is an object,
+that now stirs a reference to an array. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We call the function F four
+times:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>first with the object a, which is an
+array.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>then with the same object cast to an
+object.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>then with the object o.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>finally with the object a cast to an
+array of objects. <o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The function F accepts the
+parameter in an array of objects called b. The first member b[0] is stored in
+an object called o. The fullname of this object and the length of the array are
+printed using the WriteLine function. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the first case, an array of 3
+ints is placed on the stack. The name is System.Int32 and the size of the array
+is 3. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the second case, as the array
+is casted into an Object, only the first member becomes a System.Object. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The third case has an object
+placed on the stack which is read in an array of objects. The size is displayed
+as 1 since the size of the original is 1. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the last case, C# remembers
+that o was equated to an array of 3 ints and thus the new array size is 3. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Up to the stelem.ref
+statement,the 3 array members are merely being initialized to the value of 1,
+Hello and 123. The<span style="mso-spacerun: yes">  </span>local V_0 is array a
+and local V_1 refers to object o. As it is an array of objects, the string does
+not pose any problems, but since the numbers are value types, they have to be
+first converted to a reference type using the box instruction. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The first call simply places the
+array stored in local V_0 on the stack. The second call places 1 on the stack
+and then creates a new array of size 1 using newarr. It stores this new array
+in local V_2 and then loads the value of local V_2, which is an object, on the
+stack. Then, it loads a 0 and the first main array containing 3 members, on the
+stack. stelem.ref is used to initialize V_2 to this value. This local is then
+placed on the stack. See what a simple cast does. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Similarly, in the third case we
+create an array of size 1, store it in local V_0 and then place it on the
+stack. Then, we place 0 and the local V_1 on the stack and initialize V_1 to it
+for the function. The last call simply places the object V_1 on the stack and
+calls castclass. Function F is straightforward while performing its job. Ask
+yourself whether it was the C# code that enabled you to grasp the program or was
+it the IL code?<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed {<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[] V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.6<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>Exception occurred: System.IndexOutOfRangeException: An
+exception of type System.IndexOutOfRangeException was thrown.<o:p></o:p></p>
+
+<p class=ILoutput><span style="mso-spacerun: yes">   </span>at zzz.vijay()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Our array above has only 3
+members, whereas we tried to store a value in the seventh member. Whenever we
+exceed the bounds of an array, we will get a IndexOutOfRangeException at
+runtime. Thus, be careful in dealing with arrays. Do not cross the picket line.
+We store values in an array and index them, so that we can retrieve a single
+item by position.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[] V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes"> 
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldelema System.Int32<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>stobj System.Int32<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldelema System.Int32<o:p></o:p></p>
+
+<p class=ILprg>ldobj System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have different instructions
+for dealing with value types and arrays. Arrays are nothing but a number of
+variables stored together in memory. The ldelema takes two parameters on the
+stack. The first is the address of the array that is V_0 and the second is the
+index of the variable whose memory location is desired. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>After running the instruction we
+have on the stack, the address of a variable at a specified array index. The
+instruction ldelema requires the data type of the array, because the offset of
+the members of the array is decided by the data type. The instruction stobj
+stores the value in the memory location thereby initializing the first member
+of the array to 10. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To display the first member, the
+address is placed on the stack and<span style="mso-spacerun: yes"> 
+</span>ldobj is used to retrieve the value. The instructions ldobj and stobj
+have nothing to do with arrays. They deal with reading a memory location and
+placing the value found<span style="mso-spacerun: yes">  </span>on the stack
+and vice versa. Thus they only work with value type arrays. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldnull<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>Exception occurred: System.NullReferenceException: Attempted
+to dereference a null object reference.<o:p></o:p></p>
+
+<p class=ILoutput><span style="mso-spacerun: yes">   </span>at zzz.vijay()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Since we placed a null array
+reference on the stack, we get an NullReferenceException error. We are
+basically simulating some of the<span style="mso-spacerun: yes">  </span>exceptions
+that arrays can throw at us. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>newarr [mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call instance int32 [mscorlib]System.Array::get_Length()<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>3<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Like we used the ldlen
+instruction earlier, we could have instead used the get_Length function, which
+in turn, is a Property of the Array class. The choice is yours, but as we
+demonstrated earlier, the Length property is converted to the ldlen instruction
+by the C# compiler, as it is far more efficient. At the end of the day, the
+get_Length function does the same thing. IL does not have instructions that can
+handle arrays other than vectors. Thus, multi-dimensional arrays, also called
+general arrays, are created using array functions.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int [,] a = new int[1,2];<o:p></o:p></p>
+
+<p class=ILprg>a[0,0] = 10;<o:p></o:p></p>
+
+<p class=ILprg>a[0,1] = 20;<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a[0,1]);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field private int32 x<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[0...,0...] V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void int32[0...,0...]::.ctor(int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s 10<o:p></o:p></p>
+
+<p class=ILprg>call instance void int32[0...,0...]::Set(int32,int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>20<o:p></o:p></p>
+
+<p class=ILprg>call instance void int32[0...,0...]::Set(int32,int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>call instance int32 int32[0...,0...]::Get(int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>20<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>One area where C# excels in is
+array handling. This is only because IL understands arrays internally. Lets us
+now find out how IL handles two dimensional arrays. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A two dimensional array is
+declared in the same way that a normal array is declared, and the dimensions
+are stated in the new instruction. The array index starts from 0 and not from
+1. In IL, to create a two dimensional array, there is a special syntax, i.e. a
+0 followed by 3 dots, twice in the locals directive. The two array dimensions
+are placed on the stack and newobj is called. It is not newarr. Newobj calls
+the constructor of the two dimensional array class that takes two parameters.
+The return value is then stored in local V_0. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To fetch a value from a two
+dimensional array, the reference to the array is loaded on the stack and stored
+in V_0, followed by the two indexes, using ldc. Thereafter the values are
+placed<span style="mso-spacerun: yes">  </span>on the stack to initialize the
+array member. The function Set of the same int array class is called with four
+parameters on the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Conversely, to fetch a value,
+the function Get is called with the 3 parameters on the stack, the array
+reference and the 2 index values. Thus, multi-dimensional arrays are built
+using array class functions, and not IL instructions, which are used to build
+single dimensional arrays. The rank of an array is defined as the number of
+dimensions of the array. The runtime expects at least a rank of 1. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field private int32 x<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[1...3,5...] V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.6<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void int32[1...3,5...]::.ctor(int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>pop<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A general purpose array has an
+upper bound and a lower bound. Unfortunately, as of now, the runtime does not
+do any bound checking. The first dimension has a lower bound of 1 and an upper
+bound of 3. You can choose the bounds you desire.<o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int [,,] a;<o:p></o:p></p>
+
+<p class=ILprg>a = new int[2,3,4];<o:p></o:p></p>
+
+<p class=ILprg>a[1,2,3] = 10;<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a[1,2,3]);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[0...,0...,0...] V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.4<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void
+int32[0...,0...,0...]::.ctor(int32,int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+int32[0...,0...,0...]::Set(int32,int32,int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">  </span>instance int32
+int32[0...,0...,0...]::Get(int32,int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>An array can have any rank. The
+above array is a three dimensional<span style="mso-spacerun: yes">  </span>one
+and has a rank of 3. So, we have to use the array handling functions to work
+with them. The rank of an array is declared by using a comma between the square
+brackets. The number of commas plus one is the rank of an array. If no specific
+bounds are supplied, the default is 0 for the lower bound and infinity for the
+upper bound. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>You can specify none, one or
+both bounds. The CLR, in this version, ignores all the bounds information you
+provide, and only pays heed to the number placed on the stack at the time of
+creation of the array. Here, you have to supply all the information. Only those
+arrays that have a 0 bound in all their dimensions, are CLR compliant.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the above example, three bound
+values are placed on the stack and the array constructor is called with three
+values. We are not allowed to use newarr, as the above array is not a vector.
+Now to set it to a value, the three index values are placed on the stack in a
+specific<span style="mso-spacerun: yes">  </span>order. The same Set Function
+is called, but this time with four parameters. The same rules are relevant for
+the Get function also. The point that we want to make is that the magnitude of
+the rank has no effect on the way the array is handled. No substantial changes
+are required.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>There are two array constructors
+that can be used. The first takes the same number of parameters as the rank of
+the array. The second constructor takes up twice the number of parameters as
+the rank of the array. In the second type of constructor, the first two
+parameters specify the lower and upper bounds of the first dimension, and the
+next two parameters specify the upper and lower bounds for the second dimension
+and so on. The first constructor always assumes the lower bound to be zero.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[5...10,3...7] V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.5<span style='mso-tab-count:1'> </span><o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.6<span style='mso-tab-count:1'> </span><o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<span style='mso-tab-count:1'> </span><o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.5<span style='mso-tab-count:1'> </span><o:p></o:p></p>
+
+<p class=ILprg>newobj instance void int32[5...10,3...7]::.ctor(int32,
+int32,int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.6<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.5<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>call instance void int32[0...,0...]::Set(int32,int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.6<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.5<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">  </span>instance int32
+int32[0...,0...]::Get(int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>10<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldc.i4.6<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.5<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We then change the above two
+lines to <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>and we see the following
+exception thrown at us.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput>Exception occurred: System.IndexOutOfRangeException: An
+exception of type System.IndexOutOfRangeException was thrown.<o:p></o:p></p>
+
+<p class=ILoutput><span style="mso-spacerun: yes">   </span>at zzz.vijay()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>An array with a lower and upper
+bound, having a rank of 2 is placed on the stack. The first dimension starts at
+5 and ends at 10. Thus, on the stack is placed first the lower bound i.e. 5,
+and then, the length of the array. There is no upper bounds. As the array
+starts at 5 and ends at 10, the length is calculated as follows: 10 - 5 + 1 = 6
+(i.e. the upper bound - lower bound + 1). The same rule holds true for the next
+rank. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The rest of the code remains the
+same. When the array member 6, 5 are changed to index values of 1, 2, an
+exception is thrown. This is<span style="mso-spacerun: yes">  </span>because
+the array bounds for the first dimension are 5 to 10 and for the second
+dimension are 3 to 7. Any attempt to cross the array bounds in any direction
+generates an exception.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><b><i><span style='mso-bidi-font-size:12.0pt;color:windowtext'>Array
+of Arrays</span></i></b><span style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int [][] a = new int[2][];<o:p></o:p></p>
+
+<p class=ILprg>a[0] = new int[1];<o:p></o:p></p>
+
+<p class=ILprg>a[1] = new int[10];<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a.Length) ;<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a[0].Length) ;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field private int32 x<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[][] V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">     </span>int32[]<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>10<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldlen<o:p></o:p></p>
+
+<p class=ILprg>conv.i4<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldlen<o:p></o:p></p>
+
+<p class=ILprg>conv.i4<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILoutput>1<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Let us explore jagged arrays
+where an array member can contain another array of a different length. We are
+creating an array that has an irregular shape. In C#, the syntax to create an
+array of arrays is the same. It consists of two square brackets [][]. We first
+create the array using only the first dimension. This is done by using newarr
+and stating an array data type as a parameter. We then initialize V_0 with this
+array reference. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now, since we have to create two
+separate one dimensional arrays, we first place the array reference on the
+stack. Then we place the index of the array member we want to initialise
+followed by the size of the new array. Finally, we call newarr to create an
+array of ints and place the reference on the stack.<span style="mso-spacerun:
+yes">  </span>stelem.ref is used to initialize the array member with this array
+reference. The same is repeated for the second member a[1] also. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The function ldlen returns the
+length of the array. For the main array, using ldloc.0 its reference is placed
+on the stack. For the second length, ldelem.ref is used to first fetch the
+reference of the array out of the first array member a[0], and then ldlen is
+used to obtain the length.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int[][] a = new int[2][] { new int[] {2,3}, new int[] {5,6,7} };<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a[0][1]) ;<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a[1][2]) ;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field private int32 x<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[][] V_0,int32[][] V_1,int32[] V_2)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">     </span>int32[]<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>newarr<span style="mso-spacerun: yes">    
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>stloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.5<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.6<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.7<o:p></o:p></p>
+
+<p class=ILprg>stelem.i4<o:p></o:p></p>
+
+<p class=ILprg>ldloc.2<o:p></o:p></p>
+
+<p class=ILprg>stelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldelem.i4<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldelem.ref<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldelem.i4<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>3<o:p></o:p></p>
+
+<p class=ILoutput>7<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The above example is similar to
+its predecessor, though it is more elaborate and complete. A jagged array is
+created that is made of two arrays of sizes<span style="mso-spacerun: yes"> 
+</span>2 and 3 respectively. They can be initialized<span style="mso-spacerun:
+yes">  </span>in one stroke. IL does it the hard way. To fetch the value of
+a[1][2], it places the reference of the array on the stack. Then it places 1,
+the first array index, on the stack. Thereafter, ldelem.ref is used to obtain
+an array reference. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thus, at first an array
+reference is pushed on the stack. Then 2 is placed on the stack, and ldelema.i4
+is used to get the second member of this new array. A jagged array is treated
+as an array whose members contain other independent arrays.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>An array of arrays is different
+from a multi dimensional array. A multi dimensional array forms one memory
+block whereas, an array of arrays holds references to other arrays in memory.
+Thus, an array of arrays is slower in execution since it needs to make an extra
+indirection to reach the final element. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We can also use pointers with
+arrays. The salient feature of an array of arrays is that, the first array
+merely stores the addresses of other arrays. The disadvantage of a multi
+dimensional array is the fact that, all the dimensions have to be of the same
+size.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32[][][] a)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.5<span style='mso-tab-count:1'> </span><o:p></o:p></p>
+
+<p class=ILprg>newobj instance void int32[][][]::.ctor(int32)<o:p></o:p></p>
+
+<p class=ILprg>stloc a <o:p></o:p></p>
+
+<p class=ILprg>ldloc a<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0 <o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3 <o:p></o:p></p>
+
+<p class=ILprg>newobj instance void int32[][]::.ctor(int32)<o:p></o:p></p>
+
+<p class=ILprg>call instance void int32[][][]::Set(int32, int32[][])<o:p></o:p></p>
+
+<p class=ILprg>ldloc a <o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<span style='mso-tab-count:1'> </span><o:p></o:p></p>
+
+<p class=ILprg>call instance int32[][] int32[][][]::Get(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1 <o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 10 <o:p></o:p></p>
+
+<p class=ILprg>newobj instance void int32[]::.ctor(int32)<o:p></o:p></p>
+
+<p class=ILprg>call instance void int32[][]::Set(int32, int32[])<o:p></o:p></p>
+
+<p class=ILprg>ldloc a <o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>call instance int32[][] int32[][][]::Get(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>call instance int32[] int32[][]::Get(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.5<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 100<o:p></o:p></p>
+
+<p class=ILprg>call instance void int32[]::Set(int32, int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc a<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>call instance int32[][] int32[][][]::Get(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>call instance int32[] int32[][]::Get(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.5<o:p></o:p></p>
+
+<p class=ILprg>call instance int32 int32[]::Get(int32)<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>100<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Here, we shall see how to create
+an array a of type [][][]. We first create a local a of type array of array of
+array. Thus, we have two levels of indirection. We want the first or main array
+to have a size of 5 i.e. it should be able to store the references of 5 arrays
+in memory. The instruction ldc places the size 5 of this array on the stack.
+Thereafter newobj is used to create the first dimension of this array. The
+instruction stloc a initializes this array and ldloc a put its reference on the
+stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Subsequently two values are
+placed on the stack. One is the index of the first member a[0] and the other is
+the size of the array that this member should point to i.e. 3. newobj creates
+an array called int32[][]. To store it in a[0] the Set function is used. This
+function requires the index of the array as the first parameter. Hence, 0 is
+placed on the stack, even though newobj does not require it. It simplifies the
+call of the Set function. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The next thing required is an
+int32[] to store in our int32[][]. So, the array a is placed again on the stack
+and 0 is used to obtain the value of the array that has just been created. The
+Get functions does the job of retrieving values. Then, as before, 1 is placed
+on the stack followed by the size of the new array i.e.10. Finally, newobj<span
+style="mso-spacerun: yes">  </span>creates a simple array int32[]<span
+style="mso-spacerun: yes">  </span>and places it on the stack which is then
+stored using the Set function. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Remember that the value 1 has
+already been placed on the stack.<span style="mso-spacerun: yes">  </span>To
+execute the operation a[0][1][5] = 100<span style="mso-spacerun: yes"> 
+</span>the member a[0] is requred. So, the array reference a is placed on the
+stack followed by 0 and the Get function is called. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To access a[0][1], as the first
+member of array a[0] is already on the stack, all that is requred is placing 1
+on the stack and calling Get again. Now, to store the value in the member
+a[0][1][5], 5 is loaded on the stack. To fetch the values of member a[0][1][5],
+the same procedure as before is followed.<span style="mso-spacerun: yes"> 
+</span>That is<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>load the array reference on the stack. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>obtain the member 0 by using get. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>obtain the member 1 of this array <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>finally the member 5 on this array. <o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The logic is the same as
+described earlier.<o:p></o:p></span></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>using System;<o:p></o:p></p>
+
+<p class=ILprg>public class zzz<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void abc(int i,<span style="mso-spacerun: yes"> 
+</span>__arglist) <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ArgIterator a = new ArgIterator(__arglist);<o:p></o:p></p>
+
+<p class=ILprg>while (a.GetRemainingCount() &gt; 0)<o:p></o:p></p>
+
+<p class=ILprg>Console.WriteLine(__refvalue(a.GetNextArg(), int));<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>public static void Main() <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>abc(20, __arglist(1, 2, 3));<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>20<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.2<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.3<o:p></o:p></p>
+
+<p class=ILprg>call &nbsp;vararg void zzz::abc(int32,...,int32,int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static vararg void abc(int32 i) il
+managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals (value class [mscorlib]System.ArgIterator V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldloca.s<span style="mso-spacerun: yes">   </span>V_0<o:p></o:p></p>
+
+<p class=ILprg>arglist<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance void
+[mscorlib]System.ArgIterator::.ctor(value class
+[mscorlib]System.RuntimeArgumentHandle)<o:p></o:p></p>
+
+<p class=ILprg>br.s<span style="mso-spacerun: yes">       </span>IL_001d<o:p></o:p></p>
+
+<p class=ILprg>IL_000b:<span style="mso-spacerun: yes">  </span>ldloca.s<span
+style="mso-spacerun: yes">   </span>V_0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance
+typedref [mscorlib]System.ArgIterator::GetNextArg()<o:p></o:p></p>
+
+<p class=ILprg>refanyval<span style="mso-spacerun: yes"> 
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>ldind.i4<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>IL_001d:<span style="mso-spacerun: yes">  </span>ldloca.s<span
+style="mso-spacerun: yes">   </span>V_0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance int32
+[mscorlib]System.ArgIterator::GetRemainingCount()<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>bgt.s IL_000b<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>1<o:p></o:p></p>
+
+<p class=ILoutput>2<o:p></o:p></p>
+
+<p class=ILoutput>3<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This example builds upon the
+earlier example, which has a function that accepts a variable number of
+arguments. In C#,<span style="mso-spacerun: yes">  </span>__arglist enables us
+to implement a function that accepts a variable number of arguments. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Internally, in IL, the function
+is marked with a vararg modifier and, the ArgIterator class is used to display
+the values in a loop.<o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,4072 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap015_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap015_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>A GUI Application in  IL - C# to IL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>8</o:Revision>
+  <o:TotalTime>39</o:TotalTime>
+  <o:Created>2001-01-24T06:19:00Z</o:Created>
+  <o:LastSaved>2001-01-24T06:26:00Z</o:LastSaved>
+  <o:Pages>31</o:Pages>
+  <o:Words>11280</o:Words>
+  <o:Characters>58658</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>7332</o:Lines>
+  <o:Paragraphs>3666</o:Paragraphs>
+  <o:CharactersWithSpaces>78962</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+@font-face
+	{font-family:"Monotype Corsiva";
+	panose-1:3 1 1 1 1 2 1 1 1 1;
+	mso-font-charset:0;
+	mso-generic-font-family:script;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Cbullets, li.Cbullets, div.Cbullets
+	{mso-style-name:"C\#bullets";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cbase, li.Cbase, div.Cbase
+	{mso-style-name:"C\#base";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.Coutput, li.Coutput, div.Coutput
+	{mso-style-name:"C\#output";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cprg, li.Cprg, div.Cprg
+	{mso-style-name:"C\#prg";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"c\# base text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=Cbase><b><span style='font-size:9.0pt;mso-bidi-font-size:10.0pt'><img
+width=64 height=48 id="_x0000_i1025" src=bpb.jpg><o:p></o:p></span></b></p>
+
+<p class=Cbase><b><span style='font-size:24.0pt;mso-bidi-font-size:10.0pt'>-15-</span></b><span
+style='font-size:24.0pt;mso-bidi-font-size:10.0pt;color:windowtext'><o:p></o:p></span></p>
+
+<p class=Cbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><span style='font-size:
+30.0pt;font-family:"Monotype Corsiva"'>A GUI Application in<span
+style="mso-spacerun: yes">  </span>IL </span><span style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>So far, we have been writing
+small programs and rendering explanations for specific concepts. The IL
+documentation contains a very large program that demonstrates how to write a
+small application. Their application spawns five files, creates four dll's and
+has code that is spread over at least 30 pages. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We believe in what Newton once
+said, that he could see very far because he stood on the shoulders of tall
+people. We would like to emulate this thought. So, let us get down to hard work
+in our last chapter. We have decided to use the same application to explain the
+different concepts. We also expect you to read the original program yourselves.
+<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We first created a batch file
+a.bat as shown below. The batch file does everything for us, including running
+the program. As far as possible, we have maintained the same variable and class
+names that the original program contained. The only change incorporated is that
+we have put everything into the following two files: <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>countdown.il that becomes an
+executable.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>aaa.il that contains the rest of the
+code and becomes a dll.<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.bat</u><o:p></o:p></p>
+
+<p class=ILprg>del *.dll<o:p></o:p></p>
+
+<p class=ILprg>del *.exe<o:p></o:p></p>
+
+<p class=ILprg>ilasm aaa.il /dll<o:p></o:p></p>
+
+<p class=ILprg>ilasm countdown.il<o:p></o:p></p>
+
+<p class=ILprg>countdown<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>countdown.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly CountDown {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.module extern aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.class<span style="mso-spacerun: yes">  </span>zzz extends
+[System.WinForms]System.WinForms.Form<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]ctb counterBox<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]ssb button<o:p></o:p></p>
+
+<p class=ILprg>.method public static<span style="mso-spacerun: yes"> 
+</span>void Main() <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>call void
+[System.WinForms]System.WinForms.Application::Run(class
+[System.WinForms]System.WinForms.Form)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method<span style="mso-spacerun: yes">  </span>instance void
+.ctor()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Form::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]ssb::.ctor(class [System.WinForms]System.WinForms.Form)<o:p></o:p></p>
+
+<p class=ILprg>stfld class [.module aaa.dll]ssb zzz::button<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]ctb::.ctor(class zzz)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class [.module
+aaa.dll]ctb zzz::counterBox<o:p></o:p></p>
+
+<p class=ILprg>.locals init (value class [System.Drawing]System.Drawing.Size
+size)<o:p></o:p></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>size<o:p></o:p></p>
+
+<p class=ILprg>initobj value class [System.Drawing]System.Drawing.Size<o:p></o:p></p>
+
+<p class=ILprg>ldloca <span style="mso-spacerun: yes"> </span>size<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>425<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>300<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.Drawing]System.Drawing.Size::.ctor(int32, int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc<span style="mso-spacerun: yes">   </span>size<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void zzz::set_Size(value class
+[System.Drawing]System.Drawing.Size)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>value class
+[System.Drawing]System.Drawing.Color
+[System.Drawing]System.Drawing.Color::get_CadetBlue()<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void zzz::set_BackColor(value class
+[System.Drawing]System.Drawing.Color)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0 <o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">  
+</span>&quot;CountDown&quot; <o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void zzz::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>aaa.il</u><o:p></o:p></p>
+
+<p class=ILprg>.module aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern mscorlib {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.module extern CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.class public ctb extends
+[System.WinForms]System.WinForms.TextBox <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field class [.module CountDown.exe]zzz parent<o:p></o:p></p>
+
+<p class=ILprg>.field static family int32 counterDefault at Vijay<o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class [.module CountDown.exe]zzz
+parent)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0 <o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.TextBox::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">  </span>parent<o:p></o:p></p>
+
+<p class=ILprg>stfld class [.module CountDown.exe]zzz ctb::parent<o:p></o:p></p>
+
+<p class=ILprg>.locals (value class [System.Drawing]System.Drawing.Point point)<o:p></o:p></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>point<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>75<span
+style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>100 <o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.Drawing]System.Drawing.Point::.ctor(int32, int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc<span style="mso-spacerun: yes">   </span>point<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.TextBox::set_Location(value class
+[System.Drawing]System.Drawing.Point)<o:p></o:p></p>
+
+<p class=ILprg>ldarg parent<o:p></o:p></p>
+
+<p class=ILprg>call instance class
+[System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldsfld int32 ctb::counterDefault<o:p></o:p></p>
+
+<p class=ILprg>call class System.String [mscorlib]System.Int32::ToString(int32)<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.TextBox::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.data Vijay = int32(3)<o:p></o:p></p>
+
+<p class=ILprg>.class public ssb extends
+[System.WinForms]System.WinForms.Button <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class
+[System.WinForms]System.WinForms.Form parent)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<span style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Button::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>.locals init (value class [System.Drawing]System.Drawing.Size
+size,value class [System.Drawing]System.Drawing.Point point)<o:p></o:p></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>point<o:p></o:p></p>
+
+<p class=ILprg>initobj value class [System.Drawing]System.Drawing.Point<o:p></o:p></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>point<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>100 <o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>200 <o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.Drawing]System.Drawing.Point::.ctor(int32, int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc<span style="mso-spacerun: yes">   </span>point<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.WinForms]System.WinForms.Button::set_Location(value class
+[System.Drawing]System.Drawing.Point)<o:p></o:p></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>size<o:p></o:p></p>
+
+<p class=ILprg>initobj value class [System.Drawing]System.Drawing.Size<o:p></o:p></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>size<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>200 <o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>50<o:p></o:p></p>
+
+<p class=ILprg>call instance void [System.Drawing]System.Drawing.Size::.ctor(int32,
+int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc<span style="mso-spacerun: yes">   </span>size<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Size(value class
+[System.Drawing]System.Drawing.Size)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>value class
+[System.Drawing]System.Drawing.Color [System.Drawing]System.Drawing.Color::get_Gold()<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_BackColor(value class
+[System.Drawing]System.Drawing.Color)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>value class
+[System.Drawing]System.Drawing.Color
+[System.Drawing]System.Drawing.Color::get_Navy()<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_ForeColor(value class
+[System.Drawing]System.Drawing.Color)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Arial&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldc.r4<span style="mso-spacerun: yes">  </span>20<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[System.Drawing]System.Drawing.Font::.ctor(class System.String, float32)<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Font(class
+[System.Drawing]System.Drawing.Font)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Start&quot;<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>parent<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance class
+[System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have repeated some of the
+earlier explanations to refresh your memory. The explanation is also a summary
+of what we have learnt so far.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>When we run the above program, a
+button and a text box are displayed on the screen. The button has a different
+color and the window has a title.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This large program enlightens us
+on designing a GUI application in IL. To write one ourselves, we start with the
+main program which is countdown.il. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The assembly is named as
+countdown for want of a better name. The code for the GUI classes resides in a
+file called System.WinForms.dll and belongs to the namespace System.Winforms.
+The type is<span style="mso-spacerun: yes">  </span>prefaced with the dll name
+which is optional in case of mscorlib.dll. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>As we are referring to code in
+an external assembly, the extern parameter is given after the directive
+assembly. This is followed by the name of the assembly that contains the code.
+The extern directive is supplied for System.Drawing also. No error is generated
+if an extern directive is mentioned and the code within the file<span
+style="mso-spacerun: yes">  </span>is not executed <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Most of our code is contained in
+classes and resides in a file aaa.il. The assembler converts the il file into a
+dll hence the file name is<span style="mso-spacerun: yes">  </span>aaa.dll. The
+two directives used are:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The first specifies the name of the
+physical file using the file directive.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The second is the assembly extern
+directive. <o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We will not repeat the code
+explanations that have been delved upon earlier. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have created two fields:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]ctb counterBox<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]ssb button<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The first one is named
+counterBox and typed ctb. The class ctb exists in aaa.dll file, hence the field
+is prefaced with the name of the class alongwith the .module directive and the
+name of the dll. This information is mandatory when referencing a type in an
+external dll. In the same vein, the field named button that looks like class
+ssb, resides in file aaa.dll.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>.class<span style="mso-spacerun: yes">  </span>zzz extends
+[System.WinForms]System.WinForms.Form<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The class zzz is derived from
+the class System.Winforms.Form. To build a GUI applications, in Microsoft
+parlance, WinForms, the<span style="mso-spacerun: yes">  </span>class has to be
+derived from Form in namespace System.Winforms. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The code execution begins in
+Main as the entrypoint directive is placed in this function.Within this
+function, a new object zzz is created and placed on the stack. This is to
+facilitates the next function call<span style="mso-spacerun: yes">  </span>Run
+that requires a Forms object on the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>call void
+[System.WinForms]System.WinForms.Application::Run(class
+[System.WinForms]System.WinForms.Form)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The object created by the newobj
+instruction is all that we need to place an empty window on our screen. newobj
+calls the constructor of class zzz<span style="mso-spacerun: yes">  </span>i.e.
+.ctor which populates the window with a variety of buttons, text boxes and
+widgets.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A look at the constructor of
+class zzz:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Form::.ctor()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>At first, the<span
+style="mso-spacerun: yes">  </span>constructor of the base class Forms is
+called. Prior to the call, the this pointer is the only value that is placed on
+the stack as the constructor of the base class Forms, takes no parameters. The
+this pointer is stored in the invisible first parameter to every non static
+function and its value can be accessed using the instruction ldarg.0. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The next job is creating an
+object, an instance of class ssb i.e. a button. The instruction newobj comes
+into focus again and the constructor of the class ssb is called. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]ssb::.ctor(class [System.WinForms]System.WinForms.Form)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>As explained earler, the this
+pointer is placed on the stack but it is done twice. The second this pointer is
+for the parameter to the constructor.<span style="mso-spacerun: yes">  </span>A
+reference to the newly created object on the stack is stored in the field
+button, so that it can be used later. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>stfld class [.module aaa.dll]ssb zzz::button<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'>To store the return value of
+newobj in a field, the first this pointer is used. This proves that to access a
+field, we first need a reference to the object that contains the field. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The return value of newobj that
+is placed on the stack can be stored in a local, if desired so. But, to store
+it in a field, the this pointer must be loaded on the stack<span
+style="mso-spacerun: yes">  </span>prior to calling newobj. newobj then removes
+the second this pointer from the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In short, newobj requres the
+this pointer on the stack first and then calls the constructor. The constructor
+is not called directly but to do so the this pointer reference must be placed
+on the stack first. With newobj it is impractical to stack position the this
+pointer as the object has not been created at all. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The instruction stfld not only
+requires the name of the field, but also its data type, since the field can be
+in another assembly. Incidentally, it takes the same effort to use an entity
+from another assembly, as it takes to use the same entity located in our file.
+The only difference is in the use of square brackets [] and in the name of the
+module or assembly.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>After the button, the next
+widget to be created is a text box of type ctb. <o:p></o:p></span></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]ctb::.ctor(class zzz)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The constructor to this class
+needs a parameter as in the ssb class. Here, instead of repeating the ldarg.0
+instruction twice, the dup instruction is used. This instruction simply
+duplicates the value present on the stack. ldarg.0 places the this pointer on
+the stack and dup creates one more copy of the this pointer. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>You are free in choosing from
+two ldarg.0 statements or using the dup instruction. We will focus on the role
+of the constructors a little later after a brief synopsis of the program. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class [.module
+aaa.dll]ctb zzz::counterBox<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The reference to the newly
+created object on the stack, akin to the button is stored in the field
+counterBox, so that it can be used later. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The directive .locals very often
+used for creating variables can be placed anywhere in the function, as styles
+evolve with time, but good programming style demands that we use it at the
+beginning. A local variable called size of type Size within<span
+style="mso-spacerun: yes">  </span>the namespaces System.Drawing is created. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>.locals init (value class [System.Drawing]System.Drawing.Size
+size)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Since it is a value type, we see
+the modifier value in front of class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The init keyword initializes the
+locals to zero. ldloca places the address of size on the stack and then initobj
+calls the constructor of the value class or structure. <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>size<o:p></o:p></p>
+
+<p class=ILprg>initobj value class [System.Drawing]System.Drawing.Size<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>initobj is optional, but it is a
+good idea to use it. We cannot use newobj on a value type. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now to initialize this size
+object to the size of our opening windows:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To accomplish this, on the stack
+first is<span style="mso-spacerun: yes">  </span>placed the address of the
+size, followed by x and y co-ordinates of the window.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets>ldloca<span style="mso-spacerun: yes">  </span>size<o:p></o:p></p>
+
+<p class=ILbullets>ldc.i4<span style="mso-spacerun: yes">  </span>425<o:p></o:p></p>
+
+<p class=ILbullets>ldc.i4<span style="mso-spacerun: yes">  </span>300<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thereafter, the constructor of
+the Size class is called which initializes the size object. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.Drawing]System.Drawing.Size::.ctor(int32, int32)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The Form class has a function or
+property called set_Size that initializes the window size on the screen,
+depending upon the size object passed. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In order to change the look and
+feel of any GUI application, the parameters are first placed on the stack and
+then the relevant functions are called . From now on, we will not comment upon
+the unavoidable requirement of the this pointer on the stack.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To change the foreground and
+background color of the window, a property called get_CadetBlue from the Color
+Class, a value class, is used. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>value class
+[System.Drawing]System.Drawing.Color
+[System.Drawing]System.Drawing.Color::get_CadetBlue()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The return value is placed on
+the stack and can either be an enum or a constant. Remember properties are
+functions within a class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The virtual function
+set_BackColor changes the background color. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>callvirt instance void zzz::set_BackColor(value class [System.Drawing]System.Drawing.Color)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We could have gone on endlessly
+on changing the appearance of our window, however, we will stop with just one
+more function, to change the title of our windows. To achieve this, the title
+as a string is loaded on the stack using ldstr and then function set_Text is
+called to change the title.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">  
+</span>&quot;CountDown&quot; <o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void zzz::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now, to understanding the file
+aaa.il. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>aaa.il eventually gets converted
+into a dll, hence the assembly directive is evaded. Instead, a module directive
+stating the name of the module is inserted. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>.module aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern mscorlib {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.module extern CountDown.exe<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This file references some fields
+stored in the executable file countdown.exe, and thus, we need both the file
+and assembly extern directive. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The first function to be called
+in the dll is the constructor of class ssb, an instance of the Button class.
+This is because countdown.il executes newobj on ssb i.e the Button class. The
+Button class contains all the code needed to represent a Button object on the
+screen. As usual, the first call is to the constructor of the base class
+Button. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Button::.ctor()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Two locals are created
+thereafter:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>One to store a width and height
+dimension, called size,<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>Another to represent a point on the
+screen, in x and y coordinates, called point. <o:p></o:p></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>.locals init (value class [System.Drawing]System.Drawing.Size
+size,value class [System.Drawing]System.Drawing.Point point)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The point member is initialized
+in the same manner as the size member. point is then loaded on the stack and
+set_Location from the Button class is called. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldloc<span style="mso-spacerun: yes">   </span>point<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.WinForms]System.WinForms.Button::set_Location(value class
+[System.Drawing]System.Drawing.Point)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Remember, the this pointer in
+this case is an ssb, a Button reference type. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Every Winforms widget has a
+set_Size function that lets us set the size of the widget. The color can be set
+as shown before. To create a font object, besides the this pointer, we need
+only two parameters to the constructor: <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The first is the name of the font <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The second is a point size for the
+font. <o:p></o:p></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Arial&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldc.r4<span style="mso-spacerun: yes">  </span>20<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[System.Drawing]System.Drawing.Font::.ctor(class System.String, float32)<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Font(class [System.Drawing]System.Drawing.Font)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This newly created font object
+is placed on the stack and the function set_Font is called. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Start&quot;<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To place the label
+&quot;Start&quot; on the button, the string is loaded on the stack using ldstr
+and thereafter the function set_Text is called. It is as simple as that. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The next instruction in the
+sequence is loading the parameter parent on the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>parent<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance class
+[System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>If you remember, the constructor
+was called with two identical parameters on the stack. Thus ldarg.0 and ldarg
+parent are the same. The function get_Controls places a
+Control$ControlCollection object on the stack. The this pointer is also loaded
+and the virtual function Add is called. Add, adds the newly created control to
+the list of controls that are finally to be displayed by Winforms. The function
+Add belongs to the class Control$ControlCollection and hence a reference to this
+class is required. It is easier in a language like C#, that shields us from
+passing the this pointer.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The next widget to be<span
+style="mso-spacerun: yes">  </span>displayed on the window is the text box..
+The text box class is called ctb and derives from TextBox. As usual, the
+constructor is called. We will repeat this aspect of the code, i.e. calling of
+the constructor, for the last time. If you do not call the base class
+constructor, you will be in serious trouble.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To set the location,
+set_Location is used and then the control is added to the list of controls
+using the Add function. How does Winforms display the number 3 in the text box
+? <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>For this purpose, a field called
+counterDefault<span style="mso-spacerun: yes">  </span>is created which is
+static and an int32. Tagged alongwith it is modifier at, and then a name Vijay.
+<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>.field static family int32 counterDefault at Vijay<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This denotes that the variable
+counterDefault will receive its initial value from Vijay. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>There is a directive called
+.data that creates a word &quot;Vijay&quot; and initialises it to the number 3
+using int32. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>.data Vijay = int32(3)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This directive called data
+places the value 3 in the .data section in the PE Executable file. The PE file
+is divided into smaller parts called sections. All the code goes into a section
+called .text and all the data goes into a section called .data. We thus do not
+have to initialize the variable in a constructor. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This number is placed on the
+stack and a static function To_String is called, that converts this int32 into
+a string. Then our good old function set_Text displays it in a text box. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Lets us now proceed to the next
+example.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>countdown.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly CountDown {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.file aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.module extern aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.class<span style="mso-spacerun: yes">  </span>zzz extends
+[System.WinForms]System.WinForms.Form<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]ssb button<o:p></o:p></p>
+
+<p class=ILprg>.method public static<span style="mso-spacerun: yes"> 
+</span>void Main() <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>call void
+[System.WinForms]System.WinForms.Application::Run(class
+[System.WinForms]System.WinForms.Form)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method<span style="mso-spacerun: yes">  </span>instance void
+.ctor()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Form::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]ssb::.ctor(class [System.WinForms]System.WinForms.Form)<o:p></o:p></p>
+
+<p class=ILprg>stfld class [.module aaa.dll]ssb zzz::button<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>aaa.il</u><o:p></o:p></p>
+
+<p class=ILprg>.module aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern mscorlib {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.module extern CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.class public ssb extends
+[System.WinForms]System.WinForms.Button<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+[mscorlib]System.EventHandler onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class [System.WinForms]System.WinForms.Form
+parent)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<span style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Button::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Start&quot;<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldarg parent<o:p></o:p></p>
+
+<p class=ILprg>call instance class
+[System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldvirtftn instance void ssb::OnClick(class System.Object, class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[mscorlib]System.EventHandler::.ctor(class System.Object, int32)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler <o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.WinForms]System.WinForms.Button::add_Click(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public instance void OnClick(class
+System.Object, class [mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>call int8 User32::MessageBeep(unsigned int32)<o:p></o:p></p>
+
+<p class=ILprg>pop<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class abstract sealed public auto autochar User32 extends
+[mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public static pinvokeimpl(&quot;user32.dll&quot; cdecl)
+int8 MessageBeep(unsigned int32) native unmanaged <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'>In this example we simply
+display a button sans all the bells and whistles. When we click on this button,
+function OnClick merely gets called. In this function, we simply call another
+function MessageBeep<span style="mso-spacerun: yes">  </span>that rings a bell
+or simply produces a beep sound. This function is present in a dll called
+user32.dll. In the file countdown.il, no new code has been added. Modifications
+have only been made in the file aaa.il.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>After the control is registered
+with WinForms, the this pointer is placed thrice on the stack. Also, the
+address of the virtual function OnClick is loaded on the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldvirtftn instance void ssb::OnClick(class System.Object, class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'>This function is called each
+time the button is clicked on. The dup instruction is placed on the stack to
+account for the parameters to the function OnClick. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Simultaneously, a new object is
+created that is an instance of the class EventHandler. <o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[mscorlib]System.EventHandler::.ctor(class System.Object, int32)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler <o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This newly created object is
+stored in the field onClickEventHandler. Then function add_Click from the
+button class registers this function with Winforms. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.WinForms]System.WinForms.Button::add_Click(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now, the function OnClick gets
+called with a click on the button and a static function MessageBeep is
+executed. The code for this function is not available as the attributes on the
+function are native. This implies that<span style="mso-spacerun: yes"> 
+</span>the developers<span style="mso-spacerun: yes">  </span>have supplied the
+code and the function will be executed in the unmanaged state. To call a
+function from a dll, pinvokeimpl is used, stating the name of the dll and the
+calling convention. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The program countdown.il remains
+the same for the next program. The modified file aaa.il is given below. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>aaa.il</u><o:p></o:p></p>
+
+<p class=ILprg>.module aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern mscorlib {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Timers {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.module extern CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.class abstract sealed public auto autochar User32 extends
+[mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public static pinvokeimpl(&quot;user32.dll&quot; cdecl)
+int8 MessageBeep(unsigned int32) native unmanaged {}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public ssb extends
+[System.WinForms]System.WinForms.Button<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+[mscorlib]System.EventHandler onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class
+[System.WinForms]System.WinForms.Form parent)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<span style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>call instance void [System.WinForms]System.WinForms.Button::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Start&quot;<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldarg parent<o:p></o:p></p>
+
+<p class=ILprg>call instance class
+[System.WinForms]System.WinForms.Control$ControlCollection [System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldvirtftn instance void ssb::OnClick(class System.Object, class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[mscorlib]System.EventHandler::.ctor(class System.Object, int32)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.WinForms]System.WinForms.Button::add_Click(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public instance void OnClick(class
+System.Object, class [mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals (class [System.Timers]System.Timers.Timer V_0)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+[System.Timers]System.Timers.Timer::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldnull<o:p></o:p></p>
+
+<p class=ILprg>ldftn void ssb::OnTimedEvent(class System.Object,class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void [mscorlib]System.EventHandler::.ctor(class
+System.Object,int32)<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.Timers]System.Timers.Timer::add_Tick(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.r8<span style="mso-spacerun: yes">     </span>300.<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance void
+[System.Timers]System.Timers.Timer::set_Interval(float64)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>callvirt<span style="mso-spacerun: yes">   </span>instance void
+[System.Timers]System.Timers.Timer::set_Enabled(bool)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void<span style="mso-spacerun:
+yes">  </span>OnTimedEvent(class System.Object source,class
+[mscorlib]System.EventArgs e) il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>call int8 User32::MessageBeep(unsigned int32)<o:p></o:p></p>
+
+<p class=ILprg>pop<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In this program, when the button
+is clicked on, for 3 seconds nothing happens. Thereafter, beeps are heard. Then
+on, after every 3 seconds, a beep sound is heard. This is a program that does
+nothing for three seconds and then activates some code. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>These programs are timer-based.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The program aaa.il has only one
+change incorporated in it within the OnClick function. A local is declared that
+looks like class Timer and an object like class Timer is created using newobj. <o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>.locals (class [System.Timers]System.Timers.Timer V_0)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span><span
+style="mso-spacerun: yes">   </span>instance void
+[System.Timers]System.Timers.Timer::.ctor()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The value returned is stored in
+the local V_0. Thereafter, the Timer object is again loaded on the stack,
+followed by a NULL reference and the address of a static function OnTimedEvent.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldnull<o:p></o:p></p>
+
+<p class=ILprg>ldftn void ssb::OnTimedEvent(class System.Object,class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This function is repeatedly
+called after a certain time period has elapsed. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Concurrently, an object that
+looks like an EventHandler is created. <o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>newobj instance void [mscorlib]System.EventHandler::.ctor(class
+System.Object,int32)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This constructor, in addition to
+the this pointer, needs two more parameters, the second being the address of
+our function. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>call instance void [System.Timers]System.Timers.Timer::add_Tick(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The add_Tick function then
+incorporates these changes and stores the handle in the local variable.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>So, the timeout period i.e. the
+time duration after which the function is to be called, is placed on the stack.
+This number is a float, and hence, 8 bytes are allocated on the stack for it.
+The set_Interval function sets the timeout period and the set_Enabled function
+sets the timer on, which runs periodically.<span style="mso-spacerun: yes"> 
+</span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldc.r8<span style="mso-spacerun: yes">     </span>300.<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance void
+[System.Timers]System.Timers.Timer::set_Interval(float64)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Add the following lines of code
+to the end of the function OnClick, just before the ret instruction.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.Timers]System.Timers.Timer::set_AutoReset(bool)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This code calls the function
+set_AutoReset with the number 1, so that, the timeout function gets called over
+and over again.<o:p></o:p></span></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>countdown.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly CountDown {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.module extern aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.class<span style="mso-spacerun: yes">  </span>zzz extends
+[System.WinForms]System.WinForms.Form<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]ctb counterBox<o:p></o:p></p>
+
+<p class=ILprg>.method public static<span style="mso-spacerun: yes"> 
+</span>void Main() <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>call void [System.WinForms]System.WinForms.Application::Run(class
+[System.WinForms]System.WinForms.Form)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method<span style="mso-spacerun: yes">  </span>instance void
+.ctor()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Form::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]ctb::.ctor(class zzz)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class [.module
+aaa.dll]ctb zzz::counterBox<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class [.module aaa.dll]ctb zzz::counterBox<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]ssb::.ctor(class [System.WinForms]System.WinForms.Form, class
+[.module aaa.dll]ctb)<o:p></o:p></p>
+
+<p class=ILprg>pop<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>aaa.il</u><o:p></o:p></p>
+
+<p class=ILprg>.module aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Timers {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern mscorlib {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.module extern CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.class public ctb extends [System.WinForms]System.WinForms.TextBox
+<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field int32 count <o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class [.module CountDown.exe]zzz
+parent)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0 <o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.TextBox::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 3<o:p></o:p></p>
+
+<p class=ILprg>stfld int32 ctb::count<o:p></o:p></p>
+
+<p class=ILprg>.locals (value class [System.Drawing]System.Drawing.Point point)<o:p></o:p></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>point<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>75<span
+style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>100 <o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.Drawing]System.Drawing.Point::.ctor(int32, int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc<span style="mso-spacerun: yes">   </span>point<o:p></o:p></p>
+
+<p class=ILprg>call instance void [System.WinForms]System.WinForms.TextBox::set_Location(value
+class [System.Drawing]System.Drawing.Point)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld int32 ctb::count<o:p></o:p></p>
+
+<p class=ILprg>call class System.String [mscorlib]System.Int32::ToString(int32)<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.TextBox::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldarg parent<o:p></o:p></p>
+
+<p class=ILprg>call instance class
+[System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void SetCount(int32 count1)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>count1<o:p></o:p></p>
+
+<p class=ILprg>call class System.String [mscorlib]System.Int32::ToString(int32)<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void [System.WinForms]System.WinForms.TextBox::set_Text(class
+System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance int32 GetCount()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance class System.String ctb::get_Text()<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 [mscorlib]System.String::ToInt32()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public ssb extends
+[System.WinForms]System.WinForms.Button <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+[mscorlib]System.EventHandler onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.field class ctb par1<o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class
+[System.WinForms]System.WinForms.Form parent,class ctb aa)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<span style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Button::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.2<o:p></o:p></p>
+
+<p class=ILprg>stfld class ctb ssb::par1<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Start&quot;<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldarg parent<o:p></o:p></p>
+
+<p class=ILprg>call instance class
+[System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldvirtftn instance void ssb::OnClick(class System.Object, class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[mscorlib]System.EventHandler::.ctor(class System.Object, int32)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.WinForms]System.WinForms.Button::add_Click(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public instance void OnClick(class
+System.Object, class [mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals ( int32 i)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class ctb ssb::par1<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 ctb::GetCount()<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>sub<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>bgt a1<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class ctb ssb::par1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ctb::SetCount(int32)<o:p></o:p></p>
+
+<p class=ILprg>a1:<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The above program simply
+displays the number 3 in the edit box. With every click on the button, the
+number decreases by 1. When the value becomes 0, the execution of the program
+stops. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Let us now understand as to what
+goes behind writing such a program.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In countdown.il, a field
+counterBox is created that stores the reference of the text box. Since the
+reference value is saved in a field, any method can access the text field if it
+possesses this value. Consider that any call to a function in the text box
+class ctb, or access to the value stored in the text box, needs the reference
+of the text box on the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>At first, a text box object is
+created and the value is stored<span style="mso-spacerun: yes">  </span>in
+counterBox.<span style="mso-spacerun: yes">  </span>Then this<span
+style="mso-spacerun: yes">  </span>reference to the text box is passed on to
+the constructor of the button class, as the second parameter. The button can
+now call any methods from the text box class by simply placing this reference
+on the stack. The button constructor stores the address of this text box in a
+field for later use. A point to note here is that all the contents of a method
+die at the end of the method whereas, fields are perpetual.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The constructor of the text box
+is well explained before. The first change incorporated is in the constructor
+of the class button, i.e. ssb. Here, the this pointer is placed on the stack,
+and then, using ldarg.2 the reference of the button is also placed on the
+stack. Thereafter, the reference of the text box is stored in the field par1. <o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.2<o:p></o:p></p>
+
+<p class=ILprg>stfld class ctb ssb::par1<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The rest of the code ensures
+that the function OnClick gets called each time the button is clicked.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In function OnClick, a local
+int32 is created to store the current value of the text box. After that, the
+this pointer is placed on the stack, and the value of the field par1 is
+retrieved. Using the reference to the text box on the stack, function GetCount
+from class ctb is called. <o:p></o:p></span></p>
+
+<p class=ILprg>.locals ( int32 i)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class ctb ssb::par1<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 ctb::GetCount()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This function places its this
+pointer and par1 on the stack, and then calls the virtual function get_Text
+from the textbox class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>.method virtual newslot instance int32 GetCount()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance class System.String ctb::get_Text()<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 [mscorlib]System.String::ToInt32()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This function places a string,
+representing the text within the text box, on the stack. This string is
+converted into a number by calling the function ToInt32, which resides in the
+String class. GetCount returns this number on the stack as the value of the
+text box. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>After placing the number 1 on
+the stack, sub is called. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>sub<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This instruction now subtracts 1
+from the value present earlier on the stack. The number happens to be the value
+stored in the text box. This new value is stored in the local i to make our
+programming easier. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Since IL has no equivalent of
+the if statement, the bgt instruction is used to compare two values. 0 is
+placed on the stack, followed by the value of the variable i. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>bgt a1<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>If the value of i is zero, the
+bgt instruction jumps to label a1, which is at the end of the function. If i
+has a value of 2, then no jump takes place as the second value happens to be
+larger than the first.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The this pointer or reference of
+the text box is again pushed on the stack, followed by the new value of i and
+then, the function SetCount is called. This function simply changes the value
+displayed in the text box. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class ctb ssb::par1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ctb::SetCount(int32)<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This function loads the
+parameter passed, i.e. count1, on the stack, and uses ToString from the int32
+class to convert it into a string. The string is placed on the stack. Finally
+set_Text is called to change the value displayed. This function is the reverse
+of the function GetCount. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>.method virtual newslot instance void SetCount(int32 count1)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>count1<o:p></o:p></p>
+
+<p class=ILprg>call class System.String [mscorlib]System.Int32::ToString(int32)<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.TextBox::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The last part of the code only
+gets called if the value of the local i is positive.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>There is no change in program
+countdown.il<span style="mso-spacerun: yes">  </span>and aaa.il file resembles
+as shown below. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>aaa.il</u><o:p></o:p></p>
+
+<p class=ILprg>.module aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Timers {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern mscorlib {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.module extern CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.class public ctb extends
+[System.WinForms]System.WinForms.TextBox <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field int32 count <o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class [.module CountDown.exe]zzz
+parent)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0 <o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.TextBox::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4 3<o:p></o:p></p>
+
+<p class=ILprg>stfld int32 ctb::count<o:p></o:p></p>
+
+<p class=ILprg>.locals (value class [System.Drawing]System.Drawing.Point point)<o:p></o:p></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>point<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>75<span
+style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>100 <o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.Drawing]System.Drawing.Point::.ctor(int32, int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc<span style="mso-spacerun: yes">   </span>point<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.TextBox::set_Location(value class
+[System.Drawing]System.Drawing.Point)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld int32 ctb::count<o:p></o:p></p>
+
+<p class=ILprg>call class System.String [mscorlib]System.Int32::ToString(int32)<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.TextBox::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldarg parent<o:p></o:p></p>
+
+<p class=ILprg>call instance class [System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void SetCount(int32 count1)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>count1<o:p></o:p></p>
+
+<p class=ILprg>call class System.String [mscorlib]System.Int32::ToString(int32)<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.TextBox::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance int32 GetCount()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance class System.String ctb::get_Text()<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 [mscorlib]System.String::ToInt32()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public ssb extends
+[System.WinForms]System.WinForms.Button <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+[mscorlib]System.EventHandler onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.field class ctb par1<o:p></o:p></p>
+
+<p class=ILprg>.field class [System.Timers]System.Timers.Timer timer<o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class
+[System.WinForms]System.WinForms.Form parent,class ctb aa)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<span style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Button::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.2<o:p></o:p></p>
+
+<p class=ILprg>stfld class ctb ssb::par1<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Start&quot;<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldarg parent<o:p></o:p></p>
+
+<p class=ILprg>call instance class [System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldvirtftn instance void ssb::OnClick(class System.Object, class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[mscorlib]System.EventHandler::.ctor(class System.Object, int32)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.WinForms]System.WinForms.Button::add_Click(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public instance void OnClick(class System.Object,
+class [mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals (class [System.Timers]System.Timers.Timer V_0)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+[System.Timers]System.Timers.Timer::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>stfld class [System.Timers]System.Timers.Timer ssb::timer<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.1<o:p></o:p></p>
+
+<p class=ILprg>ldftn instance void ssb::OnTimedEvent(class System.Object,class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+[mscorlib]System.EventHandler::.ctor(class System.Object,int32)<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance void
+[System.Timers]System.Timers.Timer::add_Tick(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.r8<span style="mso-spacerun: yes">     </span>500.<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance void
+[System.Timers]System.Timers.Timer::set_Interval(float64)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>callvirt<span style="mso-spacerun: yes">   </span>instance void
+[System.Timers]System.Timers.Timer::set_Enabled(bool)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public instance void OnTimedEvent(class System.Object
+source,class [mscorlib]System.EventArgs e) il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals ( int32 i)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class ctb ssb::par1<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 ctb::GetCount()<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>sub<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>bgt a1<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class ctb ssb::par1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ctb::SetCount(int32)<o:p></o:p></p>
+
+<p class=ILprg>br a2<o:p></o:p></p>
+
+<p class=ILprg>a1:<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class [System.Timers]System.Timers.Timer ssb::timer<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.Timers]System.Timers.Timer::Stop()<o:p></o:p></p>
+
+<p class=ILprg>a2:<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>call int8 User32::MessageBeep(unsigned int32)<o:p></o:p></p>
+
+<p class=ILprg>pop<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class abstract sealed public auto autochar User32 extends
+[mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public static pinvokeimpl(&quot;user32.dll&quot; cdecl)
+int8 MessageBeep(unsigned int32) native unmanaged {}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In this program, the numbers
+change automatically with every click on the button. The program stops when the
+value becomes 0. The beep sound also stops. The class ctb and the constructor
+of class ssb remains the same. It calls the function OnClick at the press of a
+mouse. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The function OnClick does things
+differently. Using stfld, the timer object is first stored in a field called
+timer. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>stfld class [System.Timers]System.Timers.Timer ssb::timer<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This is because, a function from
+the timer class is to be called. The same value is saved in a local V_0. This
+is a poor programming style, but nobody's looking. The timer object calls the
+function OnTimedEvent periodically. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Earlier the function was static
+but now it is an instance function and it is given the this pointer instead of
+a NULL. The code for the timer tick in the earlier program has been assigned to
+the button click. The only change is that the text box value on attaining ZERO
+will stop the timer. This routine is employed with the function Stop from the
+timer class. It is given the timer reference on the stack <o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>ldfld class [System.Timers]System.Timers.Timer ssb::timer<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.Timers]System.Timers.Timer::Stop()<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Let us put together all that we
+have learnt so far and write the largest program in our book. This program
+should be followed up by reading the same program in the IL documentation. It
+is relatively larger and spread over more files. Let us start from the very
+beginning.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>countdown.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly CountDown {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.module extern aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.class<span style="mso-spacerun: yes">  </span>zzz extends
+[System.WinForms]System.WinForms.Form<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]ctb counterBox<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]ssb button<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]Counter counter<o:p></o:p></p>
+
+<p class=ILprg>.method public static<span style="mso-spacerun: yes"> 
+</span>void Main() <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+zzz::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>call void
+[System.WinForms]System.WinForms.Application::Run(class
+[System.WinForms]System.WinForms.Form)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method<span style="mso-spacerun: yes">  </span>instance void
+.ctor()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals<span style="mso-spacerun: yes">  </span>(class [.module
+aaa.dll]Count count)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Form::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]ssb::.ctor(class [System.WinForms]System.WinForms.Form)<o:p></o:p></p>
+
+<p class=ILprg>stfld class [.module aaa.dll]ssb zzz::button<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]ctb::.ctor(class zzz)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class [.module
+aaa.dll]ctb zzz::counterBox<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class [.module aaa.dll]ctb zzz::counterBox<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void [.module aaa.dll]Count::.ctor(class
+[.module aaa.dll]ICountDisplay)<o:p></o:p></p>
+
+<p class=ILprg>stloc<span style="mso-spacerun: yes">  </span>count<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]ssb zzz::button<o:p></o:p></p>
+
+<p class=ILprg>ldloc<span style="mso-spacerun: yes">  </span>count<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[.module aaa.dll]BeepingCounter::.ctor(class [.module aaa.dll]IStartStopEventSource,
+class [.module aaa.dll]Count)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">  </span>class [.module
+aaa.dll]Counter zzz::counter<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class [.module aaa.dll]ssb zzz::button<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class [.module aaa.dll]Counter zzz::counter<o:p></o:p></p>
+
+<p class=ILprg>call instance void [.module aaa.dll]ssb::AddToTimeUp(class
+[.module aaa.dll]Counter)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>aaa.il</u><o:p></o:p></p>
+
+<p class=ILprg>.module aaa.dll<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Timers {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern mscorlib {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.WinForms {}<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern System.Drawing {}<o:p></o:p></p>
+
+<p class=ILprg>.file CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.module extern CountDown.exe<o:p></o:p></p>
+
+<p class=ILprg>.class public ctb extends
+[System.WinForms]System.WinForms.TextBox implements ICountDisplay<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field class [.module CountDown.exe]zzz parent<o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class [.module CountDown.exe]zzz
+parent)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0 <o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.TextBox::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">  </span>parent<o:p></o:p></p>
+
+<p class=ILprg>stfld class [.module CountDown.exe]zzz ctb::parent<o:p></o:p></p>
+
+<p class=ILprg>.locals (value class [System.Drawing]System.Drawing.Point point)<o:p></o:p></p>
+
+<p class=ILprg>ldloca<span style="mso-spacerun: yes">  </span>point<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>75<span
+style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>100 <o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.Drawing]System.Drawing.Point::.ctor(int32, int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc<span style="mso-spacerun: yes">   </span>point<o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.TextBox::set_Location(value class
+[System.Drawing]System.Drawing.Point)<o:p></o:p></p>
+
+<p class=ILprg>ldarg parent<o:p></o:p></p>
+
+<p class=ILprg>call instance class [System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void SetCount(int32 count)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>count<o:p></o:p></p>
+
+<p class=ILprg>call class System.String [mscorlib]System.Int32::ToString(int32)<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.TextBox::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance int32 GetCount()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance class System.String ctb::get_Text()<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 [mscorlib]System.String::ToInt32()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.data COUNTER_DEFAULT = int32(3)<o:p></o:p></p>
+
+<p class=ILprg>.class interface abstract public auto autochar ICountDisplay<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method virtual abstract public hidebysig instance void
+SetCount(int32 count) il managed {}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual abstract public hidebysig instance int32
+GetCount() il managed {}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class interface abstract auto autochar public IStartStopEventSource<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method virtual abstract public hidebysig instance void
+add_StartStopEvent(class StartStopEventHandler) il managed {}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public Count extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field int32 count<o:p></o:p></p>
+
+<p class=ILprg>.field static family int32 counterDefault at COUNTER_DEFAULT <o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+ICountDisplay display<o:p></o:p></p>
+
+<p class=ILprg>.method public instance void .ctor(class ICountDisplay display)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void [mscorlib]System.Object::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>display<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+ICountDisplay Count::display<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldsfld<span style="mso-spacerun: yes">  </span>int32
+Count::counterDefault<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void Count::set_Count(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.property int32 Count()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.backing int32 count<o:p></o:p></p>
+
+<p class=ILprg>.get instance int32 get_Count()<o:p></o:p></p>
+
+<p class=ILprg>.set instance void set_Count(int32)<o:p></o:p></p>
+
+<p class=ILprg>.other instance void refresh_Count()<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance int32 get_Count()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>int32
+Count::count<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void set_Count(int32 newCount)
+synchronized<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>newCount<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>int32
+Count::count<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+ICountDisplay Count::display<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>newCount<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ICountDisplay::SetCount(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void refresh_Count()
+synchronized<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+ICountDisplay Count::display<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 ICountDisplay::GetCount()<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>int32
+Count::count<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public Counter extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field class [System.Timers]System.Timers.Timer timer<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+[mscorlib]System.EventHandler timerEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class Count count<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+IStartStopEventSource startStopEventSource<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+StartStopEventHandler startStopEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+TimeUpEventHandler timeUpEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class IStartStopEventSource startStopEventSource,
+class Count count)<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes"> </span>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call instance void [mscorlib]System.Object::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">  
+</span>startStopEventSource<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+IStartStopEventSource Counter::startStopEventSource<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>count<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class Count
+Counter::count<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void Counter::SetupTimer()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void Counter::SetupStartStopEvent()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void SetupTimer()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.r8<span style="mso-spacerun: yes">  </span>1000<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[System.Timers]System.Timers.Timer::.ctor(float64)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+[System.Timers]System.Timers.Timer Counter::timer<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[System.Timers]System.Timers.Timer Counter::timer<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.Timers]System.Timers.Timer::set_AutoReset(bool)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup <o:p></o:p></p>
+
+<p class=ILprg>dup <o:p></o:p></p>
+
+<p class=ILprg>ldvirtftn instance void Counter::OnTick(class System.Object,
+class [mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[mscorlib]System.EventHandler::.ctor(class System.Object, int32)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class [mscorlib]System.EventHandler
+Counter::timerEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[System.Timers]System.Timers.Timer Counter::timer<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler Counter::timerEventHandler<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.Timers]System.Timers.Timer::add_Tick(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance instance void
+SetupStartStopEvent()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup <o:p></o:p></p>
+
+<p class=ILprg>ldftn<span style="mso-spacerun: yes">   </span>instance void
+Counter::OnStartStop(int32)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+StartStopEventHandler::.ctor(class System.Object, int32)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+StartStopEventHandler Counter::startStopEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+IStartStopEventSource Counter::startStopEventSource<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+StartStopEventHandler Counter::startStopEventHandler<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+IStartStopEventSource::add_StartStopEvent(class StartStopEventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method instance void OnStartStop(int32 action)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>action<o:p></o:p></p>
+
+<p class=ILprg>brtrue<span style="mso-spacerun: yes">  </span>start<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+Counter::Stop()<o:p></o:p></p>
+
+<p class=ILprg>br<span style="mso-spacerun: yes">      </span>done<o:p></o:p></p>
+
+<p class=ILprg>start:<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+Counter::Start()<o:p></o:p></p>
+
+<p class=ILprg>done:<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig instance void Start() il managed {<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class Count Counter::count<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void Count::refresh_Count()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class Count Counter::count<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 Count::get_Count()<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ble do_not_start<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld class [System.Timers]System.Timers.Timer Counter::timer<o:p></o:p></p>
+
+<p class=ILprg>call instance void [System.Timers]System.Timers.Timer::Start()<o:p></o:p></p>
+
+<p class=ILprg>br done<o:p></o:p></p>
+
+<p class=ILprg>do_not_start:<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void Counter::fire_TimeUpEvent()<o:p></o:p></p>
+
+<p class=ILprg>done:<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method private hidebysig instance void Stop()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[System.Timers]System.Timers.Timer Counter::timer<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.Timers]System.Timers.Timer::Stop()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot family hidebysig instance void
+OnTick(class System.Object, class [mscorlib]System.EventArgs) il managed {<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class Count
+Counter::count<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 Count::get_Count()<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>sub<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void Count::set_Count(int32)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class Count
+Counter::count<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 Count::get_Count()<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ble time_up<o:p></o:p></p>
+
+<p class=ILprg>br done<o:p></o:p></p>
+
+<p class=ILprg>time_up:<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+Counter::Stop()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void Counter::fire_TimeUpEvent()<o:p></o:p></p>
+
+<p class=ILprg>done:<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.event TimeUpEventHandler TimeUpEvent<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.addon instance void add_TimeUp(class TimeUpEventHandler
+'handler')<o:p></o:p></p>
+
+<p class=ILprg>.removeon instance void remove_TimeUp(class TimeUpEventHandler
+'handler')<o:p></o:p></p>
+
+<p class=ILprg>.fire instance void fire_TimeUpEvent()<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void add_TimeUp(class
+TimeUpEventHandler 'handler') il managed {<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+TimeUpEventHandler Counter::timeUpEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>'handler'<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">   
+</span>class[mscorlib]System.Delegate [mscorlib]System.Delegate::Combine(class
+[mscorlib]System.Delegate, class [mscorlib]System.Delegate)<o:p></o:p></p>
+
+<p class=ILprg>castclass TimeUpEventHandler<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+TimeUpEventHandler Counter::timeUpEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void remove_TimeUp(class
+TimeUpEventHandler 'handler') il managed {ret}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void fire_TimeUpEvent()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+TimeUpEventHandler Counter::timeUpEventHandler<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void TimeUpEventHandler::Invoke()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public BeepingCounter extends Counter<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class IStartStopEventSource
+startStopEventSource, class Count count) il managed {<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">  
+</span>startStopEventSource<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>count<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+Counter::.ctor(class IStartStopEventSource, class Count)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual instance void OnTick(class System.Object object,
+class [mscorlib]System.EventArgs eventArgs)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>object<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>eventArgs<o:p></o:p></p>
+
+<p class=ILprg>call instance void Counter::OnTick(class System.Object, class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup <o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class Count
+Counter::count<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance int32 Count::get_Count()<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>ble<span style="mso-spacerun: yes">  </span>final_beep<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>br beep_it<o:p></o:p></p>
+
+<p class=ILprg>final_beep:<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>beep_it:<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void BeepingCounter::Beep(bool)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void Beep(bool finalBeep)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>finalBeep<o:p></o:p></p>
+
+<p class=ILprg>brtrue<span style="mso-spacerun: yes">  </span>'final'<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0 <o:p></o:p></p>
+
+<p class=ILprg>br<span style="mso-spacerun: yes">      </span>continue<o:p></o:p></p>
+
+<p class=ILprg>'final':<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4<span style="mso-spacerun: yes">  </span>48<o:p></o:p></p>
+
+<p class=ILprg>continue:<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>int8
+User32::MessageBeep(unsigned int32)<o:p></o:p></p>
+
+<p class=ILprg>pop<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class abstract sealed public auto autochar User32 extends
+[mscorlib]System.Object {<o:p></o:p></p>
+
+<p class=ILprg>.method public static pinvokeimpl(&quot;user32.dll&quot; cdecl)
+int8 MessageBeep(unsigned int32) native unmanaged {}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class private sealed auto autochar StartStopEventHandler
+extends [mscorlib]System.MulticastDelegate {<o:p></o:p></p>
+
+<p class=ILprg>.method public specialname rtspecialname hidebysig instance void
+.ctor(class System.Object object, int32 'method') runtime managed {}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public hidebysig instance void
+Invoke(int32 action) runtime managed {}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public hidebysig instance class
+['mscorlib']System.IAsyncResult BeginInvoke(int32 action,class
+['mscorlib']System.AsyncCallback callback, class System.Object object) runtime
+managed {}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot<span style="mso-spacerun: yes"> 
+</span>public hidebysig instance void EndInvoke(class
+['mscorlib']System.IAsyncResult result) runtime managed {}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class private sealed auto autochar TimeUpEventHandler extends
+[mscorlib]System.MulticastDelegate {<o:p></o:p></p>
+
+<p class=ILprg>.method public specialname rtspecialname hidebysig instance void
+.ctor(class System.Object object, int32 'method') runtime managed {}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public hidebysig instance void Invoke()
+runtime managed {}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public newslot hidebysig instance class
+['mscorlib']System.IAsyncResult BeginInvoke(class
+['mscorlib']System.AsyncCallback callback, class System.Object object) runtime
+managed {}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public hidebysig instance void
+EndInvoke(class ['mscorlib']System.IAsyncResult result) runtime managed {}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public ssb extends
+[System.WinForms]System.WinForms.Button implements IStartStopEventSource<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+[mscorlib]System.EventHandler onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+TimeUpEventHandler timeUpEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>class
+StartStopEventHandler startStopEventHandler<o:p></o:p></p>
+
+<p class=ILprg>.field<span style="mso-spacerun: yes">  </span>bool state<span
+style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>.method instance void .ctor(class
+[System.WinForms]System.WinForms.Form parent)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<span style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILprg>call instance void
+[System.WinForms]System.WinForms.Button::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0 <o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>bool ssb::state<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Start&quot;<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Button::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldarg parent<o:p></o:p></p>
+
+<p class=ILprg>call instance class
+[System.WinForms]System.WinForms.Control$ControlCollection
+[System.WinForms]System.WinForms.Form::get_Controls()<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void
+[System.WinForms]System.WinForms.Control$ControlCollection::Add(class
+[System.WinForms]System.WinForms.Control)<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldvirtftn instance void ssb::OnClick(class System.Object, class
+[mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+[mscorlib]System.EventHandler::.ctor(class System.Object, int32)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+[mscorlib]System.EventHandler ssb::onClickEventHandler<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+[System.WinForms]System.WinForms.Button::add_Click(class
+[mscorlib]System.EventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void SetState(int32 newState)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>newState<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>bool ssb::state<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>newState<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>beq stop_state<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Stop&quot;<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ssb::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>br done<o:p></o:p></p>
+
+<p class=ILprg>stop_state:<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">   </span>&quot;Start&quot;<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ssb::set_Text(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>done:<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot public instance void OnClick(class
+System.Object, class [mscorlib]System.EventArgs)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ssb::fire_StartStopEvent()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public instance void AddToTimeUp(class Counter counter)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldftn<span style="mso-spacerun: yes">   </span>instance void
+ssb::OnTimeUp()<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">  </span>instance void
+TimeUpEventHandler::.ctor(class System.Object, int32)<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+TimeUpEventHandler ssb::timeUpEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>counter<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+TimeUpEventHandler ssb::timeUpEventHandler<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">    </span>instance void
+Counter::add_TimeUp(class TimeUpEventHandler)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void OnTimeUp()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ssb::SetState(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.event StartStopEventHandler StartStopEvent<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.addon instance void add_StartStopEvent(class
+StartStopEventHandler 'handler')<o:p></o:p></p>
+
+<p class=ILprg>.fire instance void fire_StartStopEvent()<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void add_StartStopEvent(class
+StartStopEventHandler 'handler')<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>dup<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+StartStopEventHandler ssb::startStopEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg<span style="mso-spacerun: yes">   </span>'handler'<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">   
+</span>class[mscorlib]System.Delegate [mscorlib]System.Delegate::Combine(class
+[mscorlib]System.Delegate, class [mscorlib]System.Delegate)<o:p></o:p></p>
+
+<p class=ILprg>castclass StartStopEventHandler<o:p></o:p></p>
+
+<p class=ILprg>stfld<span style="mso-spacerun: yes">   </span>class
+StartStopEventHandler ssb::startStopEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method virtual newslot instance void fire_StartStopEvent()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>bool ssb::state<o:p></o:p></p>
+
+<p class=ILprg>brtrue<span style="mso-spacerun: yes">  </span>stop_it<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<span style="mso-spacerun: yes">        </span>// start
+counter<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ssb::SetState(int32)<o:p></o:p></p>
+
+<p class=ILprg>br<span style="mso-spacerun: yes">      </span>continue<o:p></o:p></p>
+
+<p class=ILprg>stop_it:<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.0<span style="mso-spacerun: yes">        </span>// stop
+counter<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void ssb::SetState(int32)<o:p></o:p></p>
+
+<p class=ILprg>continue:<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>class
+StartStopEventHandler ssb::startStopEventHandler<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>ldfld<span style="mso-spacerun: yes">   </span>bool ssb::state<o:p></o:p></p>
+
+<p class=ILprg>callvirt instance void StartStopEventHandler::Invoke(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Let us first start with the file
+countdown.il. We will proceed extremely cautiously, in a step by step manner,
+so that you can understand how to write a large IL program. Fields will be explained
+only just prior to using them.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We start with the following
+directives viz assembly, assembly extern, file and module. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In aaa.dll, class zzz extends
+from the class Form as it is a Winforms application. The entrypoint method is
+Main. An object that looks like zzz is created using newobj and it is then
+placed on the stack. Using the function Run, that accepts a parameter that
+looks like Form, a window is displayed. This function keeps executing until the
+user closes the window. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>But before this, the constructor
+of class zzz puts in a lot of hard work.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The constructor of class zzz
+first calls the constructor of class Form. It is necessary to call the base
+class constructor here as there may be some initial routine to be executed. Why
+take a chance? <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>While calling the constructor of
+the base class or super class, the this pointer is placed on the stack, unlike
+the instruction newobj.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now to place a button on the
+screen:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+yes"> </span>A new object that looks like the button class ssb is created. Even
+though the constructor of this class needs only one parameter, the this pointer
+is placed twice. This is so because the reference of the ssb object is to be
+stored in a field button using the stfld instruction. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A quick look at the code of the
+constructor of class ssb present in aaa.dll at runtime and file aaa.il.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The class ssb implements the
+interface IStartStopEventSource. It is also derived from the Button class. This
+interface has one function called add_StartStopEvent. The question that comes
+to mind is: Why should we have an interface at all? The only advantage of
+having it is that, an ssb object can now be referred to as an ssb object, or a
+Button class or an interface. Any object that looks like IStartStopEventSource
+will now be<span style="mso-spacerun: yes">  </span>supplied with an ssb
+object. This too can be overridden. Since ssb is derived from Button, it
+contains all the functionality of a button object. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>There is no bool data type in
+IL. This data type is converted to a variable that will store either a 0 or 1.
+Thus, the field state indicates whether the timer is on or off. As its value is
+set to zero, the timer is currently off.<span style="mso-spacerun: yes"> 
+</span>The label of the button is set to Start. Then using the Add function,
+the button is registered with Winforms, to be displayed later. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>With every click on the button,
+the function OnClick from the ssb class is to be called. The function add_Click
+is used to accomplish this task. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The next call made is to the
+constructor of the ctb class and this value is stored in the field counterBox
+within the class zzz. The class ctb represents a text box in the program. It is
+derived from the class TextBox and it implements the interface ICountDisplay.
+This interface has two members, SetCount and GetCount, whose job is to deal
+with the number displayed in the text box. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We seem to be digressing from
+the topic. Back again, the function set_Location from the TextBox class is
+used<span style="mso-spacerun: yes">  </span>to position the text box on the
+screen and eventually the text box too is registered<span style="mso-spacerun:
+yes">  </span>with Winforms.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><span style="mso-spacerun:
+yes"> </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Next, an object, an instance of
+the class Count is created by passing the constructor a textbox reference,
+disguised as ICountDisplay. This object is stored in the local count. The class
+Count is a stand-alone class, since it is derived only from Object. Every class
+may not explicitly derive from Object <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A field display, that looks like
+interface ICountDisplay is created and the textbox reference is saved in it.
+Thus, the class Count uses this field, display, to get and set the text box at
+will, since it now holds a reference to it. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have also created a field
+called counterDefault, that is passed a value directly from the data section of
+the PE file. The .data directive uses the same words after the at, i.e.
+COUNTER_DEFAULT, which we have initialized to the value 3. We could have also
+used the instruction ldc to initialize this variable. We put its current value
+3 on the stack and call the function set_Count from the class Count itself. The
+number 3 is passed as a parameter newCount, to this function.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>There is an int32 type field
+called count in the class Count. At first the parameter newCount is saved in
+this field and then the reference to the text box is stored in the field
+display. Eventually, the function SetCount from class ctb is called; to be
+precise it is ICountDisplay. This displays a number 3 in the textbox. The field
+count stores the current displayed value. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thus, function set_Count does
+little work. It internally<span style="mso-spacerun: yes">  </span>calls
+SetCount from class ctb to do the real work. The function SetCount first loads
+the parameter 3, passed to it, on the stack. It then converts it into a string
+using the static function ToString from the int class, which places the string
+on the stack. This string on the stack is used up by the set_Text function from
+the TextBox class, to actually display the string in the text box.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>While we are at it, let us also
+understand the corresponding get functions. The function get_Count from the
+Count class simply returns the value of the field count. GetCount from class
+ctb, first uses function get_Text to place the string stored in the text box on
+the stack. Then, the static function ToInt32 from the String class is called to
+convert it into a number. In either case, the value is left on the stack. The
+last function in class Count is refresh_Count. This function first places the
+field display on the stack, and directly calls the virtual function GetCount
+from the class ctb. The return value is stored in the field count. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The directive property is for
+illustrative purposes only. It is used by tools to document the property. To
+refresh your memory, in IL, a property is simply a function, but in other
+languages like C#, properties have much more significance and make programming
+simpler. The get and set directives have already been explained earlier. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The backing directive denotes a
+field that will store the value of the property. In this case, we use count.
+The other directive is for functions that are part of a property, but do not
+cleanly fit in a get set world, like refresh_Count. As mentioned earlier, the
+directive property is optional.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>An object that looks like
+BeepingCounter is the next in sequence to be created. Two parameters are given
+to the constructor, one a button and the other a variable that represents a
+count. The return value is held in a Counter field called counter. Note the
+type is not a BeepingCounter.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The class BeepingCounter is
+derived from Counter, which in turn is derived from Object. In the constructor
+of BeepingCounter, both the entities: one is the button or
+IStartStopEventSource interface and the other being count is loaded on the
+stack. The constructor in the base class Counter is the subsequent routine to
+be executed. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the constructor:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A field called
+startStopEventSource stores the button reference and count stores the count
+reference. The function SetupTimer from the Counter class is called that
+creates a timer object. The constructor of this object accepts the timer click
+as a float parameter. This timer object is stored in a field called timer. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The property set_AutoReset to
+set to true to ensure that a function called OnTick is called when the timer is
+enabled. This is done by the function add_Tick of the timer class. All this
+code has been explained in detail in the earlier programs.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The last function that this
+constructor calls is SetupStartStopEvent, from the Counter class. In this function,
+at first the address of a function called OnStartStop is placed on the stack. A
+new object is created that is an instance of a class
+StartStopEventHandler.<span style="mso-spacerun: yes">  </span>This class is
+derived from MulticastDelegate and is passed the address of a function that is
+to be executed whenever the function Invoke is called. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This class is nothing but a
+delegate and contains no code at all, since all the code of the functions is to
+be supplied by the runtime. Thus, invoke will call the function OnStartStop.
+The field startStopEventHandler now contains the reference of this delegate.
+Two more parameters are placed on the stack, a button reference to call a
+function add_StartStopEvent from class ssb or the interface it extends and the
+next is a a parameter that the event handler just created above.<span
+style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The function add_StartStopEvent
+registers the earlier function with the runtime. If you recollect, in the
+delegate chapter we had explained the importance of the function Combine. A
+reserved word, when it is to be used as a parameter has to be placed in<span
+style="mso-spacerun: yes">  </span>single inverted quotes, as in the case of
+handler. It is casted to the correct class and stored in a field
+startStopEventHandler within ssb. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To avoid any more confusion,
+remember that a delegate simply calls a function indirectly. Thus, using this
+reference, the function OnStartStop can be called. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The last act of the zzz
+constructor is to place the button reference on the stack and call function
+AddToTimeUp with a counter reference as a parameter. In this function, the address
+of a function OnTimeUp is placed on the stack. Then an object is created which
+is an instance of TimeUpEventHandler. This is a class derived from
+MulticastDelegate, thus incorporating two delegates. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The function OnTimeUp is to be
+called when Invoke is executed. This delegate is stored in field
+TimeUpEventHandler in the ssb class. Finally add_TimeUp function is called with
+a counter as a parameter. This function completes the delegate handling by
+calling the Combine function and storing the reference in field
+TimeUpEventHandler. Two functions have been registered so far. Every delegate
+that is added, can also be removed. The function remove_TimeUp removes the
+delegate.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Like a property, an event also
+has a directive that has effect on compilers and tools only An event called
+TimeUpEvent that is an instance of class TimeUpEventHandler is available which
+has the usual .addon and .removeon directives and also a fire directive. The
+latter one supplies information as to<span style="mso-spacerun: yes"> 
+</span>which function would be called by invoke. This is used for documentation
+purposes only. All the code that gets called, sets up the actual framework. The
+action starts only when the button is clicked on. On doing so, the function
+OnClick from class ssb gets called.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In function OnClick, another
+function fire_StartStopEvent is called from the same class. In this function, a
+check on the value of the field called state is maded. If you flip back a few
+pages, it was given an initial value of zero or false. As its value is false,
+the brtrue is not executed and a function called Set_State is called from class
+ssb with the value 1 as a parameter. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the function, the parameter
+received becomes the new value of field state, whose value now changes from 0
+to 1. This value and zero are placed on the stack and the instruction beq is
+executed.<span style="mso-spacerun: yes">  </span>A jump is made to the label
+if the two parameters are equal or, in other words, the value of state is zero.
+Being unequal for the moment, the string Stop is placed on the stack and
+set_Text is called to change the label to Stop. The course proceeds to the
+label done. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A round about turn to the
+function fire_StartStopEvent and back to the label continue. The delegate
+startStopEventHandler and the state of the button i.e. enabled or 1, is placed
+on the stack and the Invoke function is called. This calls the function
+OnStartStop in the class Counter. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This function checks the value
+of the parameter passed to it. Since the value of field state is 1 on the
+stack, the instruction brtrue jumps to the label start: and calls the function
+Start. In other circumstances, the function Stop is called. Thus, OnStartStop
+is called through Invoke and it will in turn either call the functions Start or
+Stop, depending upon the parameter value passed, either a 1 or 0, respectively.
+<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the function Start,
+refresh_Count refreshes the counter giving it a new value. If the value is less
+than zero, the program is to be terminated, so, the label do_not_start: is
+executed where the function fire_TimeUpEvent is called that ceases everything. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Presently, the timer is fired,
+so that the function OnTick is called every 1000 milliseconds. To achieve this,
+the function Start is called from the timer class.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The function OnTick is called
+from the class BeepingCounter and not from the class Counter. Next, the
+function OnTick is called from the class Counter. In function OnTick, which is
+called very second, the new value of the counter is displayed. This is achieved
+using the get_Count function. The value is decremented by 1 and set_Count
+function restores this new value back to the variable. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A check is performed on the
+value of count using ble. When zero, the timer is stopped by calling the
+function Stop from the timer class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The class BeepingCounter. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The function Beep is called
+where the parameter is given to change the occurrence of beep sound. Obviously
+it should beep only once and terminate when the value of count is 0. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the function Beep, a value of
+0 or 48 is placed , depending upon whether the parameter is 0 or 1. Then, the
+actual MessageBeep function from class User32 is called for. This class is an
+abstract class and has a static function MessageBeep that is of type
+pinvokeimpl. This specifies that the code of this function is in user32.dll.
+Finally, the value returned by get_Count evaluates to zero. This will result in
+a call to Stop of the timer, so that the function OnTick is not called
+thereafter. The OnTimeUp function calls function SetState with a value of 0.
+This triggers off the shutdown procedure as explained above. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This is the most exhaustive
+explanation of any program we have given so far.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

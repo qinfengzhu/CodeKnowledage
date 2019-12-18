@@ -1,0 +1,2218 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap1_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap1_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Metadata Tables - 1. The PE File Format</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>5</o:Revision>
+  <o:TotalTime>96</o:TotalTime>
+  <o:Created>2002-05-14T20:11:00Z</o:Created>
+  <o:LastSaved>2002-02-18T20:14:00Z</o:LastSaved>
+  <o:Pages>16</o:Pages>
+  <o:Words>5823</o:Words>
+  <o:Characters>33193</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>276</o:Lines>
+  <o:Paragraphs>66</o:Paragraphs>
+  <o:CharactersWithSpaces>40763</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:8.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:10.0pt;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:24.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-indent:24.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:14.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.figure, li.figure, div.figure
+	{mso-style-name:figure;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.figure1, li.figure1, div.figure1
+	{mso-style-name:figure1;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName, li.ChapName, div.ChapName
+	{mso-style-name:"Chap Name";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName1, li.ChapName1, div.ChapName1
+	{mso-style-name:"Chap Name1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.basetextofthebook, li.basetextofthebook, div.basetextofthebook
+	{mso-style-name:"base text of the book";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.basetextofthebook1, li.basetextofthebook1, div.basetextofthebook1
+	{mso-style-name:"base text of the book1";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ChapName0, li.ChapName0, div.ChapName0
+	{mso-style-name:ChapName;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.DOSPROMPT, li.DOSPROMPT, div.DOSPROMPT
+	{mso-style-name:"DOS PROMPT";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ChapIntro, li.ChapIntro, div.ChapIntro
+	{mso-style-name:"Chap Intro";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:42.65pt;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;}
+p.PageNo, li.PageNo, div.PageNo
+	{mso-style-name:"Page No";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Headline, li.Headline, div.Headline
+	{mso-style-name:Headline;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Hangingindent, li.Hangingindent, div.Hangingindent
+	{mso-style-name:"Hanging indent";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:12.0pt;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Subhead1, li.Subhead1, div.Subhead1
+	{mso-style-name:"Subhead 1";
+	mso-style-parent:Headline;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:18.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Subhead2, li.Subhead2, div.Subhead2
+	{mso-style-name:"Subhead 2";
+	mso-style-parent:"Subhead 1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal><img width=64 height=48 id="_x0000_i1025" src=bpb.gif></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><span style='font-size:24.0pt'>1. The PE File Format</span></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This is a complex book, which inquires into the quintessence of
+the executable file generated by the compiler of any product in the .Net world.
+The programs that form the core of this book have been written using the C#
+language. Therefore, the reader is expected to be soundly conversant with the
+C# programming language. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Before exploring the main concept of MetaData, which is
+allegedly the mainstay of the .Net world, we need to comprehend the Portable
+Executable (PE) file format. Metadata is one of the pathways of ushering in the
+PE file. The PE file is acquainted with the .Net infrastructure.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We have not put forth a protracted dissertation on MetaData
+rightaway, since this chapter primarily focuses on the unveiling of the
+Portable Executable file format.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>To begin with, create a directory named mdata in the root
+drive. Within it, create a new file named b.cs with the following contents:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz<span style="mso-spacerun: yes">  </span></p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;hello&quot;);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>&gt;csc b.cs</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>When the file b.cs is compiled using the csc command, it
+results in the generation of an executable file named b.exe. Our focal emphasis
+here is laid on acquiring requisite insight into the bytes that constitute this
+executable file. To discern this file, another program named a.cs is
+obligatory, which steals a look into this file and generates the output in
+different sections.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>byte a,b;</p>
+
+<p class=ILprg>a = r.ReadByte();</p>
+
+<p class=ILprg>b = r.ReadByte();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;{0}{1}&quot; , (char)a , (char)b);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>MZ</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>On running the exe file generated by the compiler, an output of
+MZ is displayed. Stipulated below is a detailed account of how and why this
+occurs. So, let us venture forth and explore the intricacies of this exe file. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The .Net world provides the framework code in the form of
+classes. Thus, in order to handle files, there exists a FileStream class in the
+set of File handling classes. The constructor of this class takes two
+parameters: The first parameter is the name of the file that is to be worked
+on, viz. b.exe. The second parameter is an enum, which apprises the constructor
+about the action that is to be performed on the file.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>For instance, it conveys whether the file is to be opened for
+reading or writing, or both, or for appending, etc. Since our intent is to read
+from the file, the 'Open' member of the enum FileMode is employed. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Once the file has been opened, we would like to read from the
+file. This could be effected either one byte at a time or one int at a time,
+i.e. 4 bytes. However, there are no functions in the FileStream class that
+extend this flexibility. Therefore, we employ another class, i.e. the
+BinaryReader class, which is equipped to read one byte, or one short, or one
+int at a time. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>At the most primitive level, a file merely contains numbers
+ranging from 0 to 255. Therefore, one byte is adequate for storing a value.
+Using the ReadByte method from the BinaryReader class, two bytes are read, one
+at a time and stored in byte variables a and b, respectively. Prior to printing
+the values, the variables are cast to char, so that the ASCII equivalent is
+displayed in place of numbers. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first two bytes of any file in the Microsoft world are M
+and Z. The presence of these two bytes has a historical significance. Before
+the world of Windows descended upon us, there existed Microsoft's first
+operating system named DOS. It was actually called QDOS, which aptly stood for
+'Quick and Dirty Operating System'. Every file under DOS started with a series
+of bytes known as a header, which described the contents stored in the residual
+portion of the file. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Some form of identification was deemed imperative to determine
+the type of file. So, the person who designed the Memory Management System of
+DOS, decided to place the initials of his name i.e. MZ, as the magic number of
+the file. Along the same lines, every file in the Java programming language
+commences with the magic code of 'CAFE BABE', in honor of those who served
+coffee to the programmers working late in the night. This concept was promptly
+incorporated by the people who designed the MetaData, since they obviously did
+not wish to lag behind.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>You are sure to wonder as to why we are so persistent about
+DOS, when we should actually be working under Windows! </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The tacit reality is that, every executable program under
+Windows eventually boils down to being a DOS program. It carries the same
+header as does a DOS program. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=437 height=54 id="_x0000_i1028" src="chap1\1.gif"></p>
+
+<p class=ILbase><span style='color:black'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:black'>We have downloaded and installed a
+program called UltraEdit-32 to view the contents of the file in the hex mode.
+On opening the file b.exe, in this program we see a screen which shows the hex as
+well as the character equivalent of the hex number. In screen 1.1 we have shown
+you the first few bytes of this file and it clearly portrays<span
+style="mso-spacerun: yes">  </span>MZ as the starting characters in the file.</span></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>With the release of the Windows OS, Microsoft introduced a new
+file format called the PE or Portable Executable file format, which is
+radically at variance with the file format used under DOS. Since Microsoft was
+uncertain as to whether Windows would gain popular acceptance as an Operating
+System or not, they left the file format under DOS unaltered. This resulted in
+the concurrent existence of two file formats. Nobody could have foreseen at
+that stage, that Windows would subsequently evolve into being the most
+domineering operating system in the world. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>It was a potent probability that a user would run the Windows
+PE file under the DOS environment. Microsoft realized that in such a situation,
+the display of an annoying error message could repulse the user from working
+with the Windows Operating System. Therefore, it mandated that every PE file be
+a valid DOS program. However, when such a program is executed under DOS, it
+displays a polite message to the user before exiting gracefully, wherein, the
+user is notified that the program in effect, is actually a Windows program.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A fact to be borne in mind is that this concern is flaunted
+only for a DOS user, ignoring the fact that there are only a handful of DOS
+programmers remaining in the world today.</p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>Console.WriteLine(s.Position);</p>
+
+<p class=ILprg>s.Seek(60, SeekOrigin.Begin);</p>
+
+<p class=ILprg>Console.WriteLine(s.Position);</p>
+
+<p class=ILprg>int i = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(i);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;0x&quot;+i.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.WriteLine(s.Position);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>0</p>
+
+<p class=ILprg>60</p>
+
+<p class=ILprg>128</p>
+
+<p class=ILprg>0x80</p>
+
+<p class=ILprg>64</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=434 height=73 id="_x0000_i1029" src="chap1\2.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Position property displays the current location within a
+file. A file that is recently opened has the position of 0, which signifies
+that it is positioned at the beginning of the file. To jump to any other part
+of the file, the Seek method in the FileStream object has to be pressed into
+action. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This method takes two parameters:</p>
+
+<p class=ILbullets>•<span style='mso-tab-count:1'>   </span>The first parameter
+is a number or an offset, which is a position determined by the second
+parameter. </p>
+
+<p class=ILbullets>•<span style='mso-tab-count:1'>   </span>The second
+parameter value must be a member from the enum SeekOrigin. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Begin member in this enum object refers to the number of
+positions to be moved from the beginning of the file. Thus, s.Seek(60, SeekOrigin.Begin);<span
+style="mso-spacerun: yes">  </span>signifies moving 60 bytes away from the
+beginning of the file.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The other two values of the enum are End, which denotes the end
+of the file, and Current, which denotes the current position. The first
+parameter is an offset from the position determined by the enum member. This
+value may either be positive or negative, if and when the enum value is
+Current. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Seek function makes the 60th position active. In technical
+terms, the seek function positions the file pointer at the 60th byte in the
+file. This is established by using the Position property.</p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span></p>
+
+<p class=ILbase>The 60th byte in the file belongs to the DOS header, where the
+4 consecutive bytes, or an int, contain a value signifying the beginning of the
+PE header. To extract this value, the ReadInt32 method is used. The value
+returned by the function is 128,0x80, which is stored in the variable i. This
+attests the fact that the PE header begins at an offset of 128.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The last WriteLine also proves the fact that after reading
+bytes from the file, the file pointer moves ahead accordingly. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We will not ponder over the other bytes of the DOS header,
+since they apply to DOS and not to Windows.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(60, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int i = r.ReadInt32();</p>
+
+<p class=ILprg>s.Seek(i, SeekOrigin.Begin);</p>
+
+<p class=ILprg>byte a,b,c,d;</p>
+
+<p class=ILprg>a = r.ReadByte();</p>
+
+<p class=ILprg>b = r.ReadByte();</p>
+
+<p class=ILprg>c = r.ReadByte();</p>
+
+<p class=ILprg>d = r.ReadByte();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;{0}{1} {2} {3}&quot;,(char)a, (char)b,
+c,d);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=437 height=144 id="_x0000_i1030" src="chap1\3.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>PE 0 0</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>After jumping to the 128th byte i.e. 0x80 in the file, the
+program reads the next 4 bytes individually and stores them in byte variables. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The value extracted from this location is PE 00, which is the
+magic number or signature of a PE file. If any of the magic numbers are
+changed, it will result in the operating system generating an error.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FileStream s = new FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(128 + 4, SeekOrigin.Begin);</p>
+
+<p class=ILprg>short machine = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Machine {0}&quot;,
+machine.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>short sections = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Sections {0}&quot;, sections);</p>
+
+<p class=ILprg>int time = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Date Time Stamp {0}&quot; ,
+time.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int pointer = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Pointer {0}&quot; ,
+pointer.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int symbols = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Symbols {0}&quot; , symbols
+.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int headersize= r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Size of Optional Header {0}&quot; ,
+headersize);</p>
+
+<p class=ILprg>int characteristics = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Characteristics<span
+style="mso-spacerun: yes">  </span>{0}&quot; ,
+characteristics.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Machine 14C</p>
+
+<p class=ILprg>Sections 3</p>
+
+<p class=ILprg>Date Time Stamp 3C82927f</p>
+
+<p class=ILprg>Pointer 0</p>
+
+<p class=ILprg>Symbols 0</p>
+
+<p class=ILprg>Size of Optional Header 224</p>
+
+<p class=ILprg>Characteristics<span style="mso-spacerun: yes">  </span>10E</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This program displays the PE header, which follows the PE
+signature at byte 128. Microsoft ensured that the PE file under any Windows
+operating system running on different types of processor chips, remained
+consistent. Therefore, they have documented every byte in the header of the
+executable file. This is precisely how we were able to ascertain what the
+header comprised of. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=440 height=61 id="_x0000_i1031" src="chap1\4.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first short that consists of two bytes, refers to the
+machine or the processor. A value of 0x014C denotes the Intel family. Other
+valid values are 0x162 for MIPS R3000 , 0x166 for MIPS R4000, and 0x183 for DEC
+Alpha AXP. The 64 bit Intel processor has a value of 0x200.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>An executable file stores different entities. Three such
+entities are global data from our programs, actual code, and resources like
+menus, graphic files etc. The PE file assigns different areas to the above
+distinct entities. The varied locations assigned to the entities are termed as
+sections. The machine type is followed by a short data type, which contains the
+number of sections that the file embodies. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This is followed by the date and time at which the PE file was
+created. The number is stored in a long, which contains the number of seconds
+that have elapsed since 1st January 1970 Greenwich Mean Time (GMT). There are
+functions aplenty that can translate the above number into a human readable
+date.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The PE file format also encloses the OBJ, which is a compendium
+of object files created by the C/C++ compilers. The obj file normally contains
+functions, which in technical jargon are known as symbols. However, since we
+are dealing with an exe file at this stage, the symbols information has been
+zeroed out.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>After this structure or header comes another header called the
+Image Optional Header. Its size is 224 bytes for 32 bit files. For 64 bit
+files, it has a size of 240 bytes. This value is stored in the PE header after
+the symbols count. As per the documentation, this value may change, but we have
+never encountered a PE file with the optional header of a size larger than 224
+bytes. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The last part of the PE header is a field called
+characteristics. The value is displayed in a hex format using the ToString
+function. We will elucidate the characteristics field after a short diversion. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>Bit-Wise Anding</u></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(7 <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0a);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>2</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The AND operator (&amp;) requires the two compared values to be
+logically true, in order that the answer may be True. Here, in lieu of values,
+the entities that are checked are each and every individual bits in the byte. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=446 height=222 id="_x0000_i1032" src="chap1\5.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>For a value of 7, the first three bits are 1, whereas, for the
+letter A, the second and fourth bits are 1, i.e. these bits are set on. </p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span></p>
+
+<p class=ILbase>On anding the two values of 7 and 0x0a, only the second bit
+position is switched on. Therefore, the answer is 2.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next program uses the and operator extensively to explain
+the value that is contained in the characteristics field of the PE Header.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(128 + 4 , SeekOrigin.Begin);</p>
+
+<p class=ILprg>s.Seek(2 + 2 + 4 + 4 + 4 + 2 , SeekOrigin.Current);</p>
+
+<p class=ILprg>int characteristics = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Characteristics<span
+style="mso-spacerun: yes">  </span>{0}&quot; ,
+characteristics.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>int i = characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x001 ;</p>
+
+<p class=ILprg>if (i == 1)</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Relocs Stripped {0}&quot; , i);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x002) == 2 )</p>
+
+<p class=ILprg>Console.Write(&quot;Executable Image &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x004) == 0x004 )</p>
+
+<p class=ILprg>Console.Write(&quot;Line Numbers Stripped &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x008) == 0x008 )</p>
+
+<p class=ILprg>Console.Write(&quot;Local Symbols Stripped &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x010) == 0x010 )</p>
+
+<p class=ILprg>Console.Write(&quot;Trim Local Set &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x020) == 0x020 )</p>
+
+<p class=ILprg>Console.Write(&quot;Can Handle Address Larger than 2Gb &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x080) == 0x080 )</p>
+
+<p class=ILprg>Console.Write(&quot;Bytes Reversed &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x0100) == 0x0100 )</p>
+
+<p class=ILprg>Console.Write(&quot;32 Bit Machine &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x0200) == 0x0200 )</p>
+
+<p class=ILprg>Console.Write(&quot;Debugging Info Stripped &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x0400) == 0x0400 )</p>
+
+<p class=ILprg>Console.Write(&quot;Removable Media Swap &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x0800) == 0x0800 )</p>
+
+<p class=ILprg>Console.Write(&quot;Net Swap &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x1000) == 0x1000 )</p>
+
+<p class=ILprg>Console.Write(&quot;System File &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x2000) == 0x2000 )</p>
+
+<p class=ILprg>Console.Write(&quot;Dll &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x4000) == 0x4000 )</p>
+
+<p class=ILprg>Console.Write(&quot;Uni-Processor Only &quot;);</p>
+
+<p class=ILprg>if ( (characteristics<span style="mso-spacerun: yes">  </span><span
+style='font-family:"Bookman Old Style"'>&amp;</span> 0x8000) == 0x8000 )</p>
+
+<p class=ILprg>Console.Write(&quot;High Bytes Reversed&quot;);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg style='margin-left:0in'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=435 height=69 id="_x0000_i1033" src="chap1\6.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Characteristics<span style="mso-spacerun: yes">  </span>10E</p>
+
+<p class=ILprg>Executable Image Line Numbers Stripped Local Symbols Stripped 32
+Bit Machine </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the above example, we have hard-coded most of the values. Since
+we have already unearthed the DOS header and the location of the PE signature,
+we shall not write code for it. Instead, using constant values, we shall
+directly jump to the position that is of significance to us. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>After reaching the PE header, we move a few bytes ahead to
+arrive at the characteristics field. This field is 16 bits wide and it
+represents the nature of the file. The file can be an executable file having
+the extension of .exe, or a library file having the extension of .dll.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>To access information in a swifter and more effective manner,
+bit-wise ANDing is incorporated. Here, every bit of the characteristic field
+represents a single property. By performing a check as to which bits are on,
+the properties pertaining to the file can be ascertained. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In bit-wise operations, when we AND a bit with a value of 1, we
+obtain the original bit. However, when we AND a bit-wise with a 0, the
+resultant value is 0. Thus, to check whether a certain bit is on or not, a
+bit-wise AND operation is executed with a number pertaining to the bit. All the
+other bits are set off. If the resultant answer is 0, it indicates that the
+original bit was off. If the answer is the same as the number that the bit has
+been ANDed with, it means that the bit was on. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The characteristics field is bitwise ANDed with a value, to
+ascertain whether the bits are on or not. If the answer returned is 1, it
+signifies that the bit is on. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Therefore, in the 'if' statement, a check is performed to
+determine the value of the variable i. If it is 1, then it is assumed that the
+particular property is present. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the subsequent examples, we simply shun the use of the
+variable i, and use the expression in the 'if' statement itself. Here, the
+brackets are imperative since the &amp; operator has a lower precedence than
+the == operator.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Let us now analyse each one of these bits individually.</p>
+
+<p class=ILbase>The first bit in the characteristics field pertains to
+relocation. The next bit denotes whether the file is an executable file or not.
+Since the bit is on, it signifies that the file is an executable file.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next bit verifies whether the line numbers have been
+stripped from the file or not. If they have been, it shrinks the size of the
+file. This bit is used mainly for debugging purposes. Since the value is on, it
+proves that the line numbers have been stripped off from the file. The local
+symbols have also been divested off from the file. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Working Set has not been aggressively stripped off from the
+file. </p>
+
+<p class=ILbase>This file is incapable of handling memory that has more than 2
+giga bytes of addresses or memory locations. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The bytes when stored can be reversed. This handles the Little
+endian Big endian problem, wherein it is determined whether the small byte is
+stored first or second. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next bit determines if the file has been created on a
+32-bit machine. The subsequent bit checks for the presence of debugging
+information. This debugging information augments the size of the file. However,
+our file has no debugging information stored in it. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next two bits indicate whether the exe file is on a
+removable media or on the net. If it is on the net, it should be copied from
+the media and then executed from the swap file. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The following two bits indicate whether the file is a System file
+or a DLL. This is the only dissimilarity between an exe file and a dll file. </p>
+
+<p class=ILbase>This is followed by a flag, which is indicative of whether the
+file should be run on a uni-processor machine or a multi-processor machine. We
+have not imposed any such restrictions. The last bit is the bytes reversal bit.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>As per the specifications quoted in Partition II 24.2.2.1, a
+.Net file has three flags on, which imply that the Line Numbers, the Local
+symbols and the Debug information have been stripped off. The specifications
+are available as a PDF file on the ECMA site.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main ()<span style="mso-spacerun: yes"> 
+</span>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(128+4+20, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int magic = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Magic Number {0}&quot; ,
+magic.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>int major = r.ReadByte();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Major Linker Version {0}&quot; , major);</p>
+
+<p class=ILprg>int minor = r.ReadByte();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Minor Linker Version {0}&quot; , minor);</p>
+
+<p class=ILprg>int sizeofcode = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Size of code {0}&quot; , sizeofcode);</p>
+
+<p class=ILprg>int sizeofdata = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Size of Data {0}&quot; , sizeofdata );</p>
+
+<p class=ILprg>int sizeofudata = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Size of Data {0}&quot; , sizeofudata );</p>
+
+<p class=ILprg>int entrypoint = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Memory Address {0}&quot; ,
+entrypoint.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int baseofcode = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Base of Code {0}&quot; , baseofcode
+.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int baseofdata = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Base of Data {0}&quot; , baseofdata
+.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int ImageBase = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Image base {0}&quot; , ImageBase
+.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int sectiona= r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Section Alignment {0}&quot; ,
+sectiona.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int filea = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;File Alignment {0}&quot; , filea
+.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int majoros = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Major Operating System Version {0}&quot;
+, majoros .ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int minoros = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Minor Operating System Version {0}&quot;
+, minoros.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int majorimage = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Major Image Version {0}&quot; ,
+majorimage.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int minorimage = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Minor Image Version {0}&quot; ,
+minorimage.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int majorsubsystem= r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Major Subsystem Version {0}&quot; ,
+majorsubsystem.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int minorsubsystem = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Minor Subsystem Version {0}&quot; ,
+minorsubsystem.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int verison = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Version {0}&quot; ,
+verison.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int imagesize = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Image Size {0}&quot; , imagesize );</p>
+
+<p class=ILprg>int sizeofheaders= r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Size of Headers {0}&quot; ,
+sizeofheaders);</p>
+
+<p class=ILprg>int checksum = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;CheckSum {0}&quot; , checksum );</p>
+
+<p class=ILprg>int subsystem = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Subsystem {0}&quot; , subsystem );</p>
+
+<p class=ILprg>int dllflags = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Dll flags {0}&quot; , dllflags );</p>
+
+<p class=ILprg>int stackreserve = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Stack Reserve {0}&quot; ,
+stackreserve.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int stackcommit = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Stack Commit {0}&quot; , stackcommit.ToString(&quot;X&quot;)
+);</p>
+
+<p class=ILprg>int heapreserve = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Heap Reserve {0}&quot; ,
+heapreserve.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int heapcommit = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Heap Commit {0}&quot; ,
+heapcommit.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int loader = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Loader flags {0}&quot; ,
+loader.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>int datad = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Number of Data Directories {0}&quot; ,
+datad);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Magic Number 10B</p>
+
+<p class=ILprg>Major Linker Verison 6</p>
+
+<p class=ILprg>Minor Linker Verison 0</p>
+
+<p class=ILprg>Size of code 1024</p>
+
+<p class=ILprg>Size of Data 1536</p>
+
+<p class=ILprg>Size of Data 0</p>
+
+<p class=ILprg>Memory Address 22BE</p>
+
+<p class=ILprg>Base of Code 2000</p>
+
+<p class=ILprg>Base of Data 4000</p>
+
+<p class=ILprg>Image base 400000</p>
+
+<p class=ILprg>Section Alignment 2000</p>
+
+<p class=ILprg>File Alignment 200</p>
+
+<p class=ILprg>Major Operating System Version 4</p>
+
+<p class=ILprg>Minor Operating System Version 0</p>
+
+<p class=ILprg>Major Image Version 0</p>
+
+<p class=ILprg>Minor Image Version 0</p>
+
+<p class=ILprg>Major Subsystem Version 4</p>
+
+<p class=ILprg>Minor Subsystem Version 0</p>
+
+<p class=ILprg>Version 0</p>
+
+<p class=ILprg>Image Size 32768</p>
+
+<p class=ILprg>Size of Headers 512</p>
+
+<p class=ILprg>CheckSum 0</p>
+
+<p class=ILprg>Subsystem 3</p>
+
+<p class=ILprg>Dll flags 0</p>
+
+<p class=ILprg>Stack Reserve 100000</p>
+
+<p class=ILprg>Stack Commit 1000</p>
+
+<p class=ILprg>Heap Reserve 100000</p>
+
+<p class=ILprg>Heap Commit 1000</p>
+
+<p class=ILprg>Loader flags 0</p>
+
+<p class=ILprg>Number of Data Directories 16</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Close on the heels of the 20-byte PE header comes the Image
+Optional header, which is 224 bytes large. The header is optional only in the
+case of obj and lib files. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first two bytes are magic numbers. A value of 10b signifies
+a 32-bit header, while a value of 20b signifies a 64-bit header, which is what
+we aspire to graduate to some day. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the days preceding .Net, the compiler and the linker were
+separate products. The linker worked with diverse programming languages, while the
+compiler was language specific. However, the .Net world has merged the next two
+bytes of the Image Optional Header to contain the version number. Earlier, the
+major version and the minor version of the product that created this file were
+stored. This number normally denotes the version of Visual Studio that created
+this file.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next int specifies the Size of the code field. This field,
+as the name suggests, indicates the size of the code present in all the
+sections. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Following it are two fields that embody the sizes of the
+initialized and un-initialized data, respectively. In most cases, the size of
+the un-initialized data is zero.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next int refers to the memory location containing the first
+byte of the executable code at runtime. This is called the address of the entry
+point. In the case of dll files, its value is normally zero. </p>
+
+<p class=ILbase>The next int points to the memory location, wherein the section
+that is carrying code shall be loaded. Succeeding this is the memory location
+for the data section. You may notice that the code section begins at 0x2000
+bytes from the loaded position of the file, and the data section begins at
+0x4000 bytes from the start. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Image base stores the location in memory where the PE file
+is loaded. All PE files are standardized in that they are all loaded at memory
+location 0x400000. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The section alignment refers to the number of bytes that are
+contained in a section. The section alignment is set to 0x2000. This implies
+that the code section starts at 0x2000 and the next section starts at 0x4000. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The file alignment refers to the start of every section in the
+file. It is set to 512 bytes or 0x200. Thus, the first section starts 512 bytes
+from the start, the second section starts at 1024 bytes, and so on. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>When an executable file is loaded into memory, the initial
+header bytes in the file are initially placed at the image base of 0x400000.
+Thereafter, the code section that commences at a boundary of 512 bytes on the
+disk is loaded at 0x2000 from the image base. The next boundary of 512 bytes on
+disk, which is the data section, is loaded at 0x4000 from the image base.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The alignment is followed by the major and minor version
+numbers of the operating system. These have become antiquated since the
+versions of Windows keep changing with regular frequency. The next two shorts
+are the major and minor image version numbers that are set by the linker. These
+bytes are of no utility in the .Net file. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next two words are the major and minor versions of the
+Subsystem or the operating system that is essential for running the PE file.
+These values too are of no use here. One more unexploited field is the Win32
+version number, which is always set to 0.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The image size field that follows next, is indicative of the
+quantum of memory that the operating system needs to store the entire image in
+memory. The size of the headers represents the size of all the headers, i.e.
+the DOS header, the PE header, the optional header, as well as, the sections
+that we shall not touch upon. The value is a multiple of the file alignment,
+i.e. 512 bytes.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The checksum is a concept that is used to verify whether a file
+is intact or has been corrupted. Even though the PE file has a field for it, it
+is never used and hence, its value is zero.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Subsystem field refers to the user interface type required
+from Windows. The value of 3 signifies that the program takes a Windows GUI.
+Other possible values are Console and Native. As the file is not a DLL file,
+the DLL flags field has a value of zero.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Stack reserve size field determines the stack area that the
+thread can use. Normally, the value is 1 MB. However, the application is not
+allocated the same at startup time. The Stack Commit is the amount of memory
+that the stack is assigned at startup. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The stack is where all the variables created in the functions
+are stored, whereas, the heap is used for storing the instance variables. Thus,
+the next two fields that follow, determine the amount of heap area. The values
+remain the same for the stack. This is followed by the Loader flags field,
+which again has been rendered inutile today. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The last field following the 96 bytes of header details, is the
+count of Data Directories that are present in the file. There are a total of 16
+Data Directories. The details of the Data Directories are highlighted in the
+next program. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FileStream s = new FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(128+4+20+96, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Export Table RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Import Table RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Win32 Resource Table RVA={0}
+Size={1}&quot; , rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Exception Table RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Certificate Table RVA={0} Size={1}&quot;
+, rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Base Relocation Table RVA={0}
+Size={1}&quot; , rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Debug Table RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Copyright Table RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Mips Global Ptr RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;TLS RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Load Config RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Bound Import RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;IAT RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Delay Import Descriptor RVA={0}
+Size={1}&quot; , rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;CLR Header RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Reserved RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Export Table RVA=0 Size=0</p>
+
+<p class=ILprg>Import Table RVA=226C Size=4F</p>
+
+<p class=ILprg>Win32 Resource Table RVA=4000 Size=318</p>
+
+<p class=ILprg>Exception Table RVA=0 Size=0</p>
+
+<p class=ILprg>Certificate Table RVA=0 Size=0</p>
+
+<p class=ILprg>Base Relocation Table RVA=6000 Size=C</p>
+
+<p class=ILprg>Debug Table RVA=0 Size=0</p>
+
+<p class=ILprg>Copyright Table RVA=0 Size=0</p>
+
+<p class=ILprg>Mips Global Ptr RVA=0 Size=0</p>
+
+<p class=ILprg>TLS RVA=0 Size=0</p>
+
+<p class=ILprg>Load Config RVA=0 Size=0</p>
+
+<p class=ILprg>Bound Import RVA=0 Size=0</p>
+
+<p class=ILprg>IAT RVA=2000 Size=8</p>
+
+<p class=ILprg>Delay Import Descriptor RVA=0 Size=0</p>
+
+<p class=ILprg>CLR Header RVA=2008 Size=48</p>
+
+<p class=ILprg>Reserved RVA=0 Size=0</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The optional header also contains 16 data directory structures,
+each of which is 8 bytes large. The structures contain significant information
+about certain areas of the PE file. The 8-bytes in the structure comprise of
+two ints, one known as the Relative Virtual Address (RVA) and the second as
+Size.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The above program displays the 16 structures. One of the above
+listed structures is the CLR header. CLR is the acronym for for Common Language
+Runtime Infrastructure. The RVA value is shown as 2008 and the size is given as
+0x48. This implies that when b.exe gets executed, the CLR header will be at
+memory location 0x2008 from the image base of 0x4000000; in other words, it
+shall be positioned at memory location 0x4002008. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The section alignment in memory is 0x2000, and since the RVA
+for the CLR header is 2008, on subtracting 2000 from 2008, the difference comes
+to 8. Thus, the CLR header is placed 8 bytes away from the start of the
+section.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A file on disk has the alignment of 512 bytes. Therefore, the
+first section would start at position 512 from the start of the file. As the
+CLR is 8 bytes away from the section start, 8 is added to 512, (section start
+for a file on disk), thereby arriving at a value of 520. The next 72 bytes
+(0x48) are picked up from this position, since they constitute the CLR header,
+and they are loaded at location 0x4002008. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We shall now briefly explicate the Data Directories displayed
+above. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A PE file allows other PE files to call its functions, provided
+they are marked as Exports. In the same manner, an executable calls code or
+imports code from other DLL or EXE files.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first two tables list out these Exports and Imports. The
+third entry in the Data Directory points to the resources dwelling in the PE
+file. The next entry points at the table of exceptions. All CPUs barring the
+486, incorporate such a table. The Certificate table is next in sequence, which
+is not an RVA, but a file offset. Relocation is a method by means of which, PE
+files can be loaded anywhere in memory. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=407 height=383 id="_x0000_i1034" src="chap1\7.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This is followed by the Debug directory and the Copyright
+directory. In some cases, it is the architectural specific data. The Global Ptr
+table is used only on 64 bit machines. Threads use the Thread Local Storage
+initialization section. The Load Config is only used in Windows NT, Windows
+2000 and Windows XP. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Bound Import contains the details of the Dll files that
+this PE file is bound to.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Import Address Table (IAT) points in the direction of the
+first Import Address Table and deals with Dlls. The Delay Loading Dlls are
+implemented by the linker for the runtime libraries. The operating system has
+no cognizance of it. The CLR header or the Com descriptor is the most important
+table from our viewpoint, as it points towards the first .Net header.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next program focuses primarily on the CLR structure.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(128+4+20+96+112, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>int where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>Console.WriteLine(where);</p>
+
+<p class=ILprg>s.Seek(where, SeekOrigin.Begin);</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;CLR Header size {0}&quot; , size);</p>
+
+<p class=ILprg>int majorruntimeversion;</p>
+
+<p class=ILprg>majorruntimeversion = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Major Runtime Version {0}&quot; ,
+majorruntimeversion );</p>
+
+<p class=ILprg>int minorruntimeversion;</p>
+
+<p class=ILprg>minorruntimeversion = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Minor Runtime Version {0}&quot; ,
+minorruntimeversion );</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MetaData RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>int flags = r.ReadInt32();</p>
+
+<p class=ILprg>Console.Write(&quot;Flags &quot;);</p>
+
+<p class=ILprg>if ( ( flags <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x01) == 0x01 ) </p>
+
+<p class=ILprg>Console.Write(&quot;ILONLY &quot;);</p>
+
+<p class=ILprg>if ( ( flags <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x02) == 0x02 ) </p>
+
+<p class=ILprg>Console.Write(&quot;32 Bit Required &quot;);</p>
+
+<p class=ILprg>if ( ( flags <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x08) == 0x08 ) </p>
+
+<p class=ILprg>Console.Write(&quot;Strong Name Signature &quot;);</p>
+
+<p class=ILprg>if ( ( flags <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x010000) == 0x010000) </p>
+
+<p class=ILprg>Console.Write(&quot;Track Debug Data &quot;);</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>int entrypointtoken = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Entry Point Token {0}&quot; ,
+entrypointtoken.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Resources RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Strong Name Signature RVA={0}
+Size={1}&quot; , rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Code Manager Table RVA={0}
+Size={1}&quot; , rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;VTable Fixups RVA={0} Size={1}&quot; ,
+rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Export Address Table Jumps RVA={0}
+Size={1}&quot; , rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Managed Native Header RVA={0}
+Size={1}&quot; , rva.ToString(&quot;X&quot;), size.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>520</p>
+
+<p class=ILprg>CLR Header size 72</p>
+
+<p class=ILprg>Major Runtime Version 2</p>
+
+<p class=ILprg>Minor Runtime Version 0</p>
+
+<p class=ILprg>MetaData RVA=207C Size=1F0</p>
+
+<p class=ILprg>Flags ILONLY </p>
+
+<p class=ILprg>Entry Point Token 6000001</p>
+
+<p class=ILprg>Resources RVA=0 Size=0</p>
+
+<p class=ILprg>Strong Name Signature RVA=0 Size=0</p>
+
+<p class=ILprg>Code Manager Table RVA=0 Size=0</p>
+
+<p class=ILprg>VTable Fixups RVA=0 Size=0</p>
+
+<p class=ILprg>Export Address Table Jumps RVA=0 Size=0</p>
+
+<p class=ILprg>Managed Native Header RVA=0 Size=0</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The second last Data Directory entry is a structure that
+contains the RVA and the size for the CLR header. The position of the header in
+Data Directories remains the same for 32 bit machines, but varies for 64 bit
+machines. It is another matter altogether that we are yet to meet the proud
+owner of a 64 bit machine, if there is one at all. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the file, we place the file pointer at the 360th location in
+order to read the RVA and Size for the CLR header. We arrived at the 360th
+location by adding the 148 bytes of the PE header to the 208 bytes of the 14
+structures, preceding the CLR header. Every structure has a size of 8 bytes.
+Hence, the number of bytes to be foregone is 112. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The RVA assigns the memory location of 0x2008. In order to
+ascertain the exact location in the section, we use the modulus operator of
+this value, with the value of 2000. The remainder value of 8 that is obtained,
+determines the location of the base of the code of the header. To pick up data
+from the file, the file alignment of 512 is added to the 8 bytes. The first 512
+bytes are skipped, since they contain all the header details. Thus, the CLR
+header starts 520 bytes from the start of the file. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=400 height=297 id="_x0000_i1035" src="chap1\8.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This header starts with a size field. Thus, the CLR header has
+a size of 0x48 or 72. This is followed by two shorts, which denote the major
+and minor runtime version numbers. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The values of 2 and 0, stored in the two fields, are the
+version numbers of the runtime that are expected when the executable is run. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This is followed by the RVA and the size of the metadata.
+Ultimately, we have arrived at the very quintessence of this book. The next
+chapter is devoted to the explanation of the metadata. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Next in sequence is the Flags field that, like the
+Characteristics field, works at the bit level. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In our case, only the first bit is on, indicating that the
+image is an IL image. The second bit reveals the system on which the code can
+be executed, i.e. either 32 bits or 64 bits. If the bit is on, the executable
+will run only on a 32 bit machine, and a 64 bit runtime would not load the
+program. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The fourth bit refers to a strong name signature and the
+following bit has the track debug data flag, which is always zero.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We shall revisit the Entry Point Token in due course.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Following the flag field is a series of Data Directories, where
+the first one refers to the resources and the second one refers to the String
+Name Signature. This structure points to the hash data for the PE file, which
+is used by the loader for binding and versioning. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>As per the documentation, the CodeManagerTable structure that
+follows next, shall always be zero. Virtual functions in a class use a VTable
+to perform their magic, and thus, a VtableFixups is vital. The last two Data
+Directories, which are the Export Address Table Jumps and Managed Native
+Header, always have a value of zero each. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We have left many things unattended here, but with an assurance
+that we shall expound each one of them, before this book reaches its
+culmination.</p>
+
+</div>
+
+</body>
+
+</html>

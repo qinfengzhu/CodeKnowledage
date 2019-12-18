@@ -1,0 +1,1753 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap1_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap1_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Introduction to Microsoft’s IL - C# to IL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>6</o:TotalTime>
+  <o:Created>2001-02-18T09:03:00Z</o:Created>
+  <o:LastSaved>2001-01-24T05:39:00Z</o:LastSaved>
+  <o:Pages>12</o:Pages>
+  <o:Words>3980</o:Words>
+  <o:Characters>20698</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>2587</o:Lines>
+  <o:Paragraphs>1293</o:Paragraphs>
+  <o:CharactersWithSpaces>27862</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+@font-face
+	{font-family:"Monotype Corsiva";
+	panose-1:3 1 1 1 1 2 1 1 1 1;
+	mso-font-charset:0;
+	mso-generic-font-family:script;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Cbullets, li.Cbullets, div.Cbullets
+	{mso-style-name:"C\#bullets";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cbase, li.Cbase, div.Cbase
+	{mso-style-name:"C\#base";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.Coutput, li.Coutput, div.Coutput
+	{mso-style-name:"C\#output";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cprg, li.Cprg, div.Cprg
+	{mso-style-name:"C\#prg";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=Cbase><b><span style='font-size:9.0pt;mso-bidi-font-size:10.0pt'><img
+width=64 height=48 id="_x0000_i1025" src=bpb.jpg><o:p></o:p></span></b></p>
+
+<p class=Cbase><b><span style='font-size:24.0pt;mso-bidi-font-size:10.0pt'>-1-</span></b><span
+style='font-size:24.0pt;mso-bidi-font-size:10.0pt;color:windowtext'><o:p></o:p></span></p>
+
+<p class=Cbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><span style='font-size:
+24.0pt;font-family:"Monotype Corsiva"'>Introduction to Microsoft’s IL</span><span
+style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The code that
+we write in a programming language like C#, ASP+ or in any other .NET
+compatible language is finally converted to either Assembler or Intermediate
+Language (IL). Thus, code written in the COBOL Programming Language can be
+modified in C# and subsequently used in ASP+. Therefore, the best way to
+accentuate our comprehension about the .NET technologies is by understanding
+IL.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Once you are
+conversant with IL, you will have no difficulty in understanding the .NET technologies,
+since all .NET languages finally compile to it. IL was invented first and it is
+programming language neutral. It was then followed by other programming
+languages like C#, Visual Basic.NET, ASP.NET, etc. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>We shall raise
+the curtains on IL with a significantly small program. Also, we will commence
+with the assumption that you are familiar with at least one .NET programming
+language.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>We have written
+a very small non-working IL program in the il subdirectory and named it as
+a.il. How do we assemble it into an executable program? There is no need to
+fret over this problem. Microsoft has provided a program called ilasm whose
+sole task is to create an executable file from an IL file. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Before you run
+this command make sure that your path variable is set to the bin sub directory
+in the framework. If not, give the command as<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes"> </span>set path=c:\progra~1\microsoft.net\frameworksdk\bin;%PATH%<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Now we use the
+command as follows:<span style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>c:\il&gt;ilasm /nologo /quiet
+a.il<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>On doing so, the
+following error is generated:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Source file is ANSI<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Error: No entry point declared
+for executable<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>***** FAILURE ***** <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>In future, we
+shall not display the first and the last lines of the output generated by
+ilasm. We shall also remove the blank lines between non-blank lines. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>In IL, we are
+permitted to commence a line with or without a dot '.'. Anything that begins
+with a dot is a directive to the assembler, asking it to perform some function,
+such as creating a function or class etc. Anything that does not start with a
+'.' is an actual assembler instruction. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The
+significance of .method is that a function or method called vijay is created
+and this function returns void i.e. it does not return any value. The function
+has been named vijay arbitrarily for want of any other superior nomenclature. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The assembler
+was obviously not impressed with this program and thus brandished the message
+'no entry point'. This error message is generated because the IL file can
+contain numerous functions, and the assembler has no way of distinguishing as
+to which of them is to be executed first. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>In IL, the
+first function to be executed is called the entrypoint function. In C#, the
+function is Main. The syntax for a function is the name followed by the
+familiar pair of round () brackets. The start point and the end point of the
+function's code is signified by the curly braces {}. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>c:\il&gt;ilasm /nologo /quiet
+a.il<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Source file is ANSI<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Creating PE file<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Emitting members:<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Global<span
+style="mso-spacerun: yes">  </span>Methods: 1;<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Writing PE file<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Operation completed
+successfully<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Now no error is
+generated. The directive entrypoint signifies that the program execution has to
+begin from this function. In this case, we have to use this directive
+notwithstanding the fact that, this program has only one function.<span
+style="mso-spacerun: yes">  </span>On giving the dir command at the DOS prompt,
+we see three files created. a.exe is an executable file which can now be
+executed to see the output of the program<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>C:\il&gt;a<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Exception occurred:
+System.BadImageFormatException: Exception from HRESULT: 0x8007000B. Failed to
+load C:\IL\A.EXE.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Our luck seems
+to run out when we try to execute the above program because the above run-time
+error is generated. One probable reason for this could be the poor formation of
+the function. Every function should have the instruction 'end of function'
+incorporated in it. We obviously overlooked this fact in our haste.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The 'end of
+function' instruction is called ret. All well formed functions have to end with
+this instruction. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u><span style='font-size:9.5pt'>Output</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>Exception occurred:
+System.BadImageFormatException: Exception from HRESULT: 0x8007000B. Failed to
+load C:\IL\A.EXE.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>On executing
+the function, we get the same error again. Where could we have faltered this
+time?<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The blunder was
+that we forgot to use the mandatory directive called assembly followed by a
+name. We have incorporated it in the code above, and have used the name mukhi
+followed by a pair of empty curly braces {}. The assembly directive is used to
+give a name to the program. It is also called a deployment unit. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The code above
+is the smallest program that can be assembled without any errors, though it
+does not perform anything useful when executed. It does not have any function
+called Main. It only has a function called vijay with the entrypoint directive.
+The program now assembles and runs with no errors at all.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The concept of
+assembly is extremely crucial in the .NET world and should be thoroughly
+understood. We will explore this directive in the latter half of the chapter.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay1() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u><span style='font-size:9.5pt'>Error</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>***** FAILURE *****<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The cause for
+the above failure message is that the above program has two functions, vijay
+and vijay1, with each containing the .entrypoint directive. As mentioned
+earlier, this directive specifies as to which function is to be executed first.
+<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Thus, in
+functionality, it is akin to the Main function in C#. When C# code gets
+converted into IL code, the code contained in the function Main gets converted
+into a function in IL and contains the directive .entrypoint. For example, if
+the first function to be executed in a COBOL program is called abc, the code
+generated in IL inserts the .entrypoint directive in this function. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>In conventional
+programming languages, the function to be executed first has to have a specific
+name, eg. Main, but in IL, only the .entrypoint directive is required.
+Therefore, since a program can have only one starting point, only one function
+in the IL code is allowed to contain the .entrypoint directive. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>It is pertinent
+to note that no error message number or explanation is generated, making it
+difficult to debug this error.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The .entrypoint
+directive need not be positioned as the first or last directive in the
+function. It has to merely be present in the body of the function, to herald
+its status as the first function to be executed. Directives are not assembly
+instructions and can even be placed after the ret instruction. To remind you,
+ret signifies the end of the function code. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call void
+System.Console::WriteLine()<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>We may have a
+function written in C#, ASP+ or COBOL, but the mechanism for executing this
+function in IL is the same. It is as follows: <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>We have to use
+the assembler instruction call. The call instruction is to be followed by the
+following details in the given sequence:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>return
+type of the function (void).<o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>the
+namespace (System). <o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>the
+class (Console). <o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>the
+function name (WriteLine()). <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The function
+gets called but does not produce any output. So, we pass a parameter to the
+WriteLine function. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call void
+System.Console::WriteLine(class System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The above code
+has a glaring omission. When a function is called in IL, in addition to its
+return type, the data type of the parameters that are being passed to the
+function have to also be specified. We have already stated that the Writeline
+function expects a parameter of the class named System.String, but since no
+string is passed to the function, it generates a runtime error. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Thus, there is
+a significant difference between IL and other programming language when it
+comes to calling a function. In IL, when we call a function, we have to specify
+everything we know about the function, including its return type and the data
+types of its parameters. This ensures that the assembler can authenticate the
+syntactical propriety of your code, by conducting appropriate checks at run
+time. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>We shall now
+see how to facilitate passing of parameters to a function. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method void vijay() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ldstr &quot;hell&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call void
+System.Console::WriteLine(class System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u><span style='font-size:9.5pt'>Output</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>hell<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The assembler
+instruction ldstr places a string on the stack. The name ldstr is an
+abbreviated version of the text &quot;load a string on the stack&quot;. A stack
+is an area of memory that facilitates passing of parameters to a function. All
+functions receive their parameters from the stack. Thus, instructions like
+ldstr are indispensable. <o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method public hidebysig static
+void vijay()il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ldstr &quot;hell&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call void
+System.Console::WriteLine(class System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u><span style='font-size:9.5pt'>Output</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>hell<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>We have added
+some attributes to the method vijay. We shall explain them one by one below.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>public: This is
+called an accessibility attribute as it decides as to who all can access a
+method. Public means that this method is accessible to every other part of the
+program. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>hidebysig: A
+class can be derived from many other classes. The attribute hidebysig ensures
+that a function in a parent class is hidden from the derived class having the
+same name or signature. In this example, it makes sure that if the function
+vijay is present in the base class, it is not visible in the derived class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>static: Methods
+can either be static or non-static. A static method belongs to a class and not
+to an instance. Thus, as we have only a single class, we cannot have more than
+one copy of a static function. There are no restrictions on where a static
+method can be created. The function with the entrypoint directive must be
+static. Static functions must have a body or source code associated with them
+and they are referenced using the type name and not the instance name.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>il managed: Due
+to its complex nature, we shall postpone the explanation of this attribute.
+When the time is appropriate, its functionality will be clearly explained.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The
+abovementioned attributes do not modify the output of the function. In a short
+while, it will become apparent to you as to why we have provided the
+explanation of these attributes. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Whenever we
+write a program in the C# programming language, we first specify the keyword
+class, followed by the name of the class and then, we enclose the source code
+within a pair of curly braces {}. This is demonstrated in a.cs<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.cs</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>class zzz<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>} <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Let us now
+introduce the IL directive called class.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.class zzz<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method public hidebysig static
+void vijay()il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ldstr &quot;hell&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call void
+System.Console::WriteLine(class System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Notice the
+change in assembler output :</span><b><span style='color:windowtext'> Class 1</span></b><span
+style='color:windowtext'> Methods: 1;<o:p></o:p></span></p>
+
+<p class=ILoutput><u><span style='font-size:9.5pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></u></p>
+
+<p class=ILoutput><u><span style='font-size:9.5pt'>Output</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>hell<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The directive
+.class is followed by the name of the class. It is optional in IL. Let us
+enhance the functionality of the class by adding a few class attributes.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.class private auto ansi zzz<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method public hidebysig static
+void vijay()il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ldstr &quot;hell&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call void
+System.Console::WriteLine(class System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u><span style='font-size:9.5pt'>Output</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>hell<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>We have added
+three attributes to our class directive:<o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:10.0pt;font-family:"Times New Roman"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>private:
+This signifies that access to the members of the class is restricted to the
+current class only.<span style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>auto:
+This means that the layout of the class in memory will be decided only at
+runtime, and not by our program.<o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>ansi:
+The source code is generally divided into two main categories:<o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:10.0pt'><span style='mso-tab-count:
+1'>     </span>- Managed Code<o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:10.0pt'><span style='mso-tab-count:
+1'>     </span>- Unmanaged Code<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Code written in
+languages like C is called unmanaged code or untrustworthy code. We need an
+attribute that handles interoperability between unmanaged code and managed
+code. For example, this attribute can be put to use when we want to transfer
+strings between managed and unmanaged code. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>If we cross the
+bounds of managed code and vault into the realm of unmanaged code, a string,
+which is an array of 2-byte Unicode characters, will be converted into an ANSI
+string, which is an array of 1-byte ANSI characters and vice versa. The
+modifier ansi is used for smooth transition between managed and unmanaged code.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly mukhi {}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.class private auto ansi zzz
+extends System.Object<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method public hidebysig static
+void vijay()il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ldstr &quot;hell&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call void
+System.Console::WriteLine(class System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u><span style='font-size:9.5pt'>Output</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>hell <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The class zzz
+has been derived from the class System.Object. In the .NET world, in order to
+maintain type consistency, all types are ultimately derived form System.Object.
+Thus, all objects have a common base class of Object. In IL, classes are
+derived from other classes in the same manner as incorporated in programming
+languages like C++, C# and Java. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.il</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.module aa.exe<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.subsystem 3 <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.corflags 1<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly extern mscorlib<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes"> </span><span style="mso-spacerun: yes"> </span>.originator = (03 68 91 16
+D3 A4 AE 33 )<span style="mso-spacerun: yes">                 </span><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.hash = (52 44 F8 C9 55 1F 54 3F 97 D7 AB AD E2 DF 1D E0 <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">           </span>F2 9D 4F BC )<span style="mso-spacerun:
+yes">                                   </span><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.ver 1:0:2204:21<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly a as &quot;a&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.hash algorithm 0x00008004<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.ver 0:0:0:0<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.class private auto ansi zzz
+extends System.Object<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method public hidebysig static
+void vijay() il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ldstr &quot;hell&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call void
+System.Console::WriteLine(class System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method public hidebysig
+specialname rtspecialname instance void .ctor() il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.maxstack<span
+style="mso-spacerun: yes">  </span>8<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ldstr &quot;hell1&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call void
+System.Console::WriteLine(class System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ldarg.0<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>call instance void
+[mscorlib]System.Object::.ctor()<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u><span style='font-size:9.5pt'>Output</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>hell<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>You are bound
+to wonder as to why we have written such an ungainly program. You need to
+exercise a little patience before the mist clears and it all starts to make
+sense. We shall explain the newly introduced functions and attributes one by
+one:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>.ctor: We have
+introduced a new function called .ctor which calls the WriteLine function to
+display hell1, but it does not get called. .ctor refers to the constructor.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>rtspecialname:
+This attribute signifies to the runtime that the name of the function is
+special and it is to be treated in a special manner.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>specialname:
+This attribute alerts the compilers and tools that the function is special. The
+runtime may choose to ignore this attribute. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>instance: A
+normal function is called an instance function. Such a function is associated
+with an object, unlike a static method, which is associated with a class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The reason for
+choosing the specified name for the function will become apparent in due
+course.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>ldarg.0: This
+is an assembler instruction which loads either the this pointer or the address
+of the ZEROth parameter on the execution stack. We shall explain ldarg.0<span
+style="mso-spacerun: yes">  </span>in detail subsequently. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>mscorlib: In
+the program above, the function .ctor is being called from the base class
+System.Object. The name of the function is normally prefixed with the name of
+the library that contains the code. This library name is placed within square
+brackets. In this case, it is optional because mscorlib.dll is the default
+library and it contains most of the classes that .NET requires. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>.maxstack: This
+directive specifies the maximum number of elements that can be present on the
+evaluation stack when a method is being executed. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>.module: All IL
+files must be part and parcel of a logical entity called a module. The file is
+added to a module using the .module directive. The name of the module may be
+stated as aa.exe, but the name of the executable file remains the same as
+before, i.e. a.exe.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>.subsystem:
+This directive is used to specify the operating system on which the executable
+will run. This is another way of specifying the kind of executable the assembly
+is representing. Some of the numeric values and their corresponding Operating
+Systems are as follows:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:10.0pt'>2 - A Windows Character
+Subsystem.<o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:10.0pt'>3 - A Windows GUI Subsystem. <o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:10.0pt'>5 - An older operating system
+called OS/2. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>.corsflags:
+This directive is used to specify flags that are unique to a 64 bit computer. A
+value of 1 indicates that it is an executable created from<span
+style="mso-spacerun: yes">  </span>il and a value of 4 signifies a library.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>.assembly: We
+very briefly touched upon a directive called .assembly a couple of pages
+earlier. Lets delve a little deeper now. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Whatever we
+create is part of an entity called a manifest. The .assembly directive marks
+the beginning of a manifest. In the hierarchy, the module is the next smaller
+entity to a manifest. The .assembly directive specifies the assembly to which
+this module belongs. A module can only contain a single .assembly directive. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The presence of
+this directive is mandatory for exe files but is optional for modules in a
+.dll. This is because this directive is needed to create an assembly for us. It
+is a basic requirement of the .NET world. An assembly directive contains other
+directives. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>.hash: Hashing
+is a common technique used in the computer world and there are a large number
+of hashing methods or algorithms used. This directive is used for hashing.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>.ver: The .ver
+directive consists of 4 numbers separated by a colons. They represent the
+following information in the order given below:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>major
+version number <o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>minor
+version number <o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>build <o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span><span style='font-size:10.0pt'>revision
+number<o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:10.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>extern: If
+there is a requirement to refer to other assemblies, the extern directive is
+used. The code of the core .NET classes is in mscorlib.dll. Besides this dll,
+when our program needs to refer to code from a large number of other dlls, the
+extern directive comes into play. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>originator:
+This is the last directive that we shall explore before we move on to explain
+the essence and significance of the above example. This directive discloses the
+identity of the creator of the dll. It contains eight bytes of the public key
+of the owner of the dll. It is obviously a hash value. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Let us revise
+what we have done so far, step by step via a different approach:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>(a) We started
+with the smallest C# program that we could write. This program was called a.cs
+and contained the following code:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.cs</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>class zzz<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>public static void Main() <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>System.Console.WriteLine(&quot;hi&quot;);<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>} <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>(b) Then we ran
+the C# compiler using the following command: <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>&gt;csc a.cs<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Therefore, the
+exe file called a.exe got created.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>(c) On the
+executable, we ran a program called ildasm, provided by Microsoft: <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>&gt;ildasm /out=a.txt a.exe<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>This created a
+text file a.txt with the following contents:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.txt</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>//<span style="mso-spacerun:
+yes">  </span>Microsoft (R) .NET Framework IL Disassembler.<span
+style="mso-spacerun: yes">  </span>Version 1.0.2204.21<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>//<span style="mso-spacerun:
+yes">  </span>Copyright (C) Microsoft Corp. 1998-2000<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>// VTableFixup Directory:<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>// No data.<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.subsystem 0x00000003<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.corflags 0x00000001<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly extern mscorlib<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.originator = (03 68 91 16 D3 A4 AE 33 )<span style="mso-spacerun:
+yes">        </span>// .h.....3<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.hash = (52 44 F8 C9 55 1F 54 3F 97 D7 AB AD E2 DF 1D E0<span
+style="mso-spacerun: yes">   </span><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">           </span>F2 9D 4F BC )<span style="mso-spacerun:
+yes">                        </span>// RD..U.T?.........O.<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.ver 1:0:2204:21<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly a as &quot;a&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.hash algorithm 0x00008004<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.ver 0:0:0:0<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.module aa.exe<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>// MVID:
+{89CFAD60-F5BD-11D4-A55A-96B5C7D61E7B}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.class private auto ansi zzz<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">       </span>extends System.Object<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.method public hidebysig static void vijay() il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>// Code size<span style="mso-spacerun: yes">       </span>11
+(0xb)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>.maxstack<span style="mso-spacerun: yes">  </span>8<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_0000:<span style="mso-spacerun: yes">  </span>ldstr<span
+style="mso-spacerun: yes">      </span>&quot;hell&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_0005:<span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">       </span>void System.Console::WriteLine(class
+System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_000a:<span style="mso-spacerun: yes">  </span>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>} // end of method zzz::vijay<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.method public hidebysig specialname rtspecialname <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">          </span>instance void .ctor() il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>// Code size<span style="mso-spacerun: yes">       </span>17
+(0x11)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>.maxstack<span style="mso-spacerun: yes">  </span>8<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_0000:<span style="mso-spacerun: yes">  </span>ldstr<span
+style="mso-spacerun: yes">      </span>&quot;hell&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_0005:<span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">       </span>void System.Console::WriteLine(class
+System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_000a:<span style="mso-spacerun: yes">  </span>ldarg.0<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_000b:<span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">       </span>instance void
+[mscorlib]System.Object::.ctor()<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_0010:<span style="mso-spacerun: yes">  </span>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>} // end of method zzz::.ctor<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>} // end of class zzz<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>//*********** DISASSEMBLY COMPLETE
+***********************<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>When you read
+the above file, you will realize that all of it has been explained earlier. We
+started out with a simple C# program and then compiled it into an executable
+file. Under normal circumstances, it would have got converted into machine
+language or the assembler of the computer/microprocessor that the program is
+running on. Once the executable is created, we disassemble it using ildasm. The
+disassembled output is saved in a new file a.txt. This file could be named as
+a.il and we could have then reversed gear by running ilasm on it to create the
+executable again.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Let us take a
+look at the smallest VB.NET program. We have named it as one.vb and its source
+code is as follows:<o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>one.vb</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>Public Module modmain<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>Sub Main()<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>System.Console.WriteLine(&quot;hell&quot;)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>End Sub<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>End Module<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>After writing
+the above code, we run the Visual.Net compiler, vbc. as:<o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>&gt;vbc one.vb<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>This produces
+the file one.exe.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Next we execute
+ildasm as follows:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:9.5pt'>&gt;ildasm /out=a.txt one.exe<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>This produces
+the following file a.txt:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u><span style='font-size:9.5pt'>a.txt</span></u><span
+style='font-size:9.5pt'><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>//<span style="mso-spacerun:
+yes">  </span>Microsoft (R) .NET Framework IL Disassembler.<span
+style="mso-spacerun: yes">  </span>Version 1.0.2204.21<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>//<span style="mso-spacerun:
+yes">  </span>Copyright (C) Microsoft Corp. 1998-2000<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>// VTableFixup Directory:<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>// No data.<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.subsystem 0x00000003<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.corflags 0x00000001<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly extern mscorlib<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.originator = (03 68 91 16 D3 A4 AE 33 )<span style="mso-spacerun:
+yes">              </span>// .h.....3<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.hash = (52 44 F8 C9 55 1F 54 3F 97 D7 AB AD E2 DF 1D E0 <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>F2 9D 4F BC )<span style="mso-spacerun:
+yes">                                  </span>// RD..U.T?..........O.<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.ver 1:0:2204:21<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly extern Microsoft.VisualBasic<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.originator = (03 68 91 16 D3 A4 AE 33 )<span style="mso-spacerun:
+yes">      </span>// .h.....3<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.hash = (5B 42 1F D2 5E 1A 42 83 F5 90 B2 29 9F 35 A1 BE<span
+style="mso-spacerun: yes">   </span><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">           </span>E5 5E 0D E4 )<span style="mso-spacerun:
+yes">                  </span>// [B..^.B....).5....<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.ver 1:0:0:0<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.assembly one as &quot;one&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.hash algorithm 0x00008004<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.ver 1:0:0:0<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.module one.exe<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>// MVID:
+{1ED19820-F5C2-11D4-A55A-96B5C7D61E7B}<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.class public auto ansi modmain<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">       </span>extends [mscorlib]System.Object<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.custom instance void
+[Microsoft.VisualBasic]Microsoft.VisualBasic.Globals/Globals$StandardModuleAttribute::.ctor()
+= ( 01 00 00 00 ) <o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.method public static void Main() il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>// Code size<span style="mso-spacerun: yes">       </span>11
+(0xb)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>.maxstack<span style="mso-spacerun: yes">  </span>1<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>.locals init (class System.Object[] V_0)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_0000:<span style="mso-spacerun: yes">  </span>ldstr<span
+style="mso-spacerun: yes">      </span>&quot;hell&quot;<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_0005:<span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.String)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_000a:<span style="mso-spacerun: yes">  </span>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>} // end of method modmain::Main<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>} // end of class modmain<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.class private auto ansi
+_vbProject<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">       </span>extends [mscorlib]System.Object<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>.custom instance void
+[Microsoft.VisualBasic]Microsoft.VisualBasic.Globals/Globals$StandardModuleAttribute::.ctor()
+= ( 01 00 00 00 )<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>.method public static void<span
+style="mso-spacerun: yes">  </span>_main(class System.String[] _s) il managed<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>{<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>.entrypoint<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>// Code size<span style="mso-spacerun: yes">       </span>6
+(0x6)<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>.maxstack<span style="mso-spacerun: yes">  </span>8<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_0000:<span style="mso-spacerun: yes">  </span>call<span
+style="mso-spacerun: yes">       </span>void modmain::Main()<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun:
+yes">    </span>IL_0005:<span style="mso-spacerun: yes">  </span>ret<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'><span style="mso-spacerun: yes"> 
+</span>} // end of method _vbProject::_main<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>} // end of class _vbProject<o:p></o:p></span></p>
+
+<p class=ILprg><span style='font-size:9.5pt'>//*********** DISASSEMBLY COMPLETE
+***********************<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>You would be
+amazed to see that the outputs produced by two different compilers are almost
+identical. We have shown you this example to demonstrate that, irrespective of
+the language you use, ultimately, the source code will get converted to IL
+code. Whether we use VB.NET or C#, the same WriteLine function gets called. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Thus, the
+differences between programming languages has now become a superficial issue.
+The endless debate over which language is superior has finally been put to
+rest. Thus, IL has created a situation where programmers are free to use the
+programming language of their choice. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Let us now
+demystify the code given above.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Every VB.NET
+program needs to be included into a module. We’ve called it modmain. All
+modules in Visual Basic have to end with the keyword End, hence we see End Module.
+This is where the syntax of VB differs that from C#, which does not understand
+modules. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>In VB.NET,
+functions are known as sub-routines. We need a sub-routine to mark the starting
+point of program execution. This sub-routine is called Main. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The VB.NET code
+not only<span style="mso-spacerun: yes">  </span>does it refer to mscorlib.dll,
+but also uses the file Microsoft.VisualBasic. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>A class called
+_vbProject is created in IL; as the class name is not mandatory in VB.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The function
+called _main is the starting sub-routine to be called as it has the entrypoint
+directive. Its name is preceded by a leading underscore. These names are chosen
+by the VB compiler that generates the IL code. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>This function
+is passed an array of strings as a parameter. It has a custom directive that
+deals with the concept of metadata. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>Next, we have
+the full prototype of the function, ending with an optional series of bytes.
+These bytes are part of the metadata specifications. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'>The module
+modmain gets converted into a class having the same name. This class also has
+the same directive .custom as before and a function called Main. The function
+uses a directive called .locals to create a variable on the stack that can only
+be used within the method. This variable exists only for the duration of the
+execution of the method and dies when the method stops running. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-size:10.0pt;color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase><span style='color:windowtext'>Fields are also stored in memory
+but, it takes a longer<span style="mso-spacerun: yes">  </span>time to allocate
+memory for them. The word init signifies that on creation, these variables
+should be initialized to their default values. The default values depend upon
+the type of the variable. Numbers are always initialized to the value ZERO. The
+word init is followed by the data type of the variable and finally by its name.<o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

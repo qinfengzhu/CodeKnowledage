@@ -1,0 +1,1207 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap9_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap9_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Properties and Indexers  - C# to IL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>24</o:TotalTime>
+  <o:Created>2001-01-24T06:09:00Z</o:Created>
+  <o:LastSaved>2001-01-24T06:10:00Z</o:LastSaved>
+  <o:Pages>8</o:Pages>
+  <o:Words>1831</o:Words>
+  <o:Characters>9526</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>1190</o:Lines>
+  <o:Paragraphs>595</o:Paragraphs>
+  <o:CharactersWithSpaces>12823</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Cbullets, li.Cbullets, div.Cbullets
+	{mso-style-name:"C\#bullets";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cbase, li.Cbase, div.Cbase
+	{mso-style-name:"C\#base";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.Coutput, li.Coutput, div.Coutput
+	{mso-style-name:"C\#output";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cprg, li.Cprg, div.Cprg
+	{mso-style-name:"C\#prg";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"c\# base text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=Cbase><b><span style='font-size:9.0pt;mso-bidi-font-size:10.0pt'><img
+width=64 height=48 id="_x0000_i1025" src=bpb.jpg><o:p></o:p></span></b></p>
+
+<p class=Cbase><b><span style='font-size:24.0pt;mso-bidi-font-size:10.0pt'>-9-</span></b><span
+style='font-size:24.0pt;mso-bidi-font-size:10.0pt;color:windowtext'><o:p></o:p></span></p>
+
+<p class=Cbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><b><span
+style='font-size:24.0pt'>Properties and Indexers </span></b><span
+style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A field is simply a memory
+location, whereas, a property is a collection of methods. A property is
+represented by a value, in the same way as a field. Properties can be
+considered as smart fields.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>It is not compulsory to store
+the value of a property in a field, but this is the accepted practice. The CLR
+supports the syntax of properties, but these properties do not exist at
+runtime. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>public class zzz <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>aa a = new aa();<o:p></o:p></p>
+
+<p class=ILprg>int gg = a.ff + 9;<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(gg);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>public class aa<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public int ff <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>get<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;in get&quot;);<o:p></o:p></p>
+
+<p class=ILprg>return 12;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public<span style="mso-spacerun: yes">  </span>hidebysig
+static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class aa V_0,int32 V_1)<o:p></o:p></p>
+
+<p class=ILprg>newobj instance void aa::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>call instance int32 aa::get_ff()<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>9<o:p></o:p></p>
+
+<p class=ILprg>add<o:p></o:p></p>
+
+<p class=ILprg>stloc.1<o:p></o:p></p>
+
+<p class=ILprg>ldloc.1<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi aa extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname instance int32 get_ff() il
+managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">      </span>&quot;in
+get&quot;<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>12<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>br.s IL_000f<o:p></o:p></p>
+
+<p class=ILprg>IL_000f:<span style="mso-spacerun: yes">  </span>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.property instance int32 ff()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.get instance int32 aa::get_ff()<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>in get<o:p></o:p></p>
+
+<p class=ILoutput>21<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have created a property
+called ff in the class aa. This property is written as a directive called
+.property in the IL file, with the modifier instance, as it is a non-static
+property, and with the return type int32. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>There is<span
+style="mso-spacerun: yes">  </span>an accessor called get, whose equivalent
+directive in IL is also called as .get. This get is represented by the function
+get_ff, that simply returns a value with the data type of the property. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In this case, the br instruction
+is superfluous. The local variable V_0 is used to store the return value that
+is to be placed on the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The statement int gg = a.ff + 9;
+gets executed in a unique way as follows:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The this pointer is placed on the
+stack.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>Then, the expression a.ff get replaced
+by a call to a function get_ff from the class aa. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>Thereafter, the return value is placed
+on the stack.<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The number 9 is placed on the stack,
+followed by the add instruction.<o:p></o:p></p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>    </span></span>The property gets converted into a
+function beginning with get.<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>On executing the il assembler
+'ilasm' on a.il, you will see the following output<o:p></o:p></span></p>
+
+<p class=ILoutput><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>Class 2 Methods: 1;<span style="mso-spacerun: yes">   
+</span><b><span style="mso-spacerun: yes"> </span>Props</b>: 1;<o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>public class zzz <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>aa a = new aa();<o:p></o:p></p>
+
+<p class=ILprg>a.ff = 19;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>public class aa<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public int ff <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>set <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(value);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public<span style="mso-spacerun: yes">  </span>hidebysig
+static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class aa V_0)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+aa::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>19<o:p></o:p></p>
+
+<p class=ILprg>call instance void aa::set_ff(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi aa extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname instance void set_ff(int32
+'value') il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.1<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.property instance int32 ff()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.set instance void aa::set_ff(int32)<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>19<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A property with a set, obtains a
+function called set_ff, having a parameter called value. We also have a
+directive called .set. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Ldarg.1 is used to place the
+first parameter of a function on the stack. The call to a property a.ff = 19
+gets converted into the function call. Thus, a property actually consists of
+two functions, get and set. They get called, depending on whether we want to
+obtain the value of a property or change it, respectively.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public<span style="mso-spacerun: yes">  </span>hidebysig
+static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi aa extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.property instance int32 ff()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Error checks in IL are sparse.
+We have a property called ff, which does not have either a get or a set
+directive. The C# compiler screams at this omission, but the IL assembler turns
+a blind eye to this. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Hopefully, the next version of
+IL should have more reasonable error checks. Having said this, henceforth, we
+will not comment on the lack of error checks. It will be useful to remember in
+the IL world, you are on your own. The excess freedom given by the IL assembler
+also means that you have to assume greater responsibility as a programmer. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>public class zzz <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public static void Main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>yyy a = new yyy();<o:p></o:p></p>
+
+<p class=ILprg>a[1] = 17;<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(a[1]);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>public class yyy<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public int this[int i]<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>set <o:p></o:p></p>
+
+<p class=ILprg>{ <o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;{0} {1} &quot;,value ,i);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>get <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;{0}&quot; , i);<o:p></o:p></p>
+
+<p class=ILprg>return 23;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class private auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public<span style="mso-spacerun: yes">  </span>hidebysig
+static void vijay() il managed {<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class yyy V_0)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+yyy::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>17<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">  </span>instance void
+yyy::set_Item(int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.1<o:p></o:p></p>
+
+<p class=ILprg>call instance int32 yyy::get_Item(int32)<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi yyy extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname instance void
+set_Item(int32 i,int32 'value') il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">      </span>&quot;{0} {1}
+&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldarga.s<span style="mso-spacerun: yes">   </span>'value'<o:p></o:p></p>
+
+<p class=ILprg>box<span style="mso-spacerun: yes">       
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>ldarga.s<span style="mso-spacerun: yes">   </span>i<o:p></o:p></p>
+
+<p class=ILprg>box<span style="mso-spacerun: yes">       
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String,class System.Object,class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname instance int32
+get_Item(int32 i) il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.locals (int32 V_0)<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">     
+</span>&quot;{0}&quot;<o:p></o:p></p>
+
+<p class=ILprg>ldarga.s<span style="mso-spacerun: yes">   </span>i<o:p></o:p></p>
+
+<p class=ILprg>box<span style="mso-spacerun: yes">       
+</span>[mscorlib]System.Int32<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String,class System.Object)<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>23<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>br.s<span style="mso-spacerun: yes">       </span>IL_0016<o:p></o:p></p>
+
+<p class=ILprg>IL_0016:ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.property instance int32 Item(int32)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.get instance int32 yyy::get_Item(int32)<o:p></o:p></p>
+
+<p class=ILprg>.set instance void yyy::set_Item(int32,int32)<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>17 1 <o:p></o:p></p>
+
+<p class=ILoutput>1<o:p></o:p></p>
+
+<p class=ILoutput>23<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A indexer is a property. It has
+no equivalent directive in IL. An indexer is simply a property with an extra
+parameter, and no other complications. When we initialize a[1]using the
+statement a[1] = 17, we are actually placing three parameters on the stack:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The this pointer<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The array index 1<o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>The value 17. <o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Then, we call set_Item, as it is
+an indexer and not a property. The two parameters to the function are i and
+value. If you remember, the indexer variable has been named i. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The function get_Item gets
+called with the single parameter i and returns a value. The first parameter to
+the WriteLine function is a string and the rest of the parameters are objects.
+We need to convert our int value types into objects. Thus we need to box them. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>Using the function set_Item, we are
+displaying the index and the value. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>Using the function get_Item, we are
+displaying only the value. <o:p></o:p></p>
+
+<p class=ILbullets><span style='font-size:14.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>  </span></span>Using the last WriteLine function, we
+are displaying the value of a[1], which is 23. <o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thus, indexers are an alias for
+a property with an extra parameter.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The properties directive is used
+only by compilers and other tools, to understand as to what methods are being
+associated with the property. If you are not convinced, you can delete the
+property directive from the above programs and run them. There will be no
+change at all in the way they execute.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u><o:p></o:p></p>
+
+<p class=ILprg>public class zzz {<o:p></o:p></p>
+
+<p class=ILprg>public static void Main() {<o:p></o:p></p>
+
+<p class=ILprg>yyy a = new xxx();<o:p></o:p></p>
+
+<p class=ILprg>a.ff = 19;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>public class yyy<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public virtual int ff <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>set <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;yyy&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>public class xxx : yyy<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>public override int ff <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>set <o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;xxx&quot;);<o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed {<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class yyy V_0)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+xxx::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>19<o:p></o:p></p>
+
+<p class=ILprg>callvirt<span style="mso-spacerun: yes">   </span>instance void
+yyy::set_ff(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi yyy extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig newslot specialname virtual instance
+void<span style="mso-spacerun: yes">  </span>set_ff(int32 'value') il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">     
+</span>&quot;yyy&quot;<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.property instance int32 ff()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.set instance void yyy::set_ff(int32)<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi xxx extends yyy<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname virtual instance void<span
+style="mso-spacerun: yes">  </span>set_ff(int32 'value') il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">     
+</span>&quot;xxx&quot;<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname rtspecialname instance void
+.ctor() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldarg.0<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>instance void
+yyy::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.property instance int32 ff()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.set instance void xxx::set_ff(int32)<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>xxx<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The above example demonstrates the
+use of virtual properties. The concept of a property is simply an illusion. As
+mentioned earlier, properties are converted into a series of functions. Thus
+what applies to virtual functions also applies to virtual properties. We cannot
+use the modifier virtual in the properties directive. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The rationale behind using a
+property over a field is:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>If the value of a field changes,
+no code gets called. The class is thus, unaware of the change. In the case of a
+property, a method gets called. This method can contain a large amount of code.
+This code can do anything. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Also, we can be very sure that
+the user does not change the value of the property beyond certain acceptable
+limits. A method call can be optimised, and hence, a property does not carry
+any significant overhead as compared to a direct access to a field. The only
+disadvantage is that the properties cannot be made global. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class yyy V_0)<o:p></o:p></p>
+
+<p class=ILprg>newobj<span style="mso-spacerun: yes">     </span>instance void
+yyy::.ctor()<o:p></o:p></p>
+
+<p class=ILprg>stloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldloc.0<o:p></o:p></p>
+
+<p class=ILprg>ldc.i4.s<span style="mso-spacerun: yes">   </span>19<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">   </span>instance void
+yyy::set_ff(int32)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi yyy extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.field int32 jj<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname instance void<span
+style="mso-spacerun: yes">  </span>set_ff(int32 'value') il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ldstr<span style="mso-spacerun: yes">     
+</span>&quot;yyy&quot;<o:p></o:p></p>
+
+<p class=ILprg>call<span style="mso-spacerun: yes">       </span>void
+[mscorlib]System.Console::WriteLine(class System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.property instance int32 ff()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.set instance void yyy::set_ff(int32)<o:p></o:p></p>
+
+<p class=ILprg>.backing int32 jj<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>yyy<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A property normally has a field
+that stores the value associated with a property. Since the property directive
+is used, for documentation purposes, it would not be a bad idea to have a
+directive called backing, which can be used to state the name of this field. We
+are not forced to do so. The assembler only checks to make sure that the filed
+is present. It is not used in any way. It must have the same data type as the
+property. Using the attribute specialname, we can inform the compiler to give
+it special treatment.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi {}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>.locals (class yyy V_0)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi yyy extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig specialname instance void<span
+style="mso-spacerun: yes">  </span>set_ff(int32 'value') il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.property instance int32 ff()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.set instance void yyy::set_ff(int32)<o:p></o:p></p>
+
+<p class=ILprg>.other void abc()<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We finally have one last
+directive called .other, that specifies the other functions that are associated
+with the property. In this case, the assembler does not check for the existence
+of the function, and thus, we have not included it. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To summarise, the properties
+directive is implemented as a series of method calls. The same is true for
+indexers also.<o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

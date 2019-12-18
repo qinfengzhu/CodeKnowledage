@@ -1,0 +1,5786 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap4_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap4_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Metadata Tables - 4. The Other Tables</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>8</o:Revision>
+  <o:TotalTime>66</o:TotalTime>
+  <o:Created>2002-05-15T19:40:00Z</o:Created>
+  <o:LastSaved>2002-02-18T20:17:00Z</o:LastSaved>
+  <o:Pages>48</o:Pages>
+  <o:Words>11667</o:Words>
+  <o:Characters>66505</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>554</o:Lines>
+  <o:Paragraphs>133</o:Paragraphs>
+  <o:CharactersWithSpaces>81672</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+@font-face
+	{font-family:"Book Antiqua";
+	panose-1:2 4 6 2 5 3 5 3 3 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:8.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:10.0pt;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:24.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-indent:24.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:14.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.figure, li.figure, div.figure
+	{mso-style-name:figure;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.figure1, li.figure1, div.figure1
+	{mso-style-name:figure1;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName, li.ChapName, div.ChapName
+	{mso-style-name:"Chap Name";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName1, li.ChapName1, div.ChapName1
+	{mso-style-name:"Chap Name1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Book Antiqua";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.basetextofthebook, li.basetextofthebook, div.basetextofthebook
+	{mso-style-name:"base text of the book";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.basetextofthebook1, li.basetextofthebook1, div.basetextofthebook1
+	{mso-style-name:"base text of the book1";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ChapName0, li.ChapName0, div.ChapName0
+	{mso-style-name:ChapName;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.DOSPROMPT, li.DOSPROMPT, div.DOSPROMPT
+	{mso-style-name:"DOS PROMPT";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ChapIntro, li.ChapIntro, div.ChapIntro
+	{mso-style-name:"Chap Intro";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:42.65pt;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;}
+p.PageNo, li.PageNo, div.PageNo
+	{mso-style-name:"Page No";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Headline, li.Headline, div.Headline
+	{mso-style-name:Headline;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Hangingindent, li.Hangingindent, div.Hangingindent
+	{mso-style-name:"Hanging indent";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:12.0pt;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Subhead1, li.Subhead1, div.Subhead1
+	{mso-style-name:"Subhead 1";
+	mso-style-parent:Headline;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:18.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Subhead2, li.Subhead2, div.Subhead2
+	{mso-style-name:"Subhead 2";
+	mso-style-parent:"Subhead 1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal><img width=64 height=48 id="_x0000_i1025" src=bpb.gif></p>
+
+<p class=MsoNormal><span style='font-size:24.0pt'>4. The Other Tables</span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This chapter goes
+on to delineate the remaining tables that have not been touched upon and
+elucidated in the previous chapter. For this purpose, separate programs have
+been created to explicate each of the disparate tables. Finally, in the last
+chapter of the book they have all been put in a single program, wherein each
+one of them has been cross-referenced. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=435
+height=292 id="_x0000_i1026" src="chap4\1.gif"><img width=436 height=271
+id="_x0000_i1041" src="chap4\2.gif"><img width=427 height=271 id="_x0000_i1042"
+src="chap4\3.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first program
+in this chapter explores the Fields table. Enter the following code in the file
+b.cs and then compile it. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><span
+style="mso-spacerun: yes"> </span><u><o:p></o:p></u></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Fields<o:p></o:p></span></u></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public int i = 10;</p>
+
+<p class=ILprg>protected internal string vijay = &quot;hi&quot;;</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>namespace nnn</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public class yyy</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>protected long k = 100;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System.Reflection;</p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>using System.Configuration.Assemblies;</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public void DisplayGuid(int st)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{&quot;);</p>
+
+<p class=ILprg>Console.Write(&quot;{0}{1}{2}{3}&quot;,
+guid[st+2].ToString(&quot;X&quot;) , guid[st+1].ToString(&quot;X&quot;) ,
+guid[st].ToString(&quot;X&quot;) , </p>
+
+<p class=ILprg>guid[st-1].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;-{0}{1}-&quot;,guid[st+3].ToString(&quot;X&quot;)
+, guid[st+4].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;{0}{1}-&quot;,guid[st+6].ToString(&quot;X&quot;)
+, guid[st+5].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;{0}{1}-&quot;,guid[st+7].ToString(&quot;X&quot;)
+, guid[st+8].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;{0}{1}{2}{3}{4}{5}&quot;,guid[st+9].ToString(&quot;X&quot;),</p>
+
+<p class=ILprg>guid[st+10].ToString(&quot;X&quot;),guid[st+11].ToString(&quot;X&quot;),</p>
+
+<p class=ILprg>guid[st+12].ToString(&quot;X&quot;),guid[st+13].ToString(&quot;X&quot;),</p>
+
+<p class=ILprg>guid[st+14].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;}&quot;);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetString(int starting)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int i = starting;</p>
+
+<p class=ILprg>while (strings[i] != 0 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>i++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>System.Text.Encoding e = System.Text.Encoding.UTF8;</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s =
+e.GetString(strings, starting , i - starting<span style="mso-spacerun: yes"> 
+</span>);</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>string [] tablenames=new String[]{&quot;Module&quot; ,
+&quot;TypeRef&quot; ,<span style='mso-tab-count:1'> </span>&quot;TypeDef&quot;
+,&quot;FieldPtr&quot;,&quot;Field&quot;,
+&quot;MethodPtr&quot;,&quot;Method&quot;,&quot;ParamPtr&quot; ,
+&quot;Param&quot;, &quot;InterfaceImpl&quot;, &quot;MemberRef&quot;,
+&quot;Constant&quot;, &quot;CustomAttribute&quot;, &quot;FieldMarshal&quot;,
+&quot;DeclSecurity&quot;, &quot;ClassLayout&quot;, &quot;FieldLayout&quot;,
+&quot;StandAloneSig&quot; , &quot;EventMap&quot;,&quot;EventPtr&quot;,
+&quot;Event&quot;, &quot;PropertyMap&quot;, &quot;PropertyPtr&quot;,
+&quot;Properties&quot;,&quot;MethodSemantics&quot;,</p>
+
+<p class=ILprg>&quot;MethodImpl&quot;,&quot;ModuleRef&quot;,&quot;TypeSpec&quot;,&quot;ImplMap&quot;,&quot;Field</p>
+
+<p class=ILprg>RVA&quot;,&quot;ENCLog&quot;,&quot;ENCMap&quot;,&quot;Assembly&quot;,&quot;AssemblyProcessor&quot;,</p>
+
+<p class=ILprg>&quot;AssemblyOS&quot;,&quot;AssemblyRef&quot;,&quot;AssemblyRefProcessor&quot;,</p>
+
+<p class=ILprg>&quot;AssemblyRefOS&quot;,&quot;File&quot;,&quot;ExportedType&quot;,&quot;ManifestResource&quot;,</p>
+
+<p class=ILprg>&quot;NestedClass&quot;,&quot;TypeTyPar&quot;,&quot;MethodTyPar&quot;};</p>
+
+<p class=ILprg>int tableoffset ;</p>
+
+<p class=ILprg>int [] rows;</p>
+
+<p class=ILprg>int [] offset;</p>
+
+<p class=ILprg>int [] ssize ;</p>
+
+<p class=ILprg>byte [] metadata;</p>
+
+<p class=ILprg>byte [] strings;</p>
+
+<p class=ILprg>byte [] us;</p>
+
+<p class=ILprg>byte [] guid;</p>
+
+<p class=ILprg>byte [] blob;</p>
+
+<p class=ILprg>long valid ;</p>
+
+<p class=ILprg>byte [][] names;</p>
+
+<p class=ILprg>long sm;</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>long startofmetadata;</p>
+
+<p class=ILprg>FileStream s = new FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(360, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>int where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where + 4 + 4, SeekOrigin.Begin);</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where, SeekOrigin.Begin);</p>
+
+<p class=ILprg>startofmetadata = s.Position;</p>
+
+<p class=ILprg>sm=startofmetadata ;</p>
+
+<p class=ILprg>s.Seek(4 + 2 + 2 + 4 + 4 + 12 + 2, SeekOrigin.Current);</p>
+
+<p class=ILprg>int streams = r.ReadInt16();</p>
+
+<p class=ILprg>offset = new int[5];</p>
+
+<p class=ILprg>ssize<span style="mso-spacerun: yes">  </span>= new int[5];</p>
+
+<p class=ILprg>names = new byte[5][];</p>
+
+<p class=ILprg>names[0] = new byte[10];</p>
+
+<p class=ILprg>names[1] = new byte[10];</p>
+
+<p class=ILprg>names[2] = new byte[10];</p>
+
+<p class=ILprg>names[3] = new byte[10];</p>
+
+<p class=ILprg>names[4] = new byte[10];</p>
+
+<p class=ILprg>int i = 0; int j ;</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offset[i] = r.ReadInt32();</p>
+
+<p class=ILprg>ssize[i] = r.ReadInt32();</p>
+
+<p class=ILprg>j = 0;</p>
+
+<p class=ILprg>byte bb ;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bb = r.ReadByte();</p>
+
+<p class=ILprg>if ( bb == 0)</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>j++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( s.Position % 4 == 0 ) </p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>byte<span style="mso-spacerun: yes">  </span>b = r.ReadByte();</p>
+
+<p class=ILprg>if ( b != 0)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s.Seek(-1, SeekOrigin.Current);</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( names[i][1] == '~' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>metadata = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>metadata[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'S' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>strings = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>strings[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'U' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>us = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>us[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'G' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>guid = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>guid[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'B' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>blob = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>blob[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>valid = BitConverter.ToInt64(metadata, 8);</p>
+
+<p class=ILprg>tableoffset = 24;</p>
+
+<p class=ILprg>rows = new int[64];</p>
+
+<p class=ILprg>Array.Clear (rows, 0, rows.Length);</p>
+
+<p class=ILprg>int cnt = 0;</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt;= 63 ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int tablepresent = (int)(valid &gt;&gt; k ) <span
+style='font-family:"Bookman Old Style"'>&amp;</span> 1; </p>
+
+<p class=ILprg>if ( tablepresent == 1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cnt = cnt+1;</p>
+
+<p class=ILprg>rows[k] = BitConverter.ToInt32(metadata , tableoffset);</p>
+
+<p class=ILprg>Console.WriteLine (&quot;Table {0} present at ind {1} - {2},
+Rows in table {3}&quot;,cnt,k,tablenames[k],rows[k]);</p>
+
+<p class=ILprg>tableoffset += 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>xyz();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public bool tablepresent(byte i)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int p = (int)(valid &gt;&gt; i) <span style='font-family:"Bookman Old Style"'>&amp;</span>
+1;</p>
+
+<p class=ILprg>byte [] sizes =
+{10,6,14,2,6,2,14,2,6,4,6,6,6,4,6,8,6,2,4,2,6,4,2,6,6,6,2,2,8,6,8,4,22,4,12,20,6,14,8,14,12,4};</p>
+
+<p class=ILprg>for ( int j = 0 ; j &lt; i ; j++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int o = sizes[j] * rows[j];</p>
+
+<p class=ILprg>tableoffset = tableoffset + o;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( p == 1)</p>
+
+<p class=ILprg>return true;</p>
+
+<p class=ILprg>else</p>
+
+<p class=ILprg>return false;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int new1 = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(4);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset=new1;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;&quot;);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Field Details&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[4] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FieldAttributes flags = (FieldAttributes )BitConverter.ToInt16
+(metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int sig = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags: {0}&quot;, flags);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name : {0}&quot;, GetString(name));</p>
+
+<p class=ILprg>int count = blob[sig];</p>
+
+<p class=ILprg>Console.Write(&quot;Signature [{0}]:Count={1} &quot;, sig , count);</p>
+
+<p class=ILprg>if ( blob[sig+1] == 0x06)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;Type {0}&quot; , GetType(blob[sig+2]));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetType(int b)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( b == 0x01)</p>
+
+<p class=ILprg>return &quot;void&quot;;</p>
+
+<p class=ILprg>if ( b == 0x02)</p>
+
+<p class=ILprg>return &quot;boolean&quot;;</p>
+
+<p class=ILprg>if ( b == 0x03)</p>
+
+<p class=ILprg>return &quot;char&quot;;</p>
+
+<p class=ILprg>if ( b == 0x04)</p>
+
+<p class=ILprg>return &quot;byte&quot;;</p>
+
+<p class=ILprg>if ( b == 0x05)</p>
+
+<p class=ILprg>return &quot;ubyte&quot;;</p>
+
+<p class=ILprg>if ( b == 0x06)</p>
+
+<p class=ILprg>return &quot;short&quot;;</p>
+
+<p class=ILprg>if ( b == 0x07)</p>
+
+<p class=ILprg>return &quot;ushort&quot;;</p>
+
+<p class=ILprg>if ( b == 0x08)</p>
+
+<p class=ILprg>return &quot;int&quot;;</p>
+
+<p class=ILprg>if ( b == 0x09)</p>
+
+<p class=ILprg>return &quot;uint&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0a)</p>
+
+<p class=ILprg>return &quot;long&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0b)</p>
+
+<p class=ILprg>return &quot;ulong&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0c)</p>
+
+<p class=ILprg>return &quot;float&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0d)</p>
+
+<p class=ILprg>return &quot;double&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0e)</p>
+
+<p class=ILprg>return &quot;string&quot;;</p>
+
+<p class=ILprg>return &quot;unknown&quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Table 1 present at ind 0 - Module, Rows in table 1</p>
+
+<p class=ILprg>Table 2 present at ind 1 - TypeRef, Rows in table 2</p>
+
+<p class=ILprg>Table 3 present at ind 2 - TypeDef, Rows in table 3</p>
+
+<p class=ILprg>Table 4 present at ind 4 - Field, Rows in table 3</p>
+
+<p class=ILprg>Table 5 present at ind 6 - Method, Rows in table 3</p>
+
+<p class=ILprg>Table 6 present at ind 10 - MemberRef, Rows in table 2</p>
+
+<p class=ILprg>Table 7 present at ind 12 - CustomAttribute, Rows in table 1</p>
+
+<p class=ILprg>Table 8 present at ind 32 - Assembly, Rows in table 1</p>
+
+<p class=ILprg>Table 9 present at ind 35 - AssemblyRef, Rows in table 1</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Field Details</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Flags: Public</p>
+
+<p class=ILprg>Name : i</p>
+
+<p class=ILprg>Signature [10]:Count=2 Type int</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Flags: FamORAssem</p>
+
+<p class=ILprg>Name : vijay</p>
+
+<p class=ILprg>Signature [13]:Count=2 Type string</p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Flags: Family</p>
+
+<p class=ILprg>Name : k</p>
+
+<p class=ILprg>Signature [24]:Count=2 Type long</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>An instance variable is also known as a field. The Field table
+holds an index of 4 in the valid table. The output shows a count of 3 rows,
+since the file contains 3 fields spread over 2 classes named zzz and yyy. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Field table comprises of the following columns:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=442 height=67 id="_x0000_i1043" src="chap4\4.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first column
+in the Field table is the FieldAttributes flags. The enum of FieldAttributes displays
+the string assigned to the number. The second column in the table refers to the
+name of the field. It is an index to the data contained in the strings stream.
+The output clearly displays the fact that the fields i and vijay of class zzz
+are placed earlier, suffixed with the field k from the class yyy in the
+namespace nnn. This sequence is of utmost significance, as shall be
+demonstrated by us shortly. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The last field is
+an index into the Blob heap. It starts with a count byte of 2, thereby indicating
+that the field signature has a size of 2 bytes. The first byte in the signature
+of a method establishes the calling convention. Similarly, the first byte in
+the signature is always 0x06, thereby indicating that it is a field signature.
+This primarily serves as a sanity check. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This value is
+followed by the signature byte. It refers to the type of the field. To
+ascertain its value, we have introduced the function GetType, which returns the
+data type. As a consequence of this function, the output appropriately reflects
+the data type of the fields. Section 22.1.15 describes the bits representation
+of each type. We have saved up the explanation of the especially complicated
+ones for a rainy day.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=451
+height=195 id="_x0000_i1044" src="chap4\5.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Let us revert to
+the flags byte. The 'protected' accessibility modifier, which allows access
+only to derived classes, is known as 'Family' in the IL world. The 'internal'
+access modifier, which restricts access to the same assembly, is christened as
+'Assembly' in the IL word. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Life surely would
+have been significantly more cushy if C# had also resorted to terminology
+similar to that of IL. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Had we called off
+our explanation at this juncture, it would have become impossible for us to
+expose you to the cross-linkages between the tables. So, we have augmented the
+program with the requisite code essential for the Typedef details.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>After calling the
+xyz function, call the aaa function also, as in xyz(); aaa();<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Place the
+following code prior to the GetType function.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void aaa()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int new1 = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(2);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = new1;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;TypeDef Details&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[2] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg><span style="mso-spacerun: yes"> </span>TypeAttributes flags =
+(TypeAttributes)BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int nspace = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int cindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int findex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int mindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row:{0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags<span style="mso-spacerun:
+yes">     </span>: {0}&quot; , flags);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun:
+yes">      </span>: {0}&quot; , GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;NameSpace : {0}&quot; ,
+GetString(nspace));</p>
+
+<p class=ILprg>Console.Write(&quot;Extends:&quot;);</p>
+
+<p class=ILprg>int u = cindex <span style='font-family:"Bookman Old Style"'>&amp;</span>
+3;</p>
+
+<p class=ILprg>if (u == 0)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeDef&quot;);</p>
+
+<p class=ILprg>if (u == 1)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeRef&quot;);</p>
+
+<p class=ILprg>if (u == 2)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeSpec&quot;);</p>
+
+<p class=ILprg>Console.Write(&quot;[{0}]&quot;, cindex &gt;&gt; 2);</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;FieldList Field[{0}]&quot;, findex);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MethodList Method[{0}]&quot;, mindex);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>TypeDef Details</p>
+
+<p class=ILprg>Row:1</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: Class</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:
+&lt;Module&gt;</p>
+
+<p class=ILprg>NameSpace :</p>
+
+<p class=ILprg>Extends:TypeDef[0]</p>
+
+<p class=ILprg>FieldList Field[1]</p>
+
+<p class=ILprg>MethodList Method[1]</p>
+
+<p class=ILprg>Row:2</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, Public, BeforeFieldInit</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: zzz</p>
+
+<p class=ILprg>NameSpace :</p>
+
+<p class=ILprg>Extends:TypeRef[1]</p>
+
+<p class=ILprg>FieldList Field[1]</p>
+
+<p class=ILprg>MethodList Method[1]</p>
+
+<p class=ILprg>Row:3</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, Public, BeforeFieldInit</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: yyy</p>
+
+<p class=ILprg>NameSpace : nnn</p>
+
+<p class=ILprg>Extends:TypeRef[1]</p>
+
+<p class=ILprg>FieldList Field[3]</p>
+
+<p class=ILprg>MethodList Method[3]</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The output of the
+above program now exhibits the data contained in the TypeDef table, wherein, 3
+rows of the table are displayed. Each row of the Field table is owned by one
+row in the TypeDef table. This is so because the TypeDef table defines a class
+and the fields belong to a class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>There is no
+indication as to which Type or class owns the field in the Field table. To
+determine these linkages, the TypeDef table is examined. The first row
+represents the global or pseudo class, which can be ignored for the moment. The
+second row represents the zzz class. The FieldList column in this row points to
+the first row of the Fields table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Since the first
+row in the Fields table represents the variable i, it is logical to conclude
+that the variable i belongs to the zzz class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The third row of
+the TypeDef table represents the class yyy in the namespace nnn. The value for
+the FieldList field points to the third row of the Field table. Thus, we can
+safely presume that the first two rows are owned by the class zzz, whereas,
+from the third row onwards, the fields belong to the class yyy. A row in the
+Field table can be owned by only one class from the TypeDef table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This forward
+pointer method helps in determining the owner of the Field table. Employing
+this approach, the Fields in a class can be established by reading the
+FieldList column in the row. All rows in the Fields table belong to one type,
+until we reach the value given in the FieldList column of the next row. A point
+to be noted here is that, there can be zero or multiple rows in the Field
+table. The type encompasses all of them.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This behaviour is
+akin to a parent-child or one-many relationship wherein, a parent type can have
+multiple children fields, whereas, a child field can possess only one parent
+type. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>If there exist
+two instance variables of fields with the same name, but located in different
+classes, it results in the creation of two separate rows in the Field table,
+each owned by a different TypeDef row. The same rule is applicable to methods
+also. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>Method Table</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Main</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>We have displayed
+only the method names of every row in the method table, since our primary focus
+at present is on the Field table. Since there are two classes in the file, two
+constructors are visible. Hence, the method name of .ctor is also displayed
+twice. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Both the rows 2
+and 3 represent a constructor. So, how do we ascertain as to which class each
+constructor belongs to? Bear in mind that while espying the type that lodges
+the constructors, you should always begin with the TypeDef table, and not with
+either the Field table or the Method table. This approach is at variance with
+the one pursued for the MethodRef table, which has a TypeRef field that reveals
+the class namespace data.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The type zzz uses
+a field named MethodList, which has an index value of 1. The second class i.e.
+yyy has the MethodList with a value of 3. Thus, the first two rows of the
+Method table belong to the class zzz, while the third row forms a part of the
+class yyy. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Constant Table
+</span></u><span style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>const int i1<span style="mso-spacerun: yes">  </span>= 20;</p>
+
+<p class=ILprg>const string vijay = &quot;hi&quot;;</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int new1=tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(11);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = new1;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[11] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>byte dtype = metadata[offs];</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int parent = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int value = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Type {0}&quot; , GetType(dtype));</p>
+
+<p class=ILprg>int tag = parent<span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x03;</p>
+
+<p class=ILprg>int rid = (int) ((uint) parent &gt;&gt; 2);</p>
+
+<p class=ILprg>Console.Write(&quot;Parent: &quot;);</p>
+
+<p class=ILprg>if ( tag == 0)</p>
+
+<p class=ILprg>Console.Write(&quot;FieldDef&quot;);</p>
+
+<p class=ILprg>if ( tag == 1)</p>
+
+<p class=ILprg>Console.Write(&quot;ParamDef&quot;);</p>
+
+<p class=ILprg>if ( tag == 2)</p>
+
+<p class=ILprg>Console.Write(&quot;Property&quot;);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;[{0}]&quot;,rid);</p>
+
+<p class=ILprg>int count = blob[value];</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Value Blob[{0}] Count {1}&quot;,value ,
+count );</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= count ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot; ,
+blob[value+l].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Type int</p>
+
+<p class=ILprg>Parent: FieldDef[1]</p>
+
+<p class=ILprg>Value Blob[13] Count 4</p>
+
+<p class=ILprg>14 0 0 0 </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Type string</p>
+
+<p class=ILprg>Parent: FieldDef[2]</p>
+
+<p class=ILprg>Value Blob[21] Count 4</p>
+
+<p class=ILprg>68 0 69 0 </p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Field Details</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Flags: -32687</p>
+
+<p class=ILprg>Name : i1</p>
+
+<p class=ILprg>Signature [10]:Count=2 Type int</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Flags: -32687</p>
+
+<p class=ILprg>Name : vijay</p>
+
+<p class=ILprg>Signature [18]:Count=2 Type string</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=441 height=118 id="_x0000_i1045" src="chap4\6.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The Constant
+table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=427
+height=62 id="_x0000_i1046" src="chap4\7.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The constant
+table is at the 11th position in the valid fields, and as its name indicates,
+it stores the constants that are created in the module. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>A constant is
+also a field; therefore, a corresponding entry gets appended to the Field
+table. The tables, fields and constants have been displayed, to enable you to
+refer to them. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=253
+height=216 id="_x0000_i1047" src="chap4\8.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+in the table refers to the data type of constant. It is a single byte;
+therefore, the next byte, which contains a value of zero, is used as a padding
+byte. The trusted GetType function is used to display the type as a readable
+string. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The next field
+parent is a HasConst coded index, where the first two bits encode a table and
+can either be a Field, or a Param or a Property table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=440
+height=103 id="_x0000_i1048" src="chap4\9.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The residual six
+bits store the index. In this case, both the constants are an index to the
+Field Table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=434
+height=95 id="_x0000_i1049" src="chap4\10.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The Field table
+stores the name and the signature. The signature field in the Field table
+provides the same information as does the type. However, the flags field
+displays a number and not a string. Thus, the name and the flags of the
+constant emanate from the Field table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The last field
+stores the actual value assigned to the constant. The first byte in this field
+is the length. If it is an integer, the next four bytes are picked up; however,
+if it is a string, the length of the string in Unicode is utilized, and not
+ASCII. The Blob heap is used by the compiler to store the value of the
+constant. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>It is for this
+very reason that the constants need to be determined at compile time, and not
+at run time. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Nested Classes</span></u><span
+style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>class yyy</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public int j,k;</p>
+
+<p class=ILprg>class xxx</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public int i;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int new1=tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(41);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = new1;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[41] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int nestedclass= BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int enclosingclass= BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Nested<span style="mso-spacerun:
+yes">    </span>Class TypeDef[{0}]&quot; , nestedclass);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Enclosing Class TypeDef[{0}]&quot; ,
+enclosingclass);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Nested<span style="mso-spacerun: yes">    </span>Class
+TypeDef[3]</p>
+
+<p class=ILprg>Enclosing Class TypeDef[2]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Nested<span style="mso-spacerun: yes">    </span>Class
+TypeDef[4]</p>
+
+<p class=ILprg>Enclosing Class TypeDef[3]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>TypeDef Details</u></p>
+
+<p class=ILprg>Row:1</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: Class</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:
+&lt;Module&gt;</p>
+
+<p class=ILprg>NameSpace :</p>
+
+<p class=ILprg>Extends:TypeDef[0]</p>
+
+<p class=ILprg>FieldList Field[1]</p>
+
+<p class=ILprg>MethodList Method[1]</p>
+
+<p class=ILprg>Row:2</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, Public, BeforeFieldInit</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: zzz</p>
+
+<p class=ILprg>NameSpace :</p>
+
+<p class=ILprg>Extends:TypeRef[1]</p>
+
+<p class=ILprg>FieldList Field[1]</p>
+
+<p class=ILprg>MethodList Method[1]</p>
+
+<p class=ILprg>Row:3</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, NestedPrivate, BeforeFieldInit</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: yyy</p>
+
+<p class=ILprg>NameSpace :</p>
+
+<p class=ILprg>Extends:TypeRef[1]</p>
+
+<p class=ILprg>FieldList Field[1]</p>
+
+<p class=ILprg>MethodList Method[3]</p>
+
+<p class=ILprg>Row:4</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, NestedPrivate, BeforeFieldInit</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: xxx</p>
+
+<p class=ILprg>NameSpace :</p>
+
+<p class=ILprg>Extends:TypeRef[1]</p>
+
+<p class=ILprg>FieldList Field[3]</p>
+
+<p class=ILprg>MethodList Method[4]</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=448 height=123 id="_x0000_i1050" src="chap4\11.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In the b.cs file,
+the class zzz encloses the class yyy, which is perfectly legal in the C# world.
+This concept of enclosing one class within another is termed as 'nesting
+classes'. The class yyy in turn, contains a nested class named xxx. This too is
+permissible. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>For every nested
+class, one row gets added to the table Nested Classes, which has an index
+position of 41. In terms of size, this is the smallest of the tables
+encountered so far. It contains only two indexes. Both these indexes point to
+the TypeDef table, which in turn, defines a class.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=395
+height=232 id="_x0000_i1051" src="chap4\12.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The TypeDef table
+contains four rows. Thus, a total of four classes dwell within the file. Apart
+from one pseudo class, there exist three more classes, which have obviously
+been created in the file b.cs. Thus, in the TypeDef table, a nested class is a
+class in its own right. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>It is the flags
+field in the TypeDef table that identifies the class as a nested one, since the
+NestedPrivate bit is set ON. Further, the three classes are depicted as
+extending from the class System.Object. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Reverting to the
+Nested classes table, the first field in the table is the name of the nested
+class. Therefore, row 1 refers to the third index into the TypeDef table of
+class yyy and the second row points to the fourth row of class xxx. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The second field
+in the table is the Enclosing field, which identifies the main class that
+encloses the nested one. Since the class yyy is nested within the class zzz,
+the field shows a value of 2, thereby referring to the second row in the
+TypeDef table. The second class xxx is shown nested within the class yyy, or in
+the third row. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Thus, the nested
+classes table is simple to comprehend, as it only stores references to a class
+and its enclosing class. Both of them index the TypeDef table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>A nested class is
+defined as being lexically within the text of the enclosing class. However,
+when no nested class exists in the program module, the nested classes table bit
+is marked off, thus banishing all traces of the table and the fact that it ever
+existed. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The two fields of
+the nested classes must reference a valid row in the TypeDef table, or else it
+is treated as an error. Furthermore, the Enclosing Class field cannot reference
+a valid row in the TypeRef table, which shows the type references. Moreover, if
+the Nested Class and Enclosing class share the same values, a warning is
+emitted, but not an error. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>No two rows can
+possibly possess the same value for the nested class field. This is the case
+only with the enclosing type, since multiple nested classes can be enclosed
+within a single class. A single type may have innumerable nested classes within
+it, but the inverse is not permitted.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Param Table</span></u><span
+style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz {</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public long pqr( int i , out byte<span style="mso-spacerun:
+yes">  </span>z)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>z = 10;</p>
+
+<p class=ILprg>return 0;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public bool xyz( ref byte<span style="mso-spacerun: yes"> 
+</span>j , string k , long u)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return true;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int new1=tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(8);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset= new1;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[8] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short pattr = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int sequence = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ParamAttributes {0} Bytes {1}&quot; ,
+GetParamAttributes(pattr) , pattr.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Sequence {0}&quot; , sequence );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name {0}&quot; , GetString(name));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetParamAttributes(short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( a == 0x00)</p>
+
+<p class=ILprg>return &quot;None&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x01) == 0x01)</p>
+
+<p class=ILprg>return &quot;[In]&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x02) == 0x02)</p>
+
+<p class=ILprg>return &quot;[Out]&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x04) == 0x04)</p>
+
+<p class=ILprg>return &quot;[Optional]&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x1000) == 0x1000)</p>
+
+<p class=ILprg>return &quot;[Default]&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x2000) == 0x2000)</p>
+
+<p class=ILprg>return &quot;[Field Marshal]&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0xcfe0) == 0xcfe0)</p>
+
+<p class=ILprg>return &quot;[Field Marshall]&quot;;</p>
+
+<p class=ILprg>return &quot;Unknown&quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public void aaa()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int new1=tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(6);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset=new1;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[6] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int rva = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>MethodImplAttributes impflags = (MethodImplAttributes
+)BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int flags = (int)BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int signature = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int param = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;RVA<span style="mso-spacerun: yes">     
+</span>:{0}&quot;, rva.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun: yes">    
+</span>: {0}&quot;, GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ImpFlags :{0}&quot;,impflags );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags<span style="mso-spacerun: yes">   
+</span>:{0}&quot;,flags.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Type t = typeof( System.Reflection.MethodAttributes );</p>
+
+<p class=ILprg>FieldInfo[] f = t.GetFields(BindingFlags.Public |
+BindingFlags.Static);</p>
+
+<p class=ILprg>for ( int i = 0; i &lt; f.Length; i++ )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int fv = (int)f[i].GetValue(null);</p>
+
+<p class=ILprg>if ( (fv <span style='font-family:"Bookman Old Style"'>&amp;</span>
+flags) == fv)</p>
+
+<p class=ILprg>Console.Write( &quot;{0} &quot; , f[i].Name );</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Signature: #Blob[{0}]&quot;,signature);</p>
+
+<p class=ILprg>byte count = blob[signature]; </p>
+
+<p class=ILprg>Console.Write(&quot;Blob:{0} Count:{1} Bytes &quot;, signature ,
+count);</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= count ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot; ,
+blob[signature+l].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ParamList: Param[{0}]&quot;,param);</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>ParamAttributes None Bytes 0</p>
+
+<p class=ILprg>Sequence 1</p>
+
+<p class=ILprg>Name i</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>ParamAttributes [Out] Bytes 2</p>
+
+<p class=ILprg>Sequence 2</p>
+
+<p class=ILprg>Name z</p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>ParamAttributes None Bytes 0</p>
+
+<p class=ILprg>Sequence 1</p>
+
+<p class=ILprg>Name j</p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>ParamAttributes None Bytes 0</p>
+
+<p class=ILprg>Sequence 2</p>
+
+<p class=ILprg>Name k</p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>ParamAttributes None Bytes 0</p>
+
+<p class=ILprg>Sequence 3</p>
+
+<p class=ILprg>Name u</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2050</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Main</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:96</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public Static HideBySig
+ReuseSlot </p>
+
+<p class=ILprg>Signature: #Blob[10]</p>
+
+<p class=ILprg>Blob:10 Count:3 Bytes 0 0 1 </p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2060</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: abc</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:86</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot </p>
+
+<p class=ILprg>Signature: #Blob[14]</p>
+
+<p class=ILprg>Blob:14 Count:3 Bytes 20 0 1 </p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2070</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: pqr</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:86</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot </p>
+
+<p class=ILprg>Signature: #Blob[18]</p>
+
+<p class=ILprg>Blob:18 Count:6 Bytes 20 2 A 8 10 5 </p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2088</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: xyz</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:86</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot </p>
+
+<p class=ILprg>Signature: #Blob[25]</p>
+
+<p class=ILprg>Blob:25 Count:7 Bytes 20 3 2 10 5 E A </p>
+
+<p class=ILprg>ParamList: Param[3]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:209C</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:1886</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot
+SpecialName RTSpecialName </p>
+
+<p class=ILprg>Signature: #Blob[14]</p>
+
+<p class=ILprg>Blob:14 Count:3 Bytes 20 0 1 </p>
+
+<p class=ILprg>ParamList: Param[6]</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The file b.cs now
+contains three functions, viz. abc with no parameters, pqr with two parameters
+and xyz with three parameters. The parameters assigned to the methods get
+stored in the Param Table, which has an index position of 8 in the valid field.
+Since there are a total of 5 parameters, the Param table displays a count of 5
+rows. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=442
+height=70 id="_x0000_i1052" src="chap4\13.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The Param table
+has the following three fields:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=435
+height=54 id="_x0000_i1053" src="chap4\14.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field of
+FlagAttributes describes the attributes assigned to the function parameters. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=279
+height=176 id="_x0000_i1054" src="chap4\15.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>For this purpose,
+a special function named GetParamAttributes is provided, whose sole task is to
+return a string, depending upon the bit that is switched ON in the flag byte.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The second field
+is a sequence number, while the third field is the name of the parameter.<span
+style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Let us first take
+a closer peek at the method table. The Rows 2 and 3 stand for the methods abc
+and pqr, respectively. They both point to Row 1 of the ParamList. It appears
+deceptive at this stage, since the method abc does not take any parameters,
+while the method pqr takes two parameters. The constructor in Row 1 also takes
+no parameters, and yet, it points to the first row in the parameter list. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>However, as we
+have learnt in the previous chapter, the second byte of the Blob heap must be
+examined to determine the actual number of parameters that the function is
+being passed. Neither the constructor nor the abc function takes any
+parameters, since the value specified in the second byte is 0. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=394
+height=205 id="_x0000_i1055" src="chap4\16.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The pqr method
+takes two parameters. Thus, in the Param Table, the parameters for the function
+are present from the first row onwards. The sequence number identifies the
+ordering of the parameters, which is why the first parameter i has a value of
+1, the second parameter z has a value of 2, and so on. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The fourth row of
+the method table represents the method xyz. The number of parameters in the
+Blob heap is shown as 3, thereby referring to the third row in the Param table.
+The third row in the Param table has the parameter named j with the sequence
+number as 1. The next row for parameter k has a sequence number of 2. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The sequence
+number thus provides the order or the sequence of the parameters. It starts
+with 1, and thereafter, gets reset to 1 for every new method. The fitting
+approach is that the method table's Blob field is read first, in order to
+determine the number of parameters and its type. Then, depending upon the value
+in the Params field, the appropriate row in the Params table is accessed. The
+Params table provides the name of the parameter, its attribute and the order in
+the param list. Thereafter, contingent on the number of parameters in the Blob
+field, the next set of rows is picked up from the Params table.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The number of
+parameters can be re-ascertained by examining the value in the sequence number.
+For reasons unknown, the attribute bits are not set accurately. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The IN parameter
+is the default in C#. The OUT parameter is employed when the calling function
+is authorized to modify the value of the parameters. Ref is a variation in C#.
+It is considered to be a variant of IN. Therefore, it does not display the
+attribute of OUT. However, as per our interpretation, Ref is a variant of OUT.
+You may blame this misconception on our lack of insight. Another possibility
+could be that the C# compiler may be taking a break. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Conceptually,
+every row in the method table owns one row in the param table, with the
+singular exception of Row 1. A row cannot have two owners in the method table.
+Thus, if there are two functions abc and pqr with one parameter, i.e. an int i,
+there will be two identical rows in the param table. This is not considered
+erroneous at all, since duplicate rows are acceptable. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The sequence
+number can be zero, signifying the owner's methods return type. The sequence
+numbers are arranged as per increasing sequence values. Resultantly, there will
+be omissions in the sequence numbers, which is perfectly valid. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The parameters in
+the .Net world cannot have default values. So, the HasDefault flag will always
+be zero. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Properties
+Table</span></u><span style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public int aa</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>set</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>get</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return 10;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string bb</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>set</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>get</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return &quot;hi&quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public class yyy</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public byte cc</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>set</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>get</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return 10;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int new1=tableoffset;</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(21);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Properties Map Table &quot;);</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[21] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short parent = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short propertylist = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Parent TypeDef[{0}]&quot; , parent);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;PropertyList Property[{0}]&quot; , propertylist
+);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Properties Table&quot;);</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>b = tablepresent(23);</p>
+
+<p class=ILprg>offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[23] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>PropertyAttributes flags = (PropertyAttributes
+)BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name= BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int type = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags [{0}]&quot; , flags);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name {0}&quot; , GetString(name));</p>
+
+<p class=ILprg>int count = blob[type];</p>
+
+<p class=ILprg>Console.Write(&quot;Type BLOB[{0}] Count={1} &quot; , type ,
+count);</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= count ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot; ,
+blob[type+l].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MethodSematics Table&quot;);</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>b = tablepresent(24);</p>
+
+<p class=ILprg>offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[24] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short methodsemanticsattributes<span style="mso-spacerun: yes"> 
+</span>= BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int methodindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int association = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Semantics {0} &quot;,
+GetMethodSemantics(methodsemanticsattributes));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Method Method[{0}]&quot;, methodindex );</p>
+
+<p class=ILprg>int tag = association <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x01;</p>
+
+<p class=ILprg>Console.Write(&quot;Association &quot;);</p>
+
+<p class=ILprg>if ( tag == 0 )</p>
+
+<p class=ILprg>Console.Write(&quot;Events&quot;);</p>
+
+<p class=ILprg>if ( tag == 1 )</p>
+
+<p class=ILprg>Console.Write(&quot;Properties&quot;);</p>
+
+<p class=ILprg>int riid = association &gt;&gt; 1;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;[{0}]&quot;,riid);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>tableoffset=new1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetMethodSemantics(short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x01) == 0x01)</p>
+
+<p class=ILprg>s = s + &quot;Setter&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x02) == 0x02)</p>
+
+<p class=ILprg>s = s + &quot;Getter&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x04) == 0x04)</p>
+
+<p class=ILprg>s = s + &quot;Other&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x08) == 0x08)</p>
+
+<p class=ILprg>s = s + &quot;Event Addon&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x10) == 0x10)</p>
+
+<p class=ILprg>s = s + &quot;Event Remove&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x20) == 0x20)</p>
+
+<p class=ILprg>s = s + &quot;Event Fire&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Properties Map Table </p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Parent TypeDef[2]</p>
+
+<p class=ILprg>PropertyList Property[1]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Parent TypeDef[3]</p>
+
+<p class=ILprg>PropertyList Property[3]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Properties Table</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Flags [None]</p>
+
+<p class=ILprg>Name aa</p>
+
+<p class=ILprg>Type BLOB[36] Count=3 28 0 8 </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Flags [None]</p>
+
+<p class=ILprg>Name bb</p>
+
+<p class=ILprg>Type BLOB[40] Count=3 28 0 E </p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Flags [None]</p>
+
+<p class=ILprg>Name cc</p>
+
+<p class=ILprg>Type BLOB[53] Count=3 28 0 5 </p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>MethodSematics Table</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Semantics Getter </p>
+
+<p class=ILprg>Method Method[2]</p>
+
+<p class=ILprg>Association Properties[1]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Semantics Setter </p>
+
+<p class=ILprg>Method Method[1]</p>
+
+<p class=ILprg>Association Properties[1]</p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Semantics Getter </p>
+
+<p class=ILprg>Method Method[4]</p>
+
+<p class=ILprg>Association Properties[2]</p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Semantics Setter </p>
+
+<p class=ILprg>Method Method[3]</p>
+
+<p class=ILprg>Association Properties[2]</p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>Semantics Getter </p>
+
+<p class=ILprg>Method Method[8]</p>
+
+<p class=ILprg>Association Properties[3]</p>
+
+<p class=ILprg>Row 6</p>
+
+<p class=ILprg>Semantics Setter </p>
+
+<p class=ILprg>Method Method[7]</p>
+
+<p class=ILprg>Association Properties[3]</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>As always, let us
+commence with the b.cs file. In the class zzz, there exist two properties, viz.
+aa and bb; while in the class yyy, there exists a single property named cc. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In a.cs, prior to
+exhibiting the values in the Property table, we initially display the details
+of the table Properties Map. This table is at the 21st position in the valid
+table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The value of the
+tableoffset variable is also stored in the variable old, apart from new1. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The PropertyMap
+table possesses the following two columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=440
+height=118 id="_x0000_i1056" src="chap4\17.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+is called the parent, which is an index into the TypeDef table. Since there are
+two classes that contain properties within them, two rows come into view. The
+first row points to the second row in the TypeDef table zzz. The parent field
+in the second row points to the third row in the TypeDef table yyy.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The second field
+of the Properties Map table indexes into the Properties table. The table is
+displayed below. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The Property (
+0x17 ) table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=442
+height=119 id="_x0000_i1057" src="chap4\18.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The Properties
+Table is the 23rd bit in the valid field. The first field in this table is an
+Enum of PropertyAttributes. The second is the name of the property. The third
+field is a series of bytes in the Blob. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Let us revert to
+the Properties Map table. The first row for the class zzz has an index value of
+1 in the Properties table, whereas, the second row has the index value of 3.
+Since the value is not 2, it means that the first two rows of the properties
+table are owned by TypeDef[2], or the class zzz. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The properties
+table includes one row for each property. Thus, one link is
+TypeDef-PropertyMap-Property. Now, let us examine the rows in the Method Table.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>Method Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: set_aa</p>
+
+<p class=ILprg>Signature: #Blob[10]</p>
+
+<p class=ILprg>Blob:10 Count:4 Bytes 20 1 1 8 </p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">  </span><span
+style="mso-spacerun: yes">   </span>: get_aa</p>
+
+<p class=ILprg>Signature: #Blob[15]</p>
+
+<p class=ILprg>Blob:15 Count:3 Bytes 20 0 8 </p>
+
+<p class=ILprg>ParamList: Param[2]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: set_bb</p>
+
+<p class=ILprg>Signature: #Blob[19]</p>
+
+<p class=ILprg>Blob:19 Count:4 Bytes 20 1 1 E </p>
+
+<p class=ILprg>ParamList: Param[2]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: get_bb</p>
+
+<p class=ILprg>Signature: #Blob[24]</p>
+
+<p class=ILprg>Blob:24 Count:3 Bytes 20 0 E </p>
+
+<p class=ILprg>ParamList: Param[3]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Main</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 7</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: set_cc</p>
+
+<p class=ILprg>Signature: #Blob[44]</p>
+
+<p class=ILprg>Blob:44 Count:4 Bytes 20 1 1 5 </p>
+
+<p class=ILprg>ParamList: Param[3]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 8</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: get_cc</p>
+
+<p class=ILprg>Signature: #Blob[49]</p>
+
+<p class=ILprg>Blob:49 Count:3 Bytes 20 0 5 </p>
+
+<p class=ILprg>ParamList: Param[4]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 9</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg>Signature: #Blob[32]</p>
+
+<p class=ILprg>Blob:32 Count:3 Bytes 20 0 1 </p>
+
+<p class=ILprg>ParamList: Param[4]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Param Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name value</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name value</p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Name value</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This table is
+adorned with nine functions. Hey, wait a minute! We expected only three functions,
+viz. a Main and a constructor each for the classes zzz and yyy. Now, the moment
+of truth has dawned upon us. For each occurrence of a property called aa, two
+methods get created: one called set_aa for the set accessor, and the other
+known as get_aa, for the get accessor. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Since three
+properties prevail within the file, a total of 6 functions get created; and in
+the wake of it, 6 rows get added to the method table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Although the C#
+programming language is capable of comprehending properties, they subsist in
+the form of functions in the IL world. Thus, all properties get transformed
+into simple function calls. The set function or the set accessor is passed one
+parameter, as the signature represents this introduction. This parameter named
+'value' is the row 1 in the Param table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The people who
+designed the C# compiler chose to call the parameter by no other name but
+'value'.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The set_aa
+function is passed a parameter called 'value', with the type being set to the
+type of the property, as indicated by the signature. The get accepts no
+parameters, and even though the ParamList field makes a mention of an index in
+the param table, it can safely be ignored. The signature of the method is to be
+read first. The Param table owns only a single parameter called value, despite
+the existence of three rows, one for each property.<span style="mso-spacerun:
+yes">   </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>So far so good,
+but the link between the Properties table and the method table is conspicuous
+by its absence. This relation is perceptible in a table called the
+MethodSematics, which has a bit position of 24 in the valid field. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The
+MethodSemantics table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=440
+height=136 id="_x0000_i1058" src="chap4\19.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This table
+commences with a two-byte attributes mask. We have created a function called
+GetMethodSemantics, which checks if the bits are ON or not. The whole idea
+behind creating functions is that they may be of utility in the future too. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In this function,
+the coding is done using a slightly unusual technique. On most occasions, a
+combination of bits may be ON. Till now, an inspection was being carried out in
+order to verify if a specific bit was ON or not, and accordingly, a value was
+returned. However, this approach proves ineffective if we aspire to establish
+whether multiples bits are ON or not.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Innovation is the
+order of the day! Accordingly, in the function, we keep adding or concatenating
+to the string 's' in case the bit is ON. The final outcome is that the
+attribute flag furnishes information as to whether it is a 'getter' or a
+'setter' function. The possible values for this mask are stipulated below.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=429
+height=185 id="_x0000_i1059" src="chap4\20.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The second field in
+the semantics table points to a row in the method table. Thus, the first row in
+the MethodSematics table is a 'getter'. It refers to Row 2 in the method table,
+which represents the function get_aa. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The last field
+called 'association' is a link to the properties table. It wields a coded index
+of 1 bit, thereby resulting in a value of 1. Since the first row of the
+properties table is the property aa, it associates the getter flag with this
+property. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=366
+height=88 id="_x0000_i1060" src="chap4\21.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Thus, the
+deficient link between the method and the properties is established with the
+help of the MethodSematics table. The field association is considerably more
+complex and it deals with events as well. We shall inquire into it in a little
+while from now.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=446
+height=405 id="_x0000_i1061" src="chap4\22.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>To sum up, the
+PropertiesMap table talks about the classes in the typedef table, which own
+properties in the Properties Table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Thereafter, the
+Methods table merely lists the methods that are created as an outcome of the
+properties. It is the MethodSematics table that links up the Properties and the
+Methods table, by pointing each of them to the function and the property.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>FieldLayout
+Table </span></u><span style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>using System.Runtime.InteropServices;</p>
+
+<p class=ILprg>[StructLayoutAttribute(LayoutKind.Explicit)]</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>[FieldOffset(2)] int i;</p>
+
+<p class=ILprg>[FieldOffset(20)] long j;</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(16);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[16] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int offset = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int fieldindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Offset:{0}&quot; , offset);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Field :Field[{0}]&quot; , fieldindex );</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Offset:2</p>
+
+<p class=ILprg>Field :Field[1]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Offset:20</p>
+
+<p class=ILprg>Field :Field[2]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Field Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name : i</p>
+
+<p class=ILprg>Signature [10]:Count=2 Type int</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name : j</p>
+
+<p class=ILprg>Signature [13]:Count=2 Type long</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In the normal
+course, by default, memory locations are allocated to the fields present in a
+class or structure by the runtime. Under specific circumstances, we are
+required to determine these memory locations manually. To accomplish this, an
+attribute named StructLayoutAttribute in the program, has to be prefixed to the
+class name, which acquires the value of Explicit from an enum named
+LayoutKind.<span style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>It is the
+attribute FieldOffset that contains the offset and the field, which is the
+ultimate authority that determines the layout. In b.cs, we have specified the
+first field i to be laid out at a starting position of 2, in place of 0.
+Further, we have also stipulated the fact that the second field, which normally
+starts at the end of the first field, should start at offset 20 instead. The
+FieldOffset attribute must be placed on each of the instance members. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>On each occasion
+that the fields are laid out manually, rows get supplemented to the FieldLayout
+table. They have an index position of 16 in the valid table. The FieldLayout
+table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=440
+height=139 id="_x0000_i1064" src="chap4\23.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+is an int, which stores the offset. The second field is an index into the Field
+table. Thus, the first row points to the first field i in the Field table,
+while the second row in the FieldLayout refers to the field j. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=301
+height=228 id="_x0000_i1065" src="chap4\24.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>It is as
+straightforward as this!<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Events and
+Delegates </span></u><span style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public delegate void pqr(int p);</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The above example
+defines a delegate called pqr at the namespace level. A delegate is brought
+into play to call methods unconventionally, in a type-safe manner. They go hand
+in glove with Events. Let us scrutinize the assorted tables that are created. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>TypeRef Table</u></p>
+
+<p class=ILprg>Row[1]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:Object,0x20</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILprg>Row[2]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     
+</span>:MulticastDelegate,0x2B</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILprg>Row[3]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:
+IAsyncResult,0x53</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILprg>Row[4]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:
+AsyncCallback,0x60</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILprg>Row[5]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     
+</span>:DebuggableAttribute,0x97</p>
+
+<p class=ILprg>Namespace :System.Diagnostics,0x84</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The TypeRef table
+reveals the fact that 5 types are being referred to in the assembly. The first
+and the last types are invariably present. However, with the creation of a
+delegate, all the three types, viz. MulticastDelegate, IAsyncResult and
+AsyncCallback, which belong to the System namespace, get augmented. These
+references have come about as a result of the code being introduced by the
+delegate class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>TypeDef Table</u></p>
+
+<p class=ILprg>Row:1</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: Class</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:
+&lt;Module&gt;</p>
+
+<p class=ILprg>Row:2</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, Public, BeforeFieldInit</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: zzz</p>
+
+<p class=ILprg>Row:3</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, Public, Sealed</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: pqr</p>
+
+<p class=ILprg>NameSpace : </p>
+
+<p class=ILprg>Extends:TypeRef[2]</p>
+
+<p class=ILprg>FieldList Field[1]</p>
+
+<p class=ILprg>MethodList Method[3]</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In the previous
+chapter, we examined the rows in the TypeDef table. The pseudo and zzz types
+are created, just as before. With the ushering in of the delegate, a new row
+with the type name of pqr, gets supplemented to the table. This becomes a first
+class type, to which the flag Sealed gets added, thereby preventing access to
+all other classes to derive from it. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The Extends field
+reveals the type that pqr is derived from. It points to the second row in the
+TypeRef table, i.e. the class MulticastDelegate. Thus, it can be competently
+established that a delegate class derives from the MulticastDelegate class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Now, we take a
+look at the Method table from the third row onwards, to unfurl the methods that
+a delegate class introduces.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>Methods Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Main</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg>ImpFlags :Runtime</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot
+SpecialName RTSpecialName </p>
+
+<p class=ILprg>Signature: #Blob[18]</p>
+
+<p class=ILprg>Blob:18 Count:5 Bytes 20 2 1 1C 18 </p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Invoke</p>
+
+<p class=ILprg>ImpFlags :Runtime</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public Virtual HideBySig
+ReuseSlot </p>
+
+<p class=ILprg>Signature: #Blob[24]</p>
+
+<p class=ILprg>Blob:24 Count:4 Bytes 20 1 1 8 </p>
+
+<p class=ILprg>ParamList: Param[3]</p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: BeginInvoke</p>
+
+<p class=ILprg>ImpFlags :Runtime</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public Virtual HideBySig
+VtableLayoutMask ReuseSlot NewSlot </p>
+
+<p class=ILprg>Signature: #Blob[29]</p>
+
+<p class=ILprg>Blob:29 Count:8 Bytes 20 3 12 D 8 12 11 1C </p>
+
+<p class=ILprg>ParamList: Param[4]</p>
+
+<p class=ILprg>Row 6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: EndInvoke</p>
+
+<p class=ILprg>ImpFlags :Runtime</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public Virtual HideBySig
+VtableLayoutMask ReuseSlot NewSlot </p>
+
+<p class=ILprg>Signature: #Blob[38]</p>
+
+<p class=ILprg>Blob:38 Count:5 Bytes 20 1 1 12 D </p>
+
+<p class=ILprg>ParamList: Param[7]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Param Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name object</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name method</p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Name p</p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Name p</p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>Name callback</p>
+
+<p class=ILprg>Row 6</p>
+
+<p class=ILprg>Name object</p>
+
+<p class=ILprg>Row 7</p>
+
+<p class=ILprg>Name result</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The third row in
+the method table is a constructor. Since none of these functions have been
+entered manually, the ImpFlags for all the four functions are Runtime. This is
+the first occasion on which we have encountered this flag. We shall explicate
+the other flags of Virtual and NewSlot a little later. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The signature of
+the constructor reveals two parameters. On inspecting the params table, we
+discover that the row 1 is a parameter called object, and the row 2 is a
+parameter named<span style="mso-spacerun: yes">  </span>method. In the same
+vein, the second function of Invoke has one parameter called 'p'. The third
+function in the delegate is BeginInvoke, which accepts three parameters i.e.
+'p', callback and object. Finally, we come upon the EndInvoke function that
+takes one parameter named result. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=256
+height=183 id="_x0000_i1066" src="chap4\25.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>By now, it would
+have become amply evident to you that reading metadata tables is becoming
+progressively easier.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public event EventHandler a;</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In the file b.cs,
+the field 'a' is declared to be of type event. The EventHandler delegate is
+present in the System namespace. Let us take a look at the rows inserted in the
+metadata tables. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>TypeRef Table</u></p>
+
+<p class=ILprg>Row[1]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">         
+</span>:Object,0x20</p>
+
+<p class=ILprg>Row[2]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">        
+</span>:EventHandler,0x2B</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILprg>Row[3]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">        
+</span>:DebuggableAttribute,0x67</p>
+
+<p class=ILprg>Row[4]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">         
+</span>:Delegate,0x83</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>There are two
+extra type refs that get introduced at rows 2 and 4, viz. the EventHandler
+delegate that the event uses, and the Delegate type. We shall revert to them in
+no time. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The TypeDef table
+contains the rows of the pseudo class and the zzz class. Hence, they have not
+been displayed. An event, unlike a delegate, is basically treated as a field.
+Therefore, a row gets added to the Field table.<o:p></o:p></span></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Field Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Flags: Private</p>
+
+<p class=ILprg>Name : a</p>
+
+<p class=ILprg>Signature [10]:Count=3 Type unknown </p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>However, the
+signature assigned to the field is an obscure one. This is because we have not implemented
+all the types, objects in particular. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>Method Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: add_a</p>
+
+<p class=ILprg>ImpFlags :Synchronized</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:886</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot
+SpecialName </p>
+
+<p class=ILprg>Signature: #Blob[14]</p>
+
+<p class=ILprg>Blob:14 Count:5 Bytes 20 1 1 12 9 </p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: remove_a</p>
+
+<p class=ILprg>ImpFlags :Synchronized</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:886</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot
+SpecialName </p>
+
+<p class=ILprg>Signature: #Blob[14]</p>
+
+<p class=ILprg>Blob:14 Count:5 Bytes 20 1 1 12 9 </p>
+
+<p class=ILprg>ParamList: Param[2]</p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Main</p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>With the
+introduction of events in the program, two rows get added to the method table,
+viz. add_a and remove_a. We will handle the residual Flag bits in a single
+stroke, a little later. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The add_a
+function takes one parameter whose name is 'value', as verified by the params
+table. The second method named remove_a also takes a parameter called 'value'. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Thus, an event
+eventually disintegrates into two methods, i.e. add_eventname and
+remove_eventname. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>MemberRef</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Class:TypeRef[4]</p>
+
+<p class=ILprg>Name:Combine</p>
+
+<p class=ILprg>Signature #BLOB[34] Count 8 0 2 12 11 12 11 12 11 </p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Class:TypeRef[4]</p>
+
+<p class=ILprg>Name:Remove</p>
+
+<p class=ILprg>Signature #BLOB[34] Count 8 0 2 12 11 12 11 12 11 </p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The MemberRef
+table unveils the fact that the event refers to the two methods named Combine
+and Remove. These methods index into row 4 of the TypeRef table, which
+represents the System.Delegate class. The signature shall be explained in the
+subsequent chapters, since it is too convoluted to be handled at this point in
+time. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(20);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Event&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[20] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short attr = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int coded = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Event Flags: {0}&quot; ,
+GetEventsAttributes(attr));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name: {0}&quot; , GetString(name));</p>
+
+<p class=ILprg>Console.Write(&quot;Event Type: &quot;);</p>
+
+<p class=ILprg>int tag = coded <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x03;</p>
+
+<p class=ILprg>if ( tag == 0 )</p>
+
+<p class=ILprg>Console.Write(&quot;TypeDef&quot;);</p>
+
+<p class=ILprg>if ( tag == 1 )</p>
+
+<p class=ILprg>Console.Write(&quot;TypeRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 2 )</p>
+
+<p class=ILprg>Console.Write(&quot;TypeSpec&quot;);</p>
+
+<p class=ILprg>int riid = coded &gt;&gt; 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;[{0}]&quot; , riid);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>b = tablepresent(18);</p>
+
+<p class=ILprg>offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;EventMap Table&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[18] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short index = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short eindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Parent TypeDef[{0}]&quot; , index);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;EventList Event[{0}]&quot; , eindex);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetEventsAttributes(short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0200) == 0x0200)</p>
+
+<p class=ILprg>s = s + &quot;Special Name&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0400) == 0x0400)</p>
+
+<p class=ILprg>s = s + &quot;RTSpecialName&quot;;</p>
+
+<p class=ILprg>if (s.Length == 0)</p>
+
+<p class=ILprg>return &quot;None&quot;;</p>
+
+<p class=ILprg>else</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Event</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Event Flags: None</p>
+
+<p class=ILprg>Name: a</p>
+
+<p class=ILprg>Event Type: TypeRef[2]</p>
+
+<p class=ILprg>EventMap Table</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Parent TypeDef[2]</p>
+
+<p class=ILprg>EventList Event[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>MethodSematics</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Semantics Event Addon </p>
+
+<p class=ILprg>Method Method[1]</p>
+
+<p class=ILprg>Association Events[1]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Semantics Event Remove </p>
+
+<p class=ILprg>Method Method[2]</p>
+
+<p class=ILprg>Association Events[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>TypeDef Table</u></p>
+
+<p class=ILprg>Row:1</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:
+&lt;Module&gt;</p>
+
+<p class=ILprg>Row:2</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: zzz</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Each time that we
+add an event to our code, two tables get added to our metadata. To begin with,
+events are conceptually treated as properties. The first table is the Event
+Table, with an id of 20. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The Event table
+has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=441
+height=132 id="_x0000_i1067" src="chap4\26.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+is always a flag field, which has either none or one of the two bits ON. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The flag value of
+0x0200 is a special event, whereas, the second value of 0x0400 solicits the
+runtime to treat the event as special, thus handling the event in a special
+manner. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=259
+height=93 id="_x0000_i1068" src="chap4\27.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The function
+GetEventAttributes returns the event attributes in a string form. The second
+field is the name of the event, which in our case is 'a'. The third field is a
+TypeDefOrRef coded index, wherein two bits determine whether the table is a
+TypeDef or TypeRef or TypeSpec. In this case, it is an index to the 2nd row of
+the TypeRef table, which represents the class EventHandler in the System
+namespace. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Every event must
+necessarily be of some delegate type. The second table is the EventMap table,
+which has an id of 18. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The EventMap
+table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+is an index into the TypeDef table. It has a value of 2, thereby pointing to
+the second row, which has the class name of zzz in the table. The event 'a' has
+been created in the class zzz. The second field in the EventMap table is an
+index into the event table. It refers to the event index in the event table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=436
+height=203 id="_x0000_i1069" src="chap4\29.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Finally, the
+MethodSematics class links the methods and the events together. You may recall
+that the MethodSemantics table encompasses the columns of Semantics, Method and
+Association.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+of MethodSemanticsAttributes may either be Addon or Remove. It is followed by
+an index to the method table. Thereafter, we come across add_a and remove_a,
+and finally, we encounter the Event index in the event table, to which the
+above methods are linked. This table acts as a conduit between properties and
+events, and their methods.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>public delegate int pqr();</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public event EventHandler a;</p>
+
+<p class=ILprg>public event pqr b;</p>
+
+<p class=ILprg>public event EventHandler c;</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public class yyy</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public event pqr b1;</p>
+
+<p class=ILprg>public event EventHandler c1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public class xxx</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Event</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name: a</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name: b</p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Name: c</p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Name: b1</p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>Name: c1</p>
+
+<p class=ILprg>EventMap Table</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Parent TypeDef[3]</p>
+
+<p class=ILprg>EventList Event[1]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Parent TypeDef[4]</p>
+
+<p class=ILprg>EventList Event[4]</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In the above
+example, we have merely added three events to the class zzz and two events to
+the class yyy. The Event table stores the five events, while the Event Map
+table stores the classes that contain these events. The class xxx does not
+contain any events, which explains its absence in Event Map table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Associating an
+event with a class is indeed a tricky and a sticky issue, since a count of the
+events is not stored anywhere. The Event Map table has to be accessed to
+determine the Event row in the EventList. The difference between the event
+index for the first row and that of the second row establishes the number of
+events that exist in the first class. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Pinvoke Table</span></u><span
+style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>using System.Runtime.InteropServices;</p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>[DllImport(&quot;user32.dll&quot;)]</p>
+
+<p class=ILprg>public static extern int MessageBox(int hWnd, String text,
+String caption, uint type);</p>
+
+<p class=ILprg>public static void Main() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(26);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ModuleRef&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[26] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name {0}&quot; , GetString(name));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>b = tablepresent(28);</p>
+
+<p class=ILprg>offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ImplMap&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[28] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short attr = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short cindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short scope = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Mapping Flags<span style="mso-spacerun:
+yes">  </span>:{0}&quot;, GetPInvokeAttributes(attr));</p>
+
+<p class=ILprg>Console.Write(&quot;MemberForwarded:&quot;);</p>
+
+<p class=ILprg>int tag = cindex <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x01;</p>
+
+<p class=ILprg>if ( tag == 0 )</p>
+
+<p class=ILprg>Console.Write(&quot;Field&quot;);</p>
+
+<p class=ILprg>if ( tag == 1 )</p>
+
+<p class=ILprg>Console.Write(&quot;Method&quot;);</p>
+
+<p class=ILprg>int riid = cindex &gt;&gt; 1;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;[{0}]&quot; , riid);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun:
+yes">           </span>:{0}&quot; , GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Import Scope<span style="mso-spacerun:
+yes">   </span>:ModuleRef[{0}]&quot; , scope);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetPInvokeAttributes(short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0001) == 0x0001)</p>
+
+<p class=ILprg>s = s + &quot;NoMangle &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0006) == 0x0006)</p>
+
+<p class=ILprg>s = s + &quot;CharSetMask &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0000) == 0x0000)</p>
+
+<p class=ILprg>s = s + &quot;CharSetNotSpec &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0002) == 0x0002)</p>
+
+<p class=ILprg>s = s + &quot;CharSetAnsi &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0004) == 0x0004)</p>
+
+<p class=ILprg>s = s + &quot;CharSetUnicode &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0004) == 0x0004)</p>
+
+<p class=ILprg>s = s + &quot;CharSetAuto &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0040) == 0x0040)</p>
+
+<p class=ILprg>s = s + &quot;SupportsLastError &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0700) == 0x0700)</p>
+
+<p class=ILprg>s = s + &quot;CallConvMask &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0100) == 0x0100)</p>
+
+<p class=ILprg>s = s + &quot;CallConvWinapi &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0200) == 0x0200)</p>
+
+<p class=ILprg>s = s + &quot;CallConvCdecl &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0300) == 0x0300)</p>
+
+<p class=ILprg>s = s + &quot;CallConvStdcall &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0400) == 0x0400)</p>
+
+<p class=ILprg>s = s + &quot;CallConvThiscall &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x0500) == 0x0500)</p>
+
+<p class=ILprg>s = s + &quot;CallConvFastcall &quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>ModuleRef</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name user32.dll</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>ImplRef</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Mapping Flags<span style="mso-spacerun: yes"> 
+</span>:CharSetNotSpec CallConvWinapi </p>
+
+<p class=ILprg>MemberForwarded:Method[1]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">          
+</span>:MessageBox</p>
+
+<p class=ILprg>Import Scope<span style="mso-spacerun: yes">  
+</span>:ModuleRef[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>TypeRef Table</u></p>
+
+<p class=ILprg>Row[3]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     
+</span>:DllImportAttribute,0x89</p>
+
+<p class=ILprg>Namespace :System.Runtime.InteropServices,0x6A</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Method Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">  </span><span
+style="mso-spacerun: yes">    </span>:0</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: MessageBox</p>
+
+<p class=ILprg>ImpFlags :PreserveSig</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public Static HideBySig
+ReuseSlot PinvokeImpl</p>
+
+<p class=ILprg>Signature: #Blob[10]</p>
+
+<p class=ILprg>Blob:10 Count:7 Bytes 0 4 8 8 E E 9 </p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In the above
+example, there is a method named MessageBox that takes four parameters. It is
+composed of two ints and two strings. The code of this method is not placed
+within open and close braces; instead, it terminates with a semicolon.
+Moreover, there is an attribute named DllImport placed above this function.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Code is normally
+placed in a Dynamic Link Library (DLL). The code that runs Windows is also
+posited in dlls, such as User32.dll and Kernerl32.dll. This code has mainly
+been written in the C programming language. In the days of yore, there were functions
+infinite that were penned down in the C language, and then, compiled into the
+Intel assembler, but not in IL. We can gain access to this code either from our
+C# program or from any other .Net application. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In order to
+execute this code, the PInvoke functionality of the .Net world was introduced.
+The addition of the DllImport attribute results in the addition of a row to the
+ModuleRef table, which has a bit position of 26. The ModuleRef table has only
+one column i.e. Name, which is an index into the String heap.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Currently, this
+table has a single row. The index into the string table furnishes the name of
+the DLL as user32.dll. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Yet another table
+that is affected by the interop service is the ImplMap table. This table is at
+a bit position of 28. It contains the details of the method present in the DLL.
+<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The ImplMap table
+has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=441
+height=146 id="_x0000_i1070" src="chap4\30.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+is the flags or the attribute field, which is resolved with the help of a
+function called GetPInvokeAttributes. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=267
+height=253 id="_x0000_i1071" src="chap4\31.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The Charset value
+represents the character set that is employed. The standard of Unicode is an
+international standard, which facilitates the representation of any language in
+the world, on the computer. This standard is also known as I18n, since there
+are 18 characters between the letters I and N in the word
+'InternationalizatioN'. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The calling
+convention takes a look at parameters that are posited on the stack and
+thereafter, it elects the parameter that would be conferred with the onus of
+cleaning up the stack. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The Winapi
+calling convention has been used while developing Windows, where the parameters
+are pushed on the stack in the reverse order. Further, it is the 'called'
+function that scours the stack clean or restores it back to its original
+location, when the function is called. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The second field
+in the implmap table is the MemberForwarded. It is a coded index. Thus, the
+first two bits resolve the dilemma of whether it is an index to the Field or to
+the Method table. The field export is not supported. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=345
+height=99 id="_x0000_i1072" src="chap4\32.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first method
+in the methoddef table has an RVA of zero, since the code for the function is
+present in the dll named User32.dll, and not within the current file. The
+Flags, in no uncertain terms, indicate the fact that the method has the
+PinvokeImpl bit set ON. Also, the Signature states that the method will be
+called with four parameters, and that the offset in the param table begins at
+1.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><span
+style="mso-spacerun: yes"> </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The last field is
+an offset in the ModuleRef table, which provides the name of the DLL where the
+method resides. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Interfaces</span></u><span
+style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz : yyy ,xxx</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>void yyy.abc()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>void xxx.abc()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public static void Main() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>interface yyy</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>void abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>interface xxx</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>void abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(9);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;InterfaceImpl&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[9] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short classindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short interfaceindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Class TypeDef[{0}]&quot; , classindex );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Interface {0}[{1}]&quot; ,
+GetTypeDefOrRefTable(interfaceindex) , GetTypeDefOrRefValue(interfaceindex));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>b = tablepresent(25);</p>
+
+<p class=ILprg>offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MethodImpl&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[25] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short classindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short codedbody = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short codeddef = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Class TypeDef[{0}]&quot; , classindex );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MethodBody<span style="mso-spacerun:
+yes">  </span>{0}[{1}]&quot; , GetMethodDefTable(codedbody ) ,
+GetMethodDefValue(codedbody ));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MethodDeclaration<span
+style="mso-spacerun: yes">  </span>{0}[{1}]&quot; , GetMethodDefTable(codeddef
+) , GetMethodDefValue(codeddef ));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int GetMethodDefValue(short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return a &gt;&gt; 1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetMethodDefTable(short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>short tag = (short)(a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+(short)0x01);</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 0)</p>
+
+<p class=ILprg>s = s + &quot;MethodDef&quot;;</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 1)</p>
+
+<p class=ILprg>s = s + &quot;MethodRef&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int GetTypeDefOrRefValue(short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return a &gt;&gt; 2;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetTypeDefOrRefTable(short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>short tag = (short)(a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+(short)0x03);</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 0)</p>
+
+<p class=ILprg>s = s + &quot;TypeDef&quot;;</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 1)</p>
+
+<p class=ILprg>s = s + &quot;TypeRef&quot;;</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 2)</p>
+
+<p class=ILprg>s = s + &quot;TypeRef&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>InterfaceImpl</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Class TypeDef[4]</p>
+
+<p class=ILprg>Interface TypeDef[2]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Class TypeDef[4]</p>
+
+<p class=ILprg>Interface TypeDef[3]</p>
+
+<p class=ILprg>MethodImpl</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Class TypeDef[4]</p>
+
+<p class=ILprg>MethodBody<span style="mso-spacerun: yes">  </span>MethodDef[3]</p>
+
+<p class=ILprg>MethodDeclaration<span style="mso-spacerun: yes"> 
+</span>MethodDef[1]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Class TypeDef[4]</p>
+
+<p class=ILprg>MethodBody<span style="mso-spacerun: yes">  </span>MethodDef[4]</p>
+
+<p class=ILprg>MethodDeclaration<span style="mso-spacerun: yes"> 
+</span>MethodDef[2]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>TypeDef Table</u></p>
+
+<p class=ILprg>Row:2</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, ClassSemanticsMask, Abstract</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: yyy</p>
+
+<p class=ILprg>Row:3</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, ClassSemanticsMask, Abstract</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: xxx</p>
+
+<p class=ILprg>Row:4</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: zzz</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Method Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:0</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: abc</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:0</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: abc</p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2050</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: yyy.abc</p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2060</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: xxx.abc</p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>Row 6</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The b.cs file has
+two interfaces named yyy and xxx, which in turn have one function each, bearing
+the same name of abc. The class zzz is then derived from the two interfaces.
+Since the function names are identical, the method name abc in the class must
+be preceded with the name of the interface. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Let us now pore
+over the tables that get created. The first table that gets affected is the
+InterfaceImpl, which has a bit index of 9 in the valid table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The InterfaceImpl
+table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=439
+height=139 id="_x0000_i1073" src="chap4\33.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+is an offset to the TypeDef table. Row 4 in this table refers to the class name
+zzz itself. The second parameter is a 2-bit coded index of TypeDefOrRef.
+Hereinafter, a function is used to decode the coded index, which checks the
+bits and returns the table name. Another function is utilized to right shift
+and return the index value. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The TypeDefOrRef
+coded index indexes into one of the following three tables: TypeDef, TypeRef or
+TypeSpec. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=402
+height=116 id="_x0000_i1074" src="chap4\34.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In the first row,
+the index value points to the second row of the TypeDef table. The second row
+has an entry for the interface yyy. The second row of the InterfaceImpl also
+points to the fourth row in the TypeDef table, i.e. class zzz; but the
+interface index is now Row 3 of the TypeDef table, which is interface xxx. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Thus, every class
+that derives from an interface, has one row in the InterfaceImpl table. Since
+we derive from two interfaces, two rows are present. The interface is a type in
+the TypeDef table with the Abstract and ClassSemanticsMask bits ON. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The second table
+that gets populated is the MethodImpl table at the bit index of 25. The
+MethodImpl table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=444
+height=128 id="_x0000_i1075" src="chap4\35.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+is an index to the TypeDef table. As the methods are present in the class zzz,
+both rows point to this class or row 4, in the TypeDef table. The next two
+fields use the same MethodDefOrRef coded index, which has a single bit that
+chooses from amongst the two, i.e. a MethodDef (which is a definition), and a
+MethodRef (which is a reference to a method).<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Two functions,
+which are similar to the intefaceimpl table, are implemented to return the
+string and the value. The MethodBody index points to the third method in the
+method table, i.e. yyy.abc, while the MethodDeclaration points to the first
+function i.e. abc. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=445
+height=92 id="_x0000_i1076" src="chap4\36.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This function has
+an RVA of zero, since it belongs to the interface yyy. This is so because the
+field of MethodList in the TypeDef table has a value of 1. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The second row of
+the MethodImpl table has the MethodBody index to the fourth row or the xxx.abc
+method. The MethodDeclaration field is the function abc from the interface xxx.
+<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Thus, the
+methodimpl table provides information about the original function in the
+MethodDeclaration field, which gets overridden by the function in the
+MethodBody field in the class zzz. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=420
+height=296 id="_x0000_i1077" src="chap4\37.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>If the interface
+encompasses 100 methods, each would then be overridden in the class zzz,
+thereby resulting in the addition of 100 rows in the MethodImpl table.<span
+style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>StandAloneSig
+Table :</span></u><span style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int i;</p>
+
+<p class=ILprg>string j;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(17);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;StandAloneSig&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[17] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short index = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>byte count = blob[index]; </p>
+
+<p class=ILprg>Console.Write(&quot;Signature BLOB[{0}] Count {1} &quot; , index
+, count );</p>
+
+<p class=ILprg>if (blob[index+1]<span style="mso-spacerun: yes">  </span>==
+0x07 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int l = 3 ; l &lt;= count ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot; ,<span style="mso-spacerun:
+yes">  </span>GetType(blob[index+l]));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>StandAloneSig</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Signature BLOB[24] Count 4 int string </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Signature BLOB[29] Count 3 boolean</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>In the file b.cs,
+the function Main possesses two local variables, an int and a string. The
+function abc in turn has one local variable of type bool.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Each time that a
+local variable is created in a method, one row gets added to the StandAloneSig
+table, which holds the position of 17 in the valid field. This table has a
+field called signature, which is an index into the Blob heap. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This index starts
+out with the count followed by the reserved number 7. We have already
+encountered this in one of the earlier examples. Next is the count of the
+number of parameters and the actual data types. The GetType function is again
+exploited to decipher the data types.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Signatures that
+are stored in the Blob heap can be indexed from numerous other tables. We could
+be faced with an eventuality wherein, a signature in a Blob heap has no
+metadata table indexing it. One such case presents itself when there are
+variables present in a function. In due course, we would be evincing the
+procedure employed to access these signatures. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Security and
+Unsafe </span></u><span style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>static public unsafe void abc( int j)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public unsafe void pqr()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>&gt;csc b.cs /unsafe</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(14);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;DeclSecurity&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[14] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int action = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int coded = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int bindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Action {0}&quot; , action);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Parent: {0}[{1}]&quot; , GetDeclSecurityTable(coded),
+GetDeclSecurityValue(coded));</p>
+
+<p class=ILprg>int count = blob[bindex];</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Permission Set BLOB[{0}] Count={1}&quot;
+, bindex , count);</p>
+
+<p class=ILprg>for ( int l = 1<span style="mso-spacerun: yes">  </span>; l
+&lt;= count ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0}&quot; ,<span style="mso-spacerun: yes"> 
+</span>(char)blob[bindex+l]);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int GetDeclSecurityValue(int a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return a &gt;&gt; 2;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetDeclSecurityTable(int a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>short tag = (short)(a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+(short)0x03);</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 0)</p>
+
+<p class=ILprg>s = s + &quot;TypeDef&quot;;</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 1)</p>
+
+<p class=ILprg>s = s + &quot;MethodDef&quot;;</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 2)</p>
+
+<p class=ILprg>s = s + &quot;Assembly&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>DeclSecurity</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Action 8</p>
+
+<p class=ILprg>Parent: Assembly[1]</p>
+
+<p class=ILprg>Permission Set BLOB[47] Count=130</p>
+
+<p class=ILprg>?&lt;PermissionSet
+class=&quot;System.Security.PermissionSet&quot;</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>TypeRef Table</u></p>
+
+<p class=ILprg>Row[1]</p>
+
+<p class=ILprg>Row[2]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     
+</span>:SecurityPermissionAttribute,0x5A</p>
+
+<p class=ILprg>Namespace :System.Security.Permissions,0x3E</p>
+
+<p class=ILprg>Row[3]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     
+</span>:SecurityAction,0x76</p>
+
+<p class=ILprg>Namespace :System.Security.Permissions,0x3E</p>
+
+<p class=ILprg>Row[4]</p>
+
+<p class=ILprg>Row[5]</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     
+</span>:UnverifiableCodeAttribute,0xC0</p>
+
+<p class=ILprg>Namespace :System.Security,0xB0</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The b.cs program
+now contains two methods that have been tagged with the 'unsafe' parameter.
+Whenever pointers are used in the program code, it is mandatory for the
+'unsafe' modifier to be implemented. Furthermore, while compiling the above
+program, the /unsafe option is to be added to the compiler. The use of a single
+unsafe method adds one row to the DeclSecurity Table that has a bit index of
+14. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The DeclSecurity
+table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=440
+height=76 id="_x0000_i1078" src="chap4\38.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=441
+height=45 id="_x0000_i1079" src="chap4\39.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Besides the
+DeclSecurity table, the TypeRef table also gets augmented with three rows,
+thereby resulting in three references. All the three attributes are located
+within the Security namespace.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+in the DeclSecurity table is a short, which stands for Actions. The value
+assigned to it originates from the enum SecurityAction in the
+System.Security.Permissions<span style="mso-spacerun: yes">  </span>namespace.
+The values from 0 to 0xff are reserved for use by future standards. Since the
+current value is 8, we are incapable of explaining the Action that it
+represents, at this stage. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The second field
+is a 2-bit coded index of HasDeclSecurity that points to one of the following
+three entities, viz. TypeDef, MethodDef or Assembly. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=439
+height=107 id="_x0000_i1080" src="chap4\40.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This field is
+called the parent. Since the value of Assembly has been assigned, the security
+permissions apply to the entire assembly. The last parameter is an index into
+the Blob heap. The value is a Unicode string System.Security.PermissionSet,
+which is a valid serialized CLI object graph. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Resources<o:p></o:p></span></u></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.txt</u></p>
+
+<p class=ILprg>sonal=mukhi</p>
+
+<p class=ILprg>vijay=ram</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>A text file named
+a.txt is created to store the string resource. A resource is merely a
+name-value pair. There are a total of two names, i.e. sonal and vijay, with the
+values of mukhi and ram. These resources are put away in our exe file and retrieved
+later, using some API. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Now, run the
+Resgen program as in Resgen a.txt to create a file named a.resources.
+Thereafter, create one more text file named b.txt that contains the line
+net=yes, and then, run the Resgen program on it too, as in Resgen b.txt. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Now, to add both
+resource files to the exe file, issue the following command: <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz {</p>
+
+<p class=ILprg>public static void Main() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Csc b.cs /res:a.resources /res:b.resources</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The /res command
+option adds the resources to the exe file. Now, let us explore the metadata
+tables that get impinged on. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(40);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ManifestResource&quot;);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[40] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int offset = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int flags = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>short name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short coded = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Offset {0}&quot; , offset);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags {0}&quot; ,
+GetManifestResource(flags));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name {0}&quot; , GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Implementation: {0}[{1}]&quot; ,
+GetManifestResourceTable(coded), GetManifestResourceValue(coded));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int GetManifestResourceValue(int a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return a &gt;&gt; 2;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetManifestResourceTable(int a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>short tag = (short)(a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+(short)0x03);</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 0)</p>
+
+<p class=ILprg>s = s + &quot;File&quot;;</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 1)</p>
+
+<p class=ILprg>s = s + &quot;AssemblyRef&quot;;</p>
+
+<p class=ILprg>if ( tag<span style="mso-spacerun: yes">  </span>== 2)</p>
+
+<p class=ILprg>s = s + &quot;ExportedType&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetManifestResource(int a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s=&quot;&quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x007) == 0x007)</p>
+
+<p class=ILprg>s = s + &quot;VisibilityMask &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x001) == 0x001)</p>
+
+<p class=ILprg>s = s + &quot;Public &quot;;</p>
+
+<p class=ILprg>if ( (a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x002) == 0x002)</p>
+
+<p class=ILprg>s = s + &quot;Private &quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>ManifestResources</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Offset 0</p>
+
+<p class=ILprg>Flags Public </p>
+
+<p class=ILprg>Name a.resources</p>
+
+<p class=ILprg>Implementation: File[0]</p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Offset 348</p>
+
+<p class=ILprg>Flags Public </p>
+
+<p class=ILprg>Name b.resources</p>
+
+<p class=ILprg>Implementation: File[0]</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Each time a
+resource is added to the exe file using the /res option, a row gets added to
+the ManifestResource table, whose bit index is 40 in the valid field. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The
+ManifestResource table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=446
+height=152 id="_x0000_i1081" src="chap4\41.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+is an offset to the location, where the resource is stored in the executable
+file. This offset is obtained from the Resource data directory in the
+ImageOptional header. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The COR header
+contains an entry for the resources, along with their offset. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first
+resource is stored at an offset of zero from this value. The size of our file
+a.resources is 342 bytes. As a result of the accumulation of bytes for the
+header, the second resource reveals an offset value of 348. The second resource
+begins immediately after the first. Thus, the offset field contains the byte
+offset from where the resource begins. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The second field
+is a flags field, which renders information about whether the resource is
+'public' or 'exported' from the assembly, or if it is 'private' to the
+assembly. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=439
+height=109 id="_x0000_i1082" src="chap4\42.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Using the
+function GetManifestResource, the relevant string is returned. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The third field
+is the name of the resource file. The fourth field is an Implementation code
+index, which points to the File or AssemblyRef table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The documentation
+clearly states that if the implementation is an index into the File table, the
+index value must be zero. A zero index in a table signifies that the index is
+invalid.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><u><span style='font-family:"Bookman Old Style"'>Exported Type </span></u><span
+style='font-family:"Bookman Old Style"'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>c.cs</u></p>
+
+<p class=ILprg>public class yyy</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public int i;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>namespace ccc</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public class xxx</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public string<span style="mso-spacerun: yes">  </span>j;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>&gt;csc /t:module c.cs</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>This gives us a file c.netmodule</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>csc /AddModule:c.netmodule b.cs</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(39);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine(tablenames[39]);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[39] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>TypeAttributes flags = (TypeAttributes)BitConverter.ToInt32
+(metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int typedefindex = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int nspace = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short coded = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags {0}&quot; , flags);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;TypeDef TYPEDEF[{0}]&quot; ,
+typedefindex );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;TypeName {0}&quot; , GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;NameSpace {0}&quot; ,
+GetString(nspace));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Implementation {0}[{1}] &quot; ,
+GetImplementationTable(coded) , GetImplementationValue(coded));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int GetImplementationValue( short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return a &gt;&gt; 2;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetImplementationTable( short a)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>int tag = a <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x03;</p>
+
+<p class=ILprg>if ( tag == 0 )</p>
+
+<p class=ILprg>s = s + &quot;File&quot;;</p>
+
+<p class=ILprg>if ( tag == 1 )</p>
+
+<p class=ILprg>s = s + &quot;AssemblyRef&quot;;</p>
+
+<p class=ILprg>if ( tag == 2 )</p>
+
+<p class=ILprg>s = s + &quot;ExportedType&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>ExportedType</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Flags AutoLayout, AnsiClass, NotPublic, Public, BeforeFieldInit</p>
+
+<p class=ILprg>TypeDef TYPEDEF[33554434]</p>
+
+<p class=ILprg>TypeName yyy</p>
+
+<p class=ILprg>NameSpace </p>
+
+<p class=ILprg>Implementation File[1] </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Flags AutoLayout, AnsiClass, NotPublic, Public, BeforeFieldInit</p>
+
+<p class=ILprg>TypeDef TYPEDEF[33554435]</p>
+
+<p class=ILprg>TypeName xxx</p>
+
+<p class=ILprg>NameSpace ccc</p>
+
+<p class=ILprg>Implementation File[1]</p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Two classes are
+created in the file c.cs. They are subsequently compiled into a module using
+the module option, along with the /target option of the compiler. This results
+in the creation of a module file having an extension of .netmodule. Thereafter,
+the file b.cs is compiled using the .AddModule option of the compiler.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>This results in
+the addition of two rows to the exported type table having a bit index of 39 in
+the valid field. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The ExportedType
+table has the following columns:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><img width=441
+height=149 id="_x0000_i1083" src="chap4\43.gif"><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>The first field
+is the flags attribute, which is of type TypeAttributes. It displays the normal
+flags that every class possesses. The second field is slightly more complex. It
+is known as TypeDefId. The value is an index into a TypeDef table of another
+module in the assembly. However, it is to be used merely as a reference. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Before proceeding
+further, it is imperative to verify if the other table also contains the same
+name and namespace.<span style="mso-spacerun: yes">  </span>In this case, the
+value shown is exceedingly large; and as a result, we could not accomplish
+anything worthwhile. The third is the name of the class. The fourth is the name
+of the namespace. The fifth is an implementation coded index that points to the
+first row of the file table. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'>Thus, to
+summarize, the exported type table holds a row only for a type that is defined
+within other modules of our assembly, and is exported. These types are
+obviously marked as 'public'.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='font-family:"Bookman Old Style"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+.method void HelloWord()
+{
+}

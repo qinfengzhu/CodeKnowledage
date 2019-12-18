@@ -1,0 +1,2354 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap2_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap2_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Metadata Tables - 2. MetaData Header</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>12</o:TotalTime>
+  <o:Created>2002-05-14T23:24:00Z</o:Created>
+  <o:LastSaved>2002-02-18T20:15:00Z</o:LastSaved>
+  <o:Pages>17</o:Pages>
+  <o:Words>4941</o:Words>
+  <o:Characters>28166</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>234</o:Lines>
+  <o:Paragraphs>56</o:Paragraphs>
+  <o:CharactersWithSpaces>34589</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+@font-face
+	{font-family:"Book Antiqua";
+	panose-1:2 4 6 2 5 3 5 3 3 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:8.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:10.0pt;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:24.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-indent:24.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:14.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.figure, li.figure, div.figure
+	{mso-style-name:figure;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.figure1, li.figure1, div.figure1
+	{mso-style-name:figure1;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName, li.ChapName, div.ChapName
+	{mso-style-name:"Chap Name";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName1, li.ChapName1, div.ChapName1
+	{mso-style-name:"Chap Name1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.basetextofthebook, li.basetextofthebook, div.basetextofthebook
+	{mso-style-name:"base text of the book";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.basetextofthebook1, li.basetextofthebook1, div.basetextofthebook1
+	{mso-style-name:"base text of the book1";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ChapName0, li.ChapName0, div.ChapName0
+	{mso-style-name:ChapName;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.DOSPROMPT, li.DOSPROMPT, div.DOSPROMPT
+	{mso-style-name:"DOS PROMPT";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ChapIntro, li.ChapIntro, div.ChapIntro
+	{mso-style-name:"Chap Intro";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:42.65pt;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;}
+p.PageNo, li.PageNo, div.PageNo
+	{mso-style-name:"Page No";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Headline, li.Headline, div.Headline
+	{mso-style-name:Headline;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Hangingindent, li.Hangingindent, div.Hangingindent
+	{mso-style-name:"Hanging indent";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:12.0pt;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Subhead1, li.Subhead1, div.Subhead1
+	{mso-style-name:"Subhead 1";
+	mso-style-parent:Headline;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:18.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Subhead2, li.Subhead2, div.Subhead2
+	{mso-style-name:"Subhead 2";
+	mso-style-parent:"Subhead 1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal><img width=64 height=48 id="_x0000_i1025" src=bpb.gif></p>
+
+<p class=MsoNormal><span style='font-size:24.0pt'>2. MetaData Header</span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This chapter traverses to the innards of the executable file in
+order to fathom the concept of metadata.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(128+4+20+208, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>int where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where + 4 + 4, SeekOrigin.Begin);</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where, SeekOrigin.Begin);</p>
+
+<p class=ILprg>byte a,b,c,d;</p>
+
+<p class=ILprg>a = r.ReadByte();</p>
+
+<p class=ILprg>b = r.ReadByte();</p>
+
+<p class=ILprg>c = r.ReadByte();</p>
+
+<p class=ILprg>d = r.ReadByte();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;{0}{1}{2}{3}&quot; , (char)a , (char)b ,
+(char)c , (char)d);</p>
+
+<p class=ILprg>int major = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Major Version {0}&quot;, major);</p>
+
+<p class=ILprg>int minor = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Minor Version {0}&quot;, minor);</p>
+
+<p class=ILprg>int reserved = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Reserved {0}&quot;, reserved );</p>
+
+<p class=ILprg>int len = r.ReadInt32();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Length of string {0}&quot;, len);</p>
+
+<p class=ILprg>for ( int i = 1 ; i &lt;= len ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>byte e = r.ReadByte();</p>
+
+<p class=ILprg>Console.Write(&quot;{0}&quot;,(char) e);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>int leftover = len % 4;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Four Byte boundary {0}&quot; , leftover
+);</p>
+
+<p class=ILprg>for ( int<span style="mso-spacerun: yes">  </span>i = 1 ; i
+&lt;= leftover ; i++)</p>
+
+<p class=ILprg>s.Seek(1 , SeekOrigin.Current);</p>
+
+<p class=ILprg>int flags = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags {0}&quot;, flags);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>BSJB</p>
+
+<p class=ILprg>Major Version 1</p>
+
+<p class=ILprg>Minor Version 1</p>
+
+<p class=ILprg>Reserved 0</p>
+
+<p class=ILprg>Length of string 12</p>
+
+<p class=ILprg>v1.0.3328</p>
+
+<p class=ILprg>Four Byte boundary 0</p>
+
+<p class=ILprg>Flags 0</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=443 height=142 id="_x0000_i1026" src="chap2\1.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The program sets sail by proceeding directly to the 15 Data
+Directory entry, from where the CLR header commences. After extracting the
+address in the file, we travel to that location. At this location, 8 bytes from
+the start is posted another Data Directory entry for the MetaData. Using the
+earlier approach, we jump to the beginning of the MetaData on disk. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first 4 bytes of the MetaData header contain another Magic
+Number BSJB, which again comprises of the initials of the four guys who built
+the MetaData standard. The J stands for Jim Hess. The MetaData structures, as
+you would shortly witness, is a fine work of art. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Then, we encounter the Major and Minor versions of the
+MetaData, which are 1 and 0, respectively. The documentation lucidly states
+that these values can be eschewed for the time being. Close on its heel is an
+int, which is marked as reserved. Next in sequence is yet another int, which
+specifies the length of the string that ensues. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The string length is specified as 12, which signifies the fact
+that the next 12 bytes contain a string value. On displaying the 12 bytes, a
+value of v1.0.3328 becomes apparent.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>At the command prompt, specify the following command: </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>c:\mdata&gt;csc</p>
+
+<p class=ILprg>Microsoft (R) Visual C# .NET Compiler version 7.00.9372.1</p>
+
+<p class=ILprg>for Microsoft (R) .NET Framework version <b>1.0.3328</b></p>
+
+<p class=ILprg>Copyright (C) Microsoft Corporation 2001. All rights reserved.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Notice that the .Net framework version corresponds to the
+string value. In order to arrive at the next byte, we have to surmount the
+drawback faced by the current 32-bit machines. As per the specifications of
+such machines, everything is aligned on a four-byte boundary. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Therefore, after dividing the length by 4, the remainder that
+is obtained, is the number of bytes by which to move ahead. In the world of
+metadata, alignment on a four-byte boundary still prevails. In our case, since
+the string length is 12, no padding is essential. Lastly, we come across the
+flags field having a value of 0.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=411 height=290 id="_x0000_i1027" src="chap2\2.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>From the above diagram, it would appear as though the last two
+fields have been omitted by us. However, that is not the case. We realized that
+a separate program was crucial to cater to the stream fields. Thus, we have
+incorporated the program given below, which describes the stream entity.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs<o:p></o:p></u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>long startofmetadata;</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(128+4+20+208, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>int clihdr= rva%0x2000 + 512;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;clihdr on disk: &quot; +clihdr);</p>
+
+<p class=ILprg>s.Seek(clihdr + 4 + 4, SeekOrigin.Begin);</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>clihdr = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(clihdr, SeekOrigin.Begin);</p>
+
+<p class=ILprg>startofmetadata = s.Position;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Start of Metadata on disk<span
+style="mso-spacerun: yes">  </span>: &quot; +startofmetadata);</p>
+
+<p class=ILprg>s.Seek(4 + 2 + 2 + 4 + 4 + 12 + 2, SeekOrigin.Current);</p>
+
+<p class=ILprg>int streams = r.ReadInt16();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;No of Streams {0}&quot;, streams);</p>
+
+<p class=ILprg>int [] offset = new int[streams];</p>
+
+<p class=ILprg>int [] ssize<span style="mso-spacerun: yes">  </span>= new int[streams];</p>
+
+<p class=ILprg>int i = 0;</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offset[i] = r.ReadInt32();</p>
+
+<p class=ILprg>ssize[i] = r.ReadInt32();</p>
+
+<p class=ILprg>Console.Write(&quot;Offset {0} Size {1} &quot;, offset[i],
+ssize[i]);</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>byte b = r.ReadByte();</p>
+
+<p class=ILprg>if ( b == 0)</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>Console.Write(&quot;{0}&quot;, (char) b);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( s.Position % 4 == 0 ) </p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>byte<span style="mso-spacerun: yes">  </span>b = r.ReadByte();</p>
+
+<p class=ILprg>if ( b != 0)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s.Seek(-1, SeekOrigin.Current);</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>clihdr on disk: 520</p>
+
+<p class=ILprg>Start of Metadata on disk<span style="mso-spacerun: yes"> 
+</span>: 636</p>
+
+<p class=ILprg>No of Streams 5</p>
+
+<p class=ILprg>Offset 108 Size 208 #~</p>
+
+<p class=ILprg>Offset 316 Size 116 #Strings</p>
+
+<p class=ILprg>Offset 432 Size 12 #US</p>
+
+<p class=ILprg>Offset 444 Size 16 #GUID</p>
+
+<p class=ILprg>Offset 460 Size 36 #Blob</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This program is a progression from the previous one. The
+starting position of the metadata in the file is stored in a variable, aptly
+named as startofmetadata. This variable is put to extensive use in the next
+program. The values in the variables are displayed merely for the sake of
+convenience and verification. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>After arriving at the metadata in the file, the next 30 bytes
+of the Metadata header are traversed. Their details have already been displayed
+in the previous program. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next two bytes in the sequence contain the count of the
+number of streams that are present in the MetaData. There will always be a
+maximum of 5 streams. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Everything in the MetaData world is stored in streams. This is
+the basic entity that is to be dealt with, while retrieving any information on
+the metadata. Following the field that contains the number of streams, are the
+stream headers. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=429 height=131 id="_x0000_i1028" src="chap2\3.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The stream header adheres to a specific pattern. Since there
+are a total of 5 streams, there subsist 5 stream headers. A stream header
+comprises of an offset, the size and the stream name. The offset is with
+respect to the metadata position. The size is always in multiples of 4, in
+keeping with the alignment problem, and it indicates the size of the stream
+data on disk. Finally, there exists the name, which is null terminated.
+However, bytes are padded to cater to any complexities in alignment.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Two integer arrays are created for each stream, in order to
+store the offset and the size. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Contingent to the value stored in the streams, an array is
+created to store the offset and the size. 4 bytes each for the offset and for
+the size are read into the respective arrays. Thereafter, every byte is read
+till a null or a 0 value is encountered. Simultaneously, each byte is displayed
+in the ASCII format. The alignment of 4 has also been taken into account, after
+successfully reading the stream.</p>
+
+<p class=ILbase>The downside of the MetaData world is that its specifications
+have been designed for efficiency, and not for straightforward comprehension.
+Therefore, in order to maintain efficiency, the string is padded with zeroes. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Before we narrow down further to display the data that is
+stored at these string offsets, we need to discern the concept of bitwise shift
+operators.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine( 3 &gt;&gt; 1);</p>
+
+<p class=ILprg>Console.WriteLine( 8 &gt;&gt; 2);</p>
+
+<p class=ILprg>Console.WriteLine( 9 &gt;&gt; 3);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>1</p>
+
+<p class=ILprg>2</p>
+
+<p class=ILprg>1</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=439 height=248 id="_x0000_i1029" src="chap2\4.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The number 3 has the first two bits on. The &gt;&gt; sign
+shifts the bits to the right. Thus, using &gt;&gt; 1, all the bits are moved
+one position to the right, resulting in the first bit falling off the edge, and
+the second bit becoming the first bit, and so on. The bit on the extreme left
+is assigned a new value of zero. Thus, the final answer is 1. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the second case, the number 8 has the fourth bit on. By
+shifting twice to the right, all the bits get shifted by two, resulting in the
+new value of 2. The same procedure is repeated in the third case also, where
+the fourth and the first bits are on. The first bit falls off and the fourth
+bit becomes the first bit. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The inverse of this is the left shift operator, where the
+operator that is used is &lt;&lt; . Here, the rightmost bit falls off during
+left shifting, and a value of 0 is assigned to the newly introduced rightmost
+bit.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The right shifting action results in the division operation.
+Thus, right shifting by 2 results in a division by 4, and so on so forth. This
+is in contrast to left shifting, which results in multiplication.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>int [] offset;</p>
+
+<p class=ILprg>int [] ssize ;</p>
+
+<p class=ILprg>byte [] metadata;</p>
+
+<p class=ILprg>byte [] strings;</p>
+
+<p class=ILprg>byte [] us;</p>
+
+<p class=ILprg>byte [] guid;</p>
+
+<p class=ILprg>byte [] blob;</p>
+
+<p class=ILprg>long valid, sorted;</p>
+
+<p class=ILprg>int nooftables;</p>
+
+<p class=ILprg>byte [][] names;</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>long startofmetadata;</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(360, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>int where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where + 4 + 4, SeekOrigin.Begin);</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where, SeekOrigin.Begin);</p>
+
+<p class=ILprg>startofmetadata = s.Position;</p>
+
+<p class=ILprg>s.Seek(4 + 2 + 2 + 4 + 4 + 12 + 2, SeekOrigin.Current);</p>
+
+<p class=ILprg>int streams = r.ReadInt16();</p>
+
+<p class=ILprg>offset = new int[5];</p>
+
+<p class=ILprg>ssize<span style="mso-spacerun: yes">  </span>= new int[5];</p>
+
+<p class=ILprg>names = new byte[5][];</p>
+
+<p class=ILprg>names[0] = new byte[10];</p>
+
+<p class=ILprg>names[1] = new byte[10];</p>
+
+<p class=ILprg>names[2] = new byte[10];</p>
+
+<p class=ILprg>names[3] = new byte[10];</p>
+
+<p class=ILprg>names[4] = new byte[10];</p>
+
+<p class=ILprg>int i = 0; int j ;</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offset[i] = r.ReadInt32();</p>
+
+<p class=ILprg>ssize[i] = r.ReadInt32();</p>
+
+<p class=ILprg>j = 0;</p>
+
+<p class=ILprg>byte bb ;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bb = r.ReadByte();</p>
+
+<p class=ILprg>if ( bb == 0)</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>j++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( s.Position % 4 == 0 ) </p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>byte<span style="mso-spacerun: yes">  </span>b = r.ReadByte();</p>
+
+<p class=ILprg>if ( b != 0)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s.Seek(-1, SeekOrigin.Current);</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;Offset {0} Size {1} &quot; ,
+offset[i],ssize[i] );</p>
+
+<p class=ILprg>j = 0;</p>
+
+<p class=ILprg>while ( true)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( names[i][j] == 0)</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>Console.Write(&quot;{0}&quot;, (char)names[i][j]);</p>
+
+<p class=ILprg>j++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( names[i][1] == '~' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>metadata = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>metadata[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'S' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>strings = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>strings[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'U' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>us = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>us[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'G' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>guid = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>guid[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'B' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>blob = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>blob[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>int reserved = BitConverter.ToInt32(metadata, 0);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Reserved {0}&quot; , reserved);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Major Table Verison {0}&quot;,
+metadata[4]);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Minor Table Verison {0}&quot;,
+metadata[5]);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Heap Sizes {0}&quot;, metadata[6]);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Reserved {0}&quot;, metadata[7]);</p>
+
+<p class=ILprg>valid = BitConverter.ToInt64(metadata, 8);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Tables Bit Vector {0}&quot;,
+valid.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>nooftables = 0;</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt;= 63 ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>nooftables += (int)(valid &gt;&gt; k ) <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 1; </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine(&quot;No of Tables {0}&quot;, nooftables );</p>
+
+<p class=ILprg>sorted = BitConverter.ToInt64(metadata, 16);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Sorted Tables Bit Vector {0}&quot;,
+sorted.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Offset 108 Size 208 #~</p>
+
+<p class=ILprg>Offset 316 Size 116 #Strings</p>
+
+<p class=ILprg>Offset 432 Size 12 #US</p>
+
+<p class=ILprg>Offset 444 Size 16 #GUID</p>
+
+<p class=ILprg>Offset 460 Size 36 #Blob</p>
+
+<p class=ILprg>Reserved 0</p>
+
+<p class=ILprg>Major Table Verison 1</p>
+
+<p class=ILprg>Minor Table Verison 0</p>
+
+<p class=ILprg>Heap Sizes 0</p>
+
+<p class=ILprg>Reserved 1</p>
+
+<p class=ILprg>Tables Bit Vector 900001447</p>
+
+<p class=ILprg>No of Tables 8</p>
+
+<p class=ILprg>Sorted Tables Bit Vector 2003301FA00</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The above program launches the journey to comprehending the
+internals of metadata. After positioning the file pointer at the metadata
+header, we progress onto storing the names of the streams in an array. In the
+earlier program, we had merely displayed every byte from the name field. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>To store the names, a large array of arrays is created, wherein
+each array holds a string. Since there are 5 streams, 5 sub-arrays are created.
+Besides this, the sub-array is assigned a size of 10, since it is our
+perception that not more than 10 stream names will be present. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Like earlier, in the 'for' loop, the offset and the size are
+read for each stream, and they are placed at their respective array locations.
+The variable j is used to index the inner array, and the variable i is used for
+indexing the outer one. On quitting out of the first 'while' loop, the name
+array is null-terminated merely to facilitate printing. Thus, the first
+enhancement over the previous program is that, all the stream names have been
+placed in an array. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In order to authenticate our action, the size, the offset and
+the name of each stream are printed. The names array is displayed using a
+'while' loop, which terminates when it encounters a zero value. This explains
+the first half of the program. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The second half of the program deals with the data of the five
+streams. We have chosen to store the data of the five streams in five separate
+arrays. Not only does this accelerate the execution process of this program,
+but it also makes it easier to understand. The rules that apply to reading data
+from one stream into an array, remain the same for reading data from all the
+other streams. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Here, instance variables are created for the arrays, thereby
+permitting access to all the functions. The five instance variables are
+metadata, ~,strings, us, guid and blob. Then, using a 'for' loop that iterates
+five times, five 'if' statements are incorporated. The second byte of each
+stream name is checked for a specific character. The first byte is ignored
+since all stream names store a # character in the first byte. We could have
+compared the whole string though, but at the moment, we intend to make life
+easier and unexacting for you. Hence, we have adopted this approach. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>If the second byte is ~, it is indicative of the fact that the
+stream stores the details or tables of metadata. We would be explaining this in
+a short while. The corresponding size array stores the size of the stream,
+which determines the size of the array. The corresponding offset array has a
+value, which points to the beginning of the stream data, as an offset from the
+start of the metadata header. The starting position of the metadata header is
+stored in the variable startofmetadata. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>So, the file pointer is initially positioned at the start of this
+streams data, and then re-positioned at the offset variable. Now that we are
+positioned at the start of the stream data, we use a 'for' loop to populate the
+metadata array. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In place of bringing into play the ReadByte function that reads
+a single byte at a time, we could have used the ReadBytes function instead. The
+ReadBytes function reads a certain number of bytes from the current stream into
+a byte array, and thereon, veers the current file pointer position ahead by
+those many bytes. Wielding the same mechanism, the other four arrays are also
+filled up. As an outcome of this, five arrays are populated with data from the
+streams that constitute the metadata. The most imperative of all streams is the
+stream #~. So, let us untangle its format in detail. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=279 height=238 id="_x0000_i1030" src="chap2\5.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The data for the #~ stream begins with four bytes that are
+reserved. Hence, they all have zero values. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We have employed the methods of the BinaryReader class and the
+BitConverter class. While the BinaryReader class reads multiple bytes at a
+time, the BitConvertor class converts the extracted bytes into a suitable type.
+The static method of ToInt32 in the BitConverter class takes two parameters,
+viz. the byte array and an offset. It picks up 32 bits from the offset in the
+array and converts them into a 32-bit or a 4-byte integer value.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The parameters supplied to this function are the array metadata
+and the offset of 0.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The value of 0 indicates that the function must read the first
+four bytes. In the case of an array, the counting starts from 0 and not from 1.
+The documentation states that this reserved field should always be 0. </p>
+
+<p class=ILbase>This is followed by two bytes that contain the major and minor
+version numbers of the tables schema. As of now, the major version is 1 and the
+minor version is 0. Since they are straightforward bytes, we read them off the
+array itself. There is no necessity of implementing any method from the BitConverter
+class. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next byte deals with heap sizes, which would be discussed
+shortly. The byte that follows the heap size is reserved with a value of 1.
+Following the reserved byte, the next eight bytes or long, embody a count of
+the number of tables that are present. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>By now, you may have got thoroughly peeved at encountering the
+term 'table' every so often, without an explanation appended with it. Folks,
+sulk no more. We serve-up the explanation and unravel its mystery for you right
+away! </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>All metadata is stored internally in the form of tables. There
+are about 43 varied table types in the realm of metadata. All classes or types
+are stored in one table, while all the methods are stored in another table, and
+so on. Each table is assigned a bit in the table field. Contingent upon the
+status of this bit field, the presence of a particular table can be
+ascertained. Further, the quantum of tables present in a file, depends upon the
+number of bits that are switched on.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>As of now, the largest bit for a table is 0x2b, i.e. 43.
+However, while some are never used, some are just incapable of storing any
+information.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Before we explore the entire gamut of tables, let us initially
+count the number of tables present in the file. A 'for' loop is used towards
+this end, which repeats the code 64 times. Thus, the variable k is assigned
+values ranging from 0 to 63. All the bits are right shifted k times, and then,
+a bitwise AND operation is performed with a value of 1. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We offer to elucidate the following statement once again in
+greater depth:</p>
+
+<p class=ILprg>nooftables += (int)(valid &gt;&gt; k ) <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 1; </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The value of k is 0 on the first iteration of the 'for' loop.
+Therefore, the statement evaluates to valid &gt;&gt; 0. Right shifting by 0
+prompts no change whatsoever in the bits in the field. The AND operation with 1
+will now check if the rightmost bit contains the value of 1 or not. The final
+result would be either 1 or 0. So, either 1 or 0 gets added to the count
+variable of nooftables. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the second iteration of the loop, when the value of the variable
+k is 1, the statement evaluates to: nooftables += (int)(valid &gt;&gt; 1 )
+&amp; 1; </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, all the bits in the field are pushed to the right by 1.
+As a consequence of this, the first bit gets discarded and the second bit
+becomes the first bit. If this bit is ON, the result obtained is 1, and the
+nooftables variable is incremented by 1. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the next round, the statement becomes:</p>
+
+<p class=ILprg>nooftables += (int)(valid &gt;&gt; 2 ) <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 1; </p>
+
+<p class=ILbase><span style='font-family:"Book Antiqua"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase>Thus, in this manner, every bit in the valid field is validated
+to determine if it contains a value of 1 or not.</p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span></p>
+
+<p class=ILbase><img width=436 height=103 id="_x0000_i1031" src="chap2\6.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The valid field is a bit vector, which has 8 bits on. Thus, 8 tables
+are finally created for the smallest exe file. The nooftables variable
+corroborates this value. The table field is followed by a long called the
+'sorted tables bit vector'. We shall be attending to this field in a short
+while. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>string [] tablenames;</p>
+
+<p class=ILprg>int tableoffset ;</p>
+
+<p class=ILprg>int [] rows;</p>
+
+<p class=ILprg>int [] offset;</p>
+
+<p class=ILprg>int [] ssize ;</p>
+
+<p class=ILprg>byte [] metadata;</p>
+
+<p class=ILprg>byte [] strings;</p>
+
+<p class=ILprg>byte [] us;</p>
+
+<p class=ILprg>byte [] guid;</p>
+
+<p class=ILprg>byte [] blob;</p>
+
+<p class=ILprg>long valid, sorted;</p>
+
+<p class=ILprg>int nooftables;</p>
+
+<p class=ILprg>byte [][] names;</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>long startofmetadata;</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(360, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>int where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where + 4 + 4, SeekOrigin.Begin);</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where, SeekOrigin.Begin);</p>
+
+<p class=ILprg>startofmetadata = s.Position;</p>
+
+<p class=ILprg>s.Seek(4 + 2 + 2 + 4 + 4 + 12 + 2, SeekOrigin.Current);</p>
+
+<p class=ILprg>int streams = r.ReadInt16();</p>
+
+<p class=ILprg>offset = new int[5];</p>
+
+<p class=ILprg>ssize<span style="mso-spacerun: yes">  </span>= new int[5];</p>
+
+<p class=ILprg>names = new byte[5][];</p>
+
+<p class=ILprg>names[0] = new byte[10];</p>
+
+<p class=ILprg>names[1] = new byte[10];</p>
+
+<p class=ILprg>names[2] = new byte[10];</p>
+
+<p class=ILprg>names[3] = new byte[10];</p>
+
+<p class=ILprg>names[4] = new byte[10];</p>
+
+<p class=ILprg>int i = 0; int j ;</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offset[i] = r.ReadInt32();</p>
+
+<p class=ILprg>ssize[i] = r.ReadInt32();</p>
+
+<p class=ILprg>j = 0;</p>
+
+<p class=ILprg>byte bb ;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bb = r.ReadByte();</p>
+
+<p class=ILprg>if ( bb == 0)</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>j++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( s.Position % 4 == 0 ) </p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>byte<span style="mso-spacerun: yes">  </span>b = r.ReadByte();</p>
+
+<p class=ILprg>if ( b != 0)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s.Seek(-1, SeekOrigin.Current);</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( names[i][1] == '~' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>metadata = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>metadata[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'S' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>strings = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>strings[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'U' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>us = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>us[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'G' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>guid = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>guid[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'B' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>blob = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>blob[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>valid = BitConverter.ToInt64(metadata, 8);</p>
+
+<p class=ILprg>nooftables = 0;</p>
+
+<p class=ILprg>tableoffset = 24;</p>
+
+<p class=ILprg>rows = new int[64];</p>
+
+<p class=ILprg>Array.Clear (rows, 0, rows.Length);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt;= 63 ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int tablepresent = (int)(valid &gt;&gt; k ) <span
+style='font-family:"Bookman Old Style"'>&amp;</span> 1; </p>
+
+<p class=ILprg>if ( tablepresent == 1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>rows[k] = BitConverter.ToInt32(metadata , tableoffset);</p>
+
+<p class=ILprg>tableoffset += 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>tablenames = new String[]{&quot;Module&quot; ,
+&quot;TypeRef&quot; ,<span style='mso-tab-count:1'>            </span>&quot;TypeDef&quot;
+,&quot;FieldPtr&quot;,&quot;Field&quot;,
+&quot;MethodPtr&quot;,&quot;Method&quot;,&quot;ParamPtr&quot; ,
+&quot;Param&quot;, &quot;InterfaceImpl&quot;, &quot;MemberRef&quot;,
+&quot;Constant&quot;, &quot;CustomAttribute&quot;, &quot;FieldMarshal&quot;,
+&quot;DeclSecurity&quot;, &quot;ClassLayout&quot;, &quot;FieldLayout&quot;,
+&quot;StandAloneSig&quot; , &quot;EventMap&quot;,&quot;EventPtr&quot;,
+&quot;Event&quot;, &quot;PropertyMap&quot;, &quot;PropertyPtr&quot;,
+&quot;Properties&quot;,&quot;MethodSemantics&quot;,&quot;</p>
+
+<p class=ILprg>MethodImpl&quot;,&quot;ModuleRef&quot;,&quot;TypeSpec&quot;,&quot;ImplMap&quot;,&quot;FieldRVA&quot;,&quot;ENCLo</p>
+
+<p class=ILprg>g&quot;,&quot;ENCMap&quot;,&quot;Assembly&quot;,&quot;AssemblyProcessor&quot;,&quot;AssemblyOS&quot;,</p>
+
+<p class=ILprg>&quot;AssemblyRef&quot;,&quot;AssemblyRefProcessor&quot;,&quot;AssemblyRefOS&quot;,</p>
+
+<p class=ILprg>&quot;File&quot;,&quot;ExportedType&quot;,&quot;ManifestResource&quot;,&quot;NestedClass&quot;,</p>
+
+<p class=ILprg>&quot;TypeTyPar&quot;,&quot;MethodTyPar&quot;};</p>
+
+<p class=ILbase><span style='font-family:"Book Antiqua"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt;= 63 ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( rows[k] != 0 )</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Table {0} Rows {1} &quot;,tablenames[k]
+, rows[k]);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Actual Tables start at {0}&quot; ,
+tableoffset);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Table Module Rows 1 </p>
+
+<p class=ILprg>Table TypeRef Rows 3 </p>
+
+<p class=ILprg>Table TypeDef Rows 2 </p>
+
+<p class=ILprg>Table Method Rows 2 </p>
+
+<p class=ILprg>Table MemberRef Rows 3 </p>
+
+<p class=ILprg>Table CustomAttribute Rows 1 </p>
+
+<p class=ILprg>Table Assembly Rows 1 </p>
+
+<p class=ILprg>Table AssemblyRef Rows 1 </p>
+
+<p class=ILprg>Actual Tables start at 56</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now that we have established the fact that there are 8 tables
+in the file, the next task is to ascertain the table type and the number of
+rows contained in each. Most of the code above remains unaltered. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We shall start with the following line:</p>
+
+<p class=ILprg>valid = BitConverter.ToInt64(metadata, 8); </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The tableoffset variable is set to 24, thereby circumventing
+the initial header members. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A 'for' loop is implemented as before, with the value of k
+ranging from 0 to 63. Earlier, the result of the right shift operation (which
+could either be the value of 1 or 0), was added to the variable named
+nooftables.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>However, in this program, the result is stored in a variable
+named tablepresent.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>int tablepresent = (int)(valid &gt;&gt; k ) <span
+style='font-family:"Bookman Old Style"'>&amp;</span> 1; </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A value of 1 is an indication that the table is positioned at
+the specific bit location. So, on receipt of this response, a corresponding
+entry in the rows table is initialized to a value present at a specific offset,
+which is the value contained in the variable tableoffset, i.e. 24. Then, the
+tableoffset variable is incremented by a value of 4, since 4 bytes have been
+taken into consideration. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>if ( tablepresent == 1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>rows[k] = BitConverter.ToInt32(metadata , tableoffset);</p>
+
+<p class=ILprg>tableoffset += 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=450 height=102 id="_x0000_i1032" src="chap2\7.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The bytes following the sorted field are a series of ints, which
+contain the number of rows enclosed in every table that subsists. So, if there
+exist 8 tables, then 8 values are placed at the end of the header. Every value
+relates to a corresponding table present in the file.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, the tableoffset variable points to the first int, which
+contains the number of rows in the first table type. The second int in sequence
+contains the count of rows for the second table type, and so on. Thus, with
+every new bit that is switched on, there exists an int that signifies the row
+count. An integer occupies 4 bytes. Hence, the value of tableoffset increases
+by 4 for every int that is added. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, at each instance, k refers to the bit index and
+tableoffset points to the rows in the table. The static function Clear, of the
+array class, clears the array name from the specified location. The first
+parameter to the function is the arrayname. The second parameter is the
+starting point or the index. The third parameter is the ending index, which
+contains the number of bytes that are to be cleared. Since we want the entire
+array to be cleared, an offset of zero is specified, with the array length as
+the last parameter. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, when the loop concludes, the rows array will contain a
+count of the rows for the tables that are present, and a value of zero for the
+tables that are absent.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now, let us attempt and identify the tablenames for the tables
+present in the program.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Each table in the metadata world is assigned a number and a
+name. Thus, we create an array of strings, with these names mentioned at the
+right index position. The table with number 0 is known as Module, while the
+table with the number 1 is called TypeRef, and so on. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now, using a 'for' loop that iterates 64 times, along with an
+'if' statement, the tables types are displayed. This is carried out only for
+the tables that are present, or for those with a row count of one or more. The
+table name is displayed by reading the corresponding index off the tablenames
+array. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Finally, the value stored in the variable tableoffset is displayed.
+It points to the table data. Now, prior to forging ahead to the table data, let
+us display the #Strings stream.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public void DisplayGuid(int st)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{&quot;);</p>
+
+<p class=ILprg>Console.Write(&quot;{0}{1}{2}{3}&quot;,
+guid[st+2].ToString(&quot;X&quot;) , guid[st+1].ToString(&quot;X&quot;) ,
+guid[st].ToString(&quot;X&quot;) , guid[st-1].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;-{0}{1}-&quot;,guid[st+3].ToString(&quot;X&quot;)
+, guid[st+4].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;{0}{1}-&quot;,guid[st+6].ToString(&quot;X&quot;)
+, guid[st+5].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;{0}{1}-&quot;,guid[st+7].ToString(&quot;X&quot;)
+, guid[st+8].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;{0}{1}{2}{3}{4}{5}&quot;,</p>
+
+<p class=ILprg>guid[st+9].ToString(&quot;X&quot;),guid[st+10].ToString(&quot;X&quot;),</p>
+
+<p class=ILprg>guid[st+11].ToString(&quot;X&quot;),guid[st+12].ToString(&quot;X&quot;)</p>
+
+<p class=ILprg>,guid[st+13].ToString(&quot;X&quot;),guid[st+14].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.Write(&quot;}&quot;);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetString(int starting)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int i = starting;</p>
+
+<p class=ILprg>while (strings[i] != 0 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>i++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>System.Text.Encoding e = System.Text.Encoding.UTF8;</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s =
+e.GetString(strings, starting , i - starting<span style="mso-spacerun: yes"> 
+</span>);</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>int tableoffset ;</p>
+
+<p class=ILprg>int [] rows;</p>
+
+<p class=ILprg>int [] offset;</p>
+
+<p class=ILprg>int [] ssize ;</p>
+
+<p class=ILprg>byte [] metadata;</p>
+
+<p class=ILprg>byte [] strings;</p>
+
+<p class=ILprg>byte [] us;</p>
+
+<p class=ILprg>byte [] guid;</p>
+
+<p class=ILprg>byte [] blob;</p>
+
+<p class=ILprg>long valid ;</p>
+
+<p class=ILprg>byte [][] names;</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>long startofmetadata;</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(360, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>int where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where + 4 + 4, SeekOrigin.Begin);</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>where = rva%0x2000 + 512;</p>
+
+<p class=ILprg>s.Seek(where, SeekOrigin.Begin);</p>
+
+<p class=ILprg>startofmetadata = s.Position;</p>
+
+<p class=ILprg>s.Seek(4 + 2 + 2 + 4 + 4 + 12 + 2, SeekOrigin.Current);</p>
+
+<p class=ILprg>int streams = r.ReadInt16();</p>
+
+<p class=ILprg>offset = new int[5];</p>
+
+<p class=ILprg>ssize<span style="mso-spacerun: yes">  </span>= new int[5];</p>
+
+<p class=ILprg>names = new byte[5][];</p>
+
+<p class=ILprg>names[0] = new byte[10];</p>
+
+<p class=ILprg>names[1] = new byte[10];</p>
+
+<p class=ILprg>names[2] = new byte[10];</p>
+
+<p class=ILprg>names[3] = new byte[10];</p>
+
+<p class=ILprg>names[4] = new byte[10];</p>
+
+<p class=ILprg>int i = 0; int j ;</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offset[i] = r.ReadInt32();</p>
+
+<p class=ILprg>ssize[i] = r.ReadInt32();</p>
+
+<p class=ILprg>j = 0;</p>
+
+<p class=ILprg>byte bb ;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bb = r.ReadByte();</p>
+
+<p class=ILprg>if ( bb == 0)</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>j++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( s.Position % 4 == 0 ) </p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>byte<span style="mso-spacerun: yes">  </span>b = r.ReadByte();</p>
+
+<p class=ILprg>if ( b != 0)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s.Seek(-1, SeekOrigin.Current);</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( names[i][1] == '~' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>metadata = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>metadata[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'S' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>strings = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>strings[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'U' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>us = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>us[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'G' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>guid = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>guid[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( names[i][1] == 'B' ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>blob = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>blob[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>valid = BitConverter.ToInt64(metadata, 8);</p>
+
+<p class=ILprg>tableoffset = 24;</p>
+
+<p class=ILprg>rows = new int[64];</p>
+
+<p class=ILprg>Array.Clear (rows, 0, rows.Length);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt;= 63 ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int tablepresent = (int)(valid &gt;&gt; k ) <span
+style='font-family:"Bookman Old Style"'>&amp;</span> 1; </p>
+
+<p class=ILprg>if ( tablepresent == 1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>rows[k] = BitConverter.ToInt32(metadata , tableoffset);</p>
+
+<p class=ILprg>tableoffset += 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>xyz();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[1] ; k ++ )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0}&quot; , (char) strings[k]);</p>
+
+<p class=ILprg>if ( strings[k] == 0 )</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>string s;</p>
+
+<p class=ILprg>s = GetString(10);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;{0}&quot; , s);</p>
+
+<p class=ILprg>s = GetString(16);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;{0}&quot; , s);</p>
+
+<p class=ILprg>DisplayGuid(1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>&lt;Module&gt;</p>
+
+<p class=ILprg>b.exe</p>
+
+<p class=ILprg>mscorlib</p>
+
+<p class=ILprg>System</p>
+
+<p class=ILprg>Object</p>
+
+<p class=ILprg>zzz</p>
+
+<p class=ILprg>Main</p>
+
+<p class=ILprg>.ctor</p>
+
+<p class=ILprg>System.Diagnostics</p>
+
+<p class=ILprg>DebuggableAttribute</p>
+
+<p class=ILprg>b</p>
+
+<p class=ILprg>Console</p>
+
+<p class=ILprg>WriteLine</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>b.exe</p>
+
+<p class=ILprg>mscorlib</p>
+
+<p class=ILprg>{A921C043-32F-4C5C-A5D8-C8C3986BD4EA}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This program displays the contents of the strings stream. A
+major slice of the code remains unchanged, except for the introduction of the
+function xyz. In brief, we have loaded the metadata information from the disk
+into five arrays. The rows array gives a count of the rows of each table. Then,
+we arrive at the tableoffset for the first table in the metadata array. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now, let us explore the xyx function. This function will be
+encountered repeatedly in the future. Henceforth, we shall add all the new code
+in the xyz function only. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The strings stream is constituted of strings that are null
+terminated. So, in the 'for' loop, when a null or a zero is encountered, the
+program proceeds to a new line. This is achieved by utilizing the WriteLine
+function without any parameters, off the Console class. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Simultaneously, there is a function named GetString, which
+returns a string when it is passed a number or offset in the strings stream
+array. This can be achieved by using the GetString function in the Encoding
+class, which accepts 3 parameters, i.e. a byte array, the start position and
+the end position. It then returns a string. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The start position is easily available, as it is provided as a
+parameter to the GetString function code. However, to retrieve the end position,
+a 'while' loop is implemented, which quits on coming across a 0. In the loop, a
+variable i is initialized to the start position and thereafter, it is
+incremented constantly. When the loop quits, i contains the end position of the
+string. The values are supplied to the GetString function in the Encoding
+class, which stores the return value in the string variable s. The GetString
+function has been put to<span style="mso-spacerun: yes">  </span>extensive use
+in all the chapters. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>There is one last function called DisplayGuid. This function contains
+only Write functions. A Globally Unique Identifier (GUID) consists of 16 bytes,
+i.e. 128 bits. This 128-bit number is unique across time and space. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, whenever an entity has to be uniquely identified, it is
+assigned a GUID. There is an RFC on the Internet that has the algorithm to
+compute the GUID. In the DisplayGuid method, we have merely displayed the GUID
+by interchanging certain bytes, which is the manner in which the rest of the
+world displays them. We have read the GUID stream into the guid array, lest you
+have forgotten.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>

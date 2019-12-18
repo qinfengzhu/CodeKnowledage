@@ -1,0 +1,4949 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap5_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap5_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Metadata Tables - 5. The Blob Stream</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>5</o:Revision>
+  <o:TotalTime>23</o:TotalTime>
+  <o:Created>2002-05-15T20:49:00Z</o:Created>
+  <o:LastSaved>2002-02-18T20:17:00Z</o:LastSaved>
+  <o:Pages>39</o:Pages>
+  <o:Words>10707</o:Words>
+  <o:Characters>61032</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>508</o:Lines>
+  <o:Paragraphs>122</o:Paragraphs>
+  <o:CharactersWithSpaces>74951</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:8.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:10.0pt;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:24.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-indent:24.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.figure, li.figure, div.figure
+	{mso-style-name:figure;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.figure1, li.figure1, div.figure1
+	{mso-style-name:figure1;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName, li.ChapName, div.ChapName
+	{mso-style-name:"Chap Name";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName1, li.ChapName1, div.ChapName1
+	{mso-style-name:"Chap Name1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.basetextofthebook, li.basetextofthebook, div.basetextofthebook
+	{mso-style-name:"base text of the book";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.basetextofthebook1, li.basetextofthebook1, div.basetextofthebook1
+	{mso-style-name:"base text of the book1";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.ChapName0, li.ChapName0, div.ChapName0
+	{mso-style-name:ChapName;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.DOSPROMPT, li.DOSPROMPT, div.DOSPROMPT
+	{mso-style-name:"DOS PROMPT";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.ChapIntro, li.ChapIntro, div.ChapIntro
+	{mso-style-name:"Chap Intro";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:42.65pt;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-style:italic;}
+p.PageNo, li.PageNo, div.PageNo
+	{mso-style-name:"Page No";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Headline, li.Headline, div.Headline
+	{mso-style-name:Headline;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Hangingindent, li.Hangingindent, div.Hangingindent
+	{mso-style-name:"Hanging indent";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:12.0pt;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Subhead1, li.Subhead1, div.Subhead1
+	{mso-style-name:"Subhead 1";
+	mso-style-parent:Headline;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Subhead2, li.Subhead2, div.Subhead2
+	{mso-style-name:"Subhead 2";
+	mso-style-parent:"Subhead 1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal><img width=64 height=48 id="_x0000_i1025" src=bpb.gif></p>
+
+<p class=MsoNormal><span style='font-size:24.0pt'>5. The Blob Stream</span></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.il</u></p>
+
+<p class=ILprg>.assembly b</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>.class<span style="mso-spacerun: yes">  </span>sequential public
+zzz</p>
+
+<p class=ILprg>{ </p>
+
+<p class=ILprg>.method static vararg void pqr(int32 i, int64 j, int8 k )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>.entrypoint<span style='mso-tab-count:1'>        </span></p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>.method explicit void abc(int32 vij )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>using System.Reflection;</p>
+
+<p class=ILprg>using System.Configuration.Assemblies;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string [] paramnames; </p>
+
+<p class=ILprg>public bool tablepresent(byte i)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int p = (int)(valid &gt;&gt; i) <span style='font-family:"Bookman Old Style"'>&amp;</span>
+1;</p>
+
+<p class=ILprg>byte [] sizes =
+{10,6,14,2,6,2,14,2,6,4,6,6,6,4,6,8,6,2,4,2,6,4,2,6,6,6,2,2,8,6,8,4,22,4,12,20,6,14,8,14,12,4};</p>
+
+<p class=ILprg>for ( int j = 0 ; j &lt; i ; j++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int o = sizes[j] * rows[j];</p>
+
+<p class=ILprg>tableoffset = tableoffset + o;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( p == 1)</p>
+
+<p class=ILprg>return true;</p>
+
+<p class=ILprg>else</p>
+
+<p class=ILprg>return false;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int ReadBlobIndex(byte [] a , int o)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int z = 0;</p>
+
+<p class=ILprg>if ( offsetblob == 2)</p>
+
+<p class=ILprg>z = BitConverter.ToUInt16 (a , o );</p>
+
+<p class=ILprg>if ( offsetblob == 4)</p>
+
+<p class=ILprg>z = (int)BitConverter.ToUInt32 (a , o );</p>
+
+<p class=ILprg>return z;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int ReadStringIndex(byte [] a , int o)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int z = 0;</p>
+
+<p class=ILprg>if ( offsetstring == 2)</p>
+
+<p class=ILprg>z = BitConverter.ToUInt16 (a , o );</p>
+
+<p class=ILprg>if ( offsetstring == 4)</p>
+
+<p class=ILprg>z = (int)BitConverter.ToUInt32 (a , o );</p>
+
+<p class=ILprg>return z;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetString(int starting)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int i = starting;</p>
+
+<p class=ILprg>while (strings[i] != 0 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>i++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>System.Text.Encoding e = System.Text.Encoding.UTF8;</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s =
+e.GetString(strings, starting , i - starting<span style="mso-spacerun: yes"> 
+</span>);</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>string [] tablenames;</p>
+
+<p class=ILprg>int tableoffset ;</p>
+
+<p class=ILprg>int [] rows;</p>
+
+<p class=ILprg>int [] offset;</p>
+
+<p class=ILprg>int [] ssize ;</p>
+
+<p class=ILprg>byte [] metadata;</p>
+
+<p class=ILprg>byte [] strings;</p>
+
+<p class=ILprg>byte [] us;</p>
+
+<p class=ILprg>byte [] guid;</p>
+
+<p class=ILprg>byte [] blob;</p>
+
+<p class=ILprg>long valid ;</p>
+
+<p class=ILprg>byte [][] names;</p>
+
+<p class=ILprg>string [] streamnames;</p>
+
+<p class=ILprg>int baseofcode;</p>
+
+<p class=ILprg>int baseofdata ;</p>
+
+<p class=ILprg>int sectiona;</p>
+
+<p class=ILprg>int filea ;</p>
+
+<p class=ILprg>byte heapsizes;</p>
+
+<p class=ILprg>int offsetstring = 2;</p>
+
+<p class=ILprg>int offsetblob = 2;</p>
+
+<p class=ILprg>int offsetguid = 2;</p>
+
+<p class=ILprg>public string GetStreamNames(byte [] b)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int i = 0;</p>
+
+<p class=ILprg>while (b[i] != 0 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>i++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>System.Text.Encoding e = System.Text.Encoding.UTF8;</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s = e.GetString(b
+, 0 , i<span style="mso-spacerun: yes">  </span>);</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>long startofmetadata;</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(60, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int peoffset = r.ReadInt32();</p>
+
+<p class=ILprg>s.Seek(peoffset + 24 + 20 , SeekOrigin.Begin);</p>
+
+<p class=ILprg>baseofcode = r.ReadInt32();</p>
+
+<p class=ILprg>baseofdata = r.ReadInt32();</p>
+
+<p class=ILprg>s.Seek(4, SeekOrigin.Current);</p>
+
+<p class=ILprg>sectiona= r.ReadInt32();</p>
+
+<p class=ILprg>filea = r.ReadInt32();</p>
+
+<p class=ILprg>s.Seek(360, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>int where = rva%baseofcode + filea ;</p>
+
+<p class=ILprg>s.Seek(where + 4 + 4, SeekOrigin.Begin);</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>where = rva%baseofcode + filea ;</p>
+
+<p class=ILprg>s.Seek(where, SeekOrigin.Begin);</p>
+
+<p class=ILprg>startofmetadata = s.Position;</p>
+
+<p class=ILprg>s.Seek(4 + 2 + 2 + 4 + 4 + 12 + 2, SeekOrigin.Current);</p>
+
+<p class=ILprg>int streams = r.ReadInt16();</p>
+
+<p class=ILprg>streamnames = new string[5];</p>
+
+<p class=ILprg>offset = new int[5];</p>
+
+<p class=ILprg>ssize<span style="mso-spacerun: yes">  </span>= new int[5];</p>
+
+<p class=ILprg>names = new byte[5][];</p>
+
+<p class=ILprg>names[0] = new byte[10];</p>
+
+<p class=ILprg>names[1] = new byte[10];</p>
+
+<p class=ILprg>names[2] = new byte[10];</p>
+
+<p class=ILprg>names[3] = new byte[10];</p>
+
+<p class=ILprg>names[4] = new byte[10];</p>
+
+<p class=ILprg>int i = 0; int j ;</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offset[i] = r.ReadInt32();</p>
+
+<p class=ILprg>ssize[i] = r.ReadInt32();</p>
+
+<p class=ILprg>j = 0;</p>
+
+<p class=ILprg>byte bb ;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bb = r.ReadByte();</p>
+
+<p class=ILprg>if ( bb == 0)</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>j++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>streamnames[i] = GetStreamNames(names[i]);</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( s.Position % 4 == 0 ) </p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>byte<span style="mso-spacerun: yes">  </span>b = r.ReadByte();</p>
+
+<p class=ILprg>if ( b != 0)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s.Seek(-1, SeekOrigin.Current);</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#~&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>metadata = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>metadata[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#Strings&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>strings = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>strings[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#US&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>us = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>us[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#GUID&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>guid = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>guid[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#Blob&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>blob = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>blob[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>heapsizes = metadata[6];</p>
+
+<p class=ILprg>if ( (heapsizes <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x01) == 0x01)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offsetstring = 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( (heapsizes <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x02) == 0x02 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offsetguid = 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( (heapsizes <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x08) == 0x08 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offsetblob = 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>valid = BitConverter.ToInt64(metadata, 8);</p>
+
+<p class=ILprg>tableoffset = 24;</p>
+
+<p class=ILprg>rows = new int[64];</p>
+
+<p class=ILprg>Array.Clear (rows, 0, rows.Length);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt;= 63 ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int tablepresent = (int)(valid &gt;&gt; k ) <span
+style='font-family:"Bookman Old Style"'>&amp;</span> 1; </p>
+
+<p class=ILprg>if ( tablepresent == 1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>rows[k] = BitConverter.ToInt32(metadata , tableoffset);</p>
+
+<p class=ILprg>tableoffset += 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>tablenames = new String[]{&quot;Module&quot; , &quot;TypeRef&quot;
+,<span style='mso-tab-count:1'>            </span>&quot;TypeDef&quot;
+,&quot;FieldPtr&quot;,&quot;Field&quot;,
+&quot;MethodPtr&quot;,&quot;Method&quot;,&quot;ParamPtr&quot; ,
+&quot;Param&quot;, &quot;InterfaceImpl&quot;, &quot;MemberRef&quot;,
+&quot;Constant&quot;, &quot;CustomAttribute&quot;, &quot;FieldMarshal&quot;,
+&quot;DeclSecurity&quot;, &quot;ClassLayout&quot;, &quot;FieldLayout&quot;,
+&quot;StandAloneSig&quot; , &quot;EventMap&quot;,&quot;EventPtr&quot;,
+&quot;Event&quot;, &quot;PropertyMap&quot;, &quot;PropertyPtr&quot;,
+&quot;Properties&quot;,&quot;MethodSemantics&quot;,</p>
+
+<p class=ILprg>&quot;MethodImpl&quot;,&quot;ModuleRef&quot;,&quot;TypeSpec&quot;,&quot;ImplMap&quot;,&quot;FieldRVA&quot;,</p>
+
+<p class=ILprg>&quot;ENCLog&quot;,&quot;ENCMap&quot;,&quot;Assembly&quot;,&quot;AssemblyProcessor&quot;,&quot;AssemblyOS&quot;,</p>
+
+<p class=ILprg>&quot;AssemblyRef&quot;,&quot;AssemblyRefProcessor&quot;,&quot;AssemblyRefOS&quot;,&quot;File&quot;,</p>
+
+<p class=ILprg>&quot;ExportedType&quot;,&quot;ManifestResource&quot;,&quot;NestedClass&quot;,</p>
+
+<p class=ILprg>&quot;TypeTyPar&quot;,&quot;MethodTyPar&quot;};</p>
+
+<p class=ILprg>FillParamsArray();</p>
+
+<p class=ILprg>DisplayMethodTable();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void FillParamsArray()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(8);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>paramnames = new string[rows[8] + 1];</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[8] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short pattr = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int sequence = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = ReadStringIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetstring;</p>
+
+<p class=ILprg>string s = GetString(name);</p>
+
+<p class=ILprg>paramnames[k] = s; </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void DisplayMethodTable()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(6);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(tablenames[6]);</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[6] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int rva = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>MethodImplAttributes impflags = (MethodImplAttributes
+)BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int flags = (int)BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = ReadStringIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetstring;</p>
+
+<p class=ILprg>int signature = ReadBlobIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetblob;</p>
+
+<p class=ILprg>int param = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun: yes">    
+</span>: {0}&quot;, GetString(name));</p>
+
+<p class=ILprg>string s = DisplayMethodSignature(signature , param ,
+GetString(name) );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Signature: #Blob[{0}]
+{1}&quot;,signature , s);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string DisplayMethodSignature (int index , int param ,
+string name)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s = &quot;&quot;;</p>
+
+<p class=ILprg>int count = blob[index];</p>
+
+<p class=ILprg>s = s + count.ToString() + &quot; &quot;; </p>
+
+<p class=ILprg>for ( int l = 1; l &lt;= count ; l++)</p>
+
+<p class=ILprg>s = s + blob[index+l].ToString() + &quot; &quot;; </p>
+
+<p class=ILprg>byte [] blob1 = new byte[count];</p>
+
+<p class=ILprg>Array.Copy(blob , index + 1 , blob1 , 0 , count);</p>
+
+<p class=ILprg>byte firstfourbits = (byte)(blob1[0] <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 0x0f);</p>
+
+<p class=ILprg>if ( firstfourbits == 0x00)</p>
+
+<p class=ILprg>s = s + &quot; DEFAULT &quot;;</p>
+
+<p class=ILprg>if ( firstfourbits == 0x05)</p>
+
+<p class=ILprg>s = s + &quot; VARARG &quot;;</p>
+
+<p class=ILprg>if ( (blob1[0] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x20) == 0x20)</p>
+
+<p class=ILprg>s = s + &quot; HASTHIS &quot;;</p>
+
+<p class=ILprg>if ( (blob1[0] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x40) == 0x40)</p>
+
+<p class=ILprg>s = s + &quot; EXPLICIT &quot;;</p>
+
+<p class=ILprg>int paramcount = blob1[1];</p>
+
+<p class=ILprg>s = s + &quot;Count &quot; + paramcount.ToString() + &quot;
+&quot; ;</p>
+
+<p class=ILprg>s = s + &quot; &quot; + GetType(blob1[2]) + &quot; &quot; ;</p>
+
+<p class=ILprg>s = s + name + &quot;(&quot;;</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= paramcount ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = s + &quot; &quot; + GetType(blob1[2 + k]) + &quot; &quot; +
+paramnames[k] ;</p>
+
+<p class=ILprg>if ( k != paramcount )</p>
+
+<p class=ILprg>s = s + &quot;,&quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>s = s + &quot;)&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetType(int b)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( b == 0x01)</p>
+
+<p class=ILprg>return &quot;void&quot;;</p>
+
+<p class=ILprg>if ( b == 0x02)</p>
+
+<p class=ILprg>return &quot;boolean&quot;;</p>
+
+<p class=ILprg>if ( b == 0x03)</p>
+
+<p class=ILprg>return &quot;char&quot;;</p>
+
+<p class=ILprg>if ( b == 0x04)</p>
+
+<p class=ILprg>return &quot;byte&quot;;</p>
+
+<p class=ILprg>if ( b == 0x05)</p>
+
+<p class=ILprg>return &quot;ubyte&quot;;</p>
+
+<p class=ILprg>if ( b == 0x06)</p>
+
+<p class=ILprg>return &quot;short&quot;;</p>
+
+<p class=ILprg>if ( b == 0x07)</p>
+
+<p class=ILprg>return &quot;ushort&quot;;</p>
+
+<p class=ILprg>if ( b == 0x08)</p>
+
+<p class=ILprg>return &quot;int&quot;;</p>
+
+<p class=ILprg>if ( b == 0x09)</p>
+
+<p class=ILprg>return &quot;uint&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0a)</p>
+
+<p class=ILprg>return &quot;long&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0b)</p>
+
+<p class=ILprg>return &quot;ulong&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0c)</p>
+
+<p class=ILprg>return &quot;float&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0d)</p>
+
+<p class=ILprg>return &quot;double&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0e)</p>
+
+<p class=ILprg>return &quot;string&quot;;</p>
+
+<p class=ILprg>return &quot;unknown&quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Method</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: pqr</p>
+
+<p class=ILprg>Signature: #Blob[1] 6 5 3 1 8 10 4<span style="mso-spacerun:
+yes">  </span>VARARG Count 3<span style="mso-spacerun: yes">  </span>void pqr(
+int i, long j, byte k)</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: abc</p>
+
+<p class=ILprg>Signature: #Blob[8] 4 96 1 1 8<span style="mso-spacerun: yes"> 
+</span>DEFAULT<span style="mso-spacerun: yes">  </span>HASTHIS<span
+style="mso-spacerun: yes">  </span>EXPLICIT Count 1<span style="mso-spacerun:
+yes">  </span>void abc( int i)</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=441 height=148 id="_x0000_i1026" src="chap5\1.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The above example is the inaugural stride in deciphering the
+method signatures. This program is directed towards serving as a prototype for
+the entire chapter. The freshly introduced functions shall be appended at the
+end of the abc function. Two functions named FillParamsArray and
+DisplayMethodSignature have been added to the program. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>To enable the display of the function signatures, the presence
+of parameter names is ineluctable, as can be seen in the output. At this stage,
+the function FillParamsArray method merely populates a string array with the
+names of each parameter. The code given earlier to read the Param table, is
+re-used to fill up an instance array called paramnames. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The eighth member in the row array determines the size of the
+array. In contrast to the array, which starts at 0, the row numbers always
+start at 1. Thus, the array size is increased by 1, so that the array offset is
+in sync with the row numbers.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Finally, at the culmination of the function, there is an array
+called paramnames, which contains the names of the parameters that are to be
+displayed as part of the function signature. The very essence of the above
+program is not the function DisplayMethodTable, but the function
+DisplayMethodSignature. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the DisplayMethodTable function, we start out by reading the
+entire method table. However, only the name and the signature field that stores
+the offset of the method signature in the Blob stream are utilized. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thereafter, the function DisplayMethodSignature is called with
+three parameters: an offset into the Blob heap, an offset into the param table
+(where the first parameter of this function is located), and finally, the name
+of the function as a string. But, the param offset would be replete with
+meaningful significance, only if the method signature identifies the
+parameters. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=442 height=52 id="_x0000_i1027" src="chap5\2.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>As always, the first byte is the count byte, which has a value
+of six for the first function pqr. The count byte is stored in a variable
+called count. Then, an array called blob1 is created and the entire method
+signature, which is limited in size to the value of count, is copied into this
+byte array.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This approach simplifies and abridges the process of
+interpreting the method signature efficiently, since the array blob1 is used
+exclusively to store the signature, unlike the Blob that accommodates an
+assortment of other things too. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Following the count byte is a byte that contains two diverse
+types of information:</p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>     </span></span>One relates to the calling
+convention.</p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>     </span></span>The other talks about the 'this'
+pointer.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The variable named firstfourbits retrieves the first four bits
+of the first byte, which establishes the calling convention. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Of the four, if the first three bits have values of 0, the
+calling convention is the default one. If the value is 0x05, the calling
+convention is that of vararg. The vararg calling convention facilitates the
+passing of a variable number of arguments. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The second set of four bits identifies whether the 'this'
+pointer has been passed or not, and also whether the modifier 'explicit' has
+been used with the function or not. The 'this' pointer is never specified with
+static functions. As a result of this, the sixth bit is OFF, as seen in the pqr
+function, which is marked as static.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>On the other hand, the function abc has the sixth bit ON, and
+it also employs the 'explicit' modifier. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first byte of the method signature deals with calling
+conventions. The next byte provides a count of the number of parameters that
+the method uses. This value is stored in a variable called paramcount, and it
+is used to display all the parameters. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The third byte accommodates the return type, which has been
+assumed to be a simple one. The GetType function returns the type in a string
+format. Here, the parameters too are assumed to be holding simple value types. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The 'for' loop repeats the process, contingent on the number of
+parameters, thereby displaying all the parameters that the function takes. The
+GetType function is used to return the type and the paramarray array is used to
+provide the name of the array. This is the mechanism by means of which, the
+signature is displayed in a readable form. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We have made far too many assumptions about the method
+signature. Now that the basics have been well construed, let us build upon the
+above foundation and write a method that decodes the most complex of method
+signatures.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.il</u></p>
+
+<p class=ILprg>.assembly b</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>.class<span style="mso-spacerun: yes">  </span>sequential public
+zzz</p>
+
+<p class=ILprg>{ </p>
+
+<p class=ILprg>.method static vararg class zzz pqr(int64 b , [out] int32<span
+style='font-family:"Bookman Old Style"'>&amp;</span> aa ,<span
+style="mso-spacerun: yes">  </span>class zzz c , class yyy d , int8 [6,7,3...9
+, , ] d)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>.entrypoint</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>.class yyy</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The functions of FillParamsArray, DisplayMethodTable and
+DisplayMethodSignature have been modified. Further, the code specified below,
+should be placed after the GetType function, but before the closing brace of
+class zzz. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>string [] typedefnames; </p>
+
+<p class=ILprg>string [] typerefnames;</p>
+
+<p class=ILprg>public void FillParamsArray()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(8);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>paramnames = new string[rows[8] + 1];</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[8] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short pattr = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int sequence = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = ReadStringIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetstring;</p>
+
+<p class=ILprg>string s = GetString(name);</p>
+
+<p class=ILprg>paramnames[k] = s; </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>old = tableoffset;</p>
+
+<p class=ILprg>b = tablepresent(1);</p>
+
+<p class=ILprg>offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>typerefnames = new string[rows[1]+1];</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[1] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short resolutionscope = BitConverter.ToInt16 (metadata , offs);</p>
+
+<p class=ILprg>offs = offs + 2;</p>
+
+<p class=ILprg>int name = ReadStringIndex(metadata , offs);</p>
+
+<p class=ILprg>offs = offs + offsetstring;</p>
+
+<p class=ILprg>int nspace = ReadStringIndex(metadata , offs);</p>
+
+<p class=ILprg>offs = offs + offsetstring;</p>
+
+<p class=ILprg>string s = GetString(name);</p>
+
+<p class=ILprg>string s1 = GetString(nspace);</p>
+
+<p class=ILprg>if ( s1.Length != 0)</p>
+
+<p class=ILprg>s1 = s1 + &quot;.&quot;;</p>
+
+<p class=ILprg>s1 = s1 + s;</p>
+
+<p class=ILprg>typerefnames[k] = s1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>old = tableoffset;</p>
+
+<p class=ILprg>b = tablepresent(2);</p>
+
+<p class=ILprg>offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>typedefnames = new string[rows[2]+1];</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[2] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>TypeAttributes flags = (TypeAttributes)BitConverter.ToInt32 (metadata,
+offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int name = ReadStringIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetstring;</p>
+
+<p class=ILprg>int nspace = ReadStringIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetstring;</p>
+
+<p class=ILprg>short cindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int findex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int mindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>string s = GetString(name);</p>
+
+<p class=ILprg>string s1 = GetString(nspace);</p>
+
+<p class=ILprg>if ( s1.Length != 0)</p>
+
+<p class=ILprg>s1 = s1 + &quot;.&quot;;</p>
+
+<p class=ILprg>s1 = s1 + s;</p>
+
+<p class=ILprg>typedefnames[k] = s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public void DisplayMethodTable()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(6);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[6] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int rva = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>MethodImplAttributes impflags = (MethodImplAttributes
+)BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int flags = (int)BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = ReadStringIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetstring;</p>
+
+<p class=ILprg>int signature = ReadBlobIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetblob;</p>
+
+<p class=ILprg>int param = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun: yes">    
+</span>: {0}&quot;, GetString(name));</p>
+
+<p class=ILprg>string s = DisplayMethodSignature(signature , param ,
+GetString(name) );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Signature: #Blob[{0}]
+{1}&quot;,signature , s);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public string DisplayMethodSignature(int index , int param ,
+string name) {</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s =
+&quot;Count=&quot;;</p>
+
+<p class=ILprg>int cb; int uncompressedbyte;</p>
+
+<p class=ILprg>int count;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob , index , out uncompressedbyte);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Count Byte cb={0}
+uncompresedbyte={1}&quot;, cb,uncompressedbyte);</p>
+
+<p class=ILprg>count = uncompressedbyte;</p>
+
+<p class=ILprg>s = s + count.ToString() + &quot; Bytes &quot;; </p>
+
+<p class=ILprg>for ( int l = 0; l &lt; count ; l++)</p>
+
+<p class=ILprg>s = s + blob[index+l+cb].ToString() + &quot; &quot;; </p>
+
+<p class=ILprg>byte [] blob1 = new byte[count];</p>
+
+<p class=ILprg>Array.Copy(blob , index + cb<span style="mso-spacerun: yes"> 
+</span>, blob1 , 0 , count);</p>
+
+<p class=ILprg>index = 0;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Calling Convention Byte cb={0}
+uncompresedbyte={1}&quot;, cb,uncompressedbyte);</p>
+
+<p class=ILprg>s = s + GetCallingConvention(uncompressedbyte);</p>
+
+<p class=ILprg>int paramcount;</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Parameter Count cb={0}
+uncompresedbyte={1}&quot;, cb,uncompressedbyte);</p>
+
+<p class=ILprg>paramcount = uncompressedbyte;</p>
+
+<p class=ILprg>s = s + &quot;Number of Parameters &quot; +
+paramcount.ToString() + &quot;\n&quot;; </p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Return Type cb={0}
+uncompresedbyte={1}&quot;, cb,uncompressedbyte);</p>
+
+<p class=ILprg>string s1;</p>
+
+<p class=ILprg>s1 = GetReturnType( blob1 , index<span style="mso-spacerun:
+yes">  </span>, out cb);</p>
+
+<p class=ILprg>s = s + &quot;Return Type:&quot; + s1 + &quot;\n&quot;;</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>s = s + &quot;Signature &quot; + name + &quot;(&quot;;</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= paramcount ; l++)<span
+style="mso-spacerun: yes">  </span>{</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>int cb1 ;</p>
+
+<p class=ILprg>int bytes = uncompressedbyte;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Before GetElementType {0}&quot; ,
+bytes);</p>
+
+<p class=ILprg>s1 = GetElementType(blob1 , bytes , index , out cb1);</p>
+
+<p class=ILprg>index = index + cb + cb1;</p>
+
+<p class=ILprg>s = s + s1 + &quot; &quot; + paramnames[l] + &quot; &quot;;</p>
+
+<p class=ILprg>if ( l != paramcount)</p>
+
+<p class=ILprg>s = s + &quot;,&quot; ;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>s = s + &quot;)\n&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetCallingConvention ( int uncompressedbyte )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int firstbyte = uncompressedbyte;</p>
+
+<p class=ILprg>byte firstfourbits = (byte)(firstbyte <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 0x0f);</p>
+
+<p class=ILprg>string s = &quot;\nCalling Convention &quot;;</p>
+
+<p class=ILprg>if ( firstfourbits == 0x00)</p>
+
+<p class=ILprg>s = s + &quot; DEFAULT &quot;;</p>
+
+<p class=ILprg>if ( firstfourbits == 0x05)</p>
+
+<p class=ILprg>s = s + &quot; VARARG &quot;;</p>
+
+<p class=ILprg>if ( (firstbyte <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x20) == 0x20)</p>
+
+<p class=ILprg>s = s + &quot; HASTHIS &quot;;</p>
+
+<p class=ILprg>if ( (firstbyte <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x40) == 0x40)</p>
+
+<p class=ILprg>s = s + &quot; EXPLICIT &quot;;</p>
+
+<p class=ILprg>s = s + &quot;\n&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public string GetElementType(byte [] b , int bytes , int index ,
+out int cb1) {</p>
+
+<p class=ILprg>cb1 = 0;</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>if ( bytes &lt;= 0x0e )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb1 = 0;</p>
+
+<p class=ILprg>s = GetType(bytes);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x12 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetClassType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x14)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetArrayType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x10)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetReferenceType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetReferenceType( byte [] b , int bytes , int
+index , out int cb1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;[Out] &quot;;</p>
+
+<p class=ILprg>int total = 1;</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index + 1 , out
+uncompressedbyte);</p>
+
+<p class=ILprg>int cb2;</p>
+
+<p class=ILprg>s = s + GetElementType(b , uncompressedbyte , index + 1 , out
+cb2);</p>
+
+<p class=ILprg>total = total + cb2;</p>
+
+<p class=ILprg>cb1 = total;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public string GetArrayType(byte [] b , int bytes , int index ,
+out int cb1) {</p>
+
+<p class=ILprg>string s ;</p>
+
+<p class=ILprg>int total = 1;</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>int rank;</p>
+
+<p class=ILprg>int numsizes;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index + 1 , out
+uncompressedbyte);</p>
+
+<p class=ILprg>total = total + cb;</p>
+
+<p class=ILprg>s = GetElementType(b,uncompressedbyte , index +1 , out cb1);</p>
+
+<p class=ILprg>total = total + cb1;</p>
+
+<p class=ILprg>s = s + &quot; [&quot;;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(b , index + total, out uncompressedbyte);</p>
+
+<p class=ILprg>total = total + cb;</p>
+
+<p class=ILprg>rank = uncompressedbyte;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Rank {0}&quot; , rank);</p>
+
+<p class=ILprg>cb = CorSigUncompressData(b , index + total, out
+uncompressedbyte);</p>
+
+<p class=ILprg>total = total + cb;</p>
+
+<p class=ILprg>numsizes = uncompressedbyte;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Num Sizes {0}&quot; , numsizes );</p>
+
+<p class=ILprg>int [] sizearray = new int[numsizes];</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= numsizes ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = CorSigUncompressData(b , index + total, out
+uncompressedbyte);</p>
+
+<p class=ILprg>total = total + cb;</p>
+
+<p class=ILprg>sizearray[l-1] = uncompressedbyte;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>cb = CorSigUncompressData(b , index + total, out uncompressedbyte);</p>
+
+<p class=ILprg>total = total + cb;</p>
+
+<p class=ILprg>int bounds = uncompressedbyte;</p>
+
+<p class=ILprg>int [] boundsarray = new int[bounds];</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= bounds ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = CorSigUncompressData(b , index + total, out
+uncompressedbyte);</p>
+
+<p class=ILprg>total = total + cb;</p>
+
+<p class=ILprg>int ulSigned = uncompressedbyte <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x1; </p>
+
+<p class=ILprg>uncompressedbyte<span style="mso-spacerun: yes">  </span>=
+uncompressedbyte &gt;&gt; 1; </p>
+
+<p class=ILprg>Console.WriteLine(ulSigned);</p>
+
+<p class=ILprg>if (ulSigned == 1)<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>{<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>if (cb == 1)<span style="mso-spacerun: yes">    </span></p>
+
+<p class=ILprg>{<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>uncompressedbyte =<span style="mso-spacerun: yes">  </span>(int)
+(uncompressedbyte | 0xffffffc0); </p>
+
+<p class=ILprg>}<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>else if (cb == 2)<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>{<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>uncompressedbyte = (int) (uncompressedbyte | 0xffffe000) ; </p>
+
+<p class=ILprg>}<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>else<span style="mso-spacerun: yes">    </span></p>
+
+<p class=ILprg>{<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>uncompressedbyte = (int)(uncompressedbyte | 0xf0000000);<span
+style="mso-spacerun: yes">    </span></p>
+
+<p class=ILprg>}<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>}<span style="mso-spacerun: yes">   </span></p>
+
+<p class=ILprg>boundsarray[l-1] = uncompressedbyte ;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.Write(&quot;Size Array &quot;);</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= numsizes; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot;, sizearray[l-1]); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.Write(&quot;Bounds Array &quot;);</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= bounds ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot;, boundsarray[l-1]); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>for ( int l = 0 ; l &lt; bounds ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int upper = boundsarray[l] + sizearray[l] - 1 ;</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>if ( boundsarray[l] == 0 <span style='font-family:"Bookman Old Style"'>&amp;&amp;</span>
+sizearray[l] != 0 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = s + sizearray[l] ;</p>
+
+<p class=ILprg>if ( l != bounds -1 )</p>
+
+<p class=ILprg>s = s + &quot;,&quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if (boundsarray[l] == 0 <span style='font-family:"Bookman Old Style"'>&amp;&amp;</span>
+sizearray[l] == 0)</p>
+
+<p class=ILprg>s = s + &quot;,&quot; ;</p>
+
+<p class=ILprg>if (boundsarray[l] != 0 <span style='font-family:"Bookman Old Style"'>&amp;&amp;</span>
+sizearray[l] != 0)</p>
+
+<p class=ILprg>s = s + boundsarray[l] + &quot;...&quot; + upper.ToString() +
+&quot;,&quot; ;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>int leftover = rank - numsizes;</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt; leftover ; l++)</p>
+
+<p class=ILprg>s = s + &quot;,&quot;;</p>
+
+<p class=ILprg>s = s + &quot;]&quot;;</p>
+
+<p class=ILprg>cb1 = total-1;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public string GetClassType(byte [] b , int bytes , int index ,
+out int cb1) {</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index + 1 , out
+uncompressedbyte);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Token Count cb={0}
+uncompresedbyte={1}&quot;, cb,uncompressedbyte);</p>
+
+<p class=ILprg>byte table = (byte)(uncompressedbyte <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 0x03);</p>
+
+<p class=ILprg>int ind = uncompressedbyte &gt;&gt; 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Token Table={0} index={1}&quot;, table
+,ind);</p>
+
+<p class=ILprg>string s1= &quot;&quot;;</p>
+
+<p class=ILprg>if ( table == 1)</p>
+
+<p class=ILprg>s1 = typerefnames[ind];</p>
+
+<p class=ILprg>if ( table == 0)</p>
+
+<p class=ILprg>s1 = typedefnames[ind];</p>
+
+<p class=ILprg>cb1 = cb;</p>
+
+<p class=ILprg>return s1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public string GetReturnType(byte [] b , int index , out int cb)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>cb = 0;</p>
+
+<p class=ILprg>if ( b[index] &lt;= 0x0e ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetType(b[index]);</p>
+
+<p class=ILprg>cb = 1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( b[index] == 0x12 ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int cb1;</p>
+
+<p class=ILprg>int uncompressedbyte ;</p>
+
+<p class=ILprg>cb1 = CorSigUncompressData( b , index +1 , out uncompressedbyte
+);</p>
+
+<p class=ILprg>byte table = (byte)(uncompressedbyte <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 0x03);</p>
+
+<p class=ILprg>int ind = uncompressedbyte &gt;&gt; 2;</p>
+
+<p class=ILprg>if ( table == 1)</p>
+
+<p class=ILprg>s = typerefnames[ind];</p>
+
+<p class=ILprg>if ( table == 0)</p>
+
+<p class=ILprg>s = typedefnames[ind];</p>
+
+<p class=ILprg>cb = cb1 + 1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public int CorSigUncompressData( byte [] b , int index , out int
+answer) {</p>
+
+<p class=ILprg>int cb = 0;</p>
+
+<p class=ILprg>answer = 0;</p>
+
+<p class=ILprg>if ( (b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x80) == 0x00)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = 1;</p>
+
+<p class=ILprg>answer = b[index];</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( (b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0xC0) == 0x80)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = 2;</p>
+
+<p class=ILprg>answer = ((b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x3f) &lt;&lt;8 ) |<span style="mso-spacerun: yes">  </span>b[index+1];</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( (b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0xE0) == 0xC0)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = 2;</p>
+
+<p class=ILprg>answer = ((b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x1f) &lt;&lt;24 ) |<span style="mso-spacerun: yes">  </span>(b[index+1]
+&lt;&lt; 16) |<span style="mso-spacerun: yes">  </span>(b[index+2] &lt;&lt; 8)
+| b[index+3];</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>return cb;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: pqr</p>
+
+<p class=ILprg>Count Byte cb=1 uncompresedbyte=22</p>
+
+<p class=ILprg>Calling Convention Byte cb=1 uncompresedbyte=5</p>
+
+<p class=ILprg>Parameter Count cb=1 uncompresedbyte=5</p>
+
+<p class=ILprg>Return Type cb=1 uncompresedbyte=18</p>
+
+<p class=ILprg>Before GetElementType 10</p>
+
+<p class=ILprg>Before GetElementType 16</p>
+
+<p class=ILprg>Before GetElementType 18</p>
+
+<p class=ILprg>Token Count cb=1 uncompresedbyte=8</p>
+
+<p class=ILprg>Token Table=0 index=2</p>
+
+<p class=ILprg>Before GetElementType 18</p>
+
+<p class=ILprg>Token Count cb=1 uncompresedbyte=9</p>
+
+<p class=ILprg>Token Table=1 index=2</p>
+
+<p class=ILprg>Before GetElementType 20</p>
+
+<p class=ILprg>Rank 5</p>
+
+<p class=ILprg>Num Sizes 3</p>
+
+<p class=ILprg>0</p>
+
+<p class=ILprg>0</p>
+
+<p class=ILprg>0</p>
+
+<p class=ILprg>Size Array 6 7 7 </p>
+
+<p class=ILprg>Bounds Array 0 0 3 </p>
+
+<p class=ILprg>Signature: #Blob[1] Count=22 Bytes 5 5 18 8 10 16 8 18 8 18 9 20
+4 5 3 6 7 7 3 0 0 6 </p>
+
+<p class=ILprg>Calling Convention<span style="mso-spacerun: yes"> 
+</span>VARARG </p>
+
+<p class=ILprg>Number of Parameters 5</p>
+
+<p class=ILprg>Return Type:zzz</p>
+
+<p class=ILprg>Signature pqr(long b ,[Out] int aa ,zzz c ,yyy d ,byte
+[6,7,3...9,,] d )</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=442 height=150 id="_x0000_i1028" src="chap5\3.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Let us commence with the IL file first. We have attempted to
+imbue it with as much complexity as possible. The pqr function takes five
+parameters: the first one 'b' is a simple type; the second, i.e. 'aa' is an out
+parameter; the third one is the zzz type, the fourth is the yyy type, and
+finally, the last parameter 'd' is an array type. The return value is a zzz
+object. However, this is not the last word on the method, since it can be made
+considerably more complex. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the FillParamsArray method, two more string arrays called
+typerefnames and typedefnames have been created, to store the names of the
+types present in the TypeRef table and TypeDef table, respectively. The types
+that we create or refer to in the method signature, are stored in these tables.
+These two arrays are employed in a manner akin to the paramarray. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Apart from the 3 functions of FillParamsArray,
+DisplayMethodTable and DisplayMethodSignature, the code is left unaltered from
+the earlier program. We have also eliminated the superfluous code that displays
+the attributes, etc.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The DisplayMethodSignature method is passed the starting offset
+of the method signature in the Blob stream. This is the most vital parameter,
+since without the signature index, there is no pathway to forge ahead. Along
+with the signature, the names of the parameters also need to be displayed.
+Hence, we have the starting param table index as the second parameter.<span
+style="mso-spacerun: yes">  </span>Finally, the name of the function is
+displayed through the third and last parameter. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The primary objective of this function is to return a string
+that reveals the method signature. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>To achieve this, we have introduced multiple WriteLine
+statements. We have split the code into several methods, as far as possible, so
+as to make them worthy of reuse. However, on the flipside of it, while making
+headway from one method to the next, there is a likelihood of your getting
+utterly baffled and going adrift. Nonetheless, on the brighter side of it, it
+renders it easy to understand the code, without the inevitable need for
+repetition. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Before we move on to unveil the newly introduced code in the
+program, a few things summon our immediate attention.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first byte of any entity in the Blob stream is a count
+byte. For a number of reasons, we have always gone by the assumption that the
+count is a byte; and upto this point, our conviction has not been disproved.
+However, the only apparent shortcoming of a byte is that, it is restricted in its
+capacity, i.e. it can only accommodate a number ranging from 0 to 255, which is
+a total of 256 or 2^8 numbers. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The quandary here is that if the signature size extends beyond 255
+bytes, it is incapable of being represented in a single byte. It requires two
+bytes to accommodate numbers ranging between 0 to 65535, which is a total of
+65536 or 2 ^16 numbers. At certain times, even this range falls woefully short.
+In such cases, an int is pressed into action, which has a capacity of storing
+upto 2 ^ 32 numbers. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>However, on most occasions, the number lies within the range of
+0 to 127, and only on certain occasions, does it extend upto the 1000s.
+Therefore, it is an exercise in futility to reserve an int in order to store
+the number, since it would entail dissipation of considerable space. Thus, the
+designers of the metadata decided to compress each byte before storing it in
+the metadata streams. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=439 height=73 id="_x0000_i1029" src="chap5\4.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This leads to a smaller stream size. The speed penalty that
+arises as a result of the additional time spent in compressing and
+decompressing the bytes is insignificant. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The following approach is applied:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=439 height=67 id="_x0000_i1030" src="chap5\5.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first bit of the first byte is checked. If it is 0, it
+signifies that the next 7 bits represent the number. Thus, for numbers between
+0 and 127 or 0x00 to 0x7f, a single byte is used. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=446 height=53 id="_x0000_i1031" src="chap5\6.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Since the count byte generally falls within this range, there
+would be tremendous savings on the space occupied. For larger numbers, the
+first bit is switched ON. In such cases, the subsequent bit is checked. If this
+bit is zero, it signifies that the next 14 bits store the number. Thus, numbers
+from 128 to 16383 (2^14-1) or from 0x80 to 0x3fff can be accommodated in 14
+bits. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=436 height=91 id="_x0000_i1032" src="chap5\7.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Finally, if the first bit is set to 1 and the second bit is
+also set to 1, the third bit is checked. If the third bit is 0, it implies that
+the count member can store numbers upto 0x1FFFFFFF or 536870911, using 29 bits.
+</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Let us minutely examine an example from the documentation. A
+number such as 0x03 or 0x7f is stored using 8 bits. A number like 128 or 0x80,
+which is larger than 127, will be stored using 16 bits, in the form of 0x8080. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This is because, the 16th bit is set, the 15th bit is clear,
+and the remaining 14 bits accommodate the value. In the same vein, 0x2E57 is
+stored as 0xAE57, and the largest number that can be accommodated in two bytes,
+i.e. 0x3FFF, is stored as BFFF. The number 0x4000 requires 4 bytes, since it is
+larger than 0x3FFF. It is stored as C000 4000, with the 31st and 30th bit set,
+and the 29th bit clear. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Finally, the largest number that can be represented in
+compressed streams is 0x1FFF FFFF. It is stored as 0xDFFFFFFF. The other glitch
+is that we are examining the top most bits, while in the little endian system,
+the low byte is stored first. This becomes a hindrance, since our intention is
+to read the high bits of the high byte. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Hence, all the values are stored in the reverse order, i.e. in
+big endian system, where the high byte is stored first. For instance, the number
+515 is stored as 3 followed by 2 in the little endian format, and as 2 followed
+by a 3 in the big endian format. Every time a value is read, a check is to be
+performed to ascertain whether the byte is compressed or not. If it is
+compressed, it needs to be uncompressed. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The value stored in these bytes is an int, which represents the
+size or the number of bytes that are to be picked up from the Blob area. Thus,
+we need a function that would accept an array of bytes, the starting position
+or the index of the byte, and an int to store the uncompressed byte. In
+addition, we would also wish to store the return value and the number of bytes
+that are finally used. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Writing a function that caters to all these specifications was
+indeed a Herculean task. So, we scrutinized a program called MetaInfo, which is
+provided with the FrameWorkSDK in the Tool Developers code. This example also
+displays the information present in the Metadata tables. It is written in
+managed C++. The only handicap that comes as a package deal with this program
+is that, it does not bestow us with raw access to the bytes in the table. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>However, it furnishes ample information on aspects such as the
+method signature, etc. In the MetaInfo program, the method CorSigUncompressData
+is called for uncompressing the bytes. We also decided to call our method by
+the same name. This method takes three parameters, i.e. the Blob array, an
+offset into the array where the signature begins, and finally, an out parameter
+that stores the final uncompressed value. The return value divulges whether the
+un-compression was using 1 or 2 or 4 bytes. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Let us now understand the workings of the method
+CorSigUncompressData. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The index parameter of the function helps in inspecting the
+byte in the Blob stream. The first bit is examined to see if it is 0 or not, by
+ANDing it with 0x80. If the answer is 0, it denotes that the last bit is 0, and
+not 1. This signifies that the value falls within the range of 0 to 127, and
+that it is stored in a single byte. We set the out parameter answer to the
+value contained in the byte array. Then, we set the return value to 1,
+signifying that a single byte has been consumed upto this point. The going has
+been great so far! </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>By ANDing the byte in the array with 0xc0, it can be ascertained
+whether the last two bits are ON or not. If the result is 0x80, it indicates
+that the last bit was ON, i.e. the last bit is set, and the second last bit is
+clear. This merely signifies that the next two bytes store the uncompressed
+byte, and thus, the cb variable is set to 2. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Then, in the high byte, the 15th and the 14th bit are set to 0
+by bitwise ANDing them with 3f. The resulting 6 bits are left-shifted by 8
+bits, so that they occupy bytes 8 to 15. Then, they are ORed with the next byte
+in the byte array, so that the first 8 bits get filled up. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>If the value extends beyond the valid limit, a final check is
+made to establish if the last two bits are set or not, and also whether the
+third last bit is clear or not. Thus, the byte is ANDed with 0xe0, which is the
+bit pattern for the last 3 bits being ON. If the answer is 0xc0, i.e. if the
+last two bits are ON and the third bit is OFF, it indicates that the size of
+the signature is limited to 4 bytes. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Since the default is set to a big endian machine, the last
+three bits are masked OFF, and the 24 bits are right-shifted to occupy the high
+byte of the long. Thereafter, we access the next byte of the byte array and
+right-shift it by 16, so that it occupies the second last byte. The third byte
+is only shifted by 8, while the fourth byte is not shifted at all. They are
+ORed together to obtain the complete byte. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The cb variable is then set to 4, since 4 bytes are consumed.
+This compression method provides 29 usable bits. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=437 height=95 id="_x0000_i1033" src="chap5\8.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, each time the decompression method is called, the
+variable index identifies the offset into the Blob array. The return value of
+this function is stored in a variable called cb in DisplayMethodSignature.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thereafter, the value of the cb variable is added to the index
+variable, since there is no other means of determining the number of bytes that
+were uncompressed from the Blob stream. The count variable is initialized to
+the value stored in the variable named uncompressedbyte. In our case, the
+signature is 22 bytes long. Then, the next 22 bytes are displayed merely to
+reveal the method signature in its raw form. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We would advise you to pause here, and add about 120 parameters
+to the above function. This would increase the count value to more than 127,
+and then, you could then effortlessly verify the output. The uncompress method
+conjures up its magic by setting the value of cb to 2.<span
+style="mso-spacerun: yes">  </span></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Like before, the Array.Copy function provides a clean copy of
+the signature bytes in the blob1 array, and the index variable is set to 0,
+since that is where the first byte begins. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The byte following the count variable represents the calling
+convention. To identify the calling convention, the function
+GetCallingConvention is used, which decodes the first byte and returns a string
+value. The myriad complexities involved in the calling convention shall be
+delved upon a little later.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The third entity is the param count. It shows a value of 5,
+indicating the presence of five parameters. This value is stored in the
+variable named paramcount. Each time a byte is read, it is first uncompressed
+and then used. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next byte is the return type. To decode the return type,
+the function GetReturnType is called. This function performs a specific job,
+and then, returns a string value.<span style="mso-spacerun: yes">  </span>The
+last parameter to this function divulges the number of bytes consumed by the
+return type. Besides, just like before, the function is passed the Blob array
+and the index position at which the return byte begins. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The function GetReturnType first essays to ascertain if the
+type is a simple type, i.e. whether the value is less than or equal to 0x0e, or
+not. If it is so, then the function GetType is exploited to decode this simple
+type and to set the cb variable to 1. However, presently, the return byte
+number is 18. This number represents a class; and thus, it ratifies the fact
+that the type is a class. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The byte following the return type furnishes the details of the
+class, which is stored as a token. These details of the class could emanate
+from any one of the three tables named TypeRef, TypeDef and TypeSpec. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=434 height=97 id="_x0000_i1034" src="chap5\9.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Compression is the maxim of the metadata world. Therefore, the
+token, which represents the table name and index, is built in a very compact
+manner. The first two bits of the token select the table that is to be indexed
+into, while the remaining five bits allocate the row numbers in the table. The
+number of residual bits is five, and not six, because the first bit checks
+whether the row number takes up one byte or two bytes.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>An index into three tables, upto the row number of 32, can be
+expressed as a byte. But, if the row number stretches beyond 32, then two bytes
+are used to store the token. Thus, firstly the row and table are compressed,
+and then, this token is compressed further. In our case, the token value is 8 and
+the first two bits are marked as 0. Thus, it indexes into the TypeDef table. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=296 height=83 id="_x0000_i1035" src="chap5\10.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>For the next parameter, the index value is attained by right-shifting
+the token by 2 bits. Resultantly, the index is the second row of the type ref
+table, which is the class zzz. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The reverse coding is as follows: </p>
+
+<p class=ILbase>We first take a row index and left-shift it by 2. Then, the two
+bits of the table are ORed, and finally, the value is compressed. The cb value
+is obviously cb1 + 1. It can either be 1, 2 or 4. The code for deciphering a
+class type can be placed in a separate method, to facilitate its reuse.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now, we arrive at the nucleus of the program. </p>
+
+<p class=ILbase>Following the return type are the parameters. A 'for' loop is
+used to iterate across all the parameters. Moreover, all parameters are stored
+back to back, with no count byte in the middle. The cb1 variable stores the
+number of bytes that the parameter needs. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the loop, the byte is first uncompressed, and then, it is
+passed on to the GetElementType function, which decodes it. The function
+returns the parameter in the form of a sting.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The GetElementType method takes three items:</p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>     </span></span>A byte array, which is the actual
+uncompressed byte.</p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>     </span></span>An index called 'index' where the
+previous byte had resided.</p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>     </span></span>The out parameter. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The job of this function is to call other functions, contingent
+upon the actual value of the byte called 'bytes'. As before, if the value is
+less than 0x0e, the GetType method is called. If it is 0x12, the function
+GetClassType is called, which executes the actual decoding. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The code specified in this function is similar to that
+contained in the GetReturnType function. We have reiterated it here in order to
+simplify it, resulting in enhanced comprehension.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The index variable points to the byte 0x0a, which represents a
+'long'. This is the type for the first parameter. The next byte is 16. If the
+type displayed is 16, it indicates that it is a reference type, and has a
+metadata token following it. A reference type comes into play when the words
+'ref' or 'out' are used in C#, or when the word [out] is used in IL. After
+displaying the word 'out', the next byte, which is the metadata token, is
+examined to unearth the table and row index. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Following the ref parameter are the two parameters of type zzz
+and yyy. Thus, the GetElementType function takes a byte and identifies the
+type. It could either be a simple type or a complicated one. If the value is 20,
+then the type is an array. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=428 height=93 id="_x0000_i1036" src="chap5\11.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>For an array, the function GetArrayType is implemented with the
+same set of four parameters.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first byte of the array signature is the data type of the
+array. As usual, the GetElementType function is applied to discern the type.
+The value of 4 indicates that the type is an int. Then, the next byte is the
+rank of the array. The rank represents the number of dimensions that an array
+owns. In this case, the array is in possession of five dimensions. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The task of the next byte of numsizes is to fathom how many
+dimensions have a size. In our case, only 3 out of 5 dimensions have sizes. The
+last two dimensions have no size whatsoever. This is perfectly legal.<span
+style="mso-spacerun: yes">  </span></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Since the next couple of bytes contain the actual sizes of each
+of the dimensions, an array of ints, which is equal to numsizes, is created. If
+the array has an index ranging from 6…8, the size is 3. It is so because both
+the lower as well as the upper dimensions are also included. In b.il, the third
+dimension has been specified as 3…9; thus, the size is shown as 7.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This field is also known as the size of the array. If no
+dimensions have been specified, the size happens to be zero. If it is a single
+integer with no upper and lower bounds, then the size byte is the dimension of
+the array. In this case, first the sizearray is filled up, and then, an array
+called boundsarray is created, which contains the lower bound. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The byte that follows the sizes is comprised of the number of
+lower bounds, which is 3 in our case. This number is identical to the size
+byte. These bytes are the lower bounds for the dimensions, whose size has been
+specified. If the value is displayed as zero, it signifies that no lower bound
+has been specified. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The third array is seen with a value of 6, but in the IL file,
+it is reflected as 3. This is because the numbers are signed; therefore, they need
+to be uncompressed first. Thus, the first bit is checked.<span
+style="mso-spacerun: yes">  </span>Since it is unset, the bits are simply
+right-shifted by 1, thereby dropping off the first bit. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=447 height=108 id="_x0000_i1037" src="chap5\12.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>If the first bit is set, then, depending upon the number of
+bytes that are compressed, certain bits are masked off. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The two arrays are displayed as sanity checks using the 'for'
+loop. They have the bounds variable as the main key.</p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span></p>
+
+<p class=ILbase>Now, we need to place the dimensions of the array. </p>
+
+<p class=ILbase>First, the upper bound is to be computed, which is calculated
+as the lower bound plus the size minus 1. The upper and lower bounds should
+then be placed in the return string. To accomplish this, first the bounds array
+is checked to ascertain if it is zero, and the size array is confirmed to be
+non-zero. If the condition results in true, it signifies the fact that the
+upper and lower bound have a simple size. The 'if' statement handles the last
+comma. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>If both the arrays contain zero, it implies that the lower and
+upper bounds are present. Hence, they are to be displayed with three dots. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Finally, as a space saving feature, all the dimensions
+specified at the end are not placed in the two arrays. The difference between
+the rank and numsizes determines the number of empty commas needed in the
+array. Placing zeroes at the end of the two arrays is absurd and void of all
+sense.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>Local Variables Signatures</u></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>public class zzz<span style="mso-spacerun: yes">  </span></p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public unsafe void abc()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int<span style="mso-spacerun: yes">  </span>j;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>struct yyy</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>class xxx</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public int x;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>&gt;csc b.cs /unsafe</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System;</p>
+
+<p class=ILprg>using System.IO;</p>
+
+<p class=ILprg>using System.Reflection;</p>
+
+<p class=ILprg>using System.Configuration.Assemblies;</p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string [] paramnames; </p>
+
+<p class=ILprg>string [] typerefnames ;</p>
+
+<p class=ILprg>string [] typedefnames ;</p>
+
+<p class=ILprg>public bool tablepresent(byte i)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int p = (int)(valid &gt;&gt; i) <span style='font-family:"Bookman Old Style"'>&amp;</span>
+1;</p>
+
+<p class=ILprg>byte [] sizes =
+{10,6,14,2,6,2,14,2,6,4,6,6,6,4,6,8,6,2,4,2,6,4,2,6,6,6,2,2,8,6,8,4,22,4,12,20,6,14,8,14,12,4};</p>
+
+<p class=ILprg>for ( int j = 0 ; j &lt; i ; j++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int o = sizes[j] * rows[j];</p>
+
+<p class=ILprg>tableoffset = tableoffset + o;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( p == 1)</p>
+
+<p class=ILprg>return true;</p>
+
+<p class=ILprg>else</p>
+
+<p class=ILprg>return false;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int ReadBlobIndex(byte [] a , int o)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int z = 0;</p>
+
+<p class=ILprg>if ( offsetblob == 2)</p>
+
+<p class=ILprg>z = BitConverter.ToUInt16 (a , o );</p>
+
+<p class=ILprg>if ( offsetblob == 4)</p>
+
+<p class=ILprg>z = (int)BitConverter.ToUInt32 (a , o );</p>
+
+<p class=ILprg>return z;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetType(int b)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( b == 0x01)</p>
+
+<p class=ILprg>return &quot;void&quot;;</p>
+
+<p class=ILprg>if ( b == 0x02)</p>
+
+<p class=ILprg>return &quot;boolean&quot;;</p>
+
+<p class=ILprg>if ( b == 0x03)</p>
+
+<p class=ILprg>return &quot;char&quot;;</p>
+
+<p class=ILprg>if ( b == 0x04)</p>
+
+<p class=ILprg>return &quot;byte&quot;;</p>
+
+<p class=ILprg>if ( b == 0x05)</p>
+
+<p class=ILprg>return &quot;ubyte&quot;;</p>
+
+<p class=ILprg>if ( b == 0x06)</p>
+
+<p class=ILprg>return &quot;short&quot;;</p>
+
+<p class=ILprg>if ( b == 0x07)</p>
+
+<p class=ILprg>return &quot;ushort&quot;;</p>
+
+<p class=ILprg>if ( b == 0x08)</p>
+
+<p class=ILprg>return &quot;int&quot;;</p>
+
+<p class=ILprg>if ( b == 0x09)</p>
+
+<p class=ILprg>return &quot;uint&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0a)</p>
+
+<p class=ILprg>return &quot;long&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0b)</p>
+
+<p class=ILprg>return &quot;ulong&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0c)</p>
+
+<p class=ILprg>return &quot;float&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0d)</p>
+
+<p class=ILprg>return &quot;double&quot;;</p>
+
+<p class=ILprg>if ( b == 0x0e)</p>
+
+<p class=ILprg>return &quot;string&quot;;</p>
+
+<p class=ILprg>return &quot;unknown&quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>zzz a = new zzz();</p>
+
+<p class=ILprg>a.abc();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>string [] tablenames;</p>
+
+<p class=ILprg>int tableoffset ;</p>
+
+<p class=ILprg>int [] rows;</p>
+
+<p class=ILprg>int [] offset;</p>
+
+<p class=ILprg>int [] ssize ;</p>
+
+<p class=ILprg>byte [] metadata;</p>
+
+<p class=ILprg>byte [] strings;</p>
+
+<p class=ILprg>byte [] us;</p>
+
+<p class=ILprg>byte [] guid;</p>
+
+<p class=ILprg>byte [] blob;</p>
+
+<p class=ILprg>long valid ;</p>
+
+<p class=ILprg>byte [][] names;</p>
+
+<p class=ILprg>string [] streamnames;</p>
+
+<p class=ILprg>int baseofcode;</p>
+
+<p class=ILprg>int baseofdata ;</p>
+
+<p class=ILprg>int sectiona;</p>
+
+<p class=ILprg>int filea ;</p>
+
+<p class=ILprg>byte heapsizes;</p>
+
+<p class=ILprg>int offsetstring = 2;</p>
+
+<p class=ILprg>int offsetblob = 2;</p>
+
+<p class=ILprg>int offsetguid = 2;</p>
+
+<p class=ILprg>public string GetStreamNames(byte [] b)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int i = 0;</p>
+
+<p class=ILprg>while (b[i] != 0 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>i++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>System.Text.Encoding e = System.Text.Encoding.UTF8;</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s = e.GetString(b
+, 0 , i<span style="mso-spacerun: yes">  </span>);</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void abc() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>long startofmetadata;</p>
+
+<p class=ILprg>FileStream s = new
+FileStream(&quot;C:\\mdata\\b.exe&quot;,FileMode.Open);</p>
+
+<p class=ILprg>BinaryReader r = new BinaryReader (s);</p>
+
+<p class=ILprg>s.Seek(60, SeekOrigin.Begin);</p>
+
+<p class=ILprg>int ii = r.ReadInt32();</p>
+
+<p class=ILprg>ii = ii + 4 + 16;</p>
+
+<p class=ILprg>ii = ii + 24;</p>
+
+<p class=ILprg>s.Seek(ii, SeekOrigin.Begin);</p>
+
+<p class=ILprg>baseofcode = r.ReadInt32();</p>
+
+<p class=ILprg>baseofdata = r.ReadInt32();</p>
+
+<p class=ILprg>s.Seek(4, SeekOrigin.Current);</p>
+
+<p class=ILprg>sectiona= r.ReadInt32();</p>
+
+<p class=ILprg>filea = r.ReadInt32();</p>
+
+<p class=ILprg>ii = 52;</p>
+
+<p class=ILprg>s.Seek(ii, SeekOrigin.Current);</p>
+
+<p class=ILprg>int datad = r.ReadInt32();</p>
+
+<p class=ILprg>int rva,size;</p>
+
+<p class=ILprg>ii = 14 *8 ;</p>
+
+<p class=ILprg>s.Seek(ii, SeekOrigin.Current);</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>size = r.ReadInt32();</p>
+
+<p class=ILprg>//Console.WriteLine(&quot;CLI Header RVA={0} Size={1}&quot; , rva.ToString(&quot;X&quot;),
+</p>
+
+<p class=ILprg>size.ToString(&quot;X&quot;);</p>
+
+<p class=ILprg>int where ;</p>
+
+<p class=ILprg>if ( filea != sectiona)</p>
+
+<p class=ILprg>where = rva%baseofcode + filea ;</p>
+
+<p class=ILprg>else </p>
+
+<p class=ILprg>where = rva;</p>
+
+<p class=ILprg>s.Seek(where + 4 + 4, SeekOrigin.Begin);</p>
+
+<p class=ILprg>rva = r.ReadInt32();</p>
+
+<p class=ILprg>if ( filea != sectiona)</p>
+
+<p class=ILprg>where = rva%baseofcode + filea ;</p>
+
+<p class=ILprg>else </p>
+
+<p class=ILprg>where = rva;</p>
+
+<p class=ILprg>s.Seek(where, SeekOrigin.Begin);</p>
+
+<p class=ILprg>startofmetadata = s.Position;</p>
+
+<p class=ILprg>s.Seek(4 + 2 + 2 + 4 + 4 + 12 + 2, SeekOrigin.Current);</p>
+
+<p class=ILprg>int streams = r.ReadInt16();</p>
+
+<p class=ILprg>streamnames = new string[5];</p>
+
+<p class=ILprg>offset = new int[5];</p>
+
+<p class=ILprg>ssize<span style="mso-spacerun: yes">  </span>= new int[5];</p>
+
+<p class=ILprg>names = new byte[5][];</p>
+
+<p class=ILprg>names[0] = new byte[10];</p>
+
+<p class=ILprg>names[1] = new byte[10];</p>
+
+<p class=ILprg>names[2] = new byte[10];</p>
+
+<p class=ILprg>names[3] = new byte[10];</p>
+
+<p class=ILprg>names[4] = new byte[10];</p>
+
+<p class=ILprg>int i = 0; int j ;</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offset[i] = r.ReadInt32();</p>
+
+<p class=ILprg>ssize[i] = r.ReadInt32();</p>
+
+<p class=ILprg>j = 0;</p>
+
+<p class=ILprg>byte bb ;</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bb = r.ReadByte();</p>
+
+<p class=ILprg>if ( bb == 0)</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>j++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>names[i][j] = bb;</p>
+
+<p class=ILprg>streamnames[i] = GetStreamNames(names[i]);</p>
+
+<p class=ILprg>while ( true )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( s.Position % 4 == 0 ) </p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>byte<span style="mso-spacerun: yes">  </span>b = r.ReadByte();</p>
+
+<p class=ILprg>if ( b != 0)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s.Seek(-1, SeekOrigin.Current);</p>
+
+<p class=ILprg>break;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>for ( i = 0 ; i &lt; streams ; i++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#~&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>metadata = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>metadata[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#Strings&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>strings = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata + offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>strings[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#US&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>us = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>us[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#GUID&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>guid = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>guid[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( streamnames[i]<span style="mso-spacerun: yes">  </span>==
+&quot;#Blob&quot; ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>blob = new byte[ssize[i]];</p>
+
+<p class=ILprg>s.Seek(startofmetadata<span style="mso-spacerun: yes">  </span>+
+offset[i] , SeekOrigin.Begin);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt; ssize[i] ; k ++)</p>
+
+<p class=ILprg>blob[k] = r.ReadByte(); </p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>heapsizes = metadata[6];</p>
+
+<p class=ILprg>if ( (heapsizes <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x01) == 0x01)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offsetstring = 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( (heapsizes <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x02) == 0x02 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offsetguid = 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( (heapsizes <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x08) == 0x08 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offsetblob = 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>valid = BitConverter.ToInt64(metadata, 8);</p>
+
+<p class=ILprg>tableoffset = 24;</p>
+
+<p class=ILprg>rows = new int[64];</p>
+
+<p class=ILprg>Array.Clear (rows, 0, rows.Length);</p>
+
+<p class=ILprg>for ( int k = 0 ; k &lt;= 63 ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int tablepresent = (int)(valid &gt;&gt; k ) <span
+style='font-family:"Bookman Old Style"'>&amp;</span> 1; </p>
+
+<p class=ILprg>if ( tablepresent == 1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>rows[k] = BitConverter.ToInt32(metadata , tableoffset);</p>
+
+<p class=ILprg>tableoffset += 4;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>FillParamsArray();</p>
+
+<p class=ILprg>DisplayStandAloneSigTable();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void DisplayStandAloneSigTable ()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(17);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[17] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int index = ReadBlobIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetblob;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot; , k);</p>
+
+<p class=ILprg>byte count = blob[index]; </p>
+
+<p class=ILprg>string s = DisplayVariablesSignature (index);</p>
+
+<p class=ILprg>Console.WriteLine(s);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string DisplayVariablesSignature(int index)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s =
+&quot;Count=&quot;;</p>
+
+<p class=ILprg>int cb; int uncompressedbyte;</p>
+
+<p class=ILprg>int count;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob , index , out uncompressedbyte);</p>
+
+<p class=ILprg>count = uncompressedbyte;</p>
+
+<p class=ILprg>s = s + count.ToString() + &quot; Bytes &quot;; </p>
+
+<p class=ILprg>for ( int l = 1; l &lt;= count ; l++)</p>
+
+<p class=ILprg>s = s + blob[index+l+cb-1].ToString() + &quot; &quot;; </p>
+
+<p class=ILprg>byte [] blob1 = new byte[count];</p>
+
+<p class=ILprg>Array.Copy(blob , index + 1 + cb -1<span style="mso-spacerun:
+yes">  </span>, blob1 , 0 , count);</p>
+
+<p class=ILprg>index = 0;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>if ( uncompressedbyte != 0x07)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;Error&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>int paramcount;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>paramcount = uncompressedbyte;</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= paramcount ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>int cb1 ;</p>
+
+<p class=ILprg>int bytes = uncompressedbyte;</p>
+
+<p class=ILprg>string s1 = GetElementType(blob1 , bytes , index , out cb1);</p>
+
+<p class=ILprg>index = index + cb + cb1;</p>
+
+<p class=ILprg>s = s + s1 ;</p>
+
+<p class=ILprg>if ( l != paramcount )</p>
+
+<p class=ILprg>s = s + &quot; , &quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetPinnedType( byte [] b , int bytes , int index ,
+out int cb1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>int total = 1;</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index + 1 , out
+uncompressedbyte);</p>
+
+<p class=ILprg>int cb2;</p>
+
+<p class=ILprg>s = &quot;Pinned &quot; + GetElementType(b , uncompressedbyte ,
+index + 1 , out cb2) ;</p>
+
+<p class=ILprg>total = total + cb2;</p>
+
+<p class=ILprg>cb1 = total;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetPointerType( byte [] b , int bytes , int index
+, out int cb1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>int total = 1;</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index + 1 , out
+uncompressedbyte);</p>
+
+<p class=ILprg>int cb2;</p>
+
+<p class=ILprg>s = GetElementType(b , uncompressedbyte , index + 1 , out cb2) +
+&quot; *&quot; ;</p>
+
+<p class=ILprg>total = total + cb2;</p>
+
+<p class=ILprg>cb1 = total;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetReferenceType( byte [] b , int bytes , int
+index , out int cb1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;[ByRef] &quot;;</p>
+
+<p class=ILprg>int total = 1;</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index + 1 , out
+uncompressedbyte);</p>
+
+<p class=ILprg>int cb2;</p>
+
+<p class=ILprg>s = s + GetElementType(b , uncompressedbyte , index + 1 , out
+cb2);</p>
+
+<p class=ILprg>total = total + cb2;</p>
+
+<p class=ILprg>cb1 = total;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetClassType(byte [] b , int bytes , int index ,
+out int cb1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index + 1 , out
+uncompressedbyte);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Token Count cb={0}
+uncompresedbyte={1}&quot;, cb,uncompressedbyte);</p>
+
+<p class=ILprg>byte table = (byte)(uncompressedbyte <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 0x03);</p>
+
+<p class=ILprg>int ind = uncompressedbyte &gt;&gt; 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Token Table={0} index={1}&quot;, table
+,ind);</p>
+
+<p class=ILprg>string s1= &quot;&quot;;</p>
+
+<p class=ILprg>if ( table == 1)</p>
+
+<p class=ILprg>s1 = typerefnames[ind];</p>
+
+<p class=ILprg>if ( table == 0)</p>
+
+<p class=ILprg>s1 = typedefnames[ind];</p>
+
+<p class=ILprg>cb1 = cb;</p>
+
+<p class=ILprg>return s1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetValueType(byte [] b , int bytes , int index ,
+out int cb1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index + 1 , out
+uncompressedbyte);</p>
+
+<p class=ILprg>byte table = (byte)(uncompressedbyte <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 0x03);</p>
+
+<p class=ILprg>int ind = uncompressedbyte &gt;&gt; 2;</p>
+
+<p class=ILprg>string s1= &quot;&quot;;</p>
+
+<p class=ILprg>if ( table == 1)</p>
+
+<p class=ILprg>s1 = typerefnames[ind];</p>
+
+<p class=ILprg>if ( table == 0)</p>
+
+<p class=ILprg>s1 = typedefnames[ind];</p>
+
+<p class=ILprg>cb1 = cb;</p>
+
+<p class=ILprg>return s1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetReturnType(byte [] b , int index , out int cb)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>cb = 0;</p>
+
+<p class=ILprg>if ( b[index] &lt;= 0x0e ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetType(b[index]);</p>
+
+<p class=ILprg>cb = 1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( b[index] == 0x12 ) </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int cb1;</p>
+
+<p class=ILprg>int uncompressedbyte ;</p>
+
+<p class=ILprg>cb1 = CorSigUncompressData( b , index +1 , out uncompressedbyte
+);</p>
+
+<p class=ILprg>byte table = (byte)(uncompressedbyte <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 0x03);</p>
+
+<p class=ILprg>int ind = uncompressedbyte &gt;&gt; 2;</p>
+
+<p class=ILprg>if ( table == 1)</p>
+
+<p class=ILprg>s = typerefnames[ind];</p>
+
+<p class=ILprg>if ( table == 0)</p>
+
+<p class=ILprg>s = typedefnames[ind];</p>
+
+<p class=ILprg>cb = cb1 + 1;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int CorSigUncompressData( byte [] b , int index , out int
+answer)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int cb = 0;</p>
+
+<p class=ILprg>answer = 0;</p>
+
+<p class=ILprg>if ( (b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x80) == 0x00)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = 1;</p>
+
+<p class=ILprg>answer = b[index];</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( (b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0xC0) == 0x80)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = 2;</p>
+
+<p class=ILprg>answer = ((b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x3f) &lt;&lt;8 ) |<span style="mso-spacerun: yes">  </span>b[index+1];</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( (b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0xE0) == 0xC0)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = 2;</p>
+
+<p class=ILprg>answer = ((b[index] <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x1f) &lt;&lt;24 ) |<span style="mso-spacerun: yes">  </span>(b[index+1]
+&lt;&lt; 16) |<span style="mso-spacerun: yes">  </span>(b[index+2] &lt;&lt; 8)
+| b[index+3];</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>return cb;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetElementType(byte [] b , int bytes , int index ,
+out int cb1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb1 = 0;</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>if ( bytes &lt;= 0x0e )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb1 = 0;</p>
+
+<p class=ILprg>s = GetType(bytes);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x12 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetClassType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x14 || bytes == 0x1d)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>//s = GetArrayType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x10)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetReferenceType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x0f)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetPointerType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x11 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetValueType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x45 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetPinnedType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x1c )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;System.Object &quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x16 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;System.TypedReference &quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x18 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;System.IntPtr &quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x19 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;System.UIntPtr &quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Count=3 Bytes 7 1 8 int</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=439 height=76 id="_x0000_i1038" src="chap5\13.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The above example does two things:</p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>     </span></span>Firstly, it rewrites the code that
+reads the metadata table.</p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>     </span></span>Secondly, it explains signatures in
+a superior manner.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Each time a local variable is created in a function, a row gets
+added to the StandAloneSig table. Since the main function is devoid of local
+variables, no rows are added in the table. This table has a single field, which
+is the signature. No other metadata table references it, nor does it have to
+reference any other metadata table. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The b.cs file embodies an 'unsafe' function. Hence, it has to
+be compiled with the 'unsafe' option. Also, there is a variable i in the function.
+Before we go on to expound the signature any further, let us glimpse at the
+alterations bought about in the abc function. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the earlier programs, the file pointer was positioned at the
+offset of 360, which had the Data Directory entry for the CLI header. This
+approach works extremely well for the IL Assembler and the C# compiler, since
+both these products have the PE header starting at the offset of 128. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Most compilers that we have worked with use a standard program,
+which runs whenever a program is executed under DOS. However, such is not the
+case with the managed C++ compiler. Thus, we cannot presume that the PE header
+will always begin at an offset of 128.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, to eschew all these assumptions, the PE offset is stored
+in a variable named ii, and then, the file pointer is positioned at the point
+where the baseofcode begins. This position is always 44 bytes from the start of
+the PE header. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The CLI header is also an inflexible and fixed offset from the
+start. After having positioned the file pointer at the CLI header, the size and
+the RVA are retrieved.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Another aspect taken for granted by us is that the RVA works
+under the assumption that the file alignment and the section alignment are two
+distinct things. However, if they happen to be the same, then the RVA is
+calculated as a physical offset on the disk. Thus, no dire necessity is felt to
+make any additional calculations. The same RVA may be used as a memory offset
+and as a disk offset. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Simultaneously, the coding for the stream names has also been
+altered. The second 'while' loop continued execution as long as a zero was
+encountered, and terminated on running into a non-zero value. However, we find
+ourselves into deep waters when any stream has a length divisible by 256. In
+such a case, the first byte would be zero, and hence, the offset, the size and
+the name of the stream would be off by one. Thus, the loop quits as soon as a
+non-zero value is encountered or the Position property becomes divisible by 4. </p>
+
+<p class=ILbase>The FillParamsArray function remains unaltered. Hence, we have
+desisted from displaying it. The same is true of the code used for decoding an
+array.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The function DisplayStandAloneSigTable merely calls the
+function DisplayVariablesSignature with the Blob index. So, it is the
+DisplayVariablesSignature function that decodes the signature. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=439 height=134 id="_x0000_i1041" src="chap5\14.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>As always, the first byte is the count byte. Based on the
+count, the bytes in the Blob area are copied into an array named blob1. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The second byte, which earlier contained the calling
+convention, now accommodates the value of 7, specifying Local Variables
+Signatures. If the value of the second byte is not 7, then an error is
+returned. The third byte is the count of the local variables. A 'for' loop
+iterates through all of them. As before, the function GetElementType does all
+the toiling. Since the value of the third byte is 8, the GetType function
+displays the output as int. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now, we add a distinctive variable type to view the change in
+bytes and the output.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public unsafe void abc()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int *i;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Count=4 Bytes 7 1 15 8 int *</p>
+
+<p class=ILbase>In the file b.cs, there is a pointer to an int, which results in
+the type 15 in the signature. Since this is a Pointer type, we call the
+GetPointerValue method. This is akin to a class type, where the next byte is
+the actual data type. In this case, it is an int. We call the GetElementType
+method that reads the next byte and deciphers the type. A * symbol has been
+added to the string to denote a pointer.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>yyy a;</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Count=4 Bytes 7 1 17 12 yyy</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next is an object, which is of a value type yyy. This is
+similar to the class type, other than the type number 17. This calls a function
+named GetValueType, which works in a manner similar to the GetClassType
+function. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>yyy *a;</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Count=5 Bytes 7 1 15 17 12 yyy *</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The GetElementType function works efficaciously. This is
+markedly evident from the output, where the variable is depicted as a pointer
+to a yyy type. The type 15 is a pointer type followed by the next number 17,
+which is a value type. This takes the token 12, which stands for the class yyy.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>xxx a = new xxx();</p>
+
+<p class=ILprg>fixed ( int* i = <span style='font-family:"Bookman Old Style"'>&amp;</span>a.x
+)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Count=7 Bytes 7 2 18 16 69 16 8 xxx , Pinned [ByRef] int</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Two local variables named 'a' and 'i' are delineated in the
+above function. The variable 'a' is of type xxx. The first two bytes, i.e. 18 and
+16 account for it. The number 69 is for the type named 'pinned', followed by 16
+for the type named 'byref', and then 8, which is the final type of int. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>'Pinning' is a medium by which the runtime is expressly
+instructed not to move a managed object around, since there is a pointer
+referencing it. By default, the runtime is permitted to move any object
+anywhere in memory.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>Object a;</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Count=3 Bytes 7 1 28 System.Object</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The type 28 is reserved for System.Object. Similarly, the class
+of TypedReference has a number 22, IntPtr 24 and UintPtr 25. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>TypedReference a;</p>
+
+<p class=ILprg>IntPtr b;</p>
+
+<p class=ILprg>UIntPtr c;</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Count=5 Bytes 7 3 22 24 25 System.TypedReference<span
+style="mso-spacerun: yes">  </span>, System.IntPtr<span style="mso-spacerun:
+yes">  </span>, System.UintPtr</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>Field Signature<o:p></o:p></u></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cpp</u></p>
+
+<p class=ILprg>int (_stdcall *p)(int , char , float, double);</p>
+
+<p class=ILprg>void main() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>&gt;cl /clr b.cpp</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void DisplayFieldsTable()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(4);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[4] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>FieldAttributes flags = (FieldAttributes )BitConverter.ToInt16
+(metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = ReadStringIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetstring;</p>
+
+<p class=ILprg>int sig = ReadStringIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetstring;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name : {0}&quot;, GetString(name));</p>
+
+<p class=ILprg>int count = blob[sig];</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Signature [{0}]:Count={1} &quot;, sig ,
+count);</p>
+
+<p class=ILprg>string s = DisplayFieldsSignature (sig );</p>
+
+<p class=ILprg>Console.WriteLine(s);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string DisplayFieldsSignature(int index)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s =
+&quot;Count=&quot;;</p>
+
+<p class=ILprg>int cb; int uncompressedbyte;</p>
+
+<p class=ILprg>int count;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob , index , out uncompressedbyte);</p>
+
+<p class=ILprg>count = uncompressedbyte;</p>
+
+<p class=ILprg>s = s + count.ToString() + &quot; Bytes &quot;; </p>
+
+<p class=ILprg>for ( int l = 1; l &lt;= count ; l++)</p>
+
+<p class=ILprg>s = s + blob[index+l+cb-1].ToString() + &quot; &quot;; </p>
+
+<p class=ILprg>byte [] blob1 = new byte[count];</p>
+
+<p class=ILprg>Array.Copy(blob , index + 1 + cb -1<span style="mso-spacerun:
+yes">  </span>, blob1 , 0 , count);</p>
+
+<p class=ILprg>index = 0;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>if ( uncompressedbyte != 0x06)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;Error&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>int cb1 ;</p>
+
+<p class=ILprg>int bytes = uncompressedbyte;</p>
+
+<p class=ILprg>s = s + &quot; &quot; + GetElementType(blob1 , bytes , index ,
+out cb1);</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetElementType(byte [] b , int bytes , int index ,
+out int cb1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb1 = 0;</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>if ( bytes &lt;= 0x0e )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb1 = 0;</p>
+
+<p class=ILprg>s = GetType(bytes);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x12 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetClassType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>/*if ( bytes == 0x14 || bytes == 0x1d)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetArrayType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>*/</p>
+
+<p class=ILprg>if ( bytes == 0x10)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetReferenceType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x0f)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetPointerType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x11 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetValueType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x45 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetPinnedType(b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x1c )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;System.Object &quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x16 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;System.TypedReference &quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x18 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;System.IntPtr &quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x19 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = &quot;System.UIntPtr &quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x1b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = GetPointerToFunctionType (b , bytes , index , out cb1);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( bytes == 0x20 || bytes == 0x1f )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index , out uncompressedbyte);</p>
+
+<p class=ILprg>byte table = (byte)(uncompressedbyte <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 0x03);</p>
+
+<p class=ILprg>int ind = uncompressedbyte &gt;&gt; 2;</p>
+
+<p class=ILprg>string s1= &quot;&quot;;</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>if ( table == 1)</p>
+
+<p class=ILprg>s1 = typerefnames[ind];</p>
+
+<p class=ILprg>if ( table == 0)</p>
+
+<p class=ILprg>s1 = typedefnames[ind];</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>int cb2 = CorSigUncompressData(b , index , out
+uncompressedbyte);</p>
+
+<p class=ILprg>int cb3=0;</p>
+
+<p class=ILprg>s = s1 + &quot; &quot; + GetElementType(b , uncompressedbyte ,
+index, out cb3);</p>
+
+<p class=ILprg>cb1 = cb + cb2 + cb3;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetPointerToFunctionType(byte [] b , int bytes ,
+int index , out int cb1)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>int uncompressedbyte;</p>
+
+<p class=ILprg>index = index + 1;</p>
+
+<p class=ILprg>int cb = CorSigUncompressData(b , index , out uncompressedbyte);</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>s = GetCallingConvention(uncompressedbyte); </p>
+
+<p class=ILprg>cb = CorSigUncompressData(b , index , out uncompressedbyte);</p>
+
+<p class=ILprg>int noofparams = uncompressedbyte;</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(b , index , out uncompressedbyte);</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>int cb2;</p>
+
+<p class=ILprg>s = s + &quot; &quot; + GetElementType(b , uncompressedbyte ,
+index , out cb2) ;</p>
+
+<p class=ILprg>index = index + cb2;</p>
+
+<p class=ILprg>s = s + &quot;(&quot;;</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= noofparams ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = CorSigUncompressData(b , index , out uncompressedbyte);</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>s = s +<span style="mso-spacerun: yes">  </span>GetElementType(b
+, uncompressedbyte , index , out cb2) ;</p>
+
+<p class=ILprg>if ( l != noofparams )</p>
+
+<p class=ILprg>s = s + &quot;,&quot;;</p>
+
+<p class=ILprg>index = index + cb2;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>s = s + &quot;)&quot;;</p>
+
+<p class=ILprg>cb1 = 0;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetCallingConvention ( int uncompressedbyte )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int firstbyte = uncompressedbyte;</p>
+
+<p class=ILprg>byte firstfourbits = (byte)(firstbyte <span style='font-family:
+"Bookman Old Style"'>&amp;</span> 0x0f);</p>
+
+<p class=ILprg>string s = &quot;\nCalling Convention &quot;;</p>
+
+<p class=ILprg>if ( firstfourbits == 0x00)</p>
+
+<p class=ILprg>s = s + &quot; DEFAULT &quot;;</p>
+
+<p class=ILprg>if ( firstfourbits == 0x01)</p>
+
+<p class=ILprg>s = s + &quot; C &quot;;</p>
+
+<p class=ILprg>if ( firstfourbits == 0x02)</p>
+
+<p class=ILprg>s = s + &quot; STDCALL &quot;;</p>
+
+<p class=ILprg>if ( firstfourbits == 0x03)</p>
+
+<p class=ILprg>s = s + &quot; THISCALL &quot;;</p>
+
+<p class=ILprg>if ( firstfourbits == 0x04)</p>
+
+<p class=ILprg>s = s + &quot; FASTCALL &quot;;</p>
+
+<p class=ILprg>if ( firstfourbits == 0x05)</p>
+
+<p class=ILprg>s = s + &quot; VARARG &quot;;</p>
+
+<p class=ILprg>if ( (firstbyte <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x20) == 0x20)</p>
+
+<p class=ILprg>s = s + &quot; HASTHIS &quot;;</p>
+
+<p class=ILprg>if ( (firstbyte <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x40) == 0x40)</p>
+
+<p class=ILprg>s = s + &quot; EXPLICIT &quot;;</p>
+
+<p class=ILprg>s = s + &quot;\n&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int ReadStringIndex(byte [] a , int o)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int z = 0;</p>
+
+<p class=ILprg>if ( offsetstring == 2)</p>
+
+<p class=ILprg>z = BitConverter.ToUInt16 (a , o );</p>
+
+<p class=ILprg>if ( offsetstring == 4)</p>
+
+<p class=ILprg>z = (int)BitConverter.ToUInt32 (a , o );</p>
+
+<p class=ILprg>return z;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetString(int starting)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int i = starting;</p>
+
+<p class=ILprg>while (strings[i] != 0 )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>i++;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>System.Text.Encoding e = System.Text.Encoding.UTF8;</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s =
+e.GetString(strings, starting , i - starting<span style="mso-spacerun: yes"> 
+</span>);</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name : p</p>
+
+<p class=ILprg>Signature [71]:Count=13</p>
+
+<p class=ILprg>Count=13 Bytes 6 27 2 4 32 17 8 8 32 25 4 12 13</p>
+
+<p class=ILprg>Calling Convention<span style="mso-spacerun: yes"> 
+</span>STDCALL</p>
+
+<p class=ILprg><span style="mso-spacerun:
+yes"> </span>System.Runtime.CompilerServices.CallConvStdcall
+int(int,Microsoft.VisualC.NoSig</p>
+
+<p class=ILprg>nSpecifiedModifier byte,float,double)</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=442 height=92 id="_x0000_i1042" src="chap5\15.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The FillParamsArray has been employed in this program in order
+to fill up the typedefnames and typerefnames array. So, comment out the
+DisplayStandAloneSigTable and call the other two functions. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The FillParamsArray function, if it has been omitted in the
+program, it may be entered as follows:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>//DisplayStandAloneSigTable();</p>
+
+<p class=ILprg>FillParamsArray();</p>
+
+<p class=ILprg>DisplayFieldsTable();</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Furthermore, the DisplayElementType function has undergone
+transformation. Therefore, it has been reintroduced.<span style="mso-spacerun:
+yes">  </span>Moreover, the functions of ReadStringIndex and GetString are
+displayed, since they have been pressed into service in this program. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The file b.cpp is written in a language called managed C++, as a
+result of which, the file extension is cpp. The lone obligatory function is
+'main', with a small letter 'm'. Besides the function main, there exists a
+field or global variable 'p', which is a pointer to a function. It takes four
+parameters, viz. an int, a char, a float and a double. Ultimately, it returns
+an int. The above program is compiled, using the managed C++ compiler cl with
+the option of /clr, in order to create a .Net file. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the C# program, as was stated earlier, we have commented out
+the method DisplayStandAloneSigTable, and called the DisplayFieldsTable method
+instead. Using the method DisplayFieldsSignature, which is passed the index
+into the Blob stream, the name of the field and the signature have been
+displayed. If the signature following it happens to be a field signature, the
+first byte of the Blob heap must be 0x06. The GetElementType method merely
+returns this value. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=439 height=91 id="_x0000_i1043" src="chap5\16.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>All this while, we had to keep track of the position within the
+Blob array. This is not applicable here, since each field is represented by its
+own row in the Fields table. The actual code is contained in the GetElementType
+function since the type number for a pointer to a function is 27 or 0x1b. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We are reasonably more comfortable explaining the concept of
+'pointers to functions' using managed C++, which is the language that we have
+earned our spurs on. The function GetPointerToFunctionType is called. The pointer
+to a function type is followed by the method signature. The first byte is the
+calling convention byte, since this is what a method signature typically
+commences with. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This byte has a value of 2, thereby indicating a Standard
+Calling convention. Our good old Windows programs used it ever so often. The
+GetCallingConvention method checks if the value of the calling convention is
+one of the following: C, Standard, ThisCall or FastCall.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next byte is the number of parameters that the method
+takes, which is 4 in this case. The third is the return type of the method.
+This return type starts with the number 32, referred to by the documentation as
+a 'custom modifier'. A custom modifier starts out with either the optional
+modifier (like in our case), or with a fixed/required modifier 31. When the
+modifier is optional, the compiler holds the option of ignoring it. However, if
+the modifier is mandatory, it becomes obligatory on the part of the compiler to
+consider it. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The modifier has a token following it, which has already been
+expounded in considerable detail earlier. The GetElementType method is called
+again, with an additional check performed on the Required and Optional
+modifier. With the help of the token, the decoded class is displayed. The
+GetElementType method is invoked yet again, to decipher the next byte, which
+may not necessarily be a simple type. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A loop is implemented for a number of parameters. It hires the
+services of the GetElementType function to handle the custom modifier, since
+custom modifiers can also prevail upon the parameters. The first two parameters
+to the pointer are int and char. The first parameter has a custom modifier,
+while the second one does not.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>Member Ref Table<o:p></o:p></u></p>
+
+<p class=ILbase><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>b.cpp</u></p>
+
+<p class=ILprg>int abc( int i , ...)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return 10;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>void main() </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>abc(10);</p>
+
+<p class=ILprg>abc(10,20);</p>
+
+<p class=ILprg>abc(10,20,30);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void DisplayMemberRefTable()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int old = tableoffset;</p>
+
+<p class=ILprg>bool b = tablepresent(10);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>tableoffset = old;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[10] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>short clas = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = ReadStringIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetstring;</p>
+
+<p class=ILprg>int sig = ReadBlobIndex(metadata, offs);</p>
+
+<p class=ILprg>offs += offsetblob;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k);</p>
+
+<p class=ILprg>string s = GetString(name);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name:{0}&quot; , s);</p>
+
+<p class=ILprg>s = DisplayMethodSignature(sig, s);</p>
+
+<p class=ILprg>Console.WriteLine(s);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string DisplayMethodSignature(int index , string name)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string<span style="mso-spacerun: yes">  </span>s =
+&quot;Count=&quot;;</p>
+
+<p class=ILprg>int cb; int uncompressedbyte;</p>
+
+<p class=ILprg>int count;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob , index , out uncompressedbyte);</p>
+
+<p class=ILprg>count = uncompressedbyte;</p>
+
+<p class=ILprg>s = s + count.ToString() + &quot; Bytes &quot;; </p>
+
+<p class=ILprg>for ( int l = 1; l &lt;= count ; l++)</p>
+
+<p class=ILprg>s = s + blob[index+l+cb-1].ToString() + &quot; &quot;; </p>
+
+<p class=ILprg>byte [] blob1 = new byte[count];</p>
+
+<p class=ILprg>Array.Copy(blob , index + 1 + cb -1<span style="mso-spacerun:
+yes">  </span>, blob1 , 0 , count);</p>
+
+<p class=ILprg>index = 0;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>s = s + GetCallingConvention(uncompressedbyte);</p>
+
+<p class=ILprg>int paramcount;</p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>paramcount = uncompressedbyte;</p>
+
+<p class=ILprg>s = s + &quot;Number of Parameters &quot; +
+paramcount.ToString() + &quot;\n&quot;; </p>
+
+<p class=ILprg>index = index + cb;</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>string s1;</p>
+
+<p class=ILprg>s1 = GetReturnType( blob1 , uncompressedbyte , index , out cb);</p>
+
+<p class=ILprg>s = s + &quot;Return Type:&quot; + s1 + &quot;\n&quot;;</p>
+
+<p class=ILprg>index = index + cb + 1;</p>
+
+<p class=ILprg>s = s + &quot;Signature &quot; + name + &quot;(&quot;;</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= paramcount ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>cb = CorSigUncompressData(blob1 , index<span
+style="mso-spacerun: yes">  </span>, out uncompressedbyte);</p>
+
+<p class=ILprg>int cb1 ;</p>
+
+<p class=ILprg>int bytes = uncompressedbyte;</p>
+
+<p class=ILprg>if ( bytes == 65)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>s = s + &quot;...&quot;;</p>
+
+<p class=ILprg>index = index + 1;</p>
+
+<p class=ILprg>l--;</p>
+
+<p class=ILprg>continue;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>s1 = GetElementType(blob1 , bytes , index , out cb1);</p>
+
+<p class=ILprg>index = index + cb + cb1;</p>
+
+<p class=ILprg>s = s + &quot; &quot; + s1;</p>
+
+<p class=ILprg>if ( l != paramcount )</p>
+
+<p class=ILprg>s = s + &quot;,&quot;;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>s = s + &quot;)\n&quot;;</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public string GetReturnType(byte [] b , int uncompressedbyte ,
+int index , out int cb)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>string s = &quot;&quot;;</p>
+
+<p class=ILprg>if (uncompressedbyte == 32)</p>
+
+<p class=ILprg>index = index + 1;</p>
+
+<p class=ILprg>s = GetElementType(b, uncompressedbyte , index , out cb);</p>
+
+<p class=ILprg>return s;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILprg>Count=5 Bytes 32 1 1 17 5 </p>
+
+<p class=ILprg>Calling Convention<span style="mso-spacerun: yes"> 
+</span>DEFAULT<span style="mso-spacerun: yes">  </span>HASTHIS </p>
+
+<p class=ILprg>Number of Parameters 1</p>
+
+<p class=ILprg>Return Type:void</p>
+
+<p class=ILprg>Signature .ctor( System.Security.Permissions.SecurityAction)</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name:abc</p>
+
+<p class=ILprg>Count=8 Bytes 5 2 32 17 8 8 65 8 </p>
+
+<p class=ILprg>Calling Convention<span style="mso-spacerun: yes"> 
+</span>VARARG </p>
+
+<p class=ILprg>Number of Parameters 2</p>
+
+<p class=ILprg>Return Type:System.Runtime.CompilerServices.CallConvCdecl int</p>
+
+<p class=ILprg>Signature abc( int,... int)</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILprg>Count=4 Bytes 32 1 1 14 </p>
+
+<p class=ILprg>Calling Convention<span style="mso-spacerun: yes"> 
+</span>DEFAULT<span style="mso-spacerun: yes">  </span>HASTHIS </p>
+
+<p class=ILprg>Number of Parameters 1</p>
+
+<p class=ILprg>Return Type:void</p>
+
+<p class=ILprg>Signature .ctor( string)</p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Name:abc</p>
+
+<p class=ILprg>Count=9 Bytes 5 3 32 17 8 8 65 8 8 </p>
+
+<p class=ILprg>Calling Convention<span style="mso-spacerun: yes"> 
+</span>VARARG </p>
+
+<p class=ILprg>Number of Parameters 3</p>
+
+<p class=ILprg>Return Type:System.Runtime.CompilerServices.CallConvCdecl int</p>
+
+<p class=ILprg>Signature abc( int,... int, int)</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>Name:abc</p>
+
+<p class=ILprg>Count=6 Bytes 5 1 32 17 8 8 </p>
+
+<p class=ILprg>Calling Convention<span style="mso-spacerun: yes"> 
+</span>VARARG </p>
+
+<p class=ILprg>Number of Parameters 1</p>
+
+<p class=ILprg>Return Type:System.Runtime.CompilerServices.CallConvCdecl int</p>
+
+<p class=ILprg>Signature abc( int)</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 6</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILprg>Count=3 Bytes 32 0 1 </p>
+
+<p class=ILprg>Calling Convention<span style="mso-spacerun: yes"> 
+</span>DEFAULT<span style="mso-spacerun: yes">  </span>HASTHIS </p>
+
+<p class=ILprg>Number of Parameters 0</p>
+
+<p class=ILprg>Return Type:void</p>
+
+<p class=ILprg>Signature .ctor()</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=445 height=91 id="_x0000_i1044" src="chap5\17.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The MemberRef table gets populated with the details of each and
+every function that is called in the program. In the managed C++ program, the
+three dots in the code are used to indicate a variable number of arguments.
+However, it is essential to specify the first parameter for the function, which
+may be called subsequently, with any number of parameters.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the above program named b.cpp, the function abc is called
+from main, with one, two and three parameters. This adds three records to the
+MemberRef table. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The function DisplayMemberRefTable is called explicitly after
+calling the FillParamsArray function. Using this function, all the methods are
+displayed. However, for explanation purposes, we will only consider the method
+abc, and not the constructors. The method DisplayMethodSignature is used to
+decode the signature in the Blob heap. Therefore, it is provided with the index
+and the name. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We have deliberately evaded the coded index and have used the
+integer types for the parameters. Therefore, the value of 8 is flashed across.
+The number 32 is the optional modifier that is followed by the token, and
+hence, this too would be ignored. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first call of the abc method has two integers, out of
+which, one is optional and the other is mandatory. It is located in the second
+row of the member ref table. The last three bytes of the signature are also
+displayed. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We had made the presumption that the signature would end with
+two 8's. However, the number 65 is visible in the middle. This byte is called
+the 'sentinel'. It signifies that all the subsequent parameters are optional.
+Therefore, we display three dots when the sentinel byte occurs. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Row 4 shows the sentinel byte 65 followed by two 8's. This is
+because the abc function is called with two optional ints. The last row has a
+single int. Thus, there are no optional parameters, as a result of which, there
+is no sentinel byte. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>While coding, we discovered that code could be introduced for
+the sentinel byte in our GetElementType method. This is because the loop relies
+upon the paramcount variable. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This is not all. Nurturing the sentinel byte in the
+GetElementType function leads to an increase in the param count too. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The sentinel handling code that we have introduced is
+absolutely straightforward. We decrease the loop variable l by 1. Then, we add
+three dots to the string s. Next, we increase the index variable by 1, since the
+next byte is to be read. Finally, using the 'continue' statement, we revert to
+the start of the 'for' loop. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>It would be a much healthier option to alter the index of the
+'for' loop, from paramcount to the number of bytes in the signature.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>

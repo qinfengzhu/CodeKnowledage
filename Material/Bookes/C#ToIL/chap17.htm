@@ -1,0 +1,1971 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap17_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap17_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Demystifying ildasm.exe - C# to IL</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>44</o:TotalTime>
+  <o:Created>2001-01-24T06:31:00Z</o:Created>
+  <o:LastSaved>2001-01-24T06:32:00Z</o:LastSaved>
+  <o:Pages>13</o:Pages>
+  <o:Words>4351</o:Words>
+  <o:Characters>22628</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>2828</o:Lines>
+  <o:Paragraphs>1414</o:Paragraphs>
+  <o:CharactersWithSpaces>30460</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+@font-face
+	{font-family:"Monotype Corsiva";
+	panose-1:3 1 1 1 1 2 1 1 1 1;
+	mso-font-charset:0;
+	mso-generic-font-family:script;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Cbullets, li.Cbullets, div.Cbullets
+	{mso-style-name:"C\#bullets";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cbase, li.Cbase, div.Cbase
+	{mso-style-name:"C\#base";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.Coutput, li.Coutput, div.Coutput
+	{mso-style-name:"C\#output";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Cprg, li.Cprg, div.Cprg
+	{mso-style-name:"C\#prg";
+	mso-style-parent:"C\#base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.5pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.5pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"c\# base text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=Cbase><b><span style='font-size:9.0pt;mso-bidi-font-size:10.0pt'><img
+width=64 height=48 id="_x0000_i1025" src=bpb.jpg><o:p></o:p></span></b></p>
+
+<p class=Cbase><b><span style='font-size:24.0pt;mso-bidi-font-size:10.0pt'>-17-</span></b><span
+style='font-size:24.0pt;mso-bidi-font-size:10.0pt;color:windowtext'><o:p></o:p></span></p>
+
+<p class=Cbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><b><span
+style='font-size:48.0pt'>Appendix 2</span></b><span style='font-size:30.0pt;
+font-family:"Monotype Corsiva"'><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><span style='font-size:
+30.0pt;font-family:"Monotype Corsiva"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=Cbase align=center style='text-align:center'><span style='font-size:
+30.0pt;font-family:"Monotype Corsiva"'>Demystifying ildasm.exe </span><span
+style='color:windowtext'><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In this chapter we will solve a
+great mystery for you. We unravel as to how the programmers at Microsoft wrote
+the Disassembler for IL, 'ildasm.exe'. To write such a program, you need to be
+familiar with the C programming language. If you are not then understanding the
+C programs is futile. We will therefore not try to teach you C, but instead, in
+the next couple of pages we will attempt to teach you the structure of the PE
+file format under Windows and how ildasm creates its magic. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We first created a file b.il
+that reads as follows:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>b.il</u><o:p></o:p></p>
+
+<p class=ILprg>.assembly mukhi{}<o:p></o:p></p>
+
+<p class=ILprg>.class public auto ansi zzz extends [mscorlib]System.Object<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.method public hidebysig static void<span style="mso-spacerun:
+yes">  </span>vijay() il managed<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg>ldstr &quot;vijay!&quot;<o:p></o:p></p>
+
+<p class=ILprg>call void [mscorlib]System.Console::WriteLine(class
+System.String)<o:p></o:p></p>
+
+<p class=ILprg>ret<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We create b.exe and then run
+ildasm with the following syntax:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput>ildasm /out=a.txt b.exe /All<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The output created by ildasm is
+as follows.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.txt</u><o:p></o:p></p>
+
+<p class=ILprg>// PE Header:<o:p></o:p></p>
+
+<p class=ILprg>// Subsystem:<span style="mso-spacerun: yes">        </span><span
+style="mso-spacerun: yes">              </span>00000003<o:p></o:p></p>
+
+<p class=ILprg>// Native entry point address:<span style="mso-spacerun:
+yes">     </span>0000227e<o:p></o:p></p>
+
+<p class=ILprg>// Image base:<span style="mso-spacerun:
+yes">                     </span>00400000<o:p></o:p></p>
+
+<p class=ILprg>// Section alignment:<span style="mso-spacerun:
+yes">              </span>00002000<o:p></o:p></p>
+
+<p class=ILprg>// File alignment:<span style="mso-spacerun:
+yes">                 </span>00000200<o:p></o:p></p>
+
+<p class=ILprg>// Stack reserve size:<span style="mso-spacerun:
+yes">             </span>00100000<o:p></o:p></p>
+
+<p class=ILprg>// Stack commit size:<span style="mso-spacerun:
+yes">              </span>00001000<o:p></o:p></p>
+
+<p class=ILprg>// Directories:<span style="mso-spacerun:
+yes">                    </span>00000010<o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Export
+Directory:<span style="mso-spacerun: yes">          </span><o:p></o:p></p>
+
+<p class=ILprg>// 2230<span style="mso-spacerun: yes">     </span>[4b<span
+style="mso-spacerun: yes">      </span>] address [size] of Import
+Directory:<span style="mso-spacerun: yes">          </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Resource
+Directory:<span style="mso-spacerun: yes">        </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Exception
+Directory:<span style="mso-spacerun: yes">       </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Security
+Directory:<span style="mso-spacerun: yes">        </span><o:p></o:p></p>
+
+<p class=ILprg>// 4000<span style="mso-spacerun: yes">     </span>[c<span
+style="mso-spacerun: yes">       </span>] address [size] of Base Relocation
+Table:<span style="mso-spacerun: yes">     </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Debug
+Directory:<span style="mso-spacerun: yes">           </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Architecture
+Specific:<span style="mso-spacerun: yes">     </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Global
+Pointer:<span style="mso-spacerun: yes">            </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of TLS Directory:<span
+style="mso-spacerun: yes">             </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Load Config
+Directory:<span style="mso-spacerun: yes">     </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Bound Import
+Directory:<span style="mso-spacerun: yes">    </span><o:p></o:p></p>
+
+<p class=ILprg>// 2000<span style="mso-spacerun: yes">     </span>[8<span
+style="mso-spacerun: yes">       </span>] address [size] of Import Address
+Table:<span style="mso-spacerun: yes">      </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">     </span><span
+style="mso-spacerun: yes">   </span>[0<span style="mso-spacerun: yes">      
+</span>] address [size] of Delay Load IAT:<span style="mso-spacerun:
+yes">            </span><o:p></o:p></p>
+
+<p class=ILprg>// 2008<span style="mso-spacerun: yes">     </span>[48<span
+style="mso-spacerun: yes">      </span>] address [size] of COM+ Header:<span
+style="mso-spacerun: yes">               </span><o:p></o:p></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>// Import Address Table<o:p></o:p></p>
+
+<p class=ILprg>//<span style="mso-spacerun: yes">     </span>mscoree.dll<o:p></o:p></p>
+
+<p class=ILprg>//<span style="mso-spacerun: yes">              </span>00002000
+Import Address Table<o:p></o:p></p>
+
+<p class=ILprg>//<span style="mso-spacerun: yes">              </span>0000226e
+Import Name Table<o:p></o:p></p>
+
+<p class=ILprg>//<span style="mso-spacerun: yes">              </span>0<span
+style="mso-spacerun: yes">        </span>time date stamp<o:p></o:p></p>
+
+<p class=ILprg>//<span style="mso-spacerun: yes">              </span>0<span
+style="mso-spacerun: yes">        </span>Index of first forwarder reference<o:p></o:p></p>
+
+<p class=ILprg>//<o:p></o:p></p>
+
+<p class=ILprg>//<span style="mso-spacerun: yes">                   
+</span>0<span style="mso-spacerun: yes">  </span>_CorExeMain<o:p></o:p></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>// Delay Load Import Address Table<o:p></o:p></p>
+
+<p class=ILprg>// No data.<o:p></o:p></p>
+
+<p class=ILprg>// CLR Header:<o:p></o:p></p>
+
+<p class=ILprg>// 72<span style="mso-spacerun: yes">       </span>Header Size<o:p></o:p></p>
+
+<p class=ILprg>// 2<span style="mso-spacerun: yes">        </span>Major Runtime
+Version<o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>Minor Runtime
+Version<o:p></o:p></p>
+
+<p class=ILprg>// 1<span style="mso-spacerun: yes">        </span>Flags<o:p></o:p></p>
+
+<p class=ILprg>// 6000001<span style="mso-spacerun: yes">  </span>Entrypoint
+Token<o:p></o:p></p>
+
+<p class=ILprg>// 205c<span style="mso-spacerun: yes">     </span>[1d4<span
+style="mso-spacerun: yes">     </span>] address [size] of Metadata
+Directory:<span style="mso-spacerun: yes">        </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Resources
+Directory:<span style="mso-spacerun: yes">       </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Strong Name
+Signature:<span style="mso-spacerun: yes">     </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of CodeManager
+Table:<span style="mso-spacerun: yes">         </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of VTableFixups
+Directory:<span style="mso-spacerun: yes">    </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Export Address
+Table:<span style="mso-spacerun: yes">      </span><o:p></o:p></p>
+
+<p class=ILprg>// 0<span style="mso-spacerun: yes">        </span>[0<span
+style="mso-spacerun: yes">       </span>] address [size] of Precompile
+Header:<span style="mso-spacerun: yes">         </span><o:p></o:p></p>
+
+<p class=ILprg>// Code Manager Table:<o:p></o:p></p>
+
+<p class=ILprg>//<span style="mso-spacerun: yes">  </span>default<o:p></o:p></p>
+
+<p class=ILprg>// VTableFixup Directory:<o:p></o:p></p>
+
+<p class=ILprg>// No data.<o:p></o:p></p>
+
+<p class=ILprg>// Export Address Table Jumps:<o:p></o:p></p>
+
+<p class=ILprg>// No data.<o:p></o:p></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>.subsystem 0x00000003<o:p></o:p></p>
+
+<p class=ILprg>.corflags 0x00000001<o:p></o:p></p>
+
+<p class=ILprg>.assembly extern /*23000001*/ mscorlib<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">  </span>.ver 0:0:0:0<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.assembly /*20000001*/ mukhi<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">  </span>.ver 0:0:0:0<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>.module b.EXE<o:p></o:p></p>
+
+<p class=ILprg>// MVID: {DE224FE0-1C36-11D5-A55B-444553540000}<o:p></o:p></p>
+
+<p class=ILprg>.class /*02000002*/ public auto ansi zzz<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">       </span>extends
+[mscorlib/* 23000001 */]System.Object/* 01000001 */<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">  </span>.method /*06000001*/
+public hidebysig static <o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">          </span>void vijay() il
+managed<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">  </span>// SIG: 00 00 01<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">  </span>{<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>.entrypoint<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>// Method begins at
+RVA 0x2050<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>// Code size<span
+style="mso-spacerun: yes">       </span>11 (0xb)<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>.maxstack<span
+style="mso-spacerun: yes">  </span>8<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>IL_0000:<span
+style="mso-spacerun: yes">  </span>/* 72<span style="mso-spacerun: yes">  
+</span>| (70)000001<span style="mso-spacerun: yes">       </span>*/ ldstr<span
+style="mso-spacerun: yes">      </span>&quot;vijay!&quot;<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>IL_0005:<span
+style="mso-spacerun: yes">  </span>/* 28<span style="mso-spacerun: yes">  
+</span>| (0A)000001<span style="mso-spacerun: yes">       </span>*/ call<span
+style="mso-spacerun: yes">       </span>void [mscorlib/* 23000001
+*/]System.Console/* 01000002 */::WriteLine(class System.String) /* 0A000001 */<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>IL_000a:<span
+style="mso-spacerun: yes">  </span>/* 2A<span style="mso-spacerun: yes">  
+</span>|<span style="mso-spacerun: yes">                  </span>*/ ret<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">  </span>} // end of method
+zzz::vijay<o:p></o:p></p>
+
+<p class=ILprg>} // end of class zzz<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Let us see as to how ildasm
+creates such an output. We will start with the simplest C program.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%d\n&quot;,st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>2048<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We compiled this program, and
+all the others, by calling the C compiler as follows:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput>&gt;cl a.c<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This generates an executable
+file called a.exe.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>fp is a pointer to a structure
+called FILE, a structure tag, in the header file stdio.h. The function fopen
+opens a file b.exe stored in the IL subdirectory, for reading, in the binary
+mode. The binary mode means all characters are to be treated equally. Thus,
+when the number 26 is encountered, the file system should not read it as a -1. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now, to determine the size of
+the file, we use a function called fstat that accepts two parameters. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The first parameter is the file
+handle returned by the fileno function. This function accepts a higher level
+file handle i.e. a pointer returned by fopen, and returns an int, signifying
+the lower level file handle that is returned by the function open. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The second parameter to fstat is
+a structure st, that looks like a structure tag stat, found in the header file
+sys/stat.h. We pass the address of this structure as the second parameter which
+the function fstat fills. Using the function printf, we display the member
+st_size that holds the size of the file b.exe.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p;<o:p></o:p></p>
+
+<p class=ILprg>main() {<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=malloc( st.st_size );<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%c %c \n&quot;,*p,*(p+1));<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput>Output<o:p></o:p></p>
+
+<p class=ILoutput>M Z<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>In the above program, a function
+called malloc is used to allocate 2048 bytes of memory. This function returns a
+pointer to where this memory allocation begins. We store the beginning address
+of this memory, returned by malloc, in a pointer to a char called p. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now to read the entire file in
+memory:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>To accomplish this, we use a
+function called fread, that requires the starting memory location of the file
+and the size of the file to be read. We have asked for the entire file.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Thus, the first byte of the file
+will be stored at the memory location p, the second byte, at memory location
+p+1 etc. So, using our handy printf function, we display the first two bytes of
+the file as chars. They happen to be M and Z. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Every file under DOS begins with
+these two numbers. To refresh your memory, a file on disk is made up of numbers
+ranging from 0 to 255 only, in the same manner in which the computer memory is
+structured. These two numbers are called the signature of the file. If we
+change any of these two bytes, the operating system refuses to recognize our
+file as a valid DOS file. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Legend has it that the person at
+Microsoft who designed the memory management sub system of DOS had the same
+initials. Why are we talking about DOS when we are programming Windows? The
+reason for this is that every Windows file is a DOS compatible file. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#define WORD short<o:p></o:p></p>
+
+<p class=ILprg>#define LONG long<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER1 {<span style="mso-spacerun: yes">   
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_magic;<span style="mso-spacerun: yes"> 
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_cblp;<span style="mso-spacerun: yes">  
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_cp;<span style="mso-spacerun: yes">    
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD <span
+style="mso-spacerun: yes">  </span>e_crlc;<span style="mso-spacerun: yes">  
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_cparhdr; <o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_minalloc;<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_maxalloc;<o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_ss;<span style="mso-spacerun: yes">     
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_sp;<span style="mso-spacerun: yes">     
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_csum;<span style="mso-spacerun: yes">   
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_ip;<span style="mso-spacerun: yes">     
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_cs;<span style="mso-spacerun: yes">     
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_lfarlc;<span style="mso-spacerun: yes"> 
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_ovno;<span style="mso-spacerun: yes">   
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_res[4];<span style="mso-spacerun: yes">  
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_oemid;<span style="mso-spacerun: yes">   
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_oeminfo;<span style="mso-spacerun: yes"> 
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>WORD<span
+style="mso-spacerun: yes">   </span>e_res2[10]; <o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">    </span>LONG<span
+style="mso-spacerun: yes">   </span>e_lfanew;<span style="mso-spacerun: yes">  
+</span><o:p></o:p></p>
+
+<p class=ILprg><span style="mso-spacerun: yes">  </span>};<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER1*imagedoshdr;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p,*p1;<o:p></o:p></p>
+
+<p class=ILprg>char *pe;<o:p></o:p></p>
+
+<p class=ILprg>main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=(char *)malloc(st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>p1 = p;<o:p></o:p></p>
+
+<p class=ILprg>imagedoshdr =(struct _IMAGE_DOS_HEADER1 *) p1;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Magic No %x \n&quot;,imagedoshdr-&gt;e_magic);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;e_lfanew %x<span style="mso-spacerun: yes"> 
+</span>%d\n&quot;,imagedoshdr-&gt;e_lfanew,imagedoshdr-&gt;e_lfanew);<o:p></o:p></p>
+
+<p class=ILprg>pe = p+imagedoshdr-&gt;e_lfanew;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%c %c %d %d\n&quot;,*pe,*(pe+1),*(pe+2),*(pe+3));<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>Magic No 5a4d <o:p></o:p></p>
+
+<p class=ILoutput>e_lfanew 80<span style="mso-spacerun: yes">  </span>128<o:p></o:p></p>
+
+<p class=ILoutput>P E 0 0<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have initialized another
+pointer p1 to p, so that we maintain at least one pointer to the starting
+location of our file in memory. We next create a new pointer, imagedoshdr to a
+structure tag_IMAGE_DOS_HEADER1 and initialized it to p. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>A DOS file begins with a
+structure that looks like _IMAGE_DOS_HEADER1. Two members of this structure are
+displayed, the fields e_magic, i.e. MZ, and the member e_lfanew. E_lfanew
+stores a decimal value of 128. This number signifies that starting point of the
+Windows PE header from the start of the file. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We jump 128 bytes and print the
+next four bytes or the first 4 bytes of a Windows PE file. These are P E 0 0.
+PE is<span style="mso-spacerun: yes">  </span>the signature of a Windows file.
+If we change even one byte, Windows will not recognize this file. All files
+have a unique signature. In a Java class file , the signature is spread over 4
+bytes, and in hex, it reads as CA FE BA BE.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;windows.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER *imagedoshdr;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p,*p1;<o:p></o:p></p>
+
+<p class=ILprg>char *pe;<o:p></o:p></p>
+
+<p class=ILprg>main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=(char *)malloc(st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>p1 = p;<o:p></o:p></p>
+
+<p class=ILprg>imagedoshdr =(struct _IMAGE_DOS_HEADER *) p1;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Magic No %x \n&quot;,imagedoshdr-&gt;e_magic);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;e_lfanew %x<span style="mso-spacerun: yes"> 
+</span>%d\n&quot;,imagedoshdr-&gt;e_lfanew,imagedoshdr-&gt;e_lfanew);<o:p></o:p></p>
+
+<p class=ILprg>pe = p+imagedoshdr-&gt;e_lfanew;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%c %c %d %d\n&quot;,*pe,*(pe+1),*(pe+2),*(pe+3));<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We see the same output as
+earlier. The reason being that the structure tag _IMAGE_DOS_HEADER is already
+present in the file Winnt.h that is included by windows.h. Thus the PE file
+format is documented by Microsoft. The only addition that has to be made while
+running the c compiler is as follows:<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput>cl /nologo<span style="mso-spacerun: yes">  </span>a.c
+c:\progra~1\micros~1\vc98\lib\uuid.lib<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;windows.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER *imagedoshdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_FILE_HEADER *imagefilehdr;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p,*p1,*p2;<o:p></o:p></p>
+
+<p class=ILprg>char *pe;<o:p></o:p></p>
+
+<p class=ILprg>main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=(char *)malloc(st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>p1 = p;<o:p></o:p></p>
+
+<p class=ILprg>imagedoshdr =(struct _IMAGE_DOS_HEADER *) p1;<o:p></o:p></p>
+
+<p class=ILprg>pe = p+imagedoshdr-&gt;e_lfanew;<o:p></o:p></p>
+
+<p class=ILprg>p2 = pe+4;<o:p></o:p></p>
+
+<p class=ILprg>imagefilehdr = p2;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Machine %x\n&quot;,imagefilehdr-&gt;Machine);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Number Of Sections
+%d\n&quot;,imagefilehdr-&gt;NumberOfSections);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Pointer To Symbol Table
+%d\n&quot;,imagefilehdr-&gt;PointerToSymbolTable);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Number Of Symbols
+%d\n&quot;,imagefilehdr-&gt;NumberOfSymbols);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Size Of Optional Header
+%d\n&quot;,imagefilehdr-&gt;SizeOfOptionalHeader);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Characteristics %x\n&quot;,(unsigned
+short)imagefilehdr-&gt;Characteristics);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>Machine 14c<o:p></o:p></p>
+
+<p class=ILoutput>Number Of Sections 2<o:p></o:p></p>
+
+<p class=ILoutput>Pointer To Symbol Table 0<o:p></o:p></p>
+
+<p class=ILoutput>Number Of Symbols 0<o:p></o:p></p>
+
+<p class=ILoutput>Size Of Optional Header 224<o:p></o:p></p>
+
+<p class=ILoutput>Characteristics 10e<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The PE file starts with a magic
+number PE00, that takes up 4 bytes. We need to skip over these 4 bytes. Hence,
+we add 4 to the variable p. This is the starting position of the structure
+_IMAGE_FILE_HEADER, from the header file. We created a pointer imagefilehdr to
+the structure tag and initialized it to the new value of p. Thereafter, the
+members of this structure are displayed. Our exe file is made up of a large number
+of entities. Two of them are code and data. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Different entities are stored in
+different places or sections. Our tiny exe file comprises of these two
+sections. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>After this header, comes another
+header, that is optional for an obj file. The size of this header can change,
+but as of now, it is 224 bytes. This header follows the above header thus
+proving that our PE file is made up of a series of C structures.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;windows.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER *imagedoshdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_FILE_HEADER *imagefilehdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_OPTIONAL_HEADER *imageoptionalhdr;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p,*p1,*p2,*p3;<o:p></o:p></p>
+
+<p class=ILprg>char *pe;<o:p></o:p></p>
+
+<p class=ILprg>main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=(char *)malloc(st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>p1 = p;<o:p></o:p></p>
+
+<p class=ILprg>imagedoshdr =(struct _IMAGE_DOS_HEADER *) p1;<o:p></o:p></p>
+
+<p class=ILprg>pe = p+imagedoshdr-&gt;e_lfanew;<o:p></o:p></p>
+
+<p class=ILprg>p2 = pe+4;<o:p></o:p></p>
+
+<p class=ILprg>imagefilehdr = p2;<o:p></o:p></p>
+
+<p class=ILprg>p3 = (long)imagefilehdr+20;<o:p></o:p></p>
+
+<p class=ILprg>imageoptionalhdr = (struct _IMAGE_OPTIONAL_HEADER *)p3;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Subsystem
+%d\n&quot;,imageoptionalhdr-&gt;Subsystem);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Magic<span style='mso-tab-count:2'>                 </span>
+<span style='mso-tab-count:1'>           </span>%x\n&quot;,imageoptionalhdr-&gt;Magic);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;MajorLinkerVersion<span style='mso-tab-count:1'>         </span>%d\n&quot;,imageoptionalhdr-&gt;MajorLinkerVersion);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;MinorLinkerVersion<span style='mso-tab-count:1'>         </span>%d\n&quot;,imageoptionalhdr-&gt;MinorLinkerVersion);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;SizeOfCode <span style='mso-tab-count:2'>                    </span>%d\n&quot;,imageoptionalhdr-&gt;SizeOfCode);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;SizeOfInitializedData <span style='mso-tab-count:
+1'>      </span>%d\n&quot;,imageoptionalhdr-&gt;SizeOfInitializedData);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;SizeOfUninitializedData
+%d\n&quot;,imageoptionalhdr-&gt;SizeOfUninitializedData);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;AddressOfEntryPoint <span style='mso-tab-count:
+1'>      </span>%d %x\n&quot;,imageoptionalhdr-&gt;AddressOfEntryPoint,imageoptionalhdr-&gt;
+AddressOfEntryPoint);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;BaseOfCode <span style='mso-tab-count:2'>                   </span>%d\n&quot;,imageoptionalhdr-&gt;BaseOfCode);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;BaseOfData <span style='mso-tab-count:2'>                   </span>%d\n&quot;,imageoptionalhdr-&gt;BaseOfData);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;ImageBase <span style='mso-tab-count:2'>                     </span>%d
+%x\n&quot;,imageoptionalhdr-&gt;ImageBase,imageoptionalhdr-&gt;ImageBase);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;SectionAlignment <span style='mso-tab-count:1'>           </span>%d
+%x\n&quot;,imageoptionalhdr-&gt;SectionAlignment,imageoptionalhdr-&gt;SectionAlignment);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;FileAlignment <span style='mso-tab-count:2'>                </span>%d
+%x\n&quot;,imageoptionalhdr-&gt;FileAlignment,imageoptionalhdr-&gt;FileAlignment);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;MajorOperatingSystemVersion
+%d\n&quot;,imageoptionalhdr-&gt;MajorOperatingSystemVersion);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;MinorOperatingSystemVersion
+%d\n&quot;,imageoptionalhdr-&gt;MinorOperatingSystemVersion);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;SizeOfImage <span style='mso-tab-count:2'>                  </span>%d\n&quot;,imageoptionalhdr-&gt;SizeOfImage);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;SizeOfHeaders <span style='mso-tab-count:2'>               </span>%d\n&quot;,imageoptionalhdr-&gt;SizeOfHeaders);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;DllCharacteristics <span style='mso-tab-count:1'>           </span>%x\n&quot;,imageoptionalhdr-&gt;DllCharacteristics);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;LoaderFlags <span style='mso-tab-count:2'>                   </span>%x\n&quot;,imageoptionalhdr-&gt;LoaderFlags);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;NumberOfRvaAndSizes <span style='mso-tab-count:
+1'>   </span>%d\n&quot;,imageoptionalhdr-&gt;NumberOfRvaAndSizes);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Stack Reserve %d
+%x\n&quot;,imageoptionalhdr-&gt;SizeOfStackReserve,imageoptionalhdr-&gt;SizeOfStackReserve);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Stack Commit %d
+%x\n&quot;,imageoptionalhdr-&gt;SizeOfStackCommit,imageoptionalhdr-&gt;SizeOfStackCommit);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>Subsystem 3<o:p></o:p></p>
+
+<p class=ILoutput>Magic<span style="mso-spacerun: yes">    </span>10b<o:p></o:p></p>
+
+<p class=ILoutput>MajorLinkerVersion 6<o:p></o:p></p>
+
+<p class=ILoutput>MinorLinkerVersion 0<o:p></o:p></p>
+
+<p class=ILoutput>SizeOfCode<span style="mso-spacerun: yes">   </span>1024<o:p></o:p></p>
+
+<p class=ILoutput>SizeOfInitializedData<span style="mso-spacerun: yes"> 
+</span>512<o:p></o:p></p>
+
+<p class=ILoutput>SizeOfUninitializedData 0<o:p></o:p></p>
+
+<p class=ILoutput>AddressOfEntryPoint<span style="mso-spacerun: yes"> 
+</span>8830 227e<o:p></o:p></p>
+
+<p class=ILoutput>BaseOfCode<span style="mso-spacerun: yes">   </span>8192<o:p></o:p></p>
+
+<p class=ILoutput>BaseOfData<span style="mso-spacerun: yes">   </span>16384<o:p></o:p></p>
+
+<p class=ILoutput>ImageBase<span style="mso-spacerun: yes">   </span>4194304
+400000<o:p></o:p></p>
+
+<p class=ILoutput>SectionAlignment<span style="mso-spacerun: yes">  </span>8192
+2000<o:p></o:p></p>
+
+<p class=ILoutput>FileAlignment<span style="mso-spacerun: yes">   </span>512
+200<o:p></o:p></p>
+
+<p class=ILoutput>MajorOperatingSystemVersion 4<o:p></o:p></p>
+
+<p class=ILoutput>MinorOperatingSystemVersion 0<o:p></o:p></p>
+
+<p class=ILoutput>SizeOfImage<span style="mso-spacerun: yes">   </span>24576<o:p></o:p></p>
+
+<p class=ILoutput>SizeOfHeaders<span style="mso-spacerun: yes">   </span>512<o:p></o:p></p>
+
+<p class=ILoutput>DllCharacteristics<span style="mso-spacerun: yes">  </span>0<o:p></o:p></p>
+
+<p class=ILoutput>LoaderFlags<span style="mso-spacerun: yes">   </span>0<o:p></o:p></p>
+
+<p class=ILoutput>NumberOfRvaAndSizes<span style="mso-spacerun: yes"> 
+</span>16<o:p></o:p></p>
+
+<p class=ILoutput>Stack Reserve 1048576 100000<o:p></o:p></p>
+
+<p class=ILoutput>Stack Commit 4096 1000<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have now displayed the
+members of the third structure, _IMAGE_OPTIONAL_HEADER. We are not going to
+explain all the members. We will focus only those that are present in the
+ildasm output, and those that are important for our understanding of PE files. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The size of the structure
+_IMAGE_FILE_HEADER is 20 bytes. So we add 20 to imagefilehdr, which has been
+cast to a long, to get to the address of the third structure. We store it in
+the pointer imageoptionalhdr. The member Subsystem has a value of 3, which
+means that it is a Windows executable file. The address of Entry point is the
+relocation where the first executable instruction starts. The number 8830 is
+227e in hex. The image base tells us as to where the program will be loaded in
+memory by the Windows loader. It has a value of 400000 hex. This means that
+every program loaded under Windows will start at this memory location. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The section alignment means that
+each section will start in memory at a location that is divisible by 0x2000.
+Thus, even if the size of the data is 2 bytes, it will take up an entire
+section i.e. 4098 bytes of memory. The file alignment provides the same
+functionality for the file stored in memory. The section will take up a minimum
+512 bytes of disk space. Then, we have the amount of stack memory to be
+allocated for our program.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;windows.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER *imagedoshdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_FILE_HEADER *imagefilehdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_OPTIONAL_HEADER *imageoptionalhdr;<o:p></o:p></p>
+
+<p class=ILprg>int i;<o:p></o:p></p>
+
+<p class=ILprg>char *dirtype[]={<o:p></o:p></p>
+
+<p class=ILprg>&quot;EXPORT&quot;,&quot;IMPORT&quot;,&quot;RESOURCE&quot;,&quot;EXCEPTION&quot;,<o:p></o:p></p>
+
+<p class=ILprg>&quot;SECURITY&quot;,&quot;BASERELOC&quot;,&quot;DEBUG&quot;,&quot;ARCHITECTURE&quot;,<o:p></o:p></p>
+
+<p class=ILprg>&quot;GLOBALPTR&quot;,&quot;TLS&quot;,&quot;LOAD_CONFIG&quot;,&quot;BOUND_IMPORT&quot;,<o:p></o:p></p>
+
+<p class=ILprg>&quot;IAT&quot;,&quot;DELAY_IMPORT&quot;,&quot;COM_DESCRIPTOR&quot;<o:p></o:p></p>
+
+<p class=ILprg>};<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p,*p1,*p2,*p3;<o:p></o:p></p>
+
+<p class=ILprg>char *pe;<o:p></o:p></p>
+
+<p class=ILprg>main() {<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=(char *)malloc(st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>p1 = p;<o:p></o:p></p>
+
+<p class=ILprg>imagedoshdr =(struct _IMAGE_DOS_HEADER *) p1;<o:p></o:p></p>
+
+<p class=ILprg>pe = p+imagedoshdr-&gt;e_lfanew;<o:p></o:p></p>
+
+<p class=ILprg>p2 = pe+4;<o:p></o:p></p>
+
+<p class=ILprg>imagefilehdr = p2;<o:p></o:p></p>
+
+<p class=ILprg>p3 = (long)imagefilehdr+20;<o:p></o:p></p>
+
+<p class=ILprg>imageoptionalhdr = (struct _IMAGE_OPTIONAL_HEADER *)p3;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Virtual Address Size<span style="mso-spacerun:
+yes">   </span>Name<span style="mso-spacerun: yes">         </span>\n&quot;);<o:p></o:p></p>
+
+<p class=ILprg>for(i=0;i&lt;15;i++)<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%08x<span style="mso-spacerun: yes">       
+</span>%4d<span style="mso-spacerun: yes">   </span>&quot;,
+imageoptionalhdr-&gt;DataDirectory[i].VirtualAddress
+,imageoptionalhdr-&gt;DataDirectory[i].Size);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%-15s\n&quot;,dirtype[i]);<o:p></o:p></p>
+
+<p class=ILprg>} <o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>Virtual Address Size<span style="mso-spacerun: yes">  
+</span>Name<span style="mso-spacerun: yes">         </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>EXPORT<span
+style="mso-spacerun: yes">         </span><o:p></o:p></p>
+
+<p class=ILoutput>00002230<span style="mso-spacerun: yes">         
+</span>75<span style="mso-spacerun: yes">   </span>IMPORT<span
+style="mso-spacerun: yes">         </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>RESOURCE<span
+style="mso-spacerun: yes">       </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>EXCEPTION<span
+style="mso-spacerun: yes">      </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>SECURITY<span
+style="mso-spacerun: yes">       </span><o:p></o:p></p>
+
+<p class=ILoutput>00004000<span style="mso-spacerun: yes">         
+</span>12<span style="mso-spacerun: yes">   </span>BASERELOC<span
+style="mso-spacerun: yes">      </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>DEBUG<span
+style="mso-spacerun: yes">          </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>ARCHITECTURE<span
+style="mso-spacerun: yes">   </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>GLOBALPTR<span
+style="mso-spacerun: yes">      </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>TLS<span style="mso-spacerun:
+yes">            </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>LOAD_CONFIG<span
+style="mso-spacerun: yes">    </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">  </span><span style="mso-spacerun:
+yes"> </span>BOUND_IMPORT<span style="mso-spacerun: yes">   </span><o:p></o:p></p>
+
+<p class=ILoutput>00002000<span style="mso-spacerun: yes">          
+</span>8<span style="mso-spacerun: yes">   </span>IAT<span style="mso-spacerun:
+yes">            </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">          
+</span>0<span style="mso-spacerun: yes">   </span>DELAY_IMPORT<span
+style="mso-spacerun: yes">   </span><o:p></o:p></p>
+
+<p class=ILoutput>00002008<span style="mso-spacerun: yes">         
+</span>72<span style="mso-spacerun: yes">   </span>COM_DESCRIPTOR<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Our pointer imageoptionalhdr is
+a pointer located at the start of the third header. The last member of this
+structure is an array of 16 IMAGE_DATA_DIRECTORY structures and is called
+DataDirectory. This structure has two members, VirtualAddress and Size. Each of
+these entries tells us the size and the location in memory, i.e. the virtual
+address, where we can find the respective data for these entities. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We prefer to handle numbers in
+the decimal format, whereas ildasm prefers to handle them in hex. The array
+member 15 will always store the data for COM_DESCRIPTOR. This has been
+pre-decided, and that is how the array of pointers dirtype is filled up.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;windows.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>int i;<o:p></o:p></p>
+
+<p class=ILprg>char *dirtype[]={<o:p></o:p></p>
+
+<p class=ILprg>&quot;EXPORT&quot;,&quot;IMPORT&quot;,&quot;RESOURCE&quot;,&quot;EXCEPTION&quot;,<o:p></o:p></p>
+
+<p class=ILprg>&quot;SECURITY&quot;,&quot;BASERELOC&quot;,&quot;DEBUG&quot;,&quot;ARCHITECTURE&quot;,<o:p></o:p></p>
+
+<p class=ILprg>&quot;GLOBALPTR&quot;,&quot;TLS&quot;,&quot;LOAD_CONFIG&quot;,&quot;BOUND_IMPORT&quot;,<o:p></o:p></p>
+
+<p class=ILprg>&quot;IAT&quot;,&quot;DELAY_IMPORT&quot;,&quot;COM_DESCRIPTOR&quot;<o:p></o:p></p>
+
+<p class=ILprg>};<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER *imagedoshdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_FILE_HEADER *imagefilehdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_OPTIONAL_HEADER *imageoptionalhdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_SECTION_HEADER *imagesectionhdr;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p,*p1,*p2,*p3,*p4;<o:p></o:p></p>
+
+<p class=ILprg>char *pe;<o:p></o:p></p>
+
+<p class=ILprg>main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=(char *)malloc(st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>p1 = p;<o:p></o:p></p>
+
+<p class=ILprg>imagedoshdr =(struct _IMAGE_DOS_HEADER *) p1;<o:p></o:p></p>
+
+<p class=ILprg>pe = p+imagedoshdr-&gt;e_lfanew;<o:p></o:p></p>
+
+<p class=ILprg>p2 = pe+4;<o:p></o:p></p>
+
+<p class=ILprg>imagefilehdr = p2;<o:p></o:p></p>
+
+<p class=ILprg>p3 = (long)imagefilehdr+20;<o:p></o:p></p>
+
+<p class=ILprg>imageoptionalhdr = (struct _IMAGE_OPTIONAL_HEADER *)p3;<o:p></o:p></p>
+
+<p class=ILprg>p4 = p3+224;<o:p></o:p></p>
+
+<p class=ILprg>imagesectionhdr = p4;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Name<span style="mso-spacerun: yes">     </span>P
+Addr<span style="mso-spacerun: yes">   </span>V Addr<span style="mso-spacerun:
+yes">  </span>SzOfRData<span style="mso-spacerun: yes">   </span>PtrToRData
+&quot;);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;PtrToRel<span style="mso-spacerun: yes">  
+</span>PtrToLinenos NoOfRel NoLinenos<span style="mso-spacerun: yes"> 
+</span>Char\n&quot;);<o:p></o:p></p>
+
+<p class=ILprg>for(i=0; i &lt;imagefilehdr-&gt;NumberOfSections;i++ )<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%-8s %08x %08x %-8d<span style="mso-spacerun:
+yes">    </span>%08x
+&quot;,imagesectionhdr-&gt;Name,imagesectionhdr-&gt;Misc.PhysicalAddress,imagesectionhdr-&gt;VirtualAddress,<o:p></o:p></p>
+
+<p class=ILprg>imagesectionhdr-&gt;SizeOfRawData,imagesectionhdr-&gt;PointerToRawData);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot; %08x<span style="mso-spacerun: yes">   
+</span>%08x<span style="mso-spacerun: yes">   </span>%4d<span
+style="mso-spacerun: yes">   </span>%4d<span style="mso-spacerun: yes">      
+</span>%08x \n&quot;,imagesectionhdr-&gt;PointerToRelocations,<o:p></o:p></p>
+
+<p class=ILprg>imagesectionhdr-&gt;PointerToLinenumbers,imagesectionhdr-&gt;NumberOfRelocations,<o:p></o:p></p>
+
+<p class=ILprg>imagesectionhdr-&gt;NumberOfLinenumbers,imagesectionhdr-&gt;Characteristics);<o:p></o:p></p>
+
+<p class=ILprg>imagesectionhdr++;<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>Name<span style="mso-spacerun: yes">     </span>P Addr<span
+style="mso-spacerun: yes">      </span>V Addr<span style="mso-spacerun:
+yes">     </span>SzOfRData<span style="mso-spacerun: yes">   </span>PtrToRData <o:p></o:p></p>
+
+<p class=ILoutput>PtrToRel<span style="mso-spacerun: yes">    
+</span>PtrToLinenos<span style="mso-spacerun: yes">  </span>NoOfRel<span
+style="mso-spacerun: yes">   </span>NoLinenos<span style="mso-spacerun: yes"> 
+</span>Char<span style='font-size:4.0pt'><o:p></o:p></span></p>
+
+<p class=ILoutput><span style='font-size:4.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput>.text<span style="mso-spacerun: yes">      
+</span>00000284<span style="mso-spacerun: yes">  </span>00002000 1024<span
+style="mso-spacerun: yes">          </span>00000200<span style="mso-spacerun:
+yes">  </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">  
+</span>00000000<span style="mso-spacerun: yes">       </span>0<span
+style="mso-spacerun: yes">             </span>0<span style="mso-spacerun:
+yes">             </span>60000020 <o:p></o:p></p>
+
+<p class=ILoutput><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILoutput>.reloc<span style="mso-spacerun: yes">     </span>0000000c<span
+style="mso-spacerun: yes">   </span>00004000<span style="mso-spacerun: yes"> 
+</span>512<span style="mso-spacerun: yes">           </span>00000600<span
+style="mso-spacerun: yes">  </span><o:p></o:p></p>
+
+<p class=ILoutput>00000000<span style="mso-spacerun: yes">  
+</span>00000000<span style="mso-spacerun: yes">       </span>0<span
+style="mso-spacerun: yes">             </span>0<span style="mso-spacerun:
+yes">             </span>42000040 <o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILbase><span style='color:windowtext'>We are now displaying the
+sections of the file. It is in these sections that data of the file is stored.
+The sections start immediately after the Optional Header. We have a structure
+that represents each section. If you recall, we have two sections as specified
+by the second header. We display the members of each section along with the
+name of the section. The name always starts with a dot. The section .text is
+where the code resides. We are then provided with the memory location and size
+of the section. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;windows.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>int i,j;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER *imagedoshdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_FILE_HEADER *imagefilehdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_OPTIONAL_HEADER *imageoptionalhdr;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p,*p1,*p2,*p3,*pe;<o:p></o:p></p>
+
+<p class=ILprg>struct complus<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>int size;<o:p></o:p></p>
+
+<p class=ILprg>short major;<o:p></o:p></p>
+
+<p class=ILprg>short minor;<o:p></o:p></p>
+
+<p class=ILprg>long maddr,msize;<o:p></o:p></p>
+
+<p class=ILprg>long flags,token;<o:p></o:p></p>
+
+<p class=ILprg>long raddr,rsize;<o:p></o:p></p>
+
+<p class=ILprg>long saddr,ssize;<o:p></o:p></p>
+
+<p class=ILprg>long caddr,csize;<o:p></o:p></p>
+
+<p class=ILprg>long vaddr,vsize;<o:p></o:p></p>
+
+<p class=ILprg>long eaddr,esize;<o:p></o:p></p>
+
+<p class=ILprg>long paddr,psize;<o:p></o:p></p>
+
+<p class=ILprg>};<o:p></o:p></p>
+
+<p class=ILprg>struct complus *a;<o:p></o:p></p>
+
+<p class=ILprg>main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=(char *)malloc(st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>p1 = p;<o:p></o:p></p>
+
+<p class=ILprg>imagedoshdr =(struct _IMAGE_DOS_HEADER *) p1;<o:p></o:p></p>
+
+<p class=ILprg>pe = p+imagedoshdr-&gt;e_lfanew;<o:p></o:p></p>
+
+<p class=ILprg>p2 = pe+4;<o:p></o:p></p>
+
+<p class=ILprg>imagefilehdr = p2;<o:p></o:p></p>
+
+<p class=ILprg>p3 = (long)imagefilehdr+20;<o:p></o:p></p>
+
+<p class=ILprg>imageoptionalhdr = (struct _IMAGE_OPTIONAL_HEADER *)p3;<o:p></o:p></p>
+
+<p class=ILprg>i =
+imageoptionalhdr-&gt;DataDirectory[14].VirtualAddress%0x2000;<o:p></o:p></p>
+
+<p class=ILprg>i = i + 512;<o:p></o:p></p>
+
+<p class=ILprg>p = p + i;<o:p></o:p></p>
+
+<p class=ILprg>a = p;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%d Header size\n&quot;,a-&gt;size);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%d\ Major version n&quot;,a-&gt;major);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%d Minor version \n&quot;,a-&gt;minor);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%ld Flags \n&quot;,a-&gt;flags);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x Token \n&quot;,a-&gt;token);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x %x MetaData\n&quot;,a-&gt;maddr,a-&gt;msize);<o:p></o:p></p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x %x Resources\n&quot;,a-&gt;raddr,a-&gt;rsize);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x %x Strong Name\n&quot;,a-&gt;saddr,a-&gt;ssize);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x %x Code
+MAnager\n&quot;,a-&gt;caddr,a-&gt;csize);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x %x Vtable
+Fixups\n&quot;,a-&gt;vaddr,a-&gt;csize);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x %x Export Address
+Table\n&quot;,a-&gt;eaddr,a-&gt;esize);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x %x PreCompile
+Header\n&quot;,a-&gt;paddr,a-&gt;psize);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>72 Header size<o:p></o:p></p>
+
+<p class=ILoutput>2 Major version n0 Minor version <o:p></o:p></p>
+
+<p class=ILoutput>1 Flags <o:p></o:p></p>
+
+<p class=ILoutput>6000001 Token <o:p></o:p></p>
+
+<p class=ILoutput>205c 1d4 MetaData<o:p></o:p></p>
+
+<p class=ILoutput>0 0 Resources<o:p></o:p></p>
+
+<p class=ILoutput>0 0 Strong Name<o:p></o:p></p>
+
+<p class=ILoutput>0 0 Code MAnager<o:p></o:p></p>
+
+<p class=ILoutput>0 0 Vtable Fixups<o:p></o:p></p>
+
+<p class=ILoutput>0 0 Export Address Table<o:p></o:p></p>
+
+<p class=ILoutput>0 0 PreCompile Header<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Now to display the COM+ header.
+The address of the starting location of this header is given in the 14th member
+of the DataDirectory Array. This value tells us as to where in memory the COM+
+header starts. Here, it happens to be 0x2000. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>Unfortunately, we have loaded
+our exe file in memory using malloc, and not the mmap series of functions.
+Thus, we have used a quick albeit messy shortcut. We simply took this virtual
+address and got the remainder after dividing it by 0x2000 because the section
+alignment in memory is 0x2000. This remainder is added to 512, because the file
+section alignment is 512. Thus we arrive at the number 520. This is the offset
+from the start of the file for the location of the COM+ header. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We have created a structure that
+maps a COM+ header and simply displays the members. The COM+ structure starts
+with the width of the structure, i.e. 72, followed by the version number. Then,
+it tells us the starting location of the metadata in memory. The concept of
+metadata is one of the linchpins of the .NET world. Then, there is a flags
+member, followed by a series of other directory entries.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;windows.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>int i,j;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER *imagedoshdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_FILE_HEADER *imagefilehdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_OPTIONAL_HEADER *imageoptionalhdr;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p,*p1,*p2,*p3,*pe, *p4;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_IMPORT_DESCRIPTOR *a;<o:p></o:p></p>
+
+<p class=ILprg>long *b;short *b1;<o:p></o:p></p>
+
+<p class=ILprg>main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=(char *)malloc(st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>p1 = p;<o:p></o:p></p>
+
+<p class=ILprg>imagedoshdr =(struct _IMAGE_DOS_HEADER *) p1;<o:p></o:p></p>
+
+<p class=ILprg>pe = p+imagedoshdr-&gt;e_lfanew;<o:p></o:p></p>
+
+<p class=ILprg>p2 = pe+4;<o:p></o:p></p>
+
+<p class=ILprg>imagefilehdr = p2;<o:p></o:p></p>
+
+<p class=ILprg>p3 = (long)imagefilehdr+20;<o:p></o:p></p>
+
+<p class=ILprg>imageoptionalhdr = (struct _IMAGE_OPTIONAL_HEADER *)p3;<o:p></o:p></p>
+
+<p class=ILprg>i = imageoptionalhdr-&gt;DataDirectory[1].VirtualAddress%0x2000;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x\n&quot;,i);<o:p></o:p></p>
+
+<p class=ILprg>i = i + 512;<o:p></o:p></p>
+
+<p class=ILprg>p = p + i;<o:p></o:p></p>
+
+<p class=ILprg>a = p;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%08x Import Address
+Table\n&quot;,a-&gt;FirstThunk);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%08x Import Name Table\n&quot;,a-&gt;Name);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x time date stamp\n&quot;,a-&gt;TimeDateStamp);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x Index of first Forwarder
+reference\n&quot;,a-&gt;ForwarderChain);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%08x
+Characteristics\n&quot;,a-&gt;Characteristics%0x2000);<o:p></o:p></p>
+
+<p class=ILprg>p4 = p1 + 512 + a-&gt;Name%0x2000; <o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Name %s\n&quot;,p4);<o:p></o:p></p>
+
+<p class=ILprg>p4 = p1 + 512 + a-&gt;Characteristics %0x2000; <o:p></o:p></p>
+
+<p class=ILprg>b = p4;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Address %x\n&quot;,*b);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Address %x\n&quot;,*b%0x2000);<o:p></o:p></p>
+
+<p class=ILprg>p4 = p1 + 512 + *b%0x2000; <o:p></o:p></p>
+
+<p class=ILprg>b1 = p4;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;Hint %d\n&quot;, *b1);<o:p></o:p></p>
+
+<p class=ILprg>b1++;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%s\n&quot;,b1);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>230<o:p></o:p></p>
+
+<p class=ILoutput>00002000 Import Address Table<o:p></o:p></p>
+
+<p class=ILoutput>0000226e Import Name Table<o:p></o:p></p>
+
+<p class=ILoutput>0 time date stamp<o:p></o:p></p>
+
+<p class=ILoutput>0 Index of first Forwarder reference<o:p></o:p></p>
+
+<p class=ILoutput>00000258 Characteristics<o:p></o:p></p>
+
+<p class=ILoutput>Name mscoree.dll<o:p></o:p></p>
+
+<p class=ILoutput>Address 2260<o:p></o:p></p>
+
+<p class=ILoutput>Address 260<o:p></o:p></p>
+
+<p class=ILoutput>Hint 0<o:p></o:p></p>
+
+<p class=ILoutput>_CorExeMain<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We finally display the Import
+Address Table. We have written this code in such an unstructured manner,
+knowing the purists of programming conventions will throw a fit and ask for
+this book to be banned.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The second member of the
+DataDirectory array tells us as to where the Import directory starts. We store
+this value in a variable called i after taking the remainder. Microsoft devised
+the PE file format in such a way that retrieving information at runtime would
+be a breeze. Thus, the first section would be loaded at memory location 0x2000
+hex from the start of the base. Thus, at runtime, we will find this Import
+directory at memory location 0x2300. Since we have used malloc, we add 512 to
+obtain the starting address of the Import table. This gives us the starting
+memory location of the structure<span style="mso-spacerun: yes"> 
+</span>IMAGE_IMPORT_DESCRIPTOR, whose members are then displayed. The member
+name is a RVA, or a relative virtual address. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>We do the same computation for
+Name to obtain another memory location that tells us the name of the dll that
+we are importing from. The member Characteristics is an RVA. We obtain a memory
+location that points to another RVA. This points to a structure where the first
+member is a short for the hint and the second member is a NULL terminated
+string containing the name of the function in the dll.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>This is definitely not a pretty
+looking program, but it works well to prove the concept. We can use loops to
+make the program generic. <o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILprg><u>a.c</u><o:p></o:p></p>
+
+<p class=ILprg>#include &lt;windows.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;stdio.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>#include &lt;sys/stat.h&gt;<o:p></o:p></p>
+
+<p class=ILprg>int i;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_DOS_HEADER *imagedoshdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_FILE_HEADER *imagefilehdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_OPTIONAL_HEADER *imageoptionalhdr;<o:p></o:p></p>
+
+<p class=ILprg>struct _IMAGE_SECTION_HEADER *imagesectionhdr;<o:p></o:p></p>
+
+<p class=ILprg>struct stat st;<o:p></o:p></p>
+
+<p class=ILprg>char *p,*p1,*p2,*p3,*p4,*p5;<o:p></o:p></p>
+
+<p class=ILprg>char *pe;<o:p></o:p></p>
+
+<p class=ILprg>main()<o:p></o:p></p>
+
+<p class=ILprg>{<o:p></o:p></p>
+
+<p class=ILprg>FILE *fp;<o:p></o:p></p>
+
+<p class=ILprg>fp = fopen(&quot;c:\\il\\b.exe&quot;,&quot;rb&quot;);<o:p></o:p></p>
+
+<p class=ILprg>fstat(fileno(fp),&amp;st);<o:p></o:p></p>
+
+<p class=ILprg>p=(char *)malloc(st.st_size);<o:p></o:p></p>
+
+<p class=ILprg>fread(p,st.st_size,1,fp);<o:p></o:p></p>
+
+<p class=ILprg>p1 = p;<o:p></o:p></p>
+
+<p class=ILprg>imagedoshdr =(struct _IMAGE_DOS_HEADER *) p1;<o:p></o:p></p>
+
+<p class=ILprg>pe = p+imagedoshdr-&gt;e_lfanew;<o:p></o:p></p>
+
+<p class=ILprg>p2 = pe+4;<o:p></o:p></p>
+
+<p class=ILprg>imagefilehdr = p2;<o:p></o:p></p>
+
+<p class=ILprg>p3 = (long)imagefilehdr+20;<o:p></o:p></p>
+
+<p class=ILprg>imageoptionalhdr = (struct _IMAGE_OPTIONAL_HEADER *)p3;<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x\n&quot;,imageoptionalhdr-&gt;AddressOfEntryPoint);<o:p></o:p></p>
+
+<p class=ILprg>p4 = p1 + 512 + imageoptionalhdr-&gt;AddressOfEntryPoint%0x2000;
+<o:p></o:p></p>
+
+<p class=ILprg>for(i=0; i&lt;7 ; i++)<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;%x &quot;,(unsigned char)p4[i]);<o:p></o:p></p>
+
+<p class=ILprg>printf(&quot;\n&quot;);<o:p></o:p></p>
+
+<p class=ILprg>}<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILoutput><u>Output</u><o:p></o:p></p>
+
+<p class=ILoutput>227e<o:p></o:p></p>
+
+<p class=ILoutput>ff 25 0 20 40 0 0<o:p></o:p></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'>The last program in this series
+displays the initial bytes of the first function to be called. This function
+begins at RVA 0x227e and we simply jump to that location in our program and
+display the value of the initial bytes. An ff 25 is a jump instruction in the
+Intel Assembler. Thus, a disassembler would convert these bytes to a jump,
+followed by the memory location to jump to. The documentation very clearly
+states that the op code for ldstr is 0x72 hex. The IL code and metadata is thus
+stored in a PE file within a section. This completes our exploration into PE
+files.<o:p></o:p></span></p>
+
+<p class=ILbase><span style='color:windowtext'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

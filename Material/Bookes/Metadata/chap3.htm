@@ -1,0 +1,3470 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./chap3_files/filelist.xml">
+<link rel=Edit-Time-Data href="./chap3_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Metadata Tables - 3. MetaData Table Types</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Vijay Mukhi</o:Author>
+  <o:LastAuthor>Vijay Mukhi</o:LastAuthor>
+  <o:Revision>10</o:Revision>
+  <o:TotalTime>114</o:TotalTime>
+  <o:Created>2002-05-14T23:37:00Z</o:Created>
+  <o:LastSaved>2002-02-18T20:16:00Z</o:LastSaved>
+  <o:Pages>30</o:Pages>
+  <o:Words>8741</o:Words>
+  <o:Characters>49827</o:Characters>
+  <o:Company>VMCI</o:Company>
+  <o:Lines>415</o:Lines>
+  <o:Paragraphs>99</o:Paragraphs>
+  <o:CharactersWithSpaces>61191</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:"Bookman Old Style";
+	panose-1:2 5 6 4 5 5 5 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:7 0 0 0 19 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:8.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:10.0pt;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-next:Normal;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-style:italic;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:24.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-indent:24.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	color:black;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.programs, li.programs, div.programs
+	{mso-style-name:programs;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.figure, li.figure, div.figure
+	{mso-style-name:figure;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.figure1, li.figure1, div.figure1
+	{mso-style-name:figure1;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName, li.ChapName, div.ChapName
+	{mso-style-name:"Chap Name";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ChapName1, li.ChapName1, div.ChapName1
+	{mso-style-name:"Chap Name1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+p.ILbase, li.ILbase, div.ILbase
+	{mso-style-name:ILbase;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.basetextofthebook, li.basetextofthebook, div.basetextofthebook
+	{mso-style-name:"base text of the book";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.basetextofthebook1, li.basetextofthebook1, div.basetextofthebook1
+	{mso-style-name:"base text of the book1";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.ChapName0, li.ChapName0, div.ChapName0
+	{mso-style-name:ChapName;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.DOSPROMPT, li.DOSPROMPT, div.DOSPROMPT
+	{mso-style-name:"DOS PROMPT";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.cbasetext, li.cbasetext, div.cbasetext
+	{mso-style-name:"c\# base text";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.ChapIntro, li.ChapIntro, div.ChapIntro
+	{mso-style-name:"Chap Intro";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:42.65pt;
+	margin-bottom:0in;
+	margin-left:1.25in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-style:italic;}
+p.PageNo, li.PageNo, div.PageNo
+	{mso-style-name:"Page No";
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:9.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Headline, li.Headline, div.Headline
+	{mso-style-name:Headline;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:30.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Hangingindent, li.Hangingindent, div.Hangingindent
+	{mso-style-name:"Hanging indent";
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	text-indent:-12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:12.0pt;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.ILprg, li.ILprg, div.ILprg
+	{mso-style-name:ILprg;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILoutput, li.ILoutput, div.ILoutput
+	{mso-style-name:ILoutput;
+	mso-style-parent:ILbase;
+	mso-style-next:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Trebuchet MS";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.ILbullets, li.ILbullets, div.ILbullets
+	{mso-style-name:ILbullets;
+	mso-style-parent:ILbase;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.3in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Bookman Old Style";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.Subhead1, li.Subhead1, div.Subhead1
+	{mso-style-name:"Subhead 1";
+	mso-style-parent:Headline;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:18.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+p.Subhead2, li.Subhead2, div.Subhead2
+	{mso-style-name:"Subhead 2";
+	mso-style-parent:"Subhead 1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	text-autospace:none;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal><img width=64 height=48 id="_x0000_i1025" src=bpb.gif></p>
+
+<p class=MsoNormal><span style='font-size:24.0pt'>3. MetaData Table Types</span></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Every table type is assigned a unique number, or to be more
+precise, a bit in the valid field. Thus, there can be a maximum of 64 different
+table types, since the valid field has been declared as a long.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>At the tail-end of the previous chapter, we made a passing
+mention of the names of the tables that dwell in the file. In this chapter, we
+will investigate the contents of these tables in detail for a smallest exe
+file.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>The Module Table<o:p></o:p></u></p>
+
+<p class=ILbase>The first table, identified by bit 0, is the Module table. This
+row is inserted in the module table as a consequence of the existence of the .module
+directive in IL or Intermediate Language. The limitation placed on the Module
+table is that it is equipped to contain just a single row. This is because a
+module can represent only a single file, i.e. either a dll file or an exe file.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The fields in the table are as follows:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=452 height=67 id="_x0000_i1026" src="chap3\1.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=441 height=50 id="_x0000_i1027" src="chap3\2.gif"></p>
+
+<p class=ILbase>Given below is the xyz function, which is utilized to display
+the contents of each field. Modify the contents of xyz function of the last
+program in a.cs by adding the following statements:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int offs = tableoffset ;</p>
+
+<p class=ILprg>int Generation = BitConverter.ToUInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int Name = BitConverter.ToUInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int Mvid = BitConverter.ToUInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int EncId = BitConverter.ToUInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int EncBaseId = BitConverter.ToUInt16 (metadata, offs);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Generation: {0}&quot; ,Generation );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun:
+yes">      </span>:{0} {1}&quot; ,<span style="mso-spacerun: yes"> 
+</span>GetString(Name) , Name);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Mvid<span style="mso-spacerun:
+yes">      </span>:#GUID[{0}]&quot; , Mvid);</p>
+
+<p class=ILprg>DisplayGuid(Mvid);</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;EncId<span style="mso-spacerun:
+yes">     </span>:#GUID[{0}]&quot; , EncId );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;EncBaseId :#GUID[{0}]&quot; ,
+EncBaseId);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Generation: 0</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:b.exe 10</p>
+
+<p class=ILprg>Mvid<span style="mso-spacerun: yes">      </span>:#GUID[1]</p>
+
+<p class=ILprg>{A921C043-32F-4C5C-A5D8-C8C3986BD4EA}</p>
+
+<p class=ILprg>EncId<span style="mso-spacerun: yes">     </span>:#GUID[0]</p>
+
+<p class=ILprg>EncBaseId :#GUID[0]</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Every table commands its own internal structure. The Module
+table starts with a 2 byte reserved field called the Generation field, whose
+value is always set to zero. We trust that by this time, you would have
+mastered the mechanism of employing the functions from the BitConverter class. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The second field is the name field, which contains an index to
+the string table. Here, it has a value of 10. So, the string present from the
+10th byte onwards in the data of the Strings stream, is a name that the module
+represents. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The index is set to 2 bytes, because the heaps field member in
+the #~ stream header contains a value of 0. It is the 7th byte from the
+commencement of the header. Out of the 8 bits, only 3 bits are active for the
+moment. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=436 height=70 id="_x0000_i1028" src="chap3\3.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>If the first bit is set, it denotes that all indexes into the
+strings stream are 4 bytes wide. Since it is unset in this case, the size of
+the index is set to 2 bytes. The second bit is for the GUID stream. The third
+stream is not used. The fourth bit is for the Blob stream. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, each time a structure member contains an index value, the
+heapsize field is checked to determine if it is set to 2 bytes or 4 bytes. The
+basic rule is that if the size of a stream is larger than 64k, the index is 4
+bytes, or else it is 2 bytes. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This provides ample testimony to the fact that the metadata
+world has been created for enhancing efficiency.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Using the GetString function, the string that begins at the
+10th position in the strings heap area, is obtained. In this case, the
+extracted bytes reveal the name of b.exe. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, the Name field is an index into the string stream. It
+cannot contain a null value. This format of the name is controlled by the
+constant MAX_PATH_NAME. The format consists of just the file name and the
+extension. No other information, such as the path name or drive name, is
+permitted.</p>
+
+<p class=ILbase>The field called Mvid is an index into the Guid heap. So, the
+Guid is displayed using the function DisplayGuid. The value displayed in our
+output will probably be very different from the value flashed on your screen.
+If you compile the b.exe program once again, you will notice that the value of
+the Guid also changes. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Each time a compiler creates an exe file under the .Net
+framework, it generates a new Guid. This aids in distinguishing between two
+different versions of the module. Thus, the Mvid column uniquely identifies an
+instance of the column. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The documentation also divulges the fact that the algorithm
+used is specified in ISO/IEC 11578:1996 ( Annex A). In the Common Object
+Request Broker Architecture (CORBA) and Remote Procedure Call (RPC) world, it
+is termed as a UUID, or a Universally Unique Identifier, while the COM world
+uses a CLSID, a GUID or an IID. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Mvid is not employed by the Virtual Execution System (VES).
+Other programs like debuggers may exploit the fact that every exe file has a
+unique number embedded in it. Finally, even though the Mvid is not used, it
+cannot be a null Guid.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next two fields are indexes into the Guid heap. They are
+reserved with both possessing values of zero. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>TypeRef Table</u></p>
+
+<p class=ILbase>The xyz function now displays the contents of the TypeRef
+table. This table has three rows, where the size of each row is 6 bytes. Also,
+this table is at an index position of 1, which signifies that the second bit in
+the valid table field vector is on. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(1);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[1] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int resolutionscope = BitConverter.ToInt16 (metadata , offs);</p>
+
+<p class=ILprg>offs = offs + 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata , offs);</p>
+
+<p class=ILprg>offs = offs + 2;</p>
+
+<p class=ILprg>int nspace = BitConverter.ToInt16 (metadata , offs);</p>
+
+<p class=ILprg>offs = offs + 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row[{0}]&quot; , k);</p>
+
+<p class=ILprg>int tag = resolutionscope <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x03;</p>
+
+<p class=ILprg>if ( tag == 0 )</p>
+
+<p class=ILprg>Console.Write(&quot;Module :&quot;);</p>
+
+<p class=ILprg>if ( tag == 1 )</p>
+
+<p class=ILprg>Console.Write(&quot;ModuleRef :&quot;);</p>
+
+<p class=ILprg>if ( tag == 2 )</p>
+
+<p class=ILprg>Console.Write(&quot;AssemblyRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 3 )</p>
+
+<p class=ILprg>Console.Write(&quot;TypeRef:&quot;);</p>
+
+<p class=ILprg>int riid = resolutionscope &gt;&gt; 2;</p>
+
+<p class=ILprg>Console.Write(&quot;[{0}] token=0x{1}&quot; , riid ,
+resolutionscope.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun:
+yes">      </span>:{0},0x{1}&quot;,GetString(name),
+name.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Namespace :{0},0x{1}&quot;,GetString(nspace),
+nspace.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public bool tablepresent(byte i)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int p = (int)(valid &gt;&gt; i) <span style='font-family:"Bookman Old Style"'>&amp;</span>
+1;</p>
+
+<p class=ILprg>byte [] sizes =
+{10,6,14,2,6,2,14,2,6,4,6,6,6,4,6,8,6,2,4,2,6,4,2,6,6,6,2,2,8,6,8,4,22,4,12,20,6,14,8,14,12,4};</p>
+
+<p class=ILprg>for ( int j = 0 ; j &lt; i ; j++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int o = sizes[j] * rows[j];</p>
+
+<p class=ILprg>tableoffset = tableoffset + o;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>if ( p == 1)</p>
+
+<p class=ILprg>return true;</p>
+
+<p class=ILprg>else</p>
+
+<p class=ILprg>return false;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row[1]</p>
+
+<p class=ILprg>AssemblyRef[1] token=0x6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">         </span>:Object,0x20</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILprg>Row[2]</p>
+
+<p class=ILprg>AssemblyRef[1] token=0x6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">        </span>:DebuggableAttribute,0x49</p>
+
+<p class=ILprg>Namespace :System.Diagnostics,0x36</p>
+
+<p class=ILprg>Row[3]</p>
+
+<p class=ILprg>AssemblyRef[1] token=0x6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">        
+</span>:Console,0x5F</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Besides the xyz function, a new function called tablepresent
+has been introduced. This function performs two tasks: </p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>     </span></span>Firstly, it reveals whether a table
+at the index position supplied as a parameter, exists or not. </p>
+
+<p class=ILbullets><span style='mso-bidi-font-size:12.0pt;font-family:"Times New Roman"'>•<span
+style='mso-tab-count:1'>     </span></span>Secondly, and more importantly, it
+sets the tableoffset variable to the position where the table begins in the
+array. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now, let us cast a closer look at the working of this function.
+We have passed a value of 1, which is the index of the TypeRef table to the
+function that accepts it in parameter i </p>
+
+<p class=ILprg>public bool tablepresent(byte i)</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first line in the function right shifts the bits in the
+valid field i times, and then, it performs a bitwise AND with the value of 1. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, it only checks for the first bit to be on. If the
+resultant value in the variable p is 1, a boolean value of true is returned;
+otherwise, a value of false is returned. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>int p = (int)(valid &gt;&gt; i) <span style='font-family:"Bookman Old Style"'>&amp;</span>
+1;</p>
+
+<p class=ILprg>…</p>
+
+<p class=ILprg>…</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>if ( p == 1)</p>
+
+<p class=ILprg>return true;</p>
+
+<p class=ILprg>else</p>
+
+<p class=ILprg>return false;</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The positioning of the tableoffset variable is handled
+differently. Initially, the tableoffset variable points to the start of the
+tabledata section in the metadata array. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The total number of tables present in the valid field may vary.
+Thus, we have an array named sizes, which specifies the size of each row in a
+table. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>byte [] sizes =
+{10,6,14,2,6,2,14,2,6,4,6,6,6,4,6,8,6,2,4,2,6,4,2,6,6,6,2,2,8,6,8,4,22,4,12,20,6,14,8,14,12,4};</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the earlier program, we noticed that the row size of the
+first table Module was 10, the second TypeDef was 6, etc. The size of each
+table can be well ascertained, thought it has not been specifically documented.
+However the size can vary when the number of rows in the table exceed 64k,
+resulting into a 4byte index in place of 2. Since our programs are too small,
+such a case will never occur. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, the array named sizes is filled up with the sizes of the
+rows in the table types. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Once this is achieved, the 'for' loop iterates as many times as
+the number of tables that are present. In this case, since the value of
+variable i is 1, the loop repeats only once. Within the loop, the size of the
+row in the sizes array is multiplied with the corresponding number of rows in
+the rows array. The variable j in the 'for' loop represents the offset into the
+two arrays, as well as, into the table id. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>for ( int j = 0 ; j &lt; i ; j++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int o = sizes[j] * rows[j];</p>
+
+<p class=ILprg>tableoffset = tableoffset + o;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>As an outcome of the above calculation, the variable o will
+characterize the space occupied by each table that has been added to the
+tableoffset variable.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the xyz function, the return value of the function
+tablepresent is verified. If the value is true, then it is unmistakably evident
+that the table is present. Thus, the program marches ahead in order to flaunt
+its contents. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A 'for' loop is implemented to authenticate the values in each
+row. Since the TypeRef table has 3 rows, the loop repeats thrice.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The TypeRef table has a size of six bytes with the following
+columns: </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=451 height=67 id="_x0000_i1029" src="chap3\4.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Let us examine this backwards. All the columns are an index
+into the string heap. Thus, they occupy two bytes each. The last column refers
+to the namespace and the second column points to the class within the
+namespace. The output shows that there are a total of three classes or types
+that are referred to in the program, viz.</p>
+
+<p class=ILbase align=left style='text-align:left'>System.Object,
+System.Console and System.Diagnostics.DebuggableAttribute. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We have propounded the file b.cs once again in order to
+substantiate our handiwork. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=444 height=68 id="_x0000_i1030" src="chap3\5.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz {</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;hello&quot;);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase>Everything in the .Net world is derived from the object class.
+Thus, internally, the zzz class is derived from the System.Object. Due to this,
+the object class makes an appearance in the file. The Console class comes into
+play because we have called it explicitly. However, no reference is ever made
+to the DebuggableAttribute class. So, from where did it originate?</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Comment out the WriteLine function in the file and run the
+a.exe file again. You will notice that the reference to the class Console in
+the TypeRef table also does a vanishing act. Thus, as and when you call methods
+from different classes, a row for every unique class name gets added to the
+TypeRef table. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The TypeRef table incorporates all the Types or classes that
+are referred to in the program. The words class and type may be used
+interchangeably. This applies not only to the static methods called from the
+classes, but also to any class that has been referred to, including the classes
+that have been instantiated using new. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>There is no distinction between the System class and a
+user-defined class. Therefore, when the /R option is applied to refer to
+classes in other dlls, the table carries an entry for it too. Merely defining a
+variable also results in the addition of the name of the namespace-class to the
+TypeRef table. Thus, to cut a long story short, every external type or class
+referred to in the exe file, finds an entry in the TypeRef table. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Undoubtedly, the C# compiler too has ushered in some code,
+which refers to the class DebuggableAttribute. Hence, the class name is
+incorporated in the table.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Now, let us examine the first two bytes in the row. This short is
+called a 'resolution scope' or a 'resolution scope coded index'. The field can
+have one of the following four values: Module, ModuleRef, AssemblyRef or
+TypeRef. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The resolution scope value is an index into any of the above
+tables. The value signifies the scope of the namespace-class. The first two
+bits in the short identify the scope applied to the tables mentioned above. </p>
+
+<p class=ILbase>The definition of scope merely restricts the use of the entity
+to a select few. For instance, the scope of a local variable is the method by
+which it is created.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the program, the first 2 bits are verified. Hence, we use
+the bitwise AND operator with 3. This substantiates the fact that all the three
+classes have a scope of Assembly, which is the largest entity in the .Net
+world. The remaining six bits provide the actual index value in the table that
+is identified by the first 2 bits. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Then, the bits are right-shifted by 2 to furnish an index into
+the AssemblyRef table. We will elucidate this table in considerable detail at a
+later stage.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=437 height=163 id="_x0000_i1031" src="chap3\6.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>An AssemblyRef token is displayed when the types referred to in
+the program, originate from another assembly.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The name field is an index into the string heap. This string
+can never be a null string. The length of this string is limited to
+MAX_CLASS_NAME. In contrast, the namespace field is allowed to be null. Every
+name ought to be a valid CLS identifier.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Finally, it may be observed that two rows with the same
+Resolution Scope, Name and Namespace, cannot obviously co-exist. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The AssemblyRef table, which is referred to by all the three
+classes, will be expounded in a short while from now, since it is a table in
+its own right.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>TypeDef Table<o:p></o:p></u></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System.Reflection;</p>
+
+<p class=ILprg>…</p>
+
+<p class=ILprg>…</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(2);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[2] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg><span style="mso-spacerun: yes"> </span>TypeAttributes flags =
+(TypeAttributes)BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int nspace = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int cindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int findex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int mindex = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row:{0}&quot; , k);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags<span style="mso-spacerun:
+yes">     </span>: {0}&quot; , flags);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun:
+yes">      </span>: {0}&quot; , GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;NameSpace : {0}&quot; ,
+GetString(nspace));</p>
+
+<p class=ILprg>Console.Write(&quot;Extends:&quot;);</p>
+
+<p class=ILprg>int u = cindex <span style='font-family:"Bookman Old Style"'>&amp;</span>
+3;</p>
+
+<p class=ILprg>if (u == 0)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeDef&quot;);</p>
+
+<p class=ILprg>if (u == 1)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeRef&quot;);</p>
+
+<p class=ILprg>if (u == 2)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeSpec&quot;);</p>
+
+<p class=ILprg>Console.Write(&quot;[{0}]&quot;, cindex &gt;&gt; 2);</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;FieldList Field[{0}]&quot;, findex);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MethodList Method[{0}]&quot;, mindex);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row:1</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: Class</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:
+&lt;Module&gt;</p>
+
+<p class=ILprg>NameSpace : </p>
+
+<p class=ILprg>Extends:TypeDef[0]</p>
+
+<p class=ILprg>FieldList Field[1]</p>
+
+<p class=ILprg>MethodList Method[1]</p>
+
+<p class=ILprg>Row:2</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">     </span>: AutoLayout,
+AnsiClass, NotPublic, Public, BeforeFieldInit</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>: zzz</p>
+
+<p class=ILprg>NameSpace : </p>
+
+<p class=ILprg>Extends:TypeRef[1]</p>
+
+<p class=ILprg>FieldList Field[1]</p>
+
+<p class=ILprg>MethodList Method[1]</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The 'using System.Reflection;' statement must be supplemented
+at the beginning of the program to avoid all compiler errors.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The TypeDef table that follows the TypeRef table, is the next
+in sequence. Hence, the value assigned to it is 2. The tablepresent function
+has been left unaltered. The xyz function has been modified to cater to the
+fields of the TypeDef table.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In short, the TypeDef table stores every type or class created
+in our assembly. A type could be a class, an interface, a structure, an enum,
+and so on.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>You may add an interface, or a structure, or an enum in the
+file b.cs. Thereafter, you can verify the fact that a fresh row gets added for
+every new type that is appended.</p>
+
+<p class=ILbase>We had set about with a revelation to you that, a type and a
+class are one and the same. However, we now amplify the definition of a type to
+include the above mentioned entities. The TypeDef structure is a product of the
+following fields:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=442 height=63 id="_x0000_i1032" src="chap3\7.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=449 height=99 id="_x0000_i1033" src="chap3\8.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first 4 bytes are the Flags field that we shall explain
+shortly. They are followed by the name of the type. The first row has the type
+name as &lt;Module&gt; and the flag of Class. The second row has the type name
+as zzz, which is the name of the class in the program. Thus, the TypeDef table
+rows or types depend upon the entities created in the class. However, we never
+create the first type, i.e. &lt;Module&gt;. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first row symbolises a pseudo class called &lt;Module&gt;.
+It contains all the functions and variables that are created either globally or
+at the module level. It comports itself as the parent for all such entities. In
+the C# language, we are not authorised to create anything outside a class,
+however, in C++, we are allowed to have global functions and variables, which
+are enclosed by the class named Class.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Name field is followed by the index for the Namespace. The
+class named &lt;Module&gt; does not belong to any namespace, since such a
+concept is non-existent in the C# programming language. The namespace for the
+class zzz also does not exist. Therefore, the index value into the String heap
+is zero.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next field is called the extends field. This field is a
+code index, which can assume one of the three values of TypeDef, TypeRef or
+TypeSpec. It refers to the table to which the value is an index. In the case of
+the class named &lt;Module&gt;, it is an index into the TypeDef table. However,
+since the value of the index is zero, it becomes an invalid index. The
+rationale behind it is that the class called &lt;Module&gt; does not extend
+from any class.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This field is easier to comprehend with the second row. All
+classes in the .Net world extend from System.Object. Therefore, it is assumed
+that the zzz class is also derived from it. Thus, the code index points to the
+first index into the TypeRef table. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first of the three rows of the TypeRef table in the
+previous example, had illustrated the different Type references. Here, one of
+them represents the System.Object class. Thus, the code index not only reveals
+the table, but also the specific row within that table. We shall finally write
+a program that will cross-reference all these disparate tables.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next two fields are indexes into the field table and the
+method table, respectively. The explanation for these tables will be furnished
+in due course. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>It is essential to understand the TypeAttributes int before we
+conclude the explanation of the TypeDef table. The Reflection namespace defines
+an enum called TypeAttributes. The first field of the TypeDef table is simply
+an int, where every bit refers to the attributes applied to the class
+statement. We merely employ the ToString function to display the attributes.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>To quench your thirst for knowledge, you can take a look at the
+file named corhdr.h in the folder Program files-Microsoft Visual
+Studio.Net-FrameWorkSDK-Include. This header file has an enum called
+CorTypeAttr, which possesses the bits representing the attributes for a class.
+If the 1st bit is on, it signifies that it is a class with public access. If
+the 6th bit is on, it signifies that the class is an interface.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The most clear-cut solution is to use the ToString function of
+the enum, just as we have incorporated it here. The output unfurls the fact
+that the special class called &lt;Module&gt; is tagged with only a single
+attribute named Class. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>However, the class zzz has many flags set. Let us understand
+what the various bits actually signify. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The AutoLayout flag has been set. It specifies that the Common Language
+Runtime or the code supplied by Microsoft, will be responsible for laying out
+the fields of the class. The AnsiClass does not apply to C# coding, since it
+basically deals with interpretation of a C++ pointer to a string, or a LPTSTR
+as per the terminology of ANSI or Unicode.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Finally, the BeforeFieldInit flag calls upon the runtime to
+initialize the members of the class, before the first static field is accessed.
+This is a very succinct explanation on flags. We shall revert to the flags
+field a little later, when we come across the flags set by other types, such as
+a structure, an interface and an enum.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>Method Table<o:p></o:p></u></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(6);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[6] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int rva = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>MethodImplAttributes impflags = (MethodImplAttributes )
+BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>MethodAttributes flags = (MethodAttributes) BitConverter.ToInt16
+(metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int signature = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int param = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;RVA<span style="mso-spacerun: yes">     
+</span>:{0}&quot;, rva.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun: yes">    
+</span>: {0}&quot;, GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ImpFlags :{0}&quot;,impflags );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags<span style="mso-spacerun: yes">   
+</span>:{0}&quot;,flags.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Signature: #Blob[{0}]&quot;,signature);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ParamList: Param[{0}]&quot;,param);</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2050</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Main</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:00000096</p>
+
+<p class=ILprg>Signature: #Blob[10]</p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2068</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:00001886</p>
+
+<p class=ILprg>Signature: #Blob[14]</p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next metadata table that we would be dealing with, is the
+one at the 7th position in the valid table. The table is the Method table,
+thereby having an index of 6. This table has one row for every method created in
+the module. The output confirms the presence of two methods. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=439 height=72 id="_x0000_i1034" src="chap3\9.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=445 height=81 id="_x0000_i1035" src="chap3\10.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Before absorbing what RVA is all about, let us first explore
+the Name field, which is an index to the name table. The first row has a method
+named Main and the second row has a method called .ctor. You surely would wonder
+as to which is the wellspring or the source from which this method has
+emanated.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>All methods whose names begin with a dot are created without
+any human intervention. Such methods are of special significance from the
+compiler's point of view. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A class that is devoid of a constructor, is always provided
+with a free constructor that has no parameters. This free constructor is named
+.ctor. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, you would certainly realise and appreciate that a
+substantial quantum of the C# programming language can be learnt by deciphering
+the metadata.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The RVA field is the Relative Virtual Address, which is a
+number that points to the starting location of the executable code of the
+method. The output reveals that the first function Main starts at memory
+location 2050. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>To arrive at the location from where the code begins on disk,
+we first detect the difference between 0x2050 and 0x2000 (section alignment).
+The result is 0x50, which is then added to 512 (file alignment). The final
+outcome is 592, which is the location at which the code for the method Main
+begins on disk. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The code, in much the same manner as everything else, begins
+with a header and is followed by the bytes in IL. These bytes in turn refer to
+the metadata tables. The next book in the metadata series will elucidate the
+mechanism of a Dis-assembler as in ILDasm. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The second field consists of the MethodImplAttributes flags.
+These flags determine the attributes that are applied on the method. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>There are two basic types of methods, i.e. managed and unmanaged
+methods. The unmanaged methods come into play when pointers are used in C#,
+thereby evading all verification of the code.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The documentation contains details about each bit and its
+representation. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>If the first bit is off, the method implementation is CIL and
+managed. </p>
+
+<p class=ILbase>If it is on, then it signifies a native method.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The second bit called OPTIL is reserved and is always assigned
+a value of zero. This specifies code that is to be employed only by the .Net infrastructure
+and never by mere mortals like us. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A value of 3 signifies that the method is a runtime method,
+indicating that there is no code present in the file, since it would be
+supplied by the runtime. Events are handled in much the same manner. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A value of 0x20 acquaints us with the fact that the method is
+single threaded or synchronized. The lock statement of C# is employed for this
+purpose. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A value of 0x08 denotes that the method cannot be inlined. The
+CodTypeMask, which has a value of 3, specifies the flags. These flags indicate
+the type of code. A value of IL or 0 suggests that the method code is in MSIL.
+The value of 0x1000 stands for an internal call, which is reserved for internal
+consumption only. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The range check value is 0xffff. The PreserveSig notifies us
+that the method signature is exported as advertised, and is not to be mangled
+for HRESULT conversions. The HRESULT is the return type in the COM world.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Let us look at the next program to interpret the second flags
+field for Method Attributes. This field is widely disparate from the one we
+just covered for the method implementation attributes.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(6);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[6] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int rva = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>MethodImplAttributes impflags = (MethodImplAttributes
+)BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short flags = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int signature = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int param = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun: yes">    
+</span>: {0}&quot;, GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags<span style="mso-spacerun: yes">   
+</span>:{0}&quot;,flags.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Type t = typeof( System.Reflection.MethodAttributes );</p>
+
+<p class=ILprg>FieldInfo[] f = t.GetFields(BindingFlags.Public |
+BindingFlags.Static);</p>
+
+<p class=ILprg>for ( int i = 0; i &lt; f.Length; i++ )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int fv = (int)f[i].GetValue(null);</p>
+
+<p class=ILprg>if ( (fv <span style='font-family:"Bookman Old Style"'>&amp;</span>
+flags) == fv)</p>
+
+<p class=ILprg>Console.Write( &quot;<span style="mso-spacerun: yes"> 
+</span>{0} {1}<span style="mso-spacerun: yes">  </span>&quot; , f[i].Name ,
+fv.ToString(&quot;X&quot;) );</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Main</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:96</p>
+
+<p class=ILprg>PrivateScope 0 FamANDAssem 2 Family 4 Public 6 Static 10
+HideBySig 80 ReuseSlot 0 </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:1886</p>
+
+<p class=ILprg>PrivateScope 0 FamANDAssem 2 Family 4 Public 6 HideBySig 80
+ReuseSlot 0 SpecialName 800 RTSpecialName 1000 </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The glitch with regards to the method attributes is that, unlike
+the implementation attributes, the ToString method of the MethodAttributes enum
+merely displays the hex value. Every flag variable pursues the same concept.
+Every bit represents some property or attribute that is set, such as static,
+private etc.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The documentation bequeaths us with no enlightenment with
+regards to these bits. So, we have abstained from writing a large program that
+compares every bit. Instead, the implementation of the Reflection API is
+recommended. This API is merely a window to the metadata, which is proffered to
+make life less hassled.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>In the above program, the third field is read into an integer
+variable named flags. Then, employing the keyword typeof, a Type object for a
+class MethodAttributes is restored from the System.Reflection namespace. Every
+class has a corresponding type object associated with it. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The GetFields function returns an array of FieldInfo
+structures, which in our case, is an array of public fields available in the
+type. The Binding flags enumeration has a total of 18 members. Thus, enum
+simply acts as a filter. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>By analysing the bits set in the field info object, we can gain
+an insight into the essence of the metadata. The fv variable holds all the bits
+that can be set on, whereas, the flags variable stores all the bits that are on
+for this specific method. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, we merely need to use the bitwise AND operator on the two
+variables. If the outcome of this operation remains unaltered, it is indicative
+of the fact that the corresponding bit is set on. In such a case, using the
+Field Info object, an English-like depiction of the bit is assigned. Thus, if
+there are 20 possible Bit Combinations, the 'for' loop runs 20 times. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The next program uses the Reflection API in lieu of the bitwise
+operations.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(6);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[6] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int rva = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>short<span style="mso-spacerun: yes">  </span>impflags =
+BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>short flags = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int signature = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int param = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun: yes">    
+</span>: {0}&quot;, GetString(name));</p>
+
+<p class=ILprg>Type t = typeof( System.Reflection.MethodAttributes );</p>
+
+<p class=ILprg>FieldInfo[] f = t.GetFields(BindingFlags.Public |
+BindingFlags.Static);</p>
+
+<p class=ILprg>Console.Write(&quot;Flags &quot;);</p>
+
+<p class=ILprg>for ( int i = 0; i &lt; f.Length; i++ )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int fv = (int)f[i].GetValue(null);</p>
+
+<p class=ILprg>if ( (fv <span style='font-family:"Bookman Old Style"'>&amp;</span>
+flags) == fv)</p>
+
+<p class=ILprg>Console.Write( &quot;{0} &quot; , f[i].Name );</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>t = typeof( System.Reflection.MethodImplAttributes );</p>
+
+<p class=ILprg>f = t.GetFields(BindingFlags.Public | BindingFlags.Static);</p>
+
+<p class=ILprg>Console.Write(&quot;Impl Flags &quot;);</p>
+
+<p class=ILprg>for ( int i = 0; i &lt; f.Length; i++ )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int fv = (int)f[i].GetValue(null);</p>
+
+<p class=ILprg>if ( (fv <span style='font-family:"Bookman Old Style"'>&amp;</span>
+impflags) == fv)</p>
+
+<p class=ILprg>Console.Write( &quot;{0} &quot; , f[i].Name );</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Main</p>
+
+<p class=ILprg>Flags PrivateScope FamANDAssem Family Public Static HideBySig
+ReuseSlot </p>
+
+<p class=ILprg>Impl Flags IL Managed </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg>Flags PrivateScope FamANDAssem Family Public HideBySig ReuseSlot
+SpecialName RTSpecialName </p>
+
+<p class=ILprg>Impl Flags IL Managed</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The MethodAttributes is replaced by the enum of
+MethodImplAttributes, since the objective here is to check the bits set from
+this enum. The functions in the Reflection API are exploited to generate the
+output for the MethodImplAttributes. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The last field is an entry into a Params table. Before we
+proceed any further with our explanation of the Params table, we urge you to
+modify the b.cs file to contain the following:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></u></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;hell&quot;);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public int abc(float k)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return 0;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public long pqr( int i , char j)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>return 0;</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz() {</p>
+
+<p class=ILprg>bool b = tablepresent(6);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[6] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>offs += 8;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int signature = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name :{0}&quot;, GetString(name));</p>
+
+<p class=ILprg>byte count = blob[signature]; </p>
+
+<p class=ILprg>Console.WriteLine(&quot;Blob:{0} Count:{1} &quot;, signature ,
+count);</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= count ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot; ,
+blob[signature+l].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name :Main</p>
+
+<p class=ILprg>Blob:10 Count:3 </p>
+
+<p class=ILprg>0 0 1 </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name :abc</p>
+
+<p class=ILprg>Blob:14 Count:4 </p>
+
+<p class=ILprg>20 1 8 C </p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Name :pqr</p>
+
+<p class=ILprg>Blob:19 Count:5 </p>
+
+<p class=ILprg>20 2 A 8 3 </p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Name :xyz</p>
+
+<p class=ILprg>Blob:25 Count:3 </p>
+
+<p class=ILprg>20 0 1 </p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>Name :.ctor</p>
+
+<p class=ILprg>Blob:25 Count:3 </p>
+
+<p class=ILprg>20 0 1 </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The above example examines the method signature, which is stored
+in the Blob heap. The Blob heap has not been addressed so far. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A signature divulges all the information related to a function,
+including details such as the calling convention; the values being pushed on
+the stack; whether the 'this' pointer is passed to the function or not; and
+above all, the parameters and the return value. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Since this program scrutinizes method signatures, we have
+augmented our program b.cs with 3 more functions, viz. abc, pqr and xyz. In the
+first function of Main, the function's signature is stored at the 10th position
+in the Blob heap.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=454 height=172 id="_x0000_i1036" src="chap3\11.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A function signature commences with a count of the number of
+bytes, i.e. 3, followed by the actual signature. The function Main uses 3 bytes
+to store its signature, whereas, the function abc takes up 4 bytes. If we cease
+our explorations here, the truth behind the storage of the signature shall
+remain a mystery. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The actual truth is that the metadata world is eager to
+compress every byte that it needs to store. Therefore, everything in the heap
+Blob is compressed. However, to achieve this, a specific pattern has to be
+followed.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>If the first bit from the left (i.e. the 7th bit or the high
+bit) is 0, the next 7 bits store the value in an uncompressed form. Thus,
+numbers from 0 to 127 are not stored in a compressed form. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=449 height=67 id="_x0000_i1037" src="chap3\12.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>If the first bit from the left hand side is 1 and the second
+bit is 0, i.e. bits 15 and 14, in that case, the next 14 bits store the value.
+This endows it with a range from 0x80 to 0x3fff or 2^8 to 2 ^14-1. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=444 height=80 id="_x0000_i1038" src="chap3\13.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Finally, if the first bit is 1, the second is also 1 and the
+third is 0, i.e. bits 31, 30 and 29, the next 29 bits are used to store the
+value. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=446 height=72 id="_x0000_i1039" src="chap3\14.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Fortunately, we do not need to plague ourselves about
+compression at this stage, since the count byte in our program does not exceed
+127. Thus, the first two bits from the left are always zero. However, we may
+subsequently reach a stage where we would be compelled to decompress the bytes
+first and then read them. The bytes are stored in the reverse order or in big
+endian format. The default in Intel machines is the little endian format,
+wherein, the smaller byte is stored first.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>After establishing the position in the Blob stream, the count
+byte is stored in the variable count and its value is displayed. Then, using a 'for'
+loop, the next set of bytes, upto the count, is displayed from the blob heap.</p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Name :Main</p>
+
+<p class=ILprg>Blob:10 Count:3 </p>
+
+<p class=ILprg>0 0 1 </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Name :abc</p>
+
+<p class=ILprg>Blob:14 Count:4 </p>
+
+<p class=ILprg>20 1 8 C </p>
+
+<p class=ILprg>Name :xyz</p>
+
+<p class=ILprg>Blob:25 Count:3 </p>
+
+<p class=ILprg>20 0 1 </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Let us start by probing the simplest function named xyz. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first byte imparts information about two types: the 'this'
+pointer and the calling convention. Initiate counting from 0 upto the 5th bit
+in sequence. If this bit is on, it signifies that the 'this' pointer has been
+passed to the function.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=445 height=80 id="_x0000_i1040" src="chap3\15.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus xyz is an instance variable, since its 5th bit is marked
+on. If you make the function xyz static, you will notice that the value of 0x20
+changes to 0x00. The value 0x0 signifies the calling convention of DEFAULT. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=452 height=68 id="_x0000_i1041" src="chap3\16.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The function Main is not passed the 'this' pointer. This fact can
+easily be verified, since the 5th byte is off. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=444 height=75 id="_x0000_i1042" src="chap3\17.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The 2nd byte gives a count of the number of parameters that
+have been passed. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The functions of Main, .ctor and xyz have no parameters, the
+method abc has 1 parameter passed to it and the method pqr has 2 parameters
+passed to it. The next byte contains the return type. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Each of the functions, i.e. Main, .ctor and xyz have a value of
+1, which represents the element void. The value 8 is an int, thus suggesting
+that the method abc returns an int. The pqr function returns a long, which is
+why the value assigned to it is 0xA. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The documentation makes no mention of int or long. Instead, it
+specifies I4 and I8, which represent the actual number of bytes. Each type is
+allocated a distinct number, which is documented in the ECMA standards in
+section 22.1.15. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=381 height=468 id="_x0000_i1043" src="chap3\18.gif"></p>
+
+<p class=ILbase><img width=383 height=188 id="_x0000_i1044" src="chap3\19.gif"></p>
+
+<p class=ILbase><img width=379 height=80 id="_x0000_i1045" src="chap3\20.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This byte is followed by the information about the actual
+parameters. As three of the functions have no parameters, no more bytes are
+present. Thus, the minimum size of the signature is 3 bytes. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The function abc takes a single float as a parameter, and thus,
+its signature size is 4 bytes. The 4th byte contains the type of parameter
+passed to the function. Since the function pqr has two parameters, the size is
+of five bytes, where the last two bytes reveal the type of parameters supplied
+to the function. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We shall delve deeper into the concept of method signatures
+very shortly.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(6);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[6] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int rva = BitConverter.ToInt32 (metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>MethodImplAttributes impflags = (MethodImplAttributes)
+BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int flags = (int)BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int signature = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int param = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;RVA<span style="mso-spacerun: yes">     
+</span>:{0}&quot;, rva.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name<span style="mso-spacerun: yes">    
+</span>: {0}&quot;, GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ImpFlags :{0}&quot;,impflags );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags<span style="mso-spacerun: yes">   
+</span>:{0}&quot;,flags.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>Type t = typeof( System.Reflection.MethodAttributes );</p>
+
+<p class=ILprg>FieldInfo[] f = t.GetFields(BindingFlags.Public |
+BindingFlags.Static);</p>
+
+<p class=ILprg>for ( int i = 0; i &lt; f.Length; i++ )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int fv = (int)f[i].GetValue(null);</p>
+
+<p class=ILprg>if ( (fv <span style='font-family:"Bookman Old Style"'>&amp;</span>
+flags) == fv)</p>
+
+<p class=ILprg>Console.Write( &quot;{0} &quot; , f[i].Name );</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Signature: #Blob[{0}]&quot;,signature);</p>
+
+<p class=ILprg>byte count = blob[signature]; </p>
+
+<p class=ILprg>Console.Write(&quot;Blob:{0} Count:{1} Bytes &quot;, signature ,
+count);</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= count ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot; ,
+blob[signature+l].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;ParamList: Param[{0}]&quot;,param);</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Position of Blob 1240 </p>
+
+<p class=ILprg>tableoffset 64</p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2050</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: Main</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:96</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public Static HideBySig
+ReuseSlot </p>
+
+<p class=ILprg>Signature: #Blob[10]</p>
+
+<p class=ILprg>Blob:10 Count:3 Bytes 0 0 1 </p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">   </span><span
+style="mso-spacerun: yes">   </span>:2068</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: abc</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:86</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot </p>
+
+<p class=ILprg>Signature: #Blob[14]</p>
+
+<p class=ILprg>Blob:14 Count:4 Bytes 20 1 8 C </p>
+
+<p class=ILprg>ParamList: Param[1]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:207C</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: pqr</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:86</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot </p>
+
+<p class=ILprg>Signature: #Blob[19]</p>
+
+<p class=ILprg>Blob:19 Count:5 Bytes 20 2 A 8 3 </p>
+
+<p class=ILprg>ParamList: Param[2]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:2090</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: xyz</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:86</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot </p>
+
+<p class=ILprg>Signature: #Blob[25]</p>
+
+<p class=ILprg>Blob:25 Count:3 Bytes 20 0 1 </p>
+
+<p class=ILprg>ParamList: Param[4]</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>RVA<span style="mso-spacerun: yes">      </span>:20A0</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">     </span>: .ctor</p>
+
+<p class=ILprg>ImpFlags :Managed</p>
+
+<p class=ILprg>Flags<span style="mso-spacerun: yes">    </span>:1886</p>
+
+<p class=ILprg>PrivateScope FamANDAssem Family Public HideBySig ReuseSlot
+SpecialName RTSpecialName </p>
+
+<p class=ILprg>Signature: #Blob[25]</p>
+
+<p class=ILprg>Blob:25 Count:3 Bytes 20 0 1 </p>
+
+<p class=ILprg>ParamList: Param[4]</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The above example encompasses all the programs that we have
+dealt with so far. So, we will not squander away any more time explaining it. Instead,
+let us progress on to the next program, which displays the MemberRef table.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The file b.cs has been modified to encompass the earlier code.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>MemberRefTable</u></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;hello&quot;);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(10);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[10] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int clas = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int sig = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Row {0}&quot;,k);</p>
+
+<p class=ILprg>Console.Write(&quot;Class:&quot;);</p>
+
+<p class=ILprg>int tag = clas <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x07;</p>
+
+<p class=ILprg>int rid = (int) ((uint) clas &gt;&gt; 3);</p>
+
+<p class=ILprg>if ( tag == 0)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeDef&quot;);</p>
+
+<p class=ILprg>if ( tag == 1)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 2)</p>
+
+<p class=ILprg>Console.Write(&quot;ModuleRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 3)</p>
+
+<p class=ILprg>Console.Write(&quot;MethodDef&quot;);</p>
+
+<p class=ILprg>if ( tag == 4)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeSpec&quot;);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;[{0}]&quot;,rid);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name:{0}&quot; , GetString(name));</p>
+
+<p class=ILprg>int count = blob[sig];</p>
+
+<p class=ILprg>Console.Write(&quot;Signature #BLOB[{0}] Count {1} &quot;, sig ,
+count.ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= count ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot; ,
+blob[sig+l].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Class:TypeRef[2]</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILprg>Signature #BLOB[18] Count 5 20 2 1 2 2 </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Class:TypeRef[3]</p>
+
+<p class=ILprg>Name:WriteLine</p>
+
+<p class=ILprg>Signature #BLOB[24] Count 4 0 1 1 E </p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Class:TypeRef[1]</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILprg>Signature #BLOB[14] Count 3 20 0 1 </p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>TypeRef Table Output</u></p>
+
+<p class=ILprg>Row[1]</p>
+
+<p class=ILprg>AssemblyRef[1] token=0x6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:Object,0x20</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILprg>Row[2]</p>
+
+<p class=ILprg>AssemblyRef[1] token=0x6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:
+DebuggableAttribute,0x49</p>
+
+<p class=ILprg>Namespace : System.Diagnostics,0x36</p>
+
+<p class=ILprg>Row[3]</p>
+
+<p class=ILprg>AssemblyRef[1] token=0x6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:Console,0x5F</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=440 height=140 id="_x0000_i1048" src="chap3\21.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The MemberRef or many a times called MethodRef table is at the
+10th position in the valid field. The size of the table is just 6 bytes. </p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span></p>
+
+<p class=ILbase>The second member in the table is the method name that is
+referred to in the module. The three methods comprise of the two constructors
+and the WriteLine function. The WriteLine function has been called explicitly,
+but as far as the constructors are concerned, we have not created even a single
+object.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>To establish the class and namespace that the methods belong
+to, the first field called the Class is inspected. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=433 height=117 id="_x0000_i1049" src="chap3\22.gif"></p>
+
+<p class=ILbase><img width=431 height=217 id="_x0000_i1050" src="chap3\23.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This field is an index into one of the five tables, viz.
+TypeRef, ModuleRef, Method, TypeSpec or TypeDef. In effect, the first 3 bits in
+the byte are taken by a MemberRefParent coded index.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Since the ultimate value of the first three bits is 1, the
+table referred to is the TypeRef table. Now, to acquire the specific row in the
+table, we first right shift the value by 3, since it is a part of the coded
+index. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=438 height=68 id="_x0000_i1051" src="chap3\24.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, the first row in the memberref points to the second row
+in the TypeRef table. In order to ensure comprehensiveness and to
+cross-reference the entities, we have pasted the rows contained in the TypeRef
+table.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row[2]</p>
+
+<p class=ILprg>AssemblyRef[1] token=0x6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">        </span>:
+DebuggableAttribute,0x49</p>
+
+<p class=ILprg>Namespace : System.Diagnostics,0x36</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, it is presumed that the constructor in class Debuggable
+Attribute from the System.Diagnostics namespace, is the first member row in the
+table. We have not added this attribute. The C# compiler has done it for
+intrinsic reasons. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=443 height=139 id="_x0000_i1052" src="chap3\25.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The second method, which is the WriteLine function, shall
+elucidate this concept further.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The value of 1 in the MemberRefParent table, points to the
+TypeRef table, as before. After right-shifting 25 by 3, the value obtained is
+3, as shown below. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, the row index in the TypeRef table is 3. The third row in
+the TypeRef table represents the Console class from the System namespace. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg>Row[3]</p>
+
+<p class=ILprg>AssemblyRef[1] token=0x6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:Console,0x5F</p>
+
+<p class=ILprg>Namespace :System,0x19</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=452 height=82 id="_x0000_i1053" src="chap3\26.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, it now becomes easier to figure out the namespace-class
+combination to which the method belongs. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The last field named sig in the MemberRef table is the
+signature of the function being called. This signature is incredibly vital,
+since it is the only way to verify whether the parameters are being passed in
+the appropriate order or not. </p>
+
+<p class=ILbase>The first byte is 4, which represents the count for the second
+record. </p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span></p>
+
+<p class=ILbase>As the WriteLine function is a static function, the 'this'
+pointer is not passed. Hence, the next byte is 00. The number of parameters
+passed to the function is 1 and the return type is also 1, which signifies
+void. The last byte defines the parameter to be ELEMENT_TYPE_STRING. This will
+be covered in greater detail later. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The third row representing a constructor refers to the first
+row of the TypeRef table. This row represents the Object class from the System
+table. The signature Blob further enhances our knowledge by revealing that it
+is a non-static function, which has no parameters passed and has a void return
+value. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=445 height=78 id="_x0000_i1054" src="chap3\27.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>A point to be noted here is that every object that is created,
+has to call the base class constructor. It is for this reason that while
+creating zzz, the constructor of the base class Object is called. In due course
+of time, we will divulge the IL code written for this module. Furthermore, when
+no constructors are created manually, a free constructor that takes no
+parameters, is assigned to the class zzz. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This constructor of DebuggableAttribute takes two parameters,
+hence displaying a value of 5. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Thus, to conclude, every row in the MemberRef acquaints us with
+the presence of a particular method in the code. The Class field points to the table
+that has the type for the member; the name field provides the name; and
+finally, the signature field describes the actual signature of the method call.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We now insert the following code in the file b.cs:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>b.cs</u></p>
+
+<p class=ILprg>public class zzz</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>public static void Main () </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>System.Console.WriteLine(&quot;hell&quot;);</p>
+
+<p class=ILprg>System.Console.WriteLine(10);</p>
+
+<p class=ILprg>System.Console.WriteLine(true);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Class:TypeRef[2]</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILprg>Signature #BLOB[18] Count 5 20 2 1 2 2 </p>
+
+<p class=ILprg>Row 2</p>
+
+<p class=ILprg>Class:TypeRef[3]</p>
+
+<p class=ILprg>Name:WriteLine</p>
+
+<p class=ILprg>Signature #BLOB[24] Count 4 0 1 1 E </p>
+
+<p class=ILprg>Row 3</p>
+
+<p class=ILprg>Class:TypeRef[3]</p>
+
+<p class=ILprg>Name:WriteLine</p>
+
+<p class=ILprg>Signature #BLOB[29] Count 4 0 1 1 8 </p>
+
+<p class=ILprg>Row 4</p>
+
+<p class=ILprg>Class:TypeRef[3]</p>
+
+<p class=ILprg>Name:WriteLine</p>
+
+<p class=ILprg>Signature #BLOB[34] Count 4 0 1 1 2 </p>
+
+<p class=ILprg>Row 5</p>
+
+<p class=ILprg>Class:TypeRef[1]</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILprg>Signature #BLOB[14] Count 3 20 0 1 </p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The file b.cs is modified to call the WriteLine function
+thrice. Thus, in the memberref table, there exist three entries for WriteLine.
+The index to the TypeRef table remains the same, i.e. 3. The only aspect that
+varies is the Signature, since the datatypes of the parameters are dissimilar. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The parameter type is much more complex and has a greater role
+than merely signifying the data type. The element type table E is a string, 8
+is an int and 2 is a boolean. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Custom Attribute table is unveiled in the next program,
+where the file b.cs is modified to contain only one WriteLine function, as
+before.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>Custom Attribute Table<o:p></o:p></u></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(12);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[12] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>int parent = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int type = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int value = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int tag = parent <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x1F;</p>
+
+<p class=ILprg>int rid = (int) ((uint) parent &gt;&gt; 5);</p>
+
+<p class=ILprg>Console.Write(&quot;Parent:&quot;);</p>
+
+<p class=ILprg>if ( tag == 0)</p>
+
+<p class=ILprg>Console.Write(&quot;MethodRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 1)</p>
+
+<p class=ILprg>Console.Write(&quot;FieldRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 2)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 3)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeDef&quot;);</p>
+
+<p class=ILprg>if ( tag == 4)</p>
+
+<p class=ILprg>Console.Write(&quot;ParamDef&quot;);</p>
+
+<p class=ILprg>if ( tag == 5)</p>
+
+<p class=ILprg>Console.Write(&quot;InterfaceImpl&quot;);</p>
+
+<p class=ILprg>if ( tag == 6)</p>
+
+<p class=ILprg>Console.Write(&quot;MemberRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 7)</p>
+
+<p class=ILprg>Console.Write(&quot;Module&quot;);</p>
+
+<p class=ILprg>if ( tag == 8)</p>
+
+<p class=ILprg>Console.Write(&quot;Permission&quot;);</p>
+
+<p class=ILprg>if ( tag == 9)</p>
+
+<p class=ILprg>Console.Write(&quot;Property&quot;);</p>
+
+<p class=ILprg>if ( tag == 10)</p>
+
+<p class=ILprg>Console.Write(&quot;Event&quot;);</p>
+
+<p class=ILprg>if ( tag == 11)</p>
+
+<p class=ILprg>Console.Write(&quot;Signature&quot;);</p>
+
+<p class=ILprg>if ( tag == 12)</p>
+
+<p class=ILprg>Console.Write(&quot;ModuleRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 13)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeSpec&quot;);</p>
+
+<p class=ILprg>if ( tag == 14)</p>
+
+<p class=ILprg>Console.Write(&quot;Assembly&quot;);</p>
+
+<p class=ILprg>if ( tag == 15)</p>
+
+<p class=ILprg>Console.Write(&quot;AssemblyRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 16)</p>
+
+<p class=ILprg>Console.Write(&quot;File&quot;);</p>
+
+<p class=ILprg>if ( tag == 17)</p>
+
+<p class=ILprg>Console.Write(&quot;ExportedType&quot;);</p>
+
+<p class=ILprg>if ( tag == 16)</p>
+
+<p class=ILprg>Console.Write(&quot;ManifestResource&quot;);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;[{0}]&quot;,rid);</p>
+
+<p class=ILprg>tag = type <span style='font-family:"Bookman Old Style"'>&amp;</span>
+0x07;</p>
+
+<p class=ILprg>rid = (int) ((uint) type &gt;&gt; 3);</p>
+
+<p class=ILprg>Console.Write(&quot;Type:&quot;);</p>
+
+<p class=ILprg>if ( tag == 0)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 1)</p>
+
+<p class=ILprg>Console.Write(&quot;TypeDef&quot;);</p>
+
+<p class=ILprg>if ( tag == 2)</p>
+
+<p class=ILprg>Console.Write(&quot;MethodDef&quot;);</p>
+
+<p class=ILprg>if ( tag == 3)</p>
+
+<p class=ILprg>Console.Write(&quot;MemberRef&quot;);</p>
+
+<p class=ILprg>if ( tag == 4)</p>
+
+<p class=ILprg>Console.Write(&quot;String&quot;);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;[{0}]&quot;,rid);</p>
+
+<p class=ILprg>int count = blob[value];</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Value Blob[{0}] Count {1}&quot;,value , count
+);</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= count ; l++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot; ,
+blob[value+l].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>Parent:Assembly[1]</p>
+
+<p class=ILprg>Type:MemberRef[1]</p>
+
+<p class=ILprg>Value Blob[29] Count 6</p>
+
+<p class=ILprg>1 0 0 1 0 0</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>MemberRef Table</u></p>
+
+<p class=ILprg>Row 1</p>
+
+<p class=ILprg>Class:TypeRef[2]</p>
+
+<p class=ILprg>Name:.ctor</p>
+
+<p class=ILprg>Signature #BLOB[18] Count 5 20 2 1 2 2 </p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>TypeRef Table</u></p>
+
+<p class=ILprg>Row[2]</p>
+
+<p class=ILprg>AssemblyRef[1] token=0x6</p>
+
+<p class=ILprg>Name<span style="mso-spacerun: yes">      </span>:
+DebuggableAttribute,0x49</p>
+
+<p class=ILprg>Namespace : System.Diagnostics,0x36</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The 12th position in the valid field is assigned to the Custom Attribute
+table, which deals with Attributes. You may recall that a little while ago, we
+had disclosed to you that one attribute is added by the C# compiler. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Custom Attribute table has the following columns:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=443 height=112 id="_x0000_i1055" src="chap3\28.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first field is called parent, which has a
+HasCustomAttribute coded index. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=446 height=359 id="_x0000_i1056" src="chap3\29.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=436 height=236 id="_x0000_i1057" src="chap3\30.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This index uses the first five bits to encode the table. The
+probable values can range from 0 to 18 and have been assigned the following
+significance: </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=444 height=70 id="_x0000_i1058" src="chap3\31.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Assembly table is the Parent. The tabletype is retrieved
+after executing a bitwise AND operation with the first five bits. Then, to
+ascertain the index into the table, the last three bits are checked by right
+shifting the byte by 5 bits. It can be an index into any table, except for the
+Custom Attribute table.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=442 height=192 id="_x0000_i1059" src="chap3\32.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The result is 1, signifying that it is the first index in the
+assembly table. The second field is called the type. It is a
+CustomAttributeType coded index into any of the five probable tables. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The last 3 bits supply a value of 3, thereby indicating the
+table of MemberRef. The index in the table will be 1, after the bytes are right
+shifted by 3. Thus, the attribute applies to the first index in the MemberRef
+table, i.e. .ctor in the class DebuggableAttribute, belonging to the
+System.Diagnostics namespace.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The last field is a two-byte index into the Blob heap. The
+CustomAttribute table contains data in the Blob heap. It is used to instantiate
+an object, which is an instance of the Custom Attribute, at run time. </p>
+
+<p class=ILbase>There is extensive cross-referencing between tables. Hence, we
+decided to illustrate the individual tables first. The type field is the index
+to the constructor of the Custom Attribute. There is no rule that stipulates
+that the presence of a custom attribute is mandatory. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The documentation in no uncertain terms, states that the type
+must index a valid table in the Method and in the MethodRef table.
+Nevertheless, the code on the .Net clearly demonstrates that it could be any
+one of the 5 tables that finds a mention in our code. The last column value
+could be null. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=447 height=50 id="_x0000_i1060" src="chap3\33.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>As always, the Blob heap begins with the count of the number of
+bytes. Our custom attribute has 6 bytes. </p>
+
+<p class=ILbase><span style="mso-spacerun: yes"> </span></p>
+
+<p class=ILbase>Section 22.3 defines the syntax of the Blob heap for a custom
+attribute. It commences with a prolog, which is a short with the value 0x0001.
+If you are under the notion that we have reversed the bytes, you couldn't be
+more right, since the bytes in the Blob are stored in big endian, which is the
+opposite of small endian.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Let us consider a value, such as 258. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=435 height=266 id="_x0000_i1061" src="chap3\34.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The hex equivalent of this decimal number in little endian
+format is 0x0102, whereas in big endian, it is 0x0201. This is so because the
+bytes are reversed in the big endian format.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>Assembly Table</u></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>using System.Configuration.Assemblies;</p>
+
+<p class=ILprg>...</p>
+
+<p class=ILprg>... </p>
+
+<p class=ILprg>public void xyz()</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>bool b = tablepresent(32);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b )</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[32] ; k++)</p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>AssemblyHashAlgorithm HashAlgId = (AssemblyHashAlgorithm)BitConverter.ToInt32
+(metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int major = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int minor = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int build= BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int revision = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>AssemblyFlags flags = (AssemblyFlags)BitConverter.ToInt32
+(metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int publickey = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int culture = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;HashAlgId {0}&quot;,HashAlgId );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MajorVersion {0}&quot;,major );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MinorVersion {0}&quot;,minor);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;BuildNumber {0}&quot;,build);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;RevisionNumber {0}&quot;,revision);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags {0}&quot;,flags.ToString());</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Public Key #BLOB[{0}]
+{1}&quot;,publickey , blob[publickey] );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name:{0}&quot;,GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Culture:{0}&quot;,GetString(culture));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>public enum AssemblyFlags </p>
+
+<p class=ILprg>{</p>
+
+<p class=ILprg>PublicKey = 0x0001,</p>
+
+<p class=ILprg>SideBySideCompatible = 0x0000,</p>
+
+<p class=ILprg>NonSideBySideAppDomain = 0x0010,</p>
+
+<p class=ILprg>NonSideBySideProcess = 0x0020,</p>
+
+<p class=ILprg>NonSideBySideMachine = 0x0030,</p>
+
+<p class=ILprg>EnableJITcompileTracking = 0x8000,</p>
+
+<p class=ILprg>DisableJITcompileOptimizer = 0x4000,</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>HashAlgId SHA1</p>
+
+<p class=ILprg>MajorVersion 0</p>
+
+<p class=ILprg>MinorVersion 0</p>
+
+<p class=ILprg>BuildNumber 0</p>
+
+<p class=ILprg>RevisionNumber 0</p>
+
+<p class=ILprg>Flags SideBySideCompatible</p>
+
+<p class=ILprg>Public Key #BLOB[0] 0</p>
+
+<p class=ILprg>Name:b</p>
+
+<p class=ILprg>Culture:</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=449 height=60 id="_x0000_i1062" src="chap3\35.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Assembly table is positioned at the 32nd bit in the valid
+table. Its task is to store details of an assembly. An assembly in turn
+comprises of many modules, which in turn represent a dll or an exe file. The
+assembly table can contain zero or one row only. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=456 height=79 id="_x0000_i1063" src="chap3\36.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The first field is a four byte constant of type enum
+AssemblyHashAlgorithm that originates from the namespace
+System.Configuration.Assemblies. Therefore, we have added this namespace to our
+program. The technique of hashing has many applications including cryptography.
+This hash value can assume only one of the three probable values.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=444 height=93 id="_x0000_i1064" src="chap3\37.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Close on the heels of the four bytes of AssemblyHashAlgorithm,
+there exist 4 sets of two byte constants, which denote the Major Version, Minor
+Version, Build Number and Revision Number, respectively. The value for each of
+them happens to be zero. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>This is followed by a 4-byte flag mask that has been
+represented using an enum. In an enum, every member is assigned a default
+value. Therefore, while displaying the field, instead of the enum value, the
+name of the member is displayed. This approach surpasses the process of bitwise
+ANDing with different values. However, this method succeeds only if one and
+only one of the members match the enum. If more than one member matches the
+enum, then it is the number, and not the member name, which shall be displayed.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>If the PublicKey flag is set, it denotes that the assembly
+reference holds the complete unhashed public key. The Side by Side Compatible
+value is exactly what the name indicates. The last two values are
+reserved.<span style="mso-spacerun: yes">  </span>The PublicKey field is an
+index into the Blob heap. Since it has an index value of zero, it becomes
+invalid, thereby having no index at all. </p>
+
+<p class=ILbase>This also proves the fact that the Public key can be zero. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The name of the assembly without the file extension, comes next
+in sequence. It is followed by the culture field, which is currently a null
+string. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><u>AssemblyRef Table<o:p></o:p></u></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>a.cs</u></p>
+
+<p class=ILprg>public void xyz() {</p>
+
+<p class=ILprg>bool b = tablepresent(35);</p>
+
+<p class=ILprg>int offs = tableoffset;</p>
+
+<p class=ILprg>if ( b ) {</p>
+
+<p class=ILprg>for ( int k = 1 ; k &lt;= rows[35]; k++)<span
+style="mso-spacerun: yes">  </span>{</p>
+
+<p class=ILprg>int major = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int minor = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int build= BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int revision = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>AssemblyFlags flags = (AssemblyFlags)BitConverter.ToInt32
+(metadata, offs);</p>
+
+<p class=ILprg>offs += 4;</p>
+
+<p class=ILprg>int publickey = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int name = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int culture = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>int hashvalue = BitConverter.ToInt16 (metadata, offs);</p>
+
+<p class=ILprg>offs += 2;</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MajorVersion {0}&quot;,major );</p>
+
+<p class=ILprg>Console.WriteLine(&quot;MinorVersion {0}&quot;,minor);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;BuildNumber {0}&quot;,build);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;RevisionNumber {0}&quot;,revision);</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Flags {0}&quot;,flags.ToString());</p>
+
+<p class=ILprg>int count = blob[publickey ];</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Public Key or Token #BLOB[{0}]
+{1}&quot;,publickey , count);</p>
+
+<p class=ILprg>for ( int l = 1 ; l &lt;= count ; l++)<span style="mso-spacerun:
+yes">  </span>{</p>
+
+<p class=ILprg>Console.Write(&quot;{0} &quot; ,
+blob[publickey+l].ToString(&quot;X&quot;));</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>Console.WriteLine();</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Name:{0}&quot;,GetString(name));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Culture:{0}&quot;,GetString(culture));</p>
+
+<p class=ILprg>Console.WriteLine(&quot;Hash Value #BLOB[{0}]&quot;,hashvalue);</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILprg>}</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILprg><u>Output</u></p>
+
+<p class=ILprg>MajorVersion 1</p>
+
+<p class=ILprg>MinorVersion 0</p>
+
+<p class=ILprg>BuildNumber 3300</p>
+
+<p class=ILprg>RevisionNumber 0</p>
+
+<p class=ILprg>Flags SideBySideCompatible</p>
+
+<p class=ILprg>Public Key or Token #BLOB[1] 8</p>
+
+<p class=ILprg>B7 7A 5C 56 19 34 E0 89 </p>
+
+<p class=ILprg>Name:mscorlib</p>
+
+<p class=ILprg>Culture:</p>
+
+<p class=ILprg>Hash Value #BLOB[0]</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase><img width=473 height=285 id="_x0000_i1065" src="chap3\38.gif"></p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The AssemblyRef table stores all the assemblies that are
+referenced in the file. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The code for the System namespace is located in a file called
+mscorlib.dll. Since only one assembly is referenced in the program, there
+exists only one row in the AssemblyRef table. The Assembly Ref table takes up
+the 35th position in the valid field.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>The Major Version, Minor Version, Build Number, Revision Number,
+Flags, Public Key and Culture are all obtained from the Assembly table present
+in mscorlib.dll. The compiler reads the metadata of each assembly that is
+referenced, in order to figure out the namespaces and classes that they
+contain. </p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>Our exe file has no public key, but mscorlib has an 8 byte
+public key that is displayed.</p>
+
+<p class=ILbase><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=ILbase>We will conclude this chapter here, since we have scrutinized
+the eight metadata tables present in the smallest possible exe file. The next
+chapter shall investigate the remaining tables that have not been deliberated
+upon so far.</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>
