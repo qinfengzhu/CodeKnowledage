@@ -340,3 +340,5 @@ http.check_alive_uri = /status.html
 ### 客户端
 
 1. [java-fastdfs-client](https://github.com/ningyu1/fastdfs-client)
+
+2. [.net fastdfs-client](https://github.com/priceLiu/fastDFS)
