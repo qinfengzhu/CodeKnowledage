@@ -31,3 +31,9 @@
 2. [C# 的高性能Socket编程](csharpSocket.md)
 
 3. [C# 高性能Socket编程如何与Protocol协议进行配合使用](socketWithProtocol.md)
+
+### RPC技术选型
+
+1. Protobuf(数据转换) + Netty(网络传输)
+
+2. gRPC 或 Thrift(数据转换+网络传输)
