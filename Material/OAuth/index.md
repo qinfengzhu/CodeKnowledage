@@ -11,3 +11,10 @@
 ### 开源服务器端与开源客户端组件
 
 1. [多种语言的开源服务器端与客户端组件](https://openid.net/developers/certified/)
+
+
+### Java 开源的比较好的OAuth服务端
+
+1. [Shiro](https://github.com/apache/shiro)
+
+2. [Shiro 丰富的资料](https://github.com/zhangkaitao/shiro-example)
