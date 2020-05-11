@@ -12,7 +12,7 @@
 
 ![相关授权角色说明](images/roles.png)
 
-![AccessToken与RefreshToken](accessToken-refreshToken.png)
+![AccessToken与RefreshToken](images/accessToken-refreshToken.png)
 
 1.2 客户端注册服务器
 
@@ -26,6 +26,4 @@ OAuth 2.0服务都要求您首先注册一个新应用程序，这通常还要�
 
 2.1 认证服务器与资源服务器集成,客户端自带`clientId`与`clientsecret`
 
-![基本的客户凭证授权](client-credentials.png)
-
-2.2
+![基本的客户凭证授权](images/client-credentials.png)
