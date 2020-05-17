@@ -4,10 +4,10 @@
 
 ### 转换算法理论
 
-![算法理论-01](LexicalPart1.pdf)
-![算法理论-02](LexicalPart2.pdf)
-![算法理论-03](LexicalPart3.pdf)
-![算法理论-04](LexicalPart4.pdf)
+[算法理论-01](LexicalPart1.pdf)
+[算法理论-02](LexicalPart2.pdf)
+[算法理论-03](LexicalPart3.pdf)
+[算法理论-04](LexicalPart4.pdf)
 
 ### 转换步骤
 1. 正则表达式转NFA步骤
