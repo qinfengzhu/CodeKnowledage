@@ -2,7 +2,7 @@
 
 1. Abp 引用了Castle的那些程序集: `Castle.Core`,`Castle.Windsor`,`Castle.Faccilities.Logging`
 
-2. Abp 的启动点，主要实现模块之间的依赖以及核心的IOC容器初始化,`Startup/AbpBootstrapper`
+2. Abp 的启动点，主要实现模块之间的依赖以及核心的IOC容器初始化,`Startup/AbpBootstrapper` ，这里主要使用`IWindsorInstaller` 接口，`IWindsorContainer.Install()`
 
 3. 下面进行具体代码的分析
 

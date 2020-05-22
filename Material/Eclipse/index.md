@@ -1,3 +1,7 @@
-### 关于Eclipse常见的内容
+### Eclipse 开发Java项目常见的问题
 
 1. [快捷键](hotkey.md)
+
+2. [Maven 的Spring web app 项目配置需要注意的配置地方以及常见错误](eclipseSpringError.md)
+
+3. [Eclipse-git](eclipseGit.md)

@@ -1,5 +1,6 @@
 ### 设置阿里源以及配置静态ip
 
+1. 配置阿里源
 ```
 yum install -y net-tools
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
@@ -7,6 +8,7 @@ yum clean all
 yum makecache
 ```
 
+2. 配置网络地址, /etc/sysconfig/network-scripts/ifcfg-ens33
 ```
 TYPE=Ethernet
 PROXY_METHOD=none
@@ -31,3 +33,5 @@ GATEWAY=192.168.31.2
 DNS1=192.168.31.2
 NM_CONTROLLED=no
 ```
+
+重启网络服务 `systemctl restart network`
