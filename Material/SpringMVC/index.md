@@ -1,3 +1,3 @@
-#### SpringMVC项目搭建(Eclipse)
+#### SpringMVC使用
 
-1.
+1. [eclipse中配置spring mvc](eclipseSpringMVC.md)
