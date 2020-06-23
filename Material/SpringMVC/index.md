@@ -2,7 +2,7 @@
 
 1. [eclipse中配置spring mvc](eclipseSpringMVC.md)
 
-2. [Spring MVC 配置]()
+2. [Spring MVC 配置](springMvc.md)
 
 3. [Mybatis配置]()
 
