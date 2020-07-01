@@ -30,7 +30,7 @@
 7. [教务查下系统](https://github.com/JaceyRx/Examination_System)
 8. [最简单的spring mvc 适合看看](https://github.com/hisenyuan/SSM_BookSystem)
 9. [可以进行具体看的项目](https://github.com/YUbuntu0109/sms-ssm)，[具体的学习笔记过程](https://github.com/YUbuntu0109/YUbuntu0109.github.io)
-10. [很好的SSM整合说明 适合看看](https://github.com/Elricyo/SSM)
+10. [很好的SSM整合说明 readme可以，项目一般](https://github.com/Elricyo/SSM)
 11. [Spring boot 参考的项目](https://github.com/YUbuntu0109/My-Blog-layui.git) ;[原项目来源](https://github.com/ZHENFENG13/My-Blog)
 12. [简易投标系统](https://github.com/YUbuntu0109/voteserver.git)
 13. [一个简易的权限系统](https://github.com/YUbuntu0109/Permission)
@@ -39,7 +39,18 @@
 16. [java-打赏功能项目](https://github.com/YUbuntu0109/profit)
 17. [学生信息管理系统  适合细看](https://github.com/YUbuntu0109/UIMS)
 18. [系统权限系统  SpringBoot 适合细看](https://github.com/YUbuntu0109/mysiteforme)
+19. [快递代拿系统 SSM 有具体讲解，可以看看](https://github.com/jitwxs/express-ssm)
+20. [二手书交易系统 后期掌握了基本能力后可以看看](https://github.com/DanielLin07/bookshop)
+21. [SSM+Layui 有空可以look下 等掌握了能力后](https://github.com/V-yg/SSM-layui-maven-)
+22. [Spring Boot 包有点多，等掌握了能力后再看看](https://github.com/V-yg/BgMan)
+23. [经典的图书管理系统，有时间无聊可以看看](https://github.com/ThreadNew/SSM_Project)
+
+24. [微信商城--可以借鉴该项目](https://github.com/LaienLi/yiran)
 
 > Spring 源码分析
 
 1. [带详细类图参考的讲解](https://github.com/seaswalker/spring-analysis)
+
+> 切换 Dynamic Web Module
+
+[动态调整WebModule的版本](Maven切换DynamicWebModule.md)
