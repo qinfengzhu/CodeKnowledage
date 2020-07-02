@@ -1,23 +1,22 @@
-#### SpringMVC使用
+> SpringMVC使用
 
 1. [eclipse中配置spring mvc](eclipseSpringMVC.md)
 
-2. [Spring MVC 配置](springMvc.md)
+2. [log4j的使用](log4j.md)
 
-3. [Mybatis配置]()
+3. [Spring Mvc数据绑定](数据绑定入门.md)
 
-4. [Mybatis与连接池druid]
+4. [Spring Mvc文件上传与下载](文件上传与下载.md)
 
-5. [log4j日志配置]()
-
+5. [以Spring Mvc 5版本做说明](基本配置说明.md)
 
 > 参考资料
 
-[基础搭建参考资料](https://www.cnblogs.com/funnn24/p/10744299.html)
+1. [基础搭建参考资料](https://www.cnblogs.com/funnn24/p/10744299.html)
 
-[Eclipse整合最优雅的ssm框架](https://blog.csdn.net/qq598535550/article/details/51703190)
+2. [Eclipse整合最优雅的ssm框架](https://blog.csdn.net/qq598535550/article/details/51703190)
 
-[IDea 整合ssm框架](https://blog.csdn.net/qq_44543508/article/details/100192558)
+3. [IDea 整合ssm框架](https://blog.csdn.net/qq_44543508/article/details/100192558)
 
 > SSM 整合项目参考
 
@@ -53,4 +52,4 @@
 
 > 切换 Dynamic Web Module
 
-[动态调整WebModule的版本](Maven切换DynamicWebModule.md)
+1. [动态调整WebModule的版本](Maven切换DynamicWebModule.md)
