@@ -43,8 +43,18 @@
 21. [SSM+Layui 有空可以look下 等掌握了能力后](https://github.com/V-yg/SSM-layui-maven-)
 22. [Spring Boot 包有点多，等掌握了能力后再看看](https://github.com/V-yg/BgMan)
 23. [经典的图书管理系统，有时间无聊可以看看](https://github.com/ThreadNew/SSM_Project)
-
 24. [微信商城--可以借鉴该项目](https://github.com/LaienLi/yiran)
+25. [在线考试系统-ssm感觉不错](https://github.com/DimpleFeng/online_exam_system)
+26. [高校学生评优奖管理系统-ssm不错](https://github.com/DimpleFeng/EAMS)
+27. [spring boot 教育管理系统](https://github.com/qianqianjun/Educational-management)
+28. [有意思的开源作者, Vue + SpringBoot 简单微人事系统](https://github.com/lenve/vhr)
+
+29. [表单问卷系统](https://github.com/wkeyuan/DWSurvey)
+30. [JFinal2.0 排班考勤系统](https://github.com/giscafer/FinalScheduler)
+31. [ssm 简单的房屋租赁系统](https://github.com/chiuwingyan/house)
+32. [简单的餐厅收银系统](https://github.com/CHANGEX929/RCMS)
+33. [考试系统](https://github.com/imalexyang/ExamStack)
+34. [简单的](https://github.com/newbee-ltd/newbee-mall)
 
 > Spring 源码分析
 
