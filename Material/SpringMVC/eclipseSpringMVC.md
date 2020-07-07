@@ -35,6 +35,7 @@
         <log4j2.version>2.12.1</log4j2.version>
         <compiler.source>1.8</compiler.source>
         <compiler.target>1.8</compiler.target>
+        <buildHelperPlugin.version>1.8</buildHelperPlugin.version>
     </properties>
 
     <dependencies>
@@ -125,19 +126,43 @@
 
     <build>
         <finalName>sms</finalName>
-        <pluginManagement>
-            <plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.2</version>
-					<configuration>
-						<source>${compiler.source}</source>
-						<target>${compiler.target}</target>
-					</configuration>
-				</plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+          <!--编译与打包的时候走配置的JDK打包编译-->
+  				<plugin>
+  					<groupId>org.apache.maven.plugins</groupId>
+  					<artifactId>maven-compiler-plugin</artifactId>
+  					<version>2.3.2</version>
+  					<configuration>
+  						<source>${compiler.source}</source>
+  						<target>${compiler.target}</target>
+  					</configuration>
+  				</plugin>
+          <!--打包的时候排除或者包含指定文件-->
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>${buildHelperPlugin.version}</version>
+            <executions>
+              <execution>
+                <id>add-resource</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>add-resource</goal>
+                </goals>
+                <configuration>
+                  <resources>
+                    <resource>
+                      <directory>src/main/resource</directory>
+                      <includes>
+                        <include>**/*</include>
+                      </includes>
+                    </resource>
+                  </resources>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
     </build>
 </project>
 
