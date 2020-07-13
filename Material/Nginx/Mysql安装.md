@@ -63,3 +63,13 @@ default-character-set=utf8
  ```
  systemctl restart mariadb
  ```
+
+6. 开启远程连接
+
+```
+# 其中 root 是登录数据库的用户，123456为登录数据库的密码
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'IDENTIFIED BY '123456' WITH GRANT OPTION;
+
+# 刷新下权限
+flush privileges;
+```
