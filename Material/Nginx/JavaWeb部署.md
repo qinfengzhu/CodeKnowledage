@@ -40,6 +40,13 @@ export PATH=${CATALINA_BASE}/bin:$PATH
 
 开启 `Tomcat` ， bin下的 `startup.sh` , 执行 `./startup.sh &`
 
+```
+1. 启动tomcat服务
+方式一：直接启动 ./startup.sh
+方式二：作为服务启动 nohup ./startup.sh &
+方式三：控制台动态输出方式启动 ./catalina.sh run 动态地显示tomcat后台的控制台输出信息,Ctrl+C后退出并关闭服务
+```
+
 4. `Nginx` 配置转发规则,`/etc/nginx/conf.d/bestkf.conf`
 
 ```
