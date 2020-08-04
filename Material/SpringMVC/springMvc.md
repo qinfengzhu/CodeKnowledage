@@ -68,8 +68,14 @@
     <context:component-scan base-package="com.bestkf.controller" />
     <!-- Spring MVC不处理静态资源 -->
     <mvc:default-servlet-handler />
-    <!-- 支持mvc注解驱动 -->
-    <mvc:annotation-driven />
+		<!-- 加载注解驱动 -->
+    <mvc:annotation-driven>
+      <mvc:message-converters>
+	        <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
+	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+	  </mvc:message-converters>
+    </mvc:annotation-driven>
     <!-- 视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 前缀 -->
