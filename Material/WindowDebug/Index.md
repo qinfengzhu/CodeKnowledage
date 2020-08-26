@@ -23,3 +23,7 @@
 0:000> .load C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SOS.dll
 0:000> .load C:\Windows\Microsoft.NET\Framework64\v4.0.30319\clr.dll
 ```
+
+4. [官方的工具包在WDK 中](https://docs.microsoft.com/zh-cn/windows-hardware/drivers/installing-preview-versions-wdk)
+
+5. [参考资料](https://www.cnblogs.com/mrhgw/archive/2011/08/22/2149849.html)
