@@ -13,7 +13,7 @@
     <properties>
         <springmvc.version>5.1.7.RELEASE</springmvc.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
-        <jackson-databind.version>2.9.10</jackson-databind.version>
+        <jackson-databind.version>2.12.6.1</jackson-databind.version>
         <spring-jdbc.version>5.1.7.RELEASE</spring-jdbc.version>
         <mybaits.version>3.5.1</mybaits.version>
         <pagehelper.version>5.1.9</pagehelper.version>
